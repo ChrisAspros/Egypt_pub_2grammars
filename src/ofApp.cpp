@@ -14,8 +14,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    ofSetFrameRate(40); // for blues was 60 // 1 frame : 1 tick
-    //ofSetFrameRate(70);
+    ofSetFrameRate(200); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
     //seq.setup();
     blues.setup();
     OSC.setup();
