@@ -61,46 +61,6 @@ G_parser::G_parser() : grammars(grammars_path, std::ifstream::in){
 }
 
 
-/*
- NEW_GRAMMAR 2
- 
- time_signature 4
- form_length 32
- harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
- terminals { i iim7 v7 }
- 
- rule: S -> 1.0 SectA(1) SectB(9) SectA(17) SectC(25) //SectC(16) SectA(24) //SectB(2) //SectA(8) SectC(8) //
- :end_rule
- 
- rule: SectA -> 1.0 decA(1) decA(5) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
- :end_rule
- 
- //Terminal rules
- rule: I -> 1.0 i :end_rule
- rule: II -> 1.0 iim7 :end_rule
- rule: V -> 1.0 v7 :end_rule
- 
- rule: decA -> 1.0 T D T T :end_rule
- 
- rule: T -> 1.0 I :end_rule
- rule: SD -> 1.0 II :end_rule
- rule: D -> 1.0 V :end_rule
- 
- 
- rule: SectB -> 1.0 decB1(1) decB2(5)
- :end_rule
- 
- rule: decB1 -> 1.0 SD SD SD SD :end_rule
- 
- rule: decB2 -> 1.0 SD D SD T :end_rule
- 
- 
- rule: SectC -> 1.0 decC(1) decC(3) decC(5) decC(7) :end_rule
- 
- rule: decC -> 1.0 D T :end_rule//an apo katw de metafrazei decC //an apo panw de metafrazei SectC
- 
-
-*/
 void G_parser::get_new_grammar(string& nc){
     if (nc=="NEW_GRAMMAR"){
         
