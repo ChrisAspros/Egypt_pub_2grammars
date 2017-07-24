@@ -145,7 +145,7 @@ void ofApp::draw(){
     //DRAW CYCLE STATES
     string chord_str;
     
-    for (int i=0; i<par.form_length; i++){
+    for (int i=0; i<par.all_gr[par.gr_pop].form_length; i++){
      
         chord_str = blues.parser.curr_cycle[i].name;
         

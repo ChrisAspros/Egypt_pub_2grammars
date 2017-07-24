@@ -24,7 +24,7 @@ void Sequencer::setup(){
     
     incr = 0; //to increment chord pitches
     metre = 4; //set the time signature (QNs for now..)
-    cycle_len = parser.form_length;
+    cycle_len = parser.all_gr[parser.gr_pop].form_length;
     pitch = 50;
     metro_on = 1;
     chord_ch = 1;

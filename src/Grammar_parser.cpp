@@ -38,14 +38,14 @@ G_parser::G_parser() : grammars(grammars_path, std::ifstream::in){
     
     //cout << "GRAMMAR_POP: " << gr_pop << endl;
     
-    //gr_pop = 0;//restricitng to read only gr 1
+    gr_pop = 0;//restricitng to read only gr 1
     
     //restart reading from top (for next loop)
     grammars.clear();
     grammars.seekg(0, ios::beg);
     
     //initialise curr_cycle with tonics (rootpitch level)
-    for(int i=0; i<harm_rh*form_length; i++) {
+    for(int i=0; i<all_gr[gr_pop].harm_rh * all_gr[gr_pop].form_length; i++) {
         
         curr_cycle.push_back(elem_ID());
         curr_cycle[i].time = {0, i};// {beat, harm_rh next..}
@@ -53,7 +53,7 @@ G_parser::G_parser() : grammars(grammars_path, std::ifstream::in){
     }
     
     //place decs for the 1st cycle
-    vector<int> t_aux = {0, 0, 0, form_length-1, 0};
+    vector<int> t_aux = {0, 0, 0, all_gr[gr_pop].form_length-1, 0};
     start_cycle(t_aux);
     
     grammars.close();
@@ -189,7 +189,7 @@ void G_parser::store_rules(string& nc){
     
     //new rule
     if (nc=="rule:"){
-        //cout << "rules: entered and harn_rh==" << harm_rh << " and form_length==" << form_length << endl;
+        //cout << "rules: entered and harn_rh==" << all_gr[gr_pop].harm_rh << " and all_gr[gr_pop].form_length==" << all_gr[gr_pop].form_length << endl;
         all_rules.push_back(rule());
         all_rules[rule_pop].is_optional = false;
         all_rules[rule_pop].timed_production = false;
@@ -263,7 +263,7 @@ void G_parser::store_rules(string& nc){
                         
                     } else rule_time[0] = 0;
                     
-                    all_rules[rule_pop].leftmost_time =  {rule_time[0], rule_time[1] - (i / harm_rh)};
+                    all_rules[rule_pop].leftmost_time =  {rule_time[0], rule_time[1] - (i / all_gr[gr_pop].harm_rh)};
                     
                     //exclude "_*..", i.e. stores "I" in rule instead of "I_2" (plus time info of course)
                     all_rules[rule_pop].left_str[i] = exclude_times(all_rules[rule_pop].left_str[i]);
@@ -474,7 +474,7 @@ void G_parser::find_rule(vector<int>& seq_t){
             
             for (int z = c_off; z < 0; z++){
                 
-                all_gr[gr_pop].general_rules[i].leftmost_time[1] = seq_t[3] + (z+1) / harm_rh;
+                all_gr[gr_pop].general_rules[i].leftmost_time[1] = seq_t[3] + (z+1) / all_gr[gr_pop].harm_rh;
                 
                 vector<string> curr_cont = get_context(all_gr[gr_pop].general_rules[i].leftmost_time, cont_size);
                 
@@ -587,7 +587,7 @@ G_parser::rule G_parser::check_context(vector<int>& seq_t){
 vector<string> G_parser::get_context(vector<int>& leftmost_t, int& size){
     
     //adapt to form_length, time_signature
-    leftmost_t[1] = (leftmost_t[1] + form_length) % form_length;//it may be negative initially
+    leftmost_t[1] = (leftmost_t[1] + all_gr[gr_pop].form_length) % all_gr[gr_pop].form_length;//it may be negative initially
     //cout << "leftmost_t[1]: " << leftmost_t[1] << endl;
     
     //leftmost[1] += leftmost[0] / t_sign;
@@ -597,7 +597,7 @@ vector<string> G_parser::get_context(vector<int>& leftmost_t, int& size){
     
     for (int i=0; i<size; i++){
         
-        int mod = (leftmost_t[1] + i) % form_length;//to cycle up is form_length is exceeded
+        int mod = (leftmost_t[1] + i) % all_gr[gr_pop].form_length;//to cycle up is form_length is exceeded
         context.push_back(curr_cycle[mod]);
         context_str.push_back(context[i].name);//should be string because left_str is not elem_ID (yet..)
     }
@@ -619,8 +619,8 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
     for (int i=0; i<r.right_side[choice].right_str.size(); i++){
         
         vector<int> t_aux(2);//beat, bar
-        t_aux[0] = r.leftmost_time[0] % t_sign;//time signature
-        t_aux[1] = ((r.leftmost_time[1]+i / harm_rh) + form_length) % form_length;
+        t_aux[0] = r.leftmost_time[0] % all_gr[gr_pop].t_sign;//time signature
+        t_aux[1] = ((r.leftmost_time[1]+i / all_gr[gr_pop].harm_rh) + all_gr[gr_pop].form_length) % all_gr[gr_pop].form_length;
         
         production.push_back(elem_ID());
         
@@ -686,9 +686,10 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
     
     for(int i=0; i<production.size(); i++){
         
+        //placing production in cycle
         //if optional element, don't update that (in curr_cycle)!!
         vector<int>::iterator it = find(r.opt_positions.begin(), r.opt_positions.end(), i);
-        if (it==r.opt_positions.end()) curr_cycle[production[i].time[1]] = production[i];//placing production in cycle
+        if (it==r.opt_positions.end()) curr_cycle[production[i].time[1]] = production[i];
         //i.e. if i does not exist in the r.opt_positions vector
     }
     
@@ -699,14 +700,14 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
     
     //debug
     cout << "new cycle (update_cycle()): ";
-    for (int i=0; i<form_length; i++) cout << curr_cycle[i].name << " ";
+    for (int i=0; i<all_gr[gr_pop].form_length; i++) cout << curr_cycle[i].name << " ";
     cout << endl << "=======" << endl;
 }
 
 
 void G_parser::start_cycle(vector<int>& seq_t){
     
-    if (seq_t[3] == form_length / harm_rh - 1 && !ending && is_terminal(seq_t)){
+    if (seq_t[3] == all_gr[gr_pop].form_length / all_gr[gr_pop].harm_rh - 1 && !ending && is_terminal(seq_t)){
         
         curr_cycle[0].name = "S";
         //for (int i=0; i<dec_bars.size(); i++) curr_cycle[dec_bars[i]].name = "Sect";
@@ -727,7 +728,7 @@ void G_parser::update_ending(vector<int>& seq_t){
             if(!cad_updated) update_cad(seq_t);//with EVERY rewrite()??
             
             //upade_finals() one or zero bars before it comes (i.e. 2nd bar of cad) - if not recovering of course
-            //int c_p = (cad_pos+1) % form_length;
+            //int c_p = (cad_pos+1) % all_gr[gr_pop].form_length;
             
             update_finals(seq_t);
             
@@ -737,7 +738,7 @@ void G_parser::update_ending(vector<int>& seq_t){
     else {
         //goal_reached is irreversible
         
-        //int end_bar = (cad_pos + 2) % form_length;//it's a mistake to get this from cad_pos. cad_pos becomes -1 if cadenced..
+        //int end_bar = (cad_pos + 2) % all_gr[gr_pop].form_length;//it's a mistake to get this from cad_pos. cad_pos becomes -1 if cadenced..
         string c_c = curr_cycle[seq_t[3]].name;
         
         if (!cad_updated) update_cad(seq_t);
@@ -811,9 +812,9 @@ void G_parser::update_optimal(vector<int>& seq_t){
     //cout << "update_optimal" << endl;
     
     //if end of form
-    int optimal_pos = (seq_t[3] + 2) % form_length;
+    int optimal_pos = (seq_t[3] + 2) % all_gr[gr_pop].form_length;
     
-    //TWO bars later?
+    //TWO bars later?//depricated!!!!!
     for (int i=optimal_pos; i<curr_cycle.size(); i++) curr_cycle[i].name = basic_vector["optimal_form"][i];
 }
 
@@ -822,7 +823,7 @@ void G_parser::reconcile(vector<int>& seq_t){
     
     //cout << "reconcile" << endl;
     
-    int rec_pos = (seq_t[3] + 1) % form_length;
+    int rec_pos = (seq_t[3] + 1) % all_gr[gr_pop].form_length;
     curr_cycle[rec_pos].name = "rec";
 }
 
@@ -838,20 +839,20 @@ void G_parser::update_finals(vector<int>& seq_t){
     
         //de vlepei kanona gia to cad..!!
         //CAD_POS?????????
-        for(int i=cad_pos+2; i<form_length; i++) curr_cycle[i].name = "fin";
+        for(int i=cad_pos+2; i<all_gr[gr_pop].form_length; i++) curr_cycle[i].name = "fin";
         for(int i=0; i<seq_t[3]-1; i++) curr_cycle[i].name = "fin";
     }
      //*/
     
     ///*===============
-    if (seq_t[3]==form_length-1 && cadenced) {//if (!goal_reached && seq_t[3]==11 && cadenced)
+    if (seq_t[3]==all_gr[gr_pop].form_length-1 && cadenced) {//if (!goal_reached && seq_t[3]==11 && cadenced)
         //cout << "finals_1" << endl;
         for (int i=cad_pos+1; i<curr_cycle.size() - 1; i++) curr_cycle[i].name = "fin";
         //curr_cycle[11].name = "V";
     }
     else if (!fin_updated){
         //cout << "finals_2" << endl;
-        int fin_pos = (cad_pos + 2) % form_length;
+        int fin_pos = (cad_pos + 2) % all_gr[gr_pop].form_length;
         
         //!=0 otherwise "fin" * 12 -> there is no general && contextless fin rule, so 12*fin -> infinite..
         if (fin_pos!=0) for (int i=fin_pos; i<curr_cycle.size(); i++) curr_cycle[i].name = "fin";
