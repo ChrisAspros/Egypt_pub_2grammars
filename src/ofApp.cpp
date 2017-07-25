@@ -32,6 +32,8 @@ void ofApp::setup(){
     arrow.addVertex(0, 23);
     arrow.addVertex(8, 15);
     arrow.addVertex(0, 23);
+    
+    par.gr_changed = 0;
 }
 
 
@@ -112,6 +114,18 @@ void ofApp::draw(){
     
     if (show_p_e_input){
     
+        if (show_gr1) {
+            
+            ofSetColor(0, 255, 0);
+            openSans.drawString("GR_1", 215, 110);
+        }
+        if (show_gr2) {
+            
+            ofSetColor(0, 255, 0);
+            openSans.drawString("GR_2", 215, 110);
+        }
+        
+        
         if (blues.ending) {
         
             ofSetColor(0, 255, 0);
@@ -209,6 +223,28 @@ void ofApp::draw(){
 
 void ofApp::keyPressed(int key){
 
+    //grammar change testing
+    if (key == 'a' || key == 'A') {
+        
+        if (show_gr2) par.gr_changed = 1;
+        
+        par.gr_pop = 0;
+        show_gr1 = 1;
+        show_gr2 = 0;
+        
+        show_p_e_input = 1;//to allow showing
+    }
+    if (key == 'b' || key == 'B') {
+        
+        if (show_gr1) par.gr_changed = 1;
+        
+        par.gr_pop = 1;
+        show_gr2 = 1;
+        show_gr1 = 0;
+        
+        show_p_e_input = 1;
+    }
+    
     if (key == 'e' || key == 'E') {
         
         blues.ending = 1;

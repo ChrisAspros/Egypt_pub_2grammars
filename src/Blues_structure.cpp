@@ -51,7 +51,7 @@ void Blues_structure::update(){
     elapsed_mins = (ofGetElapsedTimeMillis() / 5000) % 5;
     //cout << elapsed_mins << endl;
     
-    
+    //trying to set up volume automations for DAW
     if (controller_counter == 0) upwards = 1;
     if (controller_counter == 127) upwards = 0;
     
@@ -65,15 +65,13 @@ void Blues_structure::update(){
     //seq.update();
     //seq.metronome(t);
     
+    //debugging for finishing etc..??
     /*
     if (fin_t.size()==0) t = seq.timer();
-    else if (!(fin_t[3]+1==t[3] && fin_t[4]==t[4])) t = seq.timer();// && t[1]==2 && t[2]==3) && t[0]==7
-    */
+    else if (!(fin_t[3]==t[3] && fin_t[4]==t[4] && t[1]==2 && t[2]==3 && t[0]==7))
+     */
+    t = seq.timer();
     
-    if (fin_t.size()==0) t = seq.timer();
-    else if (!(fin_t[3]==t[3] && fin_t[4]==t[4] && t[1]==2 && t[2]==3 && t[0]==7)) t = seq.timer();
-    
-    //t = seq.timer();
      
     if (seq.only_on("beat", t)){
      
@@ -91,11 +89,11 @@ void Blues_structure::update(){
     //find_rule only on every bar (exclude ticks & )
     if (seq.only_on("bar", t)){
     
+        parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in parser.update_cycle();
+        
         parser.find_rule(t);
         string terminal = parser.return_terminal(t);
         chord = terminal_to_midi(terminal);
-        
-        parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) //HERE or in parser.update_cycle();
     }
     
     /*

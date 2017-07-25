@@ -27,6 +27,9 @@ public:
     bool show_p_e_input; //to trigger showing ENDING/RECOVERING (onee the first event arrives..)
     bool show_recovery;
     
+    bool show_gr1, show_gr2;
+    //bool gr_changed = 0;
+    
 private:
     //Sequencer seq;
     Blues_structure blues;

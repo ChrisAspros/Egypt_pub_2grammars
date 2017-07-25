@@ -144,6 +144,8 @@ public:
     bool fin_updated = false;
     bool stop_seq = false;
     
+    bool gr_changed;
+    
 };
 
 #endif /* defined(____Grammar_parser__) */

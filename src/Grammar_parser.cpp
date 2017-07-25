@@ -49,12 +49,13 @@ G_parser::G_parser() : grammars(grammars_path, std::ifstream::in){
         
         curr_cycle.push_back(elem_ID());
         curr_cycle[i].time = {0, i};// {beat, harm_rh next..}
-        curr_cycle[i].name = "i";
+        //curr_cycle[i].name = "i";
+        //curr_cycle[0].name = "S";
     }
     
     //place decs for the 1st cycle
-    vector<int> t_aux = {0, 0, 0, all_gr[gr_pop].form_length-1, 0};
-    start_cycle(t_aux);
+    //vector<int> t_aux = {0, 0, 0, all_gr[gr_pop].form_length-1, 0};
+    //start_cycle(t_aux);
     
     grammars.close();
     
@@ -73,6 +74,9 @@ void G_parser::get_new_grammar(string& nc){
         //get its population
         nc = get_nc();
         gr_pop = atoi(nc.c_str()) - 1;
+        
+        //necessary?? perhaps for neatness when searching both grammars..
+        all_gr[gr_pop].gr_pop = gr_pop;
         
         //the rest taken will be in the next grammar
         // next gr intialised so rest materials (e.g. form_length) are stored with grammar 2..
@@ -707,10 +711,16 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
 
 void G_parser::start_cycle(vector<int>& seq_t){
     
-    if (seq_t[3] == all_gr[gr_pop].form_length / all_gr[gr_pop].harm_rh - 1 && !ending && is_terminal(seq_t)){
+    //if (seq_t[3] == all_gr[gr_pop].form_length / all_gr[gr_pop].harm_rh - 1 && !ending && is_terminal(seq_t)){
+    if (seq_t[0] == 0 && seq_t[1] == 0 && seq_t[2] == 0 && seq_t[3] == 0 && !ending){// && is_terminal(seq_t)){
         
         curr_cycle[0].name = "S";
         //for (int i=0; i<dec_bars.size(); i++) curr_cycle[dec_bars[i]].name = "Sect";
+    }
+    else if (gr_changed){
+        
+        curr_cycle[seq_t[3]+1].name = "S";
+        gr_changed = 0;
     }
 }
 
