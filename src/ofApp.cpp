@@ -15,8 +15,12 @@ void ofApp::setup(){
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
     ofSetFrameRate(200); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
-    //seq.setup();
+
+    //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
+    blues.seq.parser.gr_pop = 0;
+    blues.seq.parser.gr_changed = 0;
     blues.setup();
+    
     OSC.setup();
     
     //ofSleepMillis(1000);
@@ -32,9 +36,6 @@ void ofApp::setup(){
     arrow.addVertex(0, 23);
     arrow.addVertex(8, 15);
     arrow.addVertex(0, 23);
-    
-    blues.seq.parser.gr_pop = 0;
-    blues.seq.parser.gr_changed = 0;
 }
 
 

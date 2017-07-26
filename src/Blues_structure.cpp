@@ -13,7 +13,7 @@
 
 void Blues_structure::setup(){
 
-    seq.parser.gr_pop = 0;
+    //seq.parser.gr_pop = 0;
     seq.parser.initiate_cycle();
     
     seq.setup();
