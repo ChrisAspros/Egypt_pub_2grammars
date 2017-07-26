@@ -147,6 +147,7 @@ public:
     bool stop_seq = false;
     
     bool gr_changed;
+    bool reset_t;
     
 };
 

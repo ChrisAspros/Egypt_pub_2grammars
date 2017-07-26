@@ -717,7 +717,14 @@ void G_parser::start_cycle(vector<int>& seq_t){
     }
     else if (gr_changed){
         
-        curr_cycle[seq_t[3]+1].name = "S";
+        //curr_cycle[seq_t[3]+1].name = "S";
+        curr_cycle[0].name = "S";
+        
+        //reset clock back to top (τιμερ 0 η -1?)
+        //3. sigoura otan seq_t[2]==0?
+        //reset_timer(seq_t);
+        
+        reset_t = 1;
         gr_changed = 0;
     }
 }

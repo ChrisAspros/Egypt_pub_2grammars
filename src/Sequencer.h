@@ -37,6 +37,7 @@ public:
     
     int on_off(int pitch, int dur, int vel=100, int channel=1);//sendNoteOn/Off according to duration - dur in beats
     
+    void reset_timer();
     
     //CONTROL MESSAGES
     void controls(int ch, int cntr, int val);

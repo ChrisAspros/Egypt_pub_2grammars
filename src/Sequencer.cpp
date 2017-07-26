@@ -229,9 +229,31 @@ void Sequencer::controls(int ch, int cntr, int val){
 }
 
 
+void Sequencer::reset_timer(){
+    
+    //vector<int> r_t;
+    if (beat==0){
+        
+        //t = {0, 0, 0, 0, 0};//loop needed instead?
+        
+        tick = 0;
+        semiquaver = 0;
+        //beat = 0;
+        bar = 0;
+        cycle = 0;
+        
+        //return r_t;
+        parser.reset_t = 0;
+    }
+    //else return seq_t;
+}
+
+
 vector<int> Sequencer::timer(){
     //int* Sequencer::timer(){
     //semiquaver is ofSetFrameRate();
+    
+    if (parser.reset_t) reset_timer();
     
     vector<int> timers;
     timers.push_back(tick);
