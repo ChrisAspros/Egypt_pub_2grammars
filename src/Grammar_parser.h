@@ -130,6 +130,8 @@ public:
     void stop_sequencer();
     void check_cadence(vector<int>& seq_t);
     
+    void initiate_cycle();
+    
     void translate(string& chord);//translate to MIDI//what blues / sequencer wanna see
     
     rule the_rule;

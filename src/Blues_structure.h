@@ -16,7 +16,7 @@ class Sequencer;
 //#include "ofMain.h" // for vector
 #include "ofxMidiOut.h" // for vector and midi
 #include "Sequencer.h"
-#include "Grammar_parser.h"
+//#include "Grammar_parser.h"
 
 class Blues_structure{
     
@@ -71,7 +71,7 @@ public:
     
     Sequencer seq;
     
-    G_parser parser;
+    //G_parser parser;
 
     //variables
     vector<int> t;

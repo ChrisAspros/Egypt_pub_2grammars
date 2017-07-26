@@ -33,7 +33,8 @@ void ofApp::setup(){
     arrow.addVertex(8, 15);
     arrow.addVertex(0, 23);
     
-    par.gr_changed = 0;
+    blues.seq.parser.gr_pop = 0;
+    blues.seq.parser.gr_changed = 0;
 }
 
 
@@ -159,9 +160,9 @@ void ofApp::draw(){
     //DRAW CYCLE STATES
     string chord_str;
     
-    for (int i=0; i<par.all_gr[par.gr_pop].form_length; i++){
+    for (int i=0; i<blues.seq.parser.all_gr[blues.seq.parser.gr_pop].form_length; i++){
      
-        chord_str = blues.parser.curr_cycle[i].name;
+        chord_str = blues.seq.parser.curr_cycle[i].name;
         
         bool last_cad_time;
         
@@ -177,7 +178,7 @@ void ofApp::draw(){
         
         /*
         //show "fin" instead of v7 at end..
-        if (blues.t[3]!=11 && chord_str == "v7" && i==11){// && last_cad_time && (blues.ending || blues.goal_reached) && par.cad_updated){
+        if (blues.t[3]!=11 && chord_str == "v7" && i==11){// && last_cad_time && (blues.ending || blues.goal_reached) && blues.seq.parser.cad_updated){
         
             chord_str = "fin";
             ofSetColor(30, 144, 255);
@@ -226,9 +227,9 @@ void ofApp::keyPressed(int key){
     //grammar change testing
     if (key == 'a' || key == 'A') {
         
-        if (show_gr2) par.gr_changed = 1;
+        if (show_gr2) blues.seq.parser.gr_changed = 1;
         
-        par.gr_pop = 0;
+        blues.seq.parser.gr_pop = 0;
         show_gr1 = 1;
         show_gr2 = 0;
         
@@ -236,9 +237,9 @@ void ofApp::keyPressed(int key){
     }
     if (key == 'b' || key == 'B') {
         
-        if (show_gr1) par.gr_changed = 1;
+        if (show_gr1) blues.seq.parser.gr_changed = 1;
         
-        par.gr_pop = 1;
+        blues.seq.parser.gr_pop = 1;
         show_gr2 = 1;
         show_gr1 = 0;
         

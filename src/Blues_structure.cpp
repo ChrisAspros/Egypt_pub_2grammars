@@ -8,11 +8,14 @@
 
 #include "Blues_structure.h"
 #include "Sequencer.h"
-#include "Grammar_parser.h"
+//#include "Grammar_parser.h"
 
 
 void Blues_structure::setup(){
 
+    seq.parser.gr_pop = 0;
+    seq.parser.initiate_cycle();
+    
     seq.setup();
     
     t = {0, 0, 0, 0, 0};
@@ -33,11 +36,10 @@ void Blues_structure::setup(){
     
     QN_dur = seq.QN_subdivision;//quarternote duration in its subdivisions
     
-    
     controller_counter = 0;
     upwards = 1;
     //scan_file();
-    //parser.setup();
+    //seq.parser.setup();
     //play_chord_sequence();
     
     //for (int i=0; i<5; i++) curr_t[i] = 0;
@@ -82,17 +84,17 @@ void Blues_structure::update(){
     if (seq.only_on("beat", t)) {
      
         //cout << "ending: " << ending << ", goal_reached: " << goal_reached << endl;
-        parser.ending = ending;
-        parser.goal_reached = goal_reached;
+        seq.parser.ending = ending;
+        seq.parser.goal_reached = goal_reached;
     }
     
     //find_rule only on every bar (exclude ticks & )
     if (seq.only_on("bar", t)){
     
-        parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in parser.update_cycle();
+        seq.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.parser.update_cycle();
         
-        parser.find_rule(t);
-        string terminal = parser.return_terminal(t);
+        seq.parser.find_rule(t);
+        string terminal = seq.parser.return_terminal(t);
         chord = terminal_to_midi(terminal);
     }
     
@@ -111,7 +113,7 @@ void Blues_structure::update(){
     }
     else
     */
-    if (parser.stop_seq){//finishing && goal_reached && last_chord)
+    if (seq.parser.stop_seq){//finishing && goal_reached && last_chord)
     
         stopping = true;
         if (fin_t.size()==0) fin_t = t;//keeping constant value
@@ -123,7 +125,7 @@ void Blues_structure::update(){
 
 void Blues_structure::update_state(){
 
-    string term = parser.return_terminal(t);
+    string term = seq.parser.return_terminal(t);
     
     if (term == "cad"){
         
@@ -199,7 +201,7 @@ void Blues_structure::play_egypt_cymbal(){
     //printf ("cymbal");
     
     notes_v = {55, 60, 94};
-    for (int i=0; i<parser.all_gr[parser.gr_pop].form_length-1; i++) multiple_bars.push_back(i);
+    for (int i=0; i<seq.parser.all_gr[seq.parser.gr_pop].form_length-1; i++) multiple_bars.push_back(i);
     
     ///*
     for (int i=0; i<multiple_bars.size(); i++){
@@ -220,7 +222,7 @@ void Blues_structure::play_drums_normal(){
     
     //BASS DRUM
     notes_v = {drum_notes[0]};
-    for (int i=0; i<parser.all_gr[parser.gr_pop].form_length-1; i++) multiple_bars.push_back(i);
+    for (int i=0; i<seq.parser.all_gr[seq.parser.gr_pop].form_length-1; i++) multiple_bars.push_back(i);
     
     for (int i=0; i<multiple_bars.size(); i++){
     
@@ -235,9 +237,9 @@ void Blues_structure::play_drums_normal(){
     }
     
     //bar 12 XXX LAST BAR??
-    for (int i=0; i<parser.all_gr[parser.gr_pop].form_length; i+=2){
+    for (int i=0; i<seq.parser.all_gr[seq.parser.gr_pop].form_length; i+=2){
     
-        pos_drums = {0, i%3, i/3, parser.all_gr[parser.gr_pop].form_length-1};
+        pos_drums = {0, i%3, i/3, seq.parser.all_gr[seq.parser.gr_pop].form_length-1};
         seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
     }
 
@@ -245,7 +247,7 @@ void Blues_structure::play_drums_normal(){
     notes_v = {drum_notes[1]};//{drum_notes[0]};
     //for (int i=0; i<11; i++) multiple_bars.push_back(i);
     
-    for (int i=0; i<parser.all_gr[parser.gr_pop].form_length-1; i++){
+    for (int i=0; i<seq.parser.all_gr[seq.parser.gr_pop].form_length-1; i++){
     
         pos_drums = {0, 0, 1, i};
         seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
@@ -280,7 +282,7 @@ void Blues_structure::play_drums_normal(){
     //bar 12
     for (int i=0; i<3; i++){
     
-        pos_drums = {0, i, 0, parser.all_gr[parser.gr_pop].form_length-1};
+        pos_drums = {0, i, 0, seq.parser.all_gr[seq.parser.gr_pop].form_length-1};
         seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
     }
      
@@ -319,21 +321,21 @@ void Blues_structure::play_drums_normal(){
     notes_v = {drum_notes[4]};
     for (int i=0; i<3; i++){
 
-        pos_drums = {0, i, 1, parser.all_gr[parser.gr_pop].form_length-1};
+        pos_drums = {0, i, 1, seq.parser.all_gr[seq.parser.gr_pop].form_length-1};
         seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
     }
     
     notes_v = {drum_notes[3]};
     for (int i=0; i<3; i++){
         
-        pos_drums = {0, i, 2, parser.all_gr[parser.gr_pop].form_length-1};
+        pos_drums = {0, i, 2, seq.parser.all_gr[seq.parser.gr_pop].form_length-1};
         seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
     }
     
     notes_v = {drum_notes[2]};
     for (int i=0; i<3; i++){
         
-        pos_drums = {0, i, 3, parser.all_gr[parser.gr_pop].form_length-1};
+        pos_drums = {0, i, 3, seq.parser.all_gr[seq.parser.gr_pop].form_length-1};
         seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
     }
 
@@ -353,7 +355,7 @@ void Blues_structure::play_drums_cad(){
     //BASS DRUM
     notes_v = {drum_notes[0]};
     //bar 12
-    for (int i=0; i<parser.all_gr[parser.gr_pop].form_length; i+=2){
+    for (int i=0; i<seq.parser.all_gr[seq.parser.gr_pop].form_length; i+=2){
         
         pos_drums = {0, i%3, i/3, cad_t[3]+1};
         seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
@@ -396,7 +398,7 @@ void Blues_structure::play_drums_cad(){
     
     //CRASH
     notes_v = {drum_notes[7]};//{drum_notes[drum_notes.size()-1]};
-    pos_drums = {0, 0, 0, (cad_t[3]+1)%parser.all_gr[parser.gr_pop].form_length};
+    pos_drums = {0, 0, 0, (cad_t[3]+1)%seq.parser.all_gr[seq.parser.gr_pop].form_length};
     seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
 }
 
@@ -572,17 +574,17 @@ vector<int> Blues_structure::get_chord(int root_pitch, int type, int invert, boo
     for (int i=0; i<invert; i++){
         int first_elem = chord_set[0];
         chord_set.erase(chord_set.begin());
-        chord_set.push_back(first_elem + parser.all_gr[parser.gr_pop].form_length);
+        chord_set.push_back(first_elem + seq.parser.all_gr[seq.parser.gr_pop].form_length);
     }
     
     //3rd inversion 1 octave lower (better register)
     if (invert == 2 || invert == 3){
         for (int i=0; i<chord_set.size(); i++){
-            chord_set[i] -= parser.all_gr[parser.gr_pop].form_length;
+            chord_set[i] -= seq.parser.all_gr[seq.parser.gr_pop].form_length;
         }
     }
     
-    if (position) chord_set[1] += parser.all_gr[parser.gr_pop].form_length;
+    if (position) chord_set[1] += seq.parser.all_gr[seq.parser.gr_pop].form_length;
     
     //make chord pitches
     vector<int> chord;

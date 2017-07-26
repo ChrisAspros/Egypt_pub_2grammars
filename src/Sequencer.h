@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "ofxMidiOut.h"
 #include "Grammar_parser.h"
+//#include "Blues_structure.h"
 //#include "ofxMidi.h" //??
 
 //class Blues_structure;

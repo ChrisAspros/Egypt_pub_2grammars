@@ -35,7 +35,7 @@ private:
     Blues_structure blues;
     Osc_receive OSC;
     //Sequencer seq;
-    G_parser par;
+    //G_parser par;
     
     
     //bool ending, goal_reached;

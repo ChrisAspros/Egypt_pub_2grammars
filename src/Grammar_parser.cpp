@@ -38,12 +38,13 @@ G_parser::G_parser() : grammars(grammars_path, std::ifstream::in){
     
     //cout << "GRAMMAR_POP: " << gr_pop << endl;
     
-    gr_pop = 0;//restricitng to read only gr 1
+    //gr_pop = 0;//restricitng to read only gr 1
     
     //restart reading from top (for next loop)
     grammars.clear();
     grammars.seekg(0, ios::beg);
     
+    /*
     //initialise curr_cycle with tonics (rootpitch level)
     for(int i=0; i<all_gr[gr_pop].harm_rh * all_gr[gr_pop].form_length; i++) {
         
@@ -52,13 +53,9 @@ G_parser::G_parser() : grammars(grammars_path, std::ifstream::in){
         //curr_cycle[i].name = "i";
         //curr_cycle[0].name = "S";
     }
-    
-    //place decs for the 1st cycle
-    //vector<int> t_aux = {0, 0, 0, all_gr[gr_pop].form_length-1, 0};
-    //start_cycle(t_aux);
+     */
     
     grammars.close();
-    
 }
 
 
@@ -716,11 +713,28 @@ void G_parser::start_cycle(vector<int>& seq_t){
         
         curr_cycle[0].name = "S";
         //for (int i=0; i<dec_bars.size(); i++) curr_cycle[dec_bars[i]].name = "Sect";
+        cout << "form length on start_cycle: " << all_gr[gr_pop].form_length << endl;
     }
     else if (gr_changed){
         
         curr_cycle[seq_t[3]+1].name = "S";
         gr_changed = 0;
+    }
+}
+
+
+//cycle initiation must happen here (not in grammar builder) so that th actual gr_pop is used and not the last read..
+//maybe this should be in another class (e.g. player manager class) but stays here for now..
+void G_parser::initiate_cycle(){
+    
+    cout << "form length on initiation: " << all_gr[gr_pop].form_length << endl;
+    
+    for(int i=0; i<all_gr[gr_pop].harm_rh * all_gr[gr_pop].form_length; i++) {
+        
+        curr_cycle.push_back(elem_ID());
+        curr_cycle[i].time = {0, i};// {beat, harm_rh next..}
+        //curr_cycle[i].name = "i";
+        //curr_cycle[0].name = "S";
     }
 }
 
