@@ -99,7 +99,7 @@ void Blues_structure::update(){
         
         //re-starting cycle (disrupting from top for new grammar)
         if (seq.parser.gr_changed){
-                        
+            
             seq.parser.initiate_cycle();
             //resetting timer values
             seq.bar = 0;

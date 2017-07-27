@@ -35,6 +35,7 @@ public:
     void get_time_signature(string& nc);
     void get_form_length(string& nc);
     void get_harm_rh(string& nc);
+    void get_end_times(string& nc);
     void get_terminals(string& nc);
     //void get_basic_vectors(string& nc);
     
@@ -76,6 +77,7 @@ public:
         int t_sign;
         int form_length;
         int harm_rh;
+        vector<int> end_times;
         vector<string> terminals;
         
         //vector<rule> all_rules;//all_rules only necessary for store_rules process.. not for actually keeping / finding them..

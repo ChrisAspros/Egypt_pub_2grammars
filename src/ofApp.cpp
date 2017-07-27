@@ -58,6 +58,17 @@ void ofApp::update(){
 
     blues.update();
     
+    /*
+    for (int i=0; i<blues.seq.parser.all_gr.size(); i++){
+        
+        cout << "end_times " << i << ": ";
+        for (int j=0; j<blues.seq.parser.all_gr[i].end_times.size(); j++){
+            
+            cout << blues.seq.parser.all_gr[i].end_times[j] << ", ";
+        }
+        cout << endl;
+    }
+     */
     
     //updating OSC on every beat only (no more needed for now..)
     if(blues.seq.only_on("beat", blues.t)){

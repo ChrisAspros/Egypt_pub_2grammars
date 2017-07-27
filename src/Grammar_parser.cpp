@@ -91,6 +91,8 @@ void G_parser::get_grammar_elements(){
     //cout << z << "_3: " << nc << endl;
     get_harm_rh(nc);
     //cout << z << "_4: " << nc << endl;
+    get_end_times(nc);
+    
     get_terminals(nc);
     //get_basic_vectors(nc);
     //cout << z << "_5: " << nc << endl;
@@ -125,6 +127,28 @@ void G_parser::get_harm_rh(string& nc){
         harm_rh = atoi(nc.c_str());
         //cout << "harm_rh is: " << harm_rh << endl;
         all_gr[gr_pop].harm_rh = harm_rh;
+    }
+}
+
+
+void G_parser::get_end_times(string& nc){
+    vector<int> end_times;
+    
+    if (nc=="end_times"){
+        
+        nc = get_nc();
+        if (nc=="{"){
+            
+            nc = get_nc();
+            while(nc!="}"){
+                
+                int end_time_aux;
+                end_time_aux = atoi(nc.c_str()) - 1;
+                end_times.push_back(end_time_aux);
+                nc = get_nc();
+            }
+        }
+        all_gr[gr_pop].end_times = end_times;
     }
 }
 
