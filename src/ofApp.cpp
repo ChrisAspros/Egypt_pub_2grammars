@@ -246,7 +246,7 @@ void ofApp::keyPressed(int key){
     //grammar change testing
     if (key == 'a' || key == 'A') {
         
-        if (show_gr2) blues.seq.parser.gr_changed = 1;
+        if (show_gr2) blues.seq.parser.gr_changed = !blues.seq.parser.gr_changed;
         
         //blues.seq.parser.gr_pop = 0;
         show_gr1 = 1;
@@ -256,7 +256,7 @@ void ofApp::keyPressed(int key){
     }
     if (key == 'b' || key == 'B') {
         
-        if (show_gr1) blues.seq.parser.gr_changed = 1;
+        if (show_gr1) blues.seq.parser.gr_changed = !blues.seq.parser.gr_changed;
         
         //blues.seq.parser.gr_pop = 1;
         show_gr2 = 1;
