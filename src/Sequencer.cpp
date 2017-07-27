@@ -288,7 +288,7 @@ vector<int> Sequencer::timer(){
      */
     //if (timers[1]==0 && timers[0]==0) cout << "metre!" << endl;
     
-    if (parser.reset_t) reset_timer();
+    //if (parser.reset_t) reset_timer();
     
     return timers;
     //needs_clearing? (timers)

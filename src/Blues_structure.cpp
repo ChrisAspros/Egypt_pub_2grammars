@@ -92,8 +92,21 @@ void Blues_structure::update(){
     
     //find_rule only on every bar (exclude ticks & )
     if (seq.only_on("bar", t)){
-    
+        
+        
+        
         seq.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.parser.update_cycle();
+        
+        //re-starting cycle (disrupting from top for new grammar)
+        if (seq.parser.gr_changed){
+                        
+            seq.parser.initiate_cycle();
+            //resetting timer values
+            seq.bar = 0;
+            t[3] = 0;
+            
+            seq.parser.gr_changed = 0;
+        }
         
         seq.parser.find_rule(t);
         string terminal = seq.parser.return_terminal(t);

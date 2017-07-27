@@ -715,19 +715,20 @@ void G_parser::start_cycle(vector<int>& seq_t){
         //for (int i=0; i<dec_bars.size(); i++) curr_cycle[dec_bars[i]].name = "Sect";
         cout << "form length on start_cycle: " << all_gr[gr_pop].form_length << endl;
     }
+    /*
     if (gr_changed){
         
         //curr_cycle[seq_t[3]+1].name = "S";
-        curr_cycle[0].name = "S";
+        //curr_cycle[0].name = "S";
         
         //reset clock back to top (τιμερ 0 η -1?)
         //3. sigoura otan seq_t[2]==0?
-        //reset_timer(seq_t);
         
         reset_t = 1;
         gr_changed = 0;
         initiate_cycle();
     }
+     */
 }
 
 
@@ -746,6 +747,8 @@ void G_parser::initiate_cycle(){
         //curr_cycle[i].name = "i";
         //curr_cycle[0].name = "S";
     }
+   
+    curr_cycle[0].name = "S";
 }
 
 
