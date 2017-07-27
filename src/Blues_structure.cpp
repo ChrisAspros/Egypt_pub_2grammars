@@ -72,6 +72,8 @@ void Blues_structure::update(){
     if (fin_t.size()==0) t = seq.timer();
     else if (!(fin_t[3]==t[3] && fin_t[4]==t[4] && t[1]==2 && t[2]==3 && t[0]==7))
      */
+    
+    seq.update();//only for cycle_len for now..
     t = seq.timer();
     
      

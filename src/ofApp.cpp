@@ -14,12 +14,18 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    ofSetFrameRate(200); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
+    ofSetFrameRate(500); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
     blues.seq.parser.gr_pop = 0;
     blues.seq.parser.gr_changed = 0;
     blues.setup();
+    
+    //only to accept "b" (after gr1 - "a" non-pressed) or "a" (after gr2 - "b" non-pressed) and start from top
+    show_gr1 = !blues.seq.parser.gr_pop;
+    show_gr2 = blues.seq.parser.gr_pop;
+    show_p_e_input = 1; //to show "GR_*" from start..
+    
     
     OSC.setup();
     
@@ -223,6 +229,7 @@ void ofApp::draw(){
     ofPopMatrix();
 }
 
+
 void ofApp::keyPressed(int key){
 
     //grammar change testing
@@ -265,7 +272,9 @@ void ofApp::keyPressed(int key){
     if (key == 's' || key == 'S') blues.seq.stop_all_MIDI();
 }
 
+
 void ofApp::keyReleased(int key){}
+
 
 void ofApp::stop_all_midi_2(){
     

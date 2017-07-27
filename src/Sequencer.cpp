@@ -24,7 +24,7 @@ void Sequencer::setup(){
     
     incr = 0; //to increment chord pitches
     metre = 4; //set the time signature (QNs for now..)
-    cycle_len = parser.all_gr[parser.gr_pop].form_length;
+    //cycle_len = parser.all_gr[parser.gr_pop].form_length;//UPDATING
     pitch = 50;
     metro_on = 1;
     chord_ch = 1;
@@ -34,6 +34,8 @@ void Sequencer::setup(){
 
 
 void Sequencer::update(){
+    
+    cycle_len = parser.all_gr[parser.gr_pop].form_length;
     //vector<int> _t = timer();
     //needs clearing? (t[]) // delete[] t??
     //metronome(_t, metro_on, metre, true, true, {3,2});
@@ -232,7 +234,7 @@ void Sequencer::controls(int ch, int cntr, int val){
 void Sequencer::reset_timer(){
     
     //vector<int> r_t;
-    if (beat==0){
+    if (beat==0){// && tick==0){
         
         //t = {0, 0, 0, 0, 0};//loop needed instead?
         
@@ -240,7 +242,7 @@ void Sequencer::reset_timer(){
         semiquaver = 0;
         //beat = 0;
         bar = 0;
-        cycle = 0;
+        //cycle = 0;
         
         //return r_t;
         parser.reset_t = 0;
@@ -252,8 +254,6 @@ void Sequencer::reset_timer(){
 vector<int> Sequencer::timer(){
     //int* Sequencer::timer(){
     //semiquaver is ofSetFrameRate();
-    
-    if (parser.reset_t) reset_timer();
     
     vector<int> timers;
     timers.push_back(tick);
@@ -273,7 +273,7 @@ vector<int> Sequencer::timer(){
             if (beat==metre){
                 beat = 0;
                 bar++;
-                if (bar == cycle_len){
+                if (bar >= cycle_len){
                     bar = 0;
                     cycle++;
                 }
@@ -287,6 +287,8 @@ vector<int> Sequencer::timer(){
      cout << endl;
      */
     //if (timers[1]==0 && timers[0]==0) cout << "metre!" << endl;
+    
+    if (parser.reset_t) reset_timer();
     
     return timers;
     //needs_clearing? (timers)
