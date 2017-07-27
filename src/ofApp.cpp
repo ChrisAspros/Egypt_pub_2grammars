@@ -248,7 +248,7 @@ void ofApp::keyPressed(int key){
         
         if (show_gr2) blues.seq.parser.gr_changed = 1;
         
-        blues.seq.parser.gr_pop = 0;
+        //blues.seq.parser.gr_pop = 0;
         show_gr1 = 1;
         show_gr2 = 0;
         
@@ -258,7 +258,7 @@ void ofApp::keyPressed(int key){
         
         if (show_gr1) blues.seq.parser.gr_changed = 1;
         
-        blues.seq.parser.gr_pop = 1;
+        //blues.seq.parser.gr_pop = 1;
         show_gr2 = 1;
         show_gr1 = 0;
         

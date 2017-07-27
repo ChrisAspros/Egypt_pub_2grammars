@@ -100,12 +100,20 @@ void Blues_structure::update(){
         //re-starting cycle (disrupting from top for new grammar)
         if (seq.parser.gr_changed){
             
-            seq.parser.initiate_cycle();
-            //resetting timer values
-            seq.bar = 0;
-            t[3] = 0;
+            //check if bar is an end_time
+            vector<int> e_t = seq.parser.all_gr[seq.parser.gr_pop].end_times;
+            vector<int>::iterator it_e_t = find(e_t.begin(), e_t.end(), t[3]);
             
-            seq.parser.gr_changed = 0;
+            if (it_e_t!=e_t.end()){
+            
+                seq.parser.initiate_cycle();
+                //resetting timer values
+                seq.bar = 0;
+                t[3] = 0;
+                
+                seq.parser.gr_pop = !seq.parser.gr_pop;
+                seq.parser.gr_changed = 0;
+            }
         }
         
         seq.parser.find_rule(t);
