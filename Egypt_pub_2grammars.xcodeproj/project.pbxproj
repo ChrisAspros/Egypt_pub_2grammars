@@ -330,19 +330,19 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				901641661EFAD4A000EA885A /* Blues_structure.cpp */,
 				901641671EFAD4A000EA885A /* Blues_structure.h */,
+				9016416C1EFAD4A000EA885A /* Sequencer.cpp */,
+				9016416D1EFAD4A000EA885A /* Sequencer.h */,
 				903B2B9B1F4C794F00E70370 /* Rule_comparer.cpp */,
 				903B2B9C1F4C794F00E70370 /* Rule_comparer.hpp */,
 				901641681EFAD4A000EA885A /* Grammar_parser.cpp */,
 				901641691EFAD4A000EA885A /* Grammar_parser.h */,
 				9016416A1EFAD4A000EA885A /* Osc_receive.cpp */,
 				9016416B1EFAD4A000EA885A /* Osc_receive.hpp */,
-				9016416C1EFAD4A000EA885A /* Sequencer.cpp */,
-				9016416D1EFAD4A000EA885A /* Sequencer.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
-				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

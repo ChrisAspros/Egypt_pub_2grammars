@@ -30,6 +30,8 @@ void Sequencer::setup(){
     chord_ch = 1;
     metro_ch = 2;
     
+    //
+    //r_comp.get_curr_position(r_comp.parser.all_gr);
 }
 
 
