@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 #include "ofxMidiOut.h"
-#include "Grammar_parser.h"
+#include "Rule_comparer.hpp"
+//#include "Grammar_parser.h"
 //#include "Blues_structure.h"
 //#include "ofxMidi.h" //??
 
@@ -79,7 +80,9 @@ public:
     
     //int ar[];
     
-    G_parser parser;
+    Rule_comparer r_comp;
+    
+    //G_parser parser;
 };
 
 #endif /* defined(____Sequencer__) */

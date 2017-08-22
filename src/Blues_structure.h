@@ -6,7 +6,7 @@
 //
 //
 
-class Sequencer;
+//class Sequencer;
 //class G_parser;
 
 #ifndef ____Blues_structure__
@@ -70,7 +70,7 @@ public:
     void map_symbol();
     
     Sequencer seq;
-    
+    //Rule_comparer rule_comp;
     //G_parser parser;
 
     //variables
@@ -78,6 +78,8 @@ public:
     vector<int> cad_t;
     vector<int> fin_t;
     //vector<int> curr_t;//for time_placement pos
+    
+    bool transitioning;
     
     bool ending, goal_reached;
     bool stopping;

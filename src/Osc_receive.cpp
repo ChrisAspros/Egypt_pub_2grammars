@@ -20,17 +20,17 @@ void Osc_receive::update(){
         ofxOscMessage m;
         receive.getNextMessage(&m);
         
-        if (m.getAddress() == "/vertical/x"){
+        if (m.getAddress() == "32001"){//"/vertical/x"){
             
-            //cout << "MESSAGE is THROUGH" << endl;
+            cout << "MESSAGE is THROUGH" << endl;
             
             oscX = m.getArgAsFloat(0);
             //_ending = m.getArgAsBool(1);
             //_goal_reached = m.getArgAsBool(0);
             cout << "KEY: " << oscX << endl;
         }
-        if (m.getAddress() == "/horizontal/y"){
-            
+        if (m.getAddress() == "32001"){//"/horizontal/y"){
+            cout << "MESSAGE is THROUGH" << endl;
             oscY = m.getArgAsFloat(0);
         }
     }

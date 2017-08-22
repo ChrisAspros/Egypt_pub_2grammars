@@ -24,7 +24,7 @@ void Sequencer::setup(){
     
     incr = 0; //to increment chord pitches
     metre = 4; //set the time signature (QNs for now..)
-    //cycle_len = parser.all_gr[parser.gr_pop].form_length;//UPDATING
+    //cycle_len = r_comp.parser.all_gr[r_comp.parser.gr_pop].form_length;//UPDATING
     pitch = 50;
     metro_on = 1;
     chord_ch = 1;
@@ -35,7 +35,7 @@ void Sequencer::setup(){
 
 void Sequencer::update(){
     
-    cycle_len = parser.all_gr[parser.gr_pop].form_length;
+    cycle_len = r_comp.parser.all_gr[r_comp.parser.gr_pop].form_length;
     //vector<int> _t = timer();
     //needs clearing? (t[]) // delete[] t??
     //metronome(_t, metro_on, metre, true, true, {3,2});
@@ -245,7 +245,7 @@ void Sequencer::reset_timer(){
         //cycle = 0;
         
         //return r_t;
-        parser.reset_t = 0;
+        r_comp.parser.reset_t = 0;
     }
     //else return seq_t;
 }
@@ -288,7 +288,7 @@ vector<int> Sequencer::timer(){
      */
     //if (timers[1]==0 && timers[0]==0) cout << "metre!" << endl;
     
-    //if (parser.reset_t) reset_timer();
+    //if (r_comp.parser.reset_t) reset_timer();
     
     return timers;
     //needs_clearing? (timers)

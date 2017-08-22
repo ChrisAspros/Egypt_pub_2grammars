@@ -17,13 +17,13 @@ void ofApp::setup(){
     ofSetFrameRate(500); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
-    blues.seq.parser.gr_pop = 0;
-    blues.seq.parser.gr_changed = 0;
+    blues.seq.r_comp.parser.gr_pop = 0;
+    blues.seq.r_comp.parser.gr_changed = 0;
     blues.setup();
     
     //only to accept "b" (after gr1 - "a" non-pressed) or "a" (after gr2 - "b" non-pressed) and start from top
-    show_gr1 = !blues.seq.parser.gr_pop;
-    show_gr2 = blues.seq.parser.gr_pop;
+    show_gr1 = !blues.seq.r_comp.parser.gr_pop;
+    show_gr2 = blues.seq.r_comp.parser.gr_pop;
     show_p_e_input = 1; //to show "GR_*" from start..
     
     
@@ -59,12 +59,12 @@ void ofApp::update(){
     blues.update();
     
     /*
-    for (int i=0; i<blues.seq.parser.all_gr.size(); i++){
+    for (int i=0; i<blues.seq.r_comp.parser.all_gr.size(); i++){
         
         cout << "end_times " << i << ": ";
-        for (int j=0; j<blues.seq.parser.all_gr[i].end_times.size(); j++){
+        for (int j=0; j<blues.seq.r_comp.parser.all_gr[i].end_times.size(); j++){
             
-            cout << blues.seq.parser.all_gr[i].end_times[j] << ", ";
+            cout << blues.seq.r_comp.parser.all_gr[i].end_times[j] << ", ";
         }
         cout << endl;
     }
@@ -178,9 +178,9 @@ void ofApp::draw(){
     //DRAW CYCLE STATES
     string chord_str;
     
-    for (int i=0; i<blues.seq.parser.all_gr[blues.seq.parser.gr_pop].form_length; i++){
+    for (int i=0; i<blues.seq.r_comp.parser.all_gr[blues.seq.r_comp.parser.gr_pop].form_length; i++){
      
-        chord_str = blues.seq.parser.curr_cycle[i].name;
+        chord_str = blues.seq.r_comp.parser.curr_cycle[i].name;
         
         bool last_cad_time;
         
@@ -196,7 +196,7 @@ void ofApp::draw(){
         
         /*
         //show "fin" instead of v7 at end..
-        if (blues.t[3]!=11 && chord_str == "v7" && i==11){// && last_cad_time && (blues.ending || blues.goal_reached) && blues.seq.parser.cad_updated){
+        if (blues.t[3]!=11 && chord_str == "v7" && i==11){// && last_cad_time && (blues.ending || blues.goal_reached) && blues.seq.r_comp.parser.cad_updated){
         
             chord_str = "fin";
             ofSetColor(30, 144, 255);
@@ -246,9 +246,9 @@ void ofApp::keyPressed(int key){
     //grammar change testing
     if (key == 'a' || key == 'A') {
         
-        if (show_gr2) blues.seq.parser.gr_changed = !blues.seq.parser.gr_changed;
+        if (show_gr2) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
         
-        //blues.seq.parser.gr_pop = 0;
+        //blues.seq.r_comp.parser.gr_pop = 0;
         show_gr1 = 1;
         show_gr2 = 0;
         
@@ -256,9 +256,9 @@ void ofApp::keyPressed(int key){
     }
     if (key == 'b' || key == 'B') {
         
-        if (show_gr1) blues.seq.parser.gr_changed = !blues.seq.parser.gr_changed;
+        if (show_gr1) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
         
-        //blues.seq.parser.gr_pop = 1;
+        //blues.seq.r_comp.parser.gr_pop = 1;
         show_gr2 = 1;
         show_gr1 = 0;
         
