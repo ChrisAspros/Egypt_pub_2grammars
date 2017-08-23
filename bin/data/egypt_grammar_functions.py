@@ -11,7 +11,9 @@ harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2)
 //cadence_bars { 3 7 11 15 19 23 27 31 } //no need for 11 as it is the form's' end, but just to make it more 'cadency' (see cad_11)
 //optimal_form { I I bVII I I bII bVII I IV IIIo IV I IV IV bVII bVII I I bVII I I bII bVII I bII I bVII I bII I bVII I }
 end_times { 1 5 9 13 17 21 25 29 }
+functions { T D SD }
 terminals { i isus4 im immaj i6 i7 bii biisus2 iim7 iiim iiim7 iiio iv ivsus4 iv6 iv7 ivm v7 vo bvi bviim }
+
 
 //decision_heads dec_* //apply to decision_bars elem
 //I(0+1)_head
@@ -111,7 +113,9 @@ NEW_GRAMMAR 2
  form_length 16
  harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
  end_times { 1 5 9 13 }
+ functions { T D SD }
  terminals { i iim7 v7 }
+ 
  
  rule: S -> 1.0 SectA(1) SectB(9) //SectA(17) SectC(25) //SectC(16) SectA(24) //SectB(2) //SectA(8) SectC(8) //
  :end_rule

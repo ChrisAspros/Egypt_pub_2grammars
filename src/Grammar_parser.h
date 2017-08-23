@@ -36,6 +36,7 @@ public:
     void get_form_length(string& nc);
     void get_harm_rh(string& nc);
     void get_end_times(string& nc);
+    void get_functions(string& nc);
     void get_terminals(string& nc);
     //void get_basic_vectors(string& nc);
     
@@ -78,6 +79,7 @@ public:
         int form_length;
         int harm_rh;
         vector<int> end_times;
+        vector<string> functions;
         vector<string> terminals;
         
         //vector<rule> all_rules;//all_rules only necessary for store_rules process.. not for actually keeping / finding them..
@@ -107,6 +109,8 @@ public:
     };
     
     void find_rule(vector<int>& seq_t);
+    void keep_func_hist(vector<int>& seq_t);//keeping function history for lenght comparison
+    vector<elem_ID> function_cycle;
     bool check_optional(rule& r, vector<int>& seq_t);
     bool is_terminal(vector<int>& seq_t);
     string return_terminal(vector<int>& seq_t); //better to overload find_rule??

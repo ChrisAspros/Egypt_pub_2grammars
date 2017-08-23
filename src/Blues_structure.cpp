@@ -119,7 +119,7 @@ void Blues_structure::update(){
         }
         
         if(!transitioning) seq.r_comp.parser.find_rule(t);
-        //else rule_comp.find_best_rule(t, seq.r_comp.parser.all_gr);
+        else seq.r_comp.find_best_rule(t, seq.r_comp.parser.all_gr);
         string terminal = seq.r_comp.parser.return_terminal(t);
         chord = terminal_to_midi(terminal);
     }

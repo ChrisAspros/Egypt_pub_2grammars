@@ -20,11 +20,20 @@ class Rule_comparer{
 public:
     
     G_parser parser;
+    
+    int curr_gr;
+    int next_gr;
+    
+    void update(vector<int>& seq_t);//to keep track of the cycle history
+    
+    void find_best_rule(vector<int>& seq_t, vector<G_parser::gr>& _all_gr);//the main/central function of the class
 
-    void get_curr_position(vector<G_parser::gr>& _all_gr);
+    void get_curr_position();
     void get_goal_point();
     int length_to_goal;//number of bars until goal
     
+    void project_curr_gr();//projects current (ending) grammar up to goal point
+    void project_next_gr();//projects next (upcoming) grammar up to goal point
     
 };
 

@@ -93,6 +93,8 @@ void G_parser::get_grammar_elements(){
     //cout << z << "_4: " << nc << endl;
     get_end_times(nc);
     
+    get_functions(nc);
+    
     get_terminals(nc);
     //get_basic_vectors(nc);
     //cout << z << "_5: " << nc << endl;
@@ -149,6 +151,26 @@ void G_parser::get_end_times(string& nc){
             }
         }
         all_gr[gr_pop].end_times = end_times;
+    }
+}
+
+
+void G_parser::get_functions(string& nc){
+    vector<string> functions;
+    
+    if (nc=="functions"){
+        
+        nc = get_nc();
+        if (nc=="{"){
+            
+            nc = get_nc();
+            while(nc!="}"){
+                
+                functions.push_back(nc);
+                nc = get_nc();
+            }
+        }
+        all_gr[gr_pop].functions = functions;
     }
 }
 
@@ -637,6 +659,9 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
     //for (int i=0; i<r.left_str.size(); i++) cout << r.left_str[i] << ", ";
     cout << endl;
     
+    //keep elem if FUNCTION - must happen here tonot miss the pre-produced functions (else, every 4 bars..)
+    keep_func_hist(seq_t);
+    
     vector<elem_ID> production;
     int choice = rewrite_choice(r);
     
@@ -727,6 +752,30 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
     cout << "new cycle (update_cycle()): ";
     for (int i=0; i<all_gr[gr_pop].form_length; i++) cout << curr_cycle[i].name << " ";
     cout << endl << "=======" << endl;
+}
+
+
+void G_parser::keep_func_hist(vector<int>& seq_t){
+    
+    //check if non-T is a function - if yes keep
+    string n = curr_cycle[seq_t[3]].name;
+    
+    vector<string> func = all_gr[gr_pop].functions;
+    vector<string>::iterator it_func = find(func.begin(), func.end(), n);
+    
+    if (it_func!=func.end()){
+        
+        //keep the elem - not sure if elem_ID.time is passed here - it may be managed only by the vector place in G_parser..
+        function_cycle.push_back(curr_cycle[seq_t[3]]);
+    }
+    
+    //test function cycle
+    cout << endl << endl << endl << "FUNCTION_CYCLE: ";
+    for (int i = 0; i < function_cycle.size(); i++){
+    
+        cout << function_cycle[i].name << " ";
+    }
+    cout << endl << endl << endl;
 }
 
 
