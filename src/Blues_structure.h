@@ -79,7 +79,8 @@ public:
     vector<int> fin_t;
     //vector<int> curr_t;//for time_placement pos
     
-    bool transitioning;
+    //bool transitioning;
+    //bool trans_complete;
     
     bool ending, goal_reached;
     bool stopping;

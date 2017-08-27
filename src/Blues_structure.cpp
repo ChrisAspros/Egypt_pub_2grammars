@@ -45,7 +45,6 @@ void Blues_structure::setup(){
     //for (int i=0; i<5; i++) curr_t[i] = 0;
     //better in constructor..??
     
-    transitioning = false;
 }
 
 
@@ -99,7 +98,7 @@ void Blues_structure::update(){
         
         seq.r_comp.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.r_comp.parser.update_cycle();
         
-        //re-starting cycle (disrupting from top for new grammar)
+        //RE-STARTING CYCLE (disrupting from top for new grammar)
         if (seq.r_comp.parser.gr_changed){
             
             //check if bar is an end_time
@@ -118,8 +117,11 @@ void Blues_structure::update(){
             }
         }
         
-        if(!transitioning) seq.r_comp.parser.find_rule(t);
-        else seq.r_comp.find_best_rule(t, seq.r_comp.parser.all_gr);
+        seq.r_comp.parser.find_rule(t);
+        if(seq.r_comp.transitioning) seq.r_comp.combine_rules(t);
+        
+        //if(!seq.r_comp.transitioning || transition_complete) seq.r_comp.parser.find_rule(t);
+        //else seq.r_comp.combine_rules(t);
         string terminal = seq.r_comp.parser.return_terminal(t);
         chord = terminal_to_midi(terminal);
     }

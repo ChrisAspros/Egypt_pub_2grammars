@@ -21,16 +21,39 @@ public:
     
     G_parser parser;
     
+    bool transitioning;
+    bool trans_complete;
+    
     int curr_gr;
     int next_gr;
     
-    void update(vector<int>& seq_t);//to keep track of the cycle history
+    void combine_rules(vector<int>& seq_t);//the main/central function of the class
     
-    void find_best_rule(vector<int>& seq_t, vector<G_parser::gr>& _all_gr);//the main/central function of the class
-
-    void get_curr_position();
+    struct aug_sect_rule{//augmented sect rules
+    
+        string sect_name;
+        G_parser::rule s_rule;
+        int r_len;
+        int score;
+        string next_sect;//also indirect identifier between same "Sects" in different places..
+    };
+    
+    vector<aug_sect_rule> aug_sect_rules;
+    
+    vector<G_parser::elem_ID> find_best_rule(vector<int>& seq_t);
+    vector<G_parser::elem_ID> best_r;//needs to be global?
+    
+    vector<G_parser::elem_ID> aux_cycle;
+    
+    bool comb_set_up = 0;
+    void set_up_combination(vector<int>& seq_t);
+    int get_distance_to_goal(vector<int>& seq_t);
+    int dist;
+    int thread;
     void get_goal_point();
     int length_to_goal;//number of bars until goal
+    
+    void update_combination(vector<int>& seq_t);
     
     void project_curr_gr();//projects current (ending) grammar up to goal point
     void project_next_gr();//projects next (upcoming) grammar up to goal point

@@ -84,13 +84,14 @@ public:
         
         //vector<rule> all_rules;//all_rules only necessary for store_rules process.. not for actually keeping / finding them..
         map<vector<int>, vector<rule>> timed_rules;
+        //map<vector<int>, rule> timed_rules;
         vector<rule> general_rules;
     };
     
     vector<gr> all_gr;
     void empty_gr_aux_elements();
     
-    vector<rule> all_rules;//optimise by sending straight to timed or general rules..
+    vector<rule> all_rules;//for now it stores all rules of the last-read grammar..//optimise by sending straight to timed or general rules..
     //vector<rule> timed_rules, general_rules;//subtotal of all_rules
     //map<vector<int>, vector<rule>> timed_rules;//specified rule: labels timed rules (t vector)
     //vector<rule> general_rules;//store non-timed rules

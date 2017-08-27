@@ -22,10 +22,13 @@ void ofApp::setup(){
     blues.setup();
     
     //only to accept "b" (after gr1 - "a" non-pressed) or "a" (after gr2 - "b" non-pressed) and start from top
-    show_gr1 = !blues.seq.r_comp.parser.gr_pop;
-    show_gr2 = blues.seq.r_comp.parser.gr_pop;
+    play_gr1 = !blues.seq.r_comp.parser.gr_pop;
+    show_gr1 = play_gr1;
+    play_gr2 = blues.seq.r_comp.parser.gr_pop;
+    show_gr2 = play_gr2;
     show_p_e_input = 1; //to show "GR_*" from start..
     
+    show_trans = 0;
     
     OSC.setup();
     
@@ -84,6 +87,8 @@ void ofApp::update(){
         //cout << "ending: " << ending << ", g_r: " << goal_reached << endl;
     }
     
+    blues.seq.r_comp.transitioning = transitioning;
+    blues.seq.r_comp.trans_complete = trans_complete;
     
     //if (ofApp_is_stopped) blues.seq.stop_all_MIDI();
     
@@ -133,6 +138,17 @@ void ofApp::draw(){
     
     if (show_p_e_input){
     
+        //Draw transitioning & stages
+        if (show_trans) {
+            
+            ofSetColor(0, 255, 0);
+            string aux_str;
+            aux_str = "TRANSITIONING stage: " + stage_num + "\n" + to_string(blues.seq.r_comp.dist);
+            //openSans.drawString("TRANSITIONING stage: " + stage_num, 215, 130);
+            openSans.drawString(aux_str, 200, 150);
+        }
+        
+        //Draw abrupt transitions
         if (show_gr1) {
             
             ofSetColor(0, 255, 0);
@@ -143,7 +159,6 @@ void ofApp::draw(){
             ofSetColor(0, 255, 0);
             openSans.drawString("GR_2", 215, 110);
         }
-        
         
         if (blues.ending) {
         
@@ -243,10 +258,16 @@ void ofApp::draw(){
 
 void ofApp::keyPressed(int key){
 
-    //grammar change testing
-    if (key == 'a' || key == 'A') {
+    //transition and changes UI
+    //transition
+    if ((key == 't' || key == 'T') && !transitioning) {
         
-        if (show_gr2) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+        transitioning = 1;
+        show_trans = 1;
+        stage_num = "1";
+        trans_stage = 1;
+        
+        blues.seq.r_comp.comb_set_up = 0;
         
         //blues.seq.r_comp.parser.gr_pop = 0;
         show_gr1 = 1;
@@ -254,13 +275,42 @@ void ofApp::keyPressed(int key){
         
         show_p_e_input = 1;//to allow showing
     }
+    //stages (press 2 to 5 - 5 is end of transition..)
+    if (key == '2' && (blues.seq.r_comp.transitioning || show_trans)) stage_num = "2"; trans_stage = 2;
+    if (key == '3' && (transitioning || show_trans)) stage_num = "3"; trans_stage = 3;
+    if (key == '4' && (transitioning || show_trans)) stage_num = "4"; trans_stage = 4;
+    if (key == '5' && (transitioning || show_trans)){
+        
+        transitioning = !transitioning;
+        trans_complete = 1;
+        stage_num = "0";
+        trans_stage = 0;
+        show_trans = 0;
+    }
+    
+    
+    //abrupt grammar change UI
+    if (key == 'a' || key == 'A') {
+        
+        if (play_gr2) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+        
+        //blues.seq.r_comp.parser.gr_pop = 0;
+        show_gr1 = 1;
+        show_gr2 = 0;
+        play_gr1 = 1;
+        play_gr2 = 0;
+        
+        show_p_e_input = 1;//to allow showing
+    }
     if (key == 'b' || key == 'B') {
         
-        if (show_gr1) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+        if (play_gr1) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
         
         //blues.seq.r_comp.parser.gr_pop = 1;
         show_gr2 = 1;
         show_gr1 = 0;
+        play_gr2 = 1;
+        play_gr1 = 0;
         
         show_p_e_input = 1;
     }

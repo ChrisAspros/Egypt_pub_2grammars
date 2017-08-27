@@ -28,7 +28,15 @@ public:
     bool show_recovery;
     
     bool show_gr1, show_gr2;
+    bool play_gr1, play_gr2;
     //bool gr_changed = 0;
+    bool show_trans;
+    
+    bool transitioning;
+    bool trans_complete;
+    
+    string stage_num;
+    int trans_stage;
     
 private:
     //Sequencer seq;

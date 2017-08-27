@@ -147,7 +147,8 @@ rule: T -> 1.0 I :end_rule
  
 
  //Terminal rules
- rule: I -> 1.0 i :end_rule
+ rule: I_1 -> 1.0 i :end_rule
+ rule: I -> 1.0 i6 :end_rule
  rule: II -> 1.0 iim7 :end_rule
  rule: V -> 1.0 v7 :end_rule
  
