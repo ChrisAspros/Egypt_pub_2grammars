@@ -558,11 +558,16 @@ void G_parser::find_rule(vector<int>& seq_t){
         }
     }
     
-    cout << "is_terminal?: " << curr_cycle[seq_t[3]].name << endl << endl;
-    //stop if terminal
-    if (!is_terminal(seq_t)) find_rule(seq_t);
-    //else return_terminal(curr_cycle[seq_t[3]].name);
-    else translate_to_midi();//translate / spit out (return_terminal())
+    if (till_function){//!comb_setup & transitioning){
+        //stop if function
+        if (!is_function(seq_t)) find_rule(seq_t);
+    }
+    else {
+        //stop if terminal
+        if (!is_terminal(seq_t)) find_rule(seq_t);
+        //else return_terminal(curr_cycle[seq_t[3]].name);
+        else translate_to_midi();//translate / spit out (return_terminal())
+    }
 }
 
 
@@ -645,7 +650,8 @@ vector<string> G_parser::get_context(vector<int>& leftmost_t, int& size){
     for (int i=0; i<size; i++){
         
         int mod = (leftmost_t[1] + i) % all_gr[gr_pop].form_length;//to cycle up is form_length is exceeded
-        context.push_back(curr_cycle[mod]);
+        if (!transitioning) context.push_back(curr_cycle[mod]);
+        else context.push_back(aux_cycle[mod]);
         context_str.push_back(context[i].name);//should be string because left_str is not elem_ID (yet..)
     }
     
@@ -659,39 +665,41 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
     //for (int i=0; i<r.left_str.size(); i++) cout << r.left_str[i] << ", ";
     cout << endl;
     
-    //keep elem if FUNCTION - must happen here tonot miss the pre-produced functions (else, every 4 bars..)
-    keep_func_hist(seq_t);
+    //keep elem if FUNCTION - must happen here to not miss the pre-produced functions (else, every 4 bars..)
+    //keep_func_hist(seq_t);
     
     vector<elem_ID> production;
-    int choice = rewrite_choice(r);
-    
-    //produce from rule
-    for (int i=0; i<r.right_side[choice].right_str.size(); i++){
-        
-        vector<int> t_aux(2);//beat, bar
-        t_aux[0] = r.leftmost_time[0] % all_gr[gr_pop].t_sign;//time signature
-        t_aux[1] = ((r.leftmost_time[1]+i / all_gr[gr_pop].harm_rh) + all_gr[gr_pop].form_length) % all_gr[gr_pop].form_length;
-        
-        production.push_back(elem_ID());
-        
-        if (r.timed_production){
+    vector<int> choices = rewrite_choices(r);
+
+    for (int j=0; j < choices.size(); j++){
+        //produce from rule
+        for (int i=0; i<r.right_side[choices[j]].right_str.size(); i++){
             
-            production[i].name = exclude_times(r.right_side[choice].right_str[i]);
-            production[i].time = {0, r.leftmost_time[1] + r.prod_times[i]};//{beat, bar} config. OK?
+            vector<int> t_aux(2);//beat, bar
+            t_aux[0] = r.leftmost_time[0] % all_gr[gr_pop].t_sign;//time signature
+            t_aux[1] = ((r.leftmost_time[1]+i / all_gr[gr_pop].harm_rh) + all_gr[gr_pop].form_length) % all_gr[gr_pop].form_length;
+            
+            production.push_back(elem_ID());
+            
+            if (r.timed_production){
+                
+                production[i].name = exclude_times(r.right_side[choices[j]].right_str[i]);
+                production[i].time = {0, r.leftmost_time[1] + r.prod_times[i]};//{beat, bar} config. OK?
+            }
+            else {
+                
+                production[i].name = r.right_side[choices[j]].right_str[i];
+                //else (generals.leftmost_time == {0 ,0})
+                
+                production[i].time = t_aux;
+            }
         }
-        else {
-            
-            production[i].name = r.right_side[choice].right_str[i];
-            //else (generals.leftmost_time == {0 ,0})
-            
-            production[i].time = t_aux;
-        }
+        
+        if (!transitioning) update_cycle(production, r, seq_t);
+        else trans_update(production, r, seq_t);
     }
     
-    update_cycle(production, r, seq_t);
-    
     //production.clear();
-    
     /*
      for (int i=0; i<production.size(); i++){
      cout << "name" << i << ": " << production[i].name << ", time: " << production[i].time[0] << " & " << production[i].time[1] << endl;
@@ -700,35 +708,43 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
 }
 
 //choosing re-write based on rule probability
-int G_parser::rewrite_choice(rule& r){
+vector<int> G_parser::rewrite_choices(rule& r){
     
-    int _choice;
-    vector<float> p_vec;
-    for (int i=0; i<r.right_side.size(); i++) p_vec.push_back(r.right_side[i].prob);
+    vector<int> _choices;
     
-    float total_p = 0;
-    srand(time(NULL));
+    if (!transitioning){//choose one choice
     
-    //cout << "probs: ";
-    //for (int i=0; i<p_vec.size(); i++) cout << p_vec[i] << ", ";
-    //cout << endl;
-    
-    float random = (rand()%100) / 100.0;
-    //cout << "random: " << random << endl;
-    
-    for (int i=0; i<p_vec.size(); i++){
+        vector<float> p_vec;
+        for (int i=0; i<r.right_side.size(); i++) p_vec.push_back(r.right_side[i].prob);
         
-        if (random >= total_p && random <= total_p+p_vec[i]) {
-            //cout << "p_vec " << i << ": " << p_vec[i] << endl;
-            _choice = i;
-            //cout << "re_choice: " << i << " // ";
-            break;
+        float total_p = 0;
+        srand(time(NULL));
+        
+        //cout << "probs: ";
+        //for (int i=0; i<p_vec.size(); i++) cout << p_vec[i] << ", ";
+        //cout << endl;
+        
+        float random = (rand()%100) / 100.0;
+        //cout << "random: " << random << endl;
+        
+        for (int i=0; i<p_vec.size(); i++){
+            
+            if (random >= total_p && random <= total_p+p_vec[i]) {
+                //cout << "p_vec " << i << ": " << p_vec[i] << endl;
+                _choices.push_back(i);
+                //cout << "re_choice: " << i << " // ";
+                break;
+            }
+            
+            total_p += p_vec[i];
         }
-        
-        total_p += p_vec[i];
+    }
+    else {//keep population of all choises
+    
+        for (int i=0; i < r.right_side.size(); i++) _choices.push_back(i);
     }
     
-    return _choice;
+    return _choices;
 }
 
 
@@ -751,6 +767,53 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
     //debug
     cout << "new cycle (update_cycle()): ";
     for (int i=0; i<all_gr[gr_pop].form_length; i++) cout << curr_cycle[i].name << " ";
+    cout << endl << "=======" << endl;
+}
+
+
+void G_parser::trans_update(vector<elem_ID>& production, rule& r, vector<int>& seq_t){
+    
+    //depending on transition state, update what must be updated..
+    
+    if (!comb_setup){//for setting up, find best rule etc..
+        
+        int function_count;
+        
+        for(int i=0; i<production.size(); i++){
+            
+            //placing production in cycle
+            //if optional element, don't update that (in curr_cycle)!!
+            vector<int>::iterator it = find(r.opt_positions.begin(), r.opt_positions.end(), i);
+            if (it==r.opt_positions.end()){
+            
+                //aux_cycle.push_back(elem_ID());
+                aux_cycle[production[i].time[1]] = production[i];
+                
+                //check if all production.names are functions - if so, treat as ready chunk
+                if (is_function(production[i].time)) function_count++;
+            }
+            //i.e. if i does not exist in the r.opt_positions vector
+        }
+        
+        if (function_count == production.size()){//if all production names are functions
+            //constitute funct chunk and add cleverly for combination in total possibilities of cycle up to goal..
+            //manage the addition of pre-existing functions, e.g. D T on paper
+            
+            for (int i=0; i < production.size(); i++){
+            
+                func_chunk.push_back(production[i]);//chunk of functions..
+            }
+            func_chunks.push_back(func_chunk);
+        }
+    }
+    //at end of cycle (after last rewrite) place "S" at start.
+    //start_cycle(seq_t); //HERE or in blues.update()
+    
+    //update_ending(seq_t);//will overwrite start_cycle()
+    
+    //debug
+    cout << "aux cycle (trans_update()): ";
+    for (int i=0; i<all_gr[gr_pop].form_length; i++) cout << aux_cycle[i].name << " ";
     cout << endl << "=======" << endl;
 }
 
@@ -993,10 +1056,25 @@ void G_parser::stop_sequencer(){
 
 bool G_parser::is_terminal(vector<int>& seq_t){
     
+    cout << "is_terminal?: " << curr_cycle[seq_t[3]].name << endl << endl;
+    
     bool is_t = false;
     vector<string>::iterator it = find(all_gr[gr_pop].terminals.begin(), all_gr[gr_pop].terminals.end(), curr_cycle[seq_t[3]].name);
     
     if (it!=all_gr[gr_pop].terminals.end()) is_t = true;
+    return is_t;
+}
+
+
+bool G_parser::is_function(vector<int>& seq_t){
+    
+    bool is_t = false;
+    vector<string>::iterator it = find(all_gr[gr_pop].functions.begin(), all_gr[gr_pop].functions.end(), aux_cycle[seq_t[3]].name);
+    
+    if (it!=all_gr[gr_pop].functions.end()) is_t = true;
+
+    cout << endl << "is_function: " << aux_cycle[seq_t[3]].name << ", is_t: " << is_t << endl;
+
     return is_t;
 }
 

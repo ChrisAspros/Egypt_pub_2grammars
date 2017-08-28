@@ -13,7 +13,7 @@
 void Rule_comparer::combine_rules(vector<int>& seq_t){
     
     //STATIC process
-    if (!comb_set_up) set_up_combination(seq_t);
+    if (!parser.comb_setup) setup_combination(seq_t);
 
     //UPDATING - running the cycle now.. (pairnei ta hnia..)
     update_combination(seq_t);
@@ -51,7 +51,7 @@ void Rule_comparer::combine_rules(vector<int>& seq_t){
 }
 
 
-void Rule_comparer::set_up_combination(vector<int>& seq_t){
+void Rule_comparer::setup_combination(vector<int>& seq_t){
 
     //must be managed dynamically
     curr_gr = 0;
@@ -64,7 +64,7 @@ void Rule_comparer::set_up_combination(vector<int>& seq_t){
     
     find_best_rule(seq_t);
     
-    comb_set_up = 1;
+    parser.comb_setup = 1;
     
     
     //run possible FUNC productions till goal (GR_1)
@@ -79,7 +79,7 @@ void Rule_comparer::set_up_combination(vector<int>& seq_t){
 
 int Rule_comparer::get_distance_to_goal(vector<int>& seq_t){
     
-    int distance, curr_pos, g_p;
+    int distance, curr_pos;//, g_p;
     
     //find current position
     curr_pos = seq_t[3];
@@ -138,37 +138,7 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
         if (i == S_rule.prod_times.size() - 1) len = parser.all_gr[next_gr].form_length - S_rule.prod_times[i];
         else len = S_rule.prod_times[i+1] - S_rule.prod_times[i];
         sect_lengths.push_back(len);
-        
-        /*
-         //find that Sect rule - EINAI "SectA" h "SectA(1)"
-         //(find that sect in left and keep)
-         bool sect_found = 0;
-         for (int j=0; j < parser.all_gr[next_gr].general_rules.size(); j++){
-         
-         for (int k=0; k < parser.all_gr[next_gr].general_rules[j].left_str.size(); k++){
-         
-         if (parser.all_gr[next_gr].general_rules[j].left_str[k] == S_rule.right_side[0].right_str[i]){
-         
-         long_rules.push_back(parser.all_gr[next_gr].general_rules[j]);
-         sect_found = 1;
-         }
-         if (sect_found) break;
-         }
-         if (sect_found) break;
-         }
-         
-         //check rule lengths & store that rule or (if not long enough) combine with previous
-         if (dist <= len){
-         
-         prolonged_rules[][] =
-         }
-         else {
-         //for now just combine with previous
-         //in future check&combine iteratively
-         }
-         */
     }
-    
     /*
     cout << endl << "sect_lengths: " << endl;
     for (int i=0; i < sect_lengths.size(); i++) cout << sect_lengths[i] << endl;
@@ -213,72 +183,46 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
             }
             aug_sect_rules[i].r_len = sect_lengths[i];
             aug_sect_rules[i].next_sect = sect_names_aux[(i+1) % sect_names_aux.size()];
-            
-            
         }
-        
-        //r_len not right in 2nd
-        //no next_sect in 2nd
-        //check ypoloipa stoixeia
-        
-        //fix aug storage
-        //git
-        //find score..
         
         //what if SectA is in two points in the form, i.e. preceeded by 2 different sections..?
         //both must be found and recorded
         //for now just keep the first one - it may be more definitive of next_gr (earlier in the form..), but maybe not.. - mention?
         
         //search in timed_rules
-        //- EXPAND for TIMED RULES ALSO!!
-        /*
-        vector<G_parser::rule> aux_rule;
-        for (map<vector<int>, vector<G_parser::rule>>::iterator pair_it = parser.all_gr[next_gr].timed_rules.begin(); pair_it != parser.all_gr[next_gr].timed_rules.end(); ++pair_it){
-            
-            aux_rule = pair_it->second;
-            if (aux_rule[0].right_side[0].right_str[0] == sect_names[i]){
-                //sect_rules.push_back();
-            }
-        }
-         */
+        //- EXPAND for TIMED RULES ALSO!! - Sect rules need to be general_rules (a.o.t. timed_) for now..
     }
-    
-    cout << "";
-    //test_thus far
-    //git save
-    
-    //calculate score (& add to aug_sect_rules[...].score)
-    //test lengths
-    /*
-    for (int i=0; aug_sect_rules.size(); i++){
-    
-        if (dist > ){
-        
-            //normal
-        }
-        else{
-        
-            //make new sub rule - manually assign right side etc..
-        }
-    }
-     */
     
     //vector<G_parser::rule> long_rules;
     vector<vector<G_parser::rule>> prolonged_rules;
-
     
-    /*
-    if (parser.all_gr[next_gr].general_rules[j].left_str[k] == S_rule.right_side[0].right_str[i]){
-        
-        long_rules.push_back(parser.all_gr[next_gr].general_rules[j]);
-        sect_found = 1;
+    //calculate score (& add to aug_sect_rules[...].score)
+        //test lengths
+    
+        //get state of curr_cycle to goal
+    parser.aux_cycle = parser.curr_cycle;
+    //watch out for curr_cycle to not be runnign twice for some reason..
+    
+    
+    rewrite_t_g();
+    
+    
+    for (int i=0; aug_sect_rules.size(); i++){
+    
+        //if sect length is enough
+        if (dist-1 <= aug_sect_rules[i].r_len){//dist-1 logw pre-production of next bar..
+            
+            
+        }
+        else{
+            //LATER
+            //make new combo rule: manually build rule, assign right side etc..
+                //prolonged_rules[][] =
+                //for now just combine with previous
+                //in future check&combine iteratively
+        }
     }
-    if (sect_found) break;
-     */
-    //}
-    //if (sect_found) break;
-
-
+     //*/
     
 
     //get scores up to goal point
@@ -306,8 +250,6 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
         //return the FUNCTION production(vector<string> OR vector<G_parser::elem_ID>)
     
     
-    
-    
     /*
      //checking grammar elements arrive...
      for(int i=0; i<_all_gr.size(); i++){
@@ -332,6 +274,106 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
 				else don’t
      */
 }
+
+
+void Rule_comparer::rewrite_t_g(){
+
+    //rewrite_curr_gr();
+    //rewrite_next_gr();
+    
+    //curr_gr: make vector of all possible functions till goal.. (irrespective of probabilities)
+    vector<vector<string>> f_t_l;//functions to goal
+    
+    //expand to functions
+    parser.till_function = 1;
+    //parser.gr_pop = curr_gr;//not necessary here but might become..
+    
+    parser.till_function = 1;
+    
+    int curr_bar = g_p - (dist);
+    for (int j=curr_bar; j < g_p - 1; j++){//g_p - 1 to avoid rewriting on g_p
+        
+        //find rule with
+        //dynamic assignment of aux_cycle
+        //& is_function
+        //& ALL productions (irrespective of production probabilities), i.e. musical space constraint
+        vector<int> aux_t = {0, 0, 0, j, 0};
+        
+        cout << endl << "curr_bar it:: " << curr_bar << endl;
+        
+        
+        cout << endl << "aux_cycle: ";
+        for (int k=0; k<parser.aux_cycle.size(); k++) cout << parser.aux_cycle[k].name << " ";
+        cout << endl;
+        
+        while (parser.is_function(aux_t)) {
+            
+            j++;
+            aux_t = {0, 0, 0, j, 0};
+        }
+        //ADD REMAINDER of WHILE se kapoio cycle??
+        
+        if (j==g_p) break;//to avoid rewriting on g_p due to manual j++
+        
+        cout << endl << "j before find rule: " << j << endl;
+        
+        parser.find_rule(aux_t);
+        
+        /*
+        if (j==curr_bar){//filter with is_function only the first time..
+        
+            if (!parser.is_function(aux_t)) parser.find_rule(aux_t);//i.e. in order to avoid rewriting the next FUNCTION to type_level - then loop in (!is_function) find_rule())
+        }
+        else parser.find_rule(aux_t);
+        */
+         
+        //else //aug_sect_rule. / a_s_r. = oti exei o curr_cycle ekei..
+        
+        /*
+         cout << endl << "aux_cycle: ";
+         for (int k=0; k<parser.aux_cycle.size(); k++) cout << parser.aux_cycle[k].name << " ";
+         cout << endl;
+         */
+    }
+    
+    cout << endl << "func_chunks size: " << parser.func_chunks.size() << endl;
+    
+    //git save
+    
+    //doesn't store func_chunks..
+        //mhpws kanw excessive iteration trans_update mia panw k mia mesa sto function??
+    
+    //funct_chunks ftiaxnontai swsta?
+        //mhpws den ftanei se shmeio only functions ta productions..??
+    
+    //test func_chunks..
+    //git save
+    
+    //make map of all possible func_chunkcs.. linearly..
+    //expand all possible sects gr2
+    //get scores..
+    //mix in real time..
+    
+    //trekse rewrites mexri g_p
+    //context to aux_cycle OXI tou curr cycle..
+    //then multiple (and rewrite in the correct cycle..)
+    
+    //to trans_update prepei na kanei store se vector<vector<elem_ID>> wste meta na elegx8oun ola me ola..
+    
+    //to find_rule psaxnei tous swstous kanones? next_gr? (gia expand to function..)
+    //to find_rule psaxnei sto swsto cycle? / stoswsto shmeio tou cycle?
+    
+    //copy all curr_cycle to aux_cycle on setup?
+    //e.g. in is_function
+    
+    //clear elements for next transition e.g. func_chunks
+    
+    //next_gr: make vector of all possible functions till goal.. (irrespective of probabilities)
+}
+
+
+void rewrite_curr_gr(){}
+void rewrite_next_gr(){}
 
 
 void Rule_comparer::update_combination(vector<int>& seq_t){

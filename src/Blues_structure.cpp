@@ -117,10 +117,11 @@ void Blues_structure::update(){
             }
         }
         
-        seq.r_comp.parser.find_rule(t);
-        if(seq.r_comp.transitioning) seq.r_comp.combine_rules(t);
         
-        //if(!seq.r_comp.transitioning || transition_complete) seq.r_comp.parser.find_rule(t);
+        if(seq.r_comp.parser.transitioning) seq.r_comp.combine_rules(t);
+        else seq.r_comp.parser.find_rule(t);
+        
+        //if(!seq.r_comp.parser.transitioning || transition_complete) seq.r_comp.parser.find_rule(t);
         //else seq.r_comp.combine_rules(t);
         string terminal = seq.r_comp.parser.return_terminal(t);
         chord = terminal_to_midi(terminal);

@@ -65,6 +65,7 @@ rule: D -> 1.0 bVII :end_rule
 
 
 rule: SectB -> 1.0 decB1(1) decB2(5)
+			//-> 0.1 D D D D D D D D
 			:end_rule
 
 rule: decB1 -> 1.0 SD T SD D :end_rule

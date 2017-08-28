@@ -114,6 +114,7 @@ public:
     vector<elem_ID> function_cycle;
     bool check_optional(rule& r, vector<int>& seq_t);
     bool is_terminal(vector<int>& seq_t);
+    bool is_function(vector<int>& seq_t);
     string return_terminal(vector<int>& seq_t); //better to overload find_rule??
     void translate_to_midi();
     void trigger();
@@ -122,11 +123,15 @@ public:
     
     rule check_context(vector<int>& seq_t);
     void rewrite(rule& r, vector<int>& seq_t);
-    int rewrite_choice(rule& r);
+    vector<int> rewrite_choices(rule& r);
     vector<string> get_context(vector<int>& leftmost_t, int& size);
     
     vector<elem_ID> curr_cycle;
+    vector<elem_ID> aux_cycle;
+    vector<elem_ID> func_chunk;
+    vector<vector<elem_ID>> func_chunks;
     void update_cycle(vector<elem_ID>& production, rule& r, vector<int>& seq_t);//size() = [form_length * harmonic_rhythm]
+    void trans_update(vector<elem_ID>& production, rule& r, vector<int>& seq_t);
     void start_cycle(vector<int>& seq_t);
     void update_ending(vector<int>& seq_t);
     void update_cad(vector<int>& seq_t);
@@ -142,6 +147,10 @@ public:
     void translate(string& chord);//translate to MIDI//what blues / sequencer wanna see
     
     rule the_rule;
+    bool transitioning;
+    bool comb_setup;
+    bool till_function;
+    //bool setting_up;
     bool soon = false;// <= four bars' time (+ smth maybe..)
     bool approaching = true;
     bool ending = (soon && approaching);//continuously updated

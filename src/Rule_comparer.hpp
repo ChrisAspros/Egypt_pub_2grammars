@@ -43,14 +43,19 @@ public:
     vector<G_parser::elem_ID> find_best_rule(vector<int>& seq_t);
     vector<G_parser::elem_ID> best_r;//needs to be global?
     
-    vector<G_parser::elem_ID> aux_cycle;
+    //vector<G_parser::elem_ID> aux_cycle;
     
-    bool comb_set_up = 0;
-    void set_up_combination(vector<int>& seq_t);
+    //bool comb_set_up = 0;
+    void setup_combination(vector<int>& seq_t);
     int get_distance_to_goal(vector<int>& seq_t);
+    void rewrite_t_g();
+    void rewrite_curr_gr();
+    void rewrite_next_gr();
+    
     int dist;
     int thread;
     void get_goal_point();
+    int g_p;
     int length_to_goal;//number of bars until goal
     
     void update_combination(vector<int>& seq_t);

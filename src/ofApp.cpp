@@ -87,7 +87,7 @@ void ofApp::update(){
         //cout << "ending: " << ending << ", g_r: " << goal_reached << endl;
     }
     
-    blues.seq.r_comp.transitioning = transitioning;
+    blues.seq.r_comp.parser.transitioning = transitioning;
     blues.seq.r_comp.trans_complete = trans_complete;
     
     //if (ofApp_is_stopped) blues.seq.stop_all_MIDI();
@@ -267,7 +267,7 @@ void ofApp::keyPressed(int key){
         stage_num = "1";
         trans_stage = 1;
         
-        blues.seq.r_comp.comb_set_up = 0;
+        blues.seq.r_comp.parser.comb_setup = 0;
         
         //blues.seq.r_comp.parser.gr_pop = 0;
         show_gr1 = 1;
@@ -276,7 +276,7 @@ void ofApp::keyPressed(int key){
         show_p_e_input = 1;//to allow showing
     }
     //stages (press 2 to 5 - 5 is end of transition..)
-    if (key == '2' && (blues.seq.r_comp.transitioning || show_trans)) stage_num = "2"; trans_stage = 2;
+    if (key == '2' && (blues.seq.r_comp.parser.transitioning || show_trans)) stage_num = "2"; trans_stage = 2;
     if (key == '3' && (transitioning || show_trans)) stage_num = "3"; trans_stage = 3;
     if (key == '4' && (transitioning || show_trans)) stage_num = "4"; trans_stage = 4;
     if (key == '5' && (transitioning || show_trans)){
