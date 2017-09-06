@@ -553,7 +553,7 @@ void G_parser::find_rule(vector<int>& seq_t){
                     break;
                 }
             }
-            
+            //j before find rule:
             if (rule_found) break;
         }
     }
@@ -673,7 +673,12 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
 
     for (int j=0; j < choices.size(); j++){
         //produce from rule
+        
+        //if (cc==gp) break;
+        
         for (int i=0; i<r.right_side[choices[j]].right_str.size(); i++){
+            
+            //if (cc==gp) break;
             
             vector<int> t_aux(2);//beat, bar
             t_aux[0] = r.leftmost_time[0] % all_gr[gr_pop].t_sign;//time signature
@@ -696,7 +701,43 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
         }
         
         if (!transitioning) update_cycle(production, r, seq_t);
-        else trans_update(production, r, seq_t);
+        else {
+            
+            trans_update(production, r, seq_t);
+            
+             
+            //isolate t (setup_t) for itarations for all right_side without changing aux_t in order to then move to next right_side
+            //while den einai functions olo to r_side mhn pas sto epomeno r_side
+            
+            if (r.left_str[0]!="S"){//without this filtering, it rewrites the whole cycle once (because right_str.size() of the S rule is 4, i.e. all the sects..) first and then stops at curr_bar==8 the 2nd time..
+                
+                vector<int> setup_t = seq_t;
+                for (int i=0; i < r.right_side[choices[j]].right_str.size(); i++){
+                
+                    //trans_update(production, r, setup_t);
+                    //production.clear();//otherwise both right sides are added linearly (at least as prouction size)
+
+                    //while (!is_function(setup_t)){
+                    
+                    setup_t[3] = production[i].time[1];
+                    
+                    //if (cc==gp) break;
+                    
+                    if(!is_function(setup_t)) find_rule(setup_t);
+                    
+                    //trans_update(production, r, seq_t);
+                    
+                    //}
+                    //setup_t[3]++;
+                     //*/
+                }
+            }
+            production.clear();//otherwise both right sides are added linearly (at least as prouction size)
+            //*/
+        }
+        
+        //iterate rewrite?
+        //itarate find_rule?
     }
     
     //production.clear();
@@ -772,12 +813,14 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
 
 
 void G_parser::trans_update(vector<elem_ID>& production, rule& r, vector<int>& seq_t){
+    //placement in aux_cycle & storage of func_chunks
     
     //depending on transition state, update what must be updated..
     
     if (!comb_setup){//for setting up, find best rule etc..
         
-        int function_count;
+        //int function_count = 0;//if not =0 it got 24577 to 24580..
+        bool are_functions = 0;
         
         for(int i=0; i<production.size(); i++){
             
@@ -788,14 +831,23 @@ void G_parser::trans_update(vector<elem_ID>& production, rule& r, vector<int>& s
             
                 //aux_cycle.push_back(elem_ID());
                 aux_cycle[production[i].time[1]] = production[i];
-                
-                //check if all production.names are functions - if so, treat as ready chunk
-                if (is_function(production[i].time)) function_count++;
             }
             //i.e. if i does not exist in the r.opt_positions vector
+            
         }
         
-        if (function_count == production.size()){//if all production names are functions
+        //if production[i].name einai Function, tote ola einai functions..
+        //check if all production.names are functions - if so, treat as ready chunk
+        vector<int> aux_t = {0, 0, production[0].time[0], production[0].time[1]};//0 instead of i
+        if (is_function(aux_t)){
+            
+            //function_count++;
+            are_functions = 1;
+            cout << endl << "are_functions: " << are_functions << endl;//function_count << endl;
+        }
+        
+        if (are_functions){//function_count == production.size()){//if all production names are functions
+            //NOT == production size because it may be 2 for 8 bars, e.g. decB1, decB2..
             //constitute funct chunk and add cleverly for combination in total possibilities of cycle up to goal..
             //manage the addition of pre-existing functions, e.g. D T on paper
             
@@ -804,6 +856,8 @@ void G_parser::trans_update(vector<elem_ID>& production, rule& r, vector<int>& s
                 func_chunk.push_back(production[i]);//chunk of functions..
             }
             func_chunks.push_back(func_chunk);
+            func_chunk.clear();
+            //function_count = 0;
         }
     }
     //at end of cycle (after last rewrite) place "S" at start.
@@ -1068,14 +1122,14 @@ bool G_parser::is_terminal(vector<int>& seq_t){
 
 bool G_parser::is_function(vector<int>& seq_t){
     
-    bool is_t = false;
+    bool is_f = false;
     vector<string>::iterator it = find(all_gr[gr_pop].functions.begin(), all_gr[gr_pop].functions.end(), aux_cycle[seq_t[3]].name);
     
-    if (it!=all_gr[gr_pop].functions.end()) is_t = true;
+    if (it!=all_gr[gr_pop].functions.end()) is_f = true;
 
-    cout << endl << "is_function: " << aux_cycle[seq_t[3]].name << ", is_t: " << is_t << endl;
+    //cout << endl << "is_function: " << aux_cycle[seq_t[3]].name << ", is_f: " << is_f << endl;
 
-    return is_t;
+    return is_f;
 }
 
 

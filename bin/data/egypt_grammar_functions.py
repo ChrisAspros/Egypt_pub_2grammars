@@ -1,3 +1,13 @@
+//otan ena rewrite paragei function, prepei na paragei mono functions.. 
+//(wste to trans_update na ypologizei to swsto mhkos enos func_chunk)
+//me time placement typou (*) ta alla right side den prepei na kanoun contradict ta times tou prwtou.. 
+	//p.x. below: to right_side[1] 8a paraksei mono 2 "D" stis 8eseis 1 kai 5..
+	//rule: SectB -> 0.9 decB1(1) decB2(5)
+			-> 0.1 D D D D D D D D
+			:end_rule
+//'_' kai '(' sta non-T eklamvanontai ws stoixeia xronou kai apomonwnontai..!! WATCH IT..
+
+
 NEW_GRAMMAR 1
 
 time_signature 4
@@ -64,18 +74,26 @@ rule: SD -> 1.0 bII :end_rule
 rule: D -> 1.0 bVII :end_rule
 
 
-rule: SectB -> 1.0 decB1(1) decB2(5)
-			//-> 0.1 D D D D D D D D
+rule: SectB -> 0.5 decB1(1) decB2(5)
+			-> 0.5 decTest1(1) decTest1(5)
+			//-> 0.9 SD SD SD SD SD SD SD SD
 			:end_rule
+
+rule: decTest1 -> 1.0 T T T T :end_rule
+				//-> 0.1 SD SD SD SD :end_rule
 
 rule: decB1 -> 1.0 SD T SD D :end_rule
 
-rule: decB2 -> 1.0 SD T D T :end_rule
+rule: decB2 -> 0.9 SD T D T //:end_rule
+			-> 0.1 D D D D :end_rule
+
 
 
 rule: SectC -> 1.0 decC(1) decC(3) decC(5) decC(7) :end_rule
 
-rule: decC -> 1.0 D T :end_rule
+rule: decC -> 0.5 D T //:end_rule
+			-> 0.2 SD SD
+			-> 0.3 T T :end_rule
 
 
 
@@ -152,4 +170,3 @@ rule: T -> 1.0 I :end_rule
  rule: I -> 1.0 i6 :end_rule
  rule: II -> 1.0 iim7 :end_rule
  rule: V -> 1.0 v7 :end_rule
- 

@@ -128,6 +128,10 @@ public:
     
     vector<elem_ID> curr_cycle;
     vector<elem_ID> aux_cycle;
+    int gp;
+    int cc;
+    //vector<int> setup_t;
+    bool right_s_finished;
     vector<elem_ID> func_chunk;
     vector<vector<elem_ID>> func_chunks;
     void update_cycle(vector<elem_ID>& production, rule& r, vector<int>& seq_t);//size() = [form_length * harmonic_rhythm]

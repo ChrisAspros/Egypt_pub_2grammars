@@ -206,6 +206,8 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     
     rewrite_t_g();
     
+    //tsimpaei ena sect parapanw
+    //sto kyklwma den stamataei sto g_p
     
     for (int i=0; aug_sect_rules.size(); i++){
     
@@ -290,35 +292,84 @@ void Rule_comparer::rewrite_t_g(){
     
     parser.till_function = 1;
     
-    int curr_bar = g_p - (dist);
-    for (int j=curr_bar; j < g_p - 1; j++){//g_p - 1 to avoid rewriting on g_p
+    int f_l = parser.all_gr[curr_gr].form_length;
+    
+    
+    int curr_bar = (f_l + g_p - (dist)) % f_l;
+    //int curr_bar =
+    
+    cout << endl << "f_l: " << f_l << endl;
+    cout << endl << "curr_bar is: " << curr_bar << endl;
+    
+    int to_g_p = g_p;
+    if (to_g_p==0) to_g_p = f_l;
+    if (curr_bar > to_g_p) to_g_p = to_g_p + f_l;
+    
+    //for (int j=curr_bar; j < to_g_p - 1; j++){//g_p - 1 to avoid rewriting on g_p
+    for (int j=0; j < dist - 1; j++){//g_p - 1 to avoid rewriting on g_p
         
         //find rule with
         //dynamic assignment of aux_cycle
         //& is_function
         //& ALL productions (irrespective of production probabilities), i.e. musical space constraint
-        vector<int> aux_t = {0, 0, 0, j, 0};
+        
+        vector<int> aux_t = {0, 0, 0, curr_bar % f_l, 0};
+        //parser.setup_t = {0, 0, 0, j, 0};
         
         cout << endl << "curr_bar it:: " << curr_bar << endl;
         
-        
         cout << endl << "aux_cycle: ";
         for (int k=0; k<parser.aux_cycle.size(); k++) cout << parser.aux_cycle[k].name << " ";
-        cout << endl;
+        cout << endl << "(keeps the last right_side(s?))" << endl;
         
+        //going forward in cycle as long as functions already there..
         while (parser.is_function(aux_t)) {
             
+            if (curr_bar == g_p){
+                
+                //parser.till_function = 0;
+                cout << endl << "breaking in while" << endl;
+                break;
+            }
+            
+            curr_bar = (curr_bar + 1) % f_l;
             j++;
-            aux_t = {0, 0, 0, j, 0};
+            
+            //int ti = j % f_l;
+            //parser.setup_t = {0, 0, 0, j, 0};
+            aux_t = {0, 0, 0, curr_bar, 0};
+            
+            //manually restard aux_cycle (place S on top, else it loops looking for func in isus4
+            if (curr_bar==0) parser.aux_cycle[0].name = "S";
+            
+            cout << endl << "g_p in wh: " << g_p;
+            cout << endl << "curr_bar in while: " << curr_bar << endl;
+            cout << "j in while: " << j << endl;
+            
+            //curr_bar = (curr_bar + 1) % f_l;
+            //j++;
         }
-        //ADD REMAINDER of WHILE se kapoio cycle??
         
-        if (j==g_p) break;//to avoid rewriting on g_p due to manual j++
         
-        cout << endl << "j before find rule: " << j << endl;
+        if (curr_bar==0) parser.aux_cycle[0].name = "S";
+        
+        //UPDATE DIST IN HERE for updated g_p
+        
+        //if ((j % f_l) == (to_g_p % f_l)) break;//to avoid rewriting on g_p due to manual j++
+        if (curr_bar == g_p){
+            
+            //parser.till_function = 0;
+            cout << endl << "breaking outside while" << endl;
+            break;
+        }
+        
+        cout << endl << "g_p in before find_rule: " << g_p;
+        cout << endl << "curr_bar before find_rule: " << curr_bar << endl;
+        cout << "j before find rule: " << j << endl;
         
         parser.find_rule(aux_t);
         
+        curr_bar = (curr_bar + 1) % f_l;
         /*
         if (j==curr_bar){//filter with is_function only the first time..
         
@@ -338,21 +389,33 @@ void Rule_comparer::rewrite_t_g(){
     
     cout << endl << "func_chunks size: " << parser.func_chunks.size() << endl;
     
-    //git save
-    
     //doesn't store func_chunks..
         //mhpws kanw excessive iteration trans_update mia panw k mia mesa sto function??
+            // gi multiple productions..?
     
-    //funct_chunks ftiaxnontai swsta?
-        //mhpws den ftanei se shmeio only functions ta productions..??
+
+//VHMA VHMA na vrw poses fores xreiazetai kai pou to trans_update()
     
-    //test func_chunks..
-    //git save
+    //test for g_p on top/beginning of form
+        //sta metra a + b + a + c +
+            //ksanasthnetai o kyklos gia to circulation?? e.g. g_p = 8 (i.e. transition start in last 4 bars..)
+                //twra: func_chunks.size() == 0
+    
+    //test for gr_2
+    
+    //git save -- all stops fro all grammars
+    //check outfit
     
     //make map of all possible func_chunkcs.. linearly..
+        //necessary? - or simply test chunk to chunk?
     //expand all possible sects gr2
     //get scores..
     //mix in real time..
+        //till goal
+        //till updating goal
+    //finalise transitions / introduce next_gr
+    //presentation
+    //orchestration
     
     //trekse rewrites mexri g_p
     //context to aux_cycle OXI tou curr cycle..
@@ -368,7 +431,7 @@ void Rule_comparer::rewrite_t_g(){
     
     //clear elements for next transition e.g. func_chunks
     
-    //next_gr: make vector of all possible functions till goal.. (irrespective of probabilities)
+    //next_gr: make vector of all possible functions till goal.. (irrespective of probabilities)τ
 }
 
 
