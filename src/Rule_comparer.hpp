@@ -48,9 +48,12 @@ public:
     //bool comb_set_up = 0;
     void setup_combination(vector<int>& seq_t);
     int get_distance_to_goal(vector<int>& seq_t);
-    void rewrite_t_g();
-    void rewrite_curr_gr();
-    void rewrite_next_gr();
+    void rewrite_funcs();
+    void rewrite_curr_gr_t_g();//till funcs
+    void rewrite_next_all();//till funcs
+    
+    vector<vector<G_parser::elem_ID>> curr_func_chunks;
+    vector<vector<G_parser::elem_ID>> next_func_chunks;
     
     int dist;
     int thread;
@@ -59,6 +62,8 @@ public:
     int length_to_goal;//number of bars until goal
     
     void update_combination(vector<int>& seq_t);
+    
+    void initiate_aux_cycle();
     
     void project_curr_gr();//projects current (ending) grammar up to goal point
     void project_next_gr();//projects next (upcoming) grammar up to goal point

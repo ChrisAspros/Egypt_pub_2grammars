@@ -17,7 +17,8 @@ void ofApp::setup(){
     ofSetFrameRate(500); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
-    blues.seq.r_comp.parser.gr_pop = 1;
+    blues.seq.r_comp.parser.gr_pop = 0
+    ;
     blues.seq.r_comp.parser.gr_changed = 0;
     blues.setup();
     

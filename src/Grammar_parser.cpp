@@ -709,8 +709,8 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
             //isolate t (setup_t) for itarations for all right_side without changing aux_t in order to then move to next right_side
             //while den einai functions olo to r_side mhn pas sto epomeno r_side
             
-            if (r.left_str[0]!="S"){//without this filtering, it rewrites the whole cycle once (because right_str.size() of the S rule is 4, i.e. all the sects..) first and then stops at curr_bar==8 the 2nd time..
-                //else it could be !is_sect in the if below..? - doesn't matter 
+            if (r.left_str[0]!="S" || rewriting_next){//without this filtering, it rewrites the whole cycle once (because right_str.size() of the S rule is 4, i.e. all the sects..) first and then stops at curr_bar==8 the 2nd time..
+                //if rewriting_next do only once the whole S rule, i.e. the whole form and that's it..
                 
                 vector<int> setup_t = seq_t;
                 for (int i=0; i < r.right_side[choices[j]].right_str.size(); i++){
@@ -830,7 +830,15 @@ void G_parser::trans_update(vector<elem_ID>& production, rule& r, vector<int>& s
             vector<int>::iterator it = find(r.opt_positions.begin(), r.opt_positions.end(), i);
             if (it==r.opt_positions.end()){
             
-                //aux_cycle.push_back(elem_ID());
+                /*
+                if (i >= aux_cycle.size()){
+                    //in case moving from short to long cycle - what if long to short?
+                    
+                    cout << endl << "added to cycle at i: " << i << endl;
+                    aux_cycle.push_back(elem_ID());
+                }
+                 */
+                
                 aux_cycle[production[i].time[1]] = production[i];
             }
             //i.e. if i does not exist in the r.opt_positions vector

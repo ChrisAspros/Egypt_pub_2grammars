@@ -197,9 +197,9 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     //vector<G_parser::rule> long_rules;
     vector<vector<G_parser::rule>> prolonged_rules;
     
-    parser.aux_cycle = parser.curr_cycle;
+    initiate_aux_cycle();
     
-    rewrite_t_g();//curr_gr
+    rewrite_funcs();//curr_gr
     //now we have prser.func_chunkcs (vector<elem_ID>)
     
     //nmz de xreiazete - aplws 8a koitaei parapisw an xreiazetai extra length..
@@ -208,9 +208,12 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
         //if sect length is enough
         if (dist-1 <= aug_sect_rules[i].r_len){//dist-1 logw pre-production of next bar..
             
-            
+            //expand that sect
         }
         else{
+            
+            //expand that sect and another..
+            
             //LATER
             //make new combo rule: manually build rule, assign right side etc..
                 //prolonged_rules[][] =
@@ -221,15 +224,35 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
      //*/
     
     
-    //get_next_gr_funcs();
-    
-    //test all points for gr_2
-        //make g_p also for gr_2 or make dynamic..
-    //how is gr_pop managed in normal time and transitioning time?
+    //gitsave
     
     //look at both notes below
         //test fitness till goal, then the past then the future
         //OR all (present - past - future) at once??
+    
+    
+    //get func_chunks of next_gr
+    //test fitness
+    //in 2 cycles (curr_gr & next_gr)
+        //keep N best (2 sides: curr & next) - up to N^2 combinations..
+            //higher N - less stress on locality / more on large scale form
+        //look back
+            //functions already played combined with
+                //next_gr previous possible functions (for each decided point)
+    
+    //(((why not the MOST LIKELY till goal?? - because compatibility and smoothness is the major focus here..)))
+    
+    //look ahead??
+    
+    //get total scores of combinations
+    //place best combination in 2 cycles
+    
+    //place next sect on g_p
+    
+    //mix 2 cycles into the main (playing)
+        //based on transition phase
+    
+    //if g_p reached end transition (for now..) OR re do the proces..
     
     
     //get scores up to goal point
@@ -257,17 +280,21 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
         //return the FUNCTION production(vector<string> OR vector<G_parser::elem_ID>)
     
     
+    
+    
 //VHMA VHMA na vrw poses fores xreiazetai kai pou to trans_update()
     
     //next_gr: make vector of all possible functions till goal.. (irrespective of probabilities)
     
     //make map of all possible func_chunkcs.. linearly..
-    //necessary? - or simply test chunk to chunk?
-    //expand all possible sects gr2
+    //--expand all possible sects gr2
     //get scores..
     //mix in real time..
     //till goal
     //till updating goal
+        //if g_p reached and still transitioning:
+            //re do the test process of BEST TILL GOAL + what has been played..
+                //nested..!!
     //finalise transitions / introduce next_gr
     //presentation
     //better grammars
@@ -306,19 +333,26 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
 }
 
 
-void Rule_comparer::rewrite_t_g(){
+void Rule_comparer::rewrite_funcs(){
 
-    //rewrite_curr_gr();
-    //rewrite_next_gr();
+    rewrite_curr_gr_t_g();//till funcs till g_p (goal point)
+    rewrite_next_all();//expand all next form till funcs
+    
+    cout << endl << "for b.p." << endl;
+}
+
+
+void Rule_comparer::rewrite_curr_gr_t_g(){
+    
+    cout << endl << "entering rewrite_curr_gr_t_g()" << endl;
+    
+    parser.rewriting_curr = 1;
     
     //curr_gr: make vector of all possible functions till goal.. (irrespective of probabilities)
-    vector<vector<string>> f_t_l;//functions to goal
     
     //expand to functions
     parser.till_function = 1;
     //parser.gr_pop = curr_gr;//not necessary here but might become..
-    
-    parser.till_function = 1;
     
     int f_l = parser.all_gr[curr_gr].form_length;
     
@@ -415,12 +449,160 @@ void Rule_comparer::rewrite_t_g(){
          */
     }
     
-    cout << endl << "func_chunks size: " << parser.func_chunks.size() << endl;
+    curr_func_chunks = parser.func_chunks;
+    parser.func_chunks.clear();
+    cout << endl << "curr_func_chunks size: " << curr_func_chunks.size() << endl;
+    
+    parser.rewriting_curr = 0;
+}
+
+//make greatest form
+//check all points in gr2
+//gitsave - comment about (r.left_str[0]!="S" || rewriting_next) S rule..
+
+//watch it for long cycle to short..
+
+void Rule_comparer::rewrite_next_all(){
+//if rewriting_next (r.left_str[0]!="S" || rewriting_next) do only once the whole S rule (in rewrite()), i.e. the whole form and that's it..
+    
+    cout << endl << "entering rewrite_next_all()" << endl;
+    
+    parser.rewriting_next = 1;
+    
+    //curr_gr: make vector of all possible functions till goal.. (irrespective of probabilities)
+    
+    //expand to functions
+    parser.till_function = 1;
+    //parser.gr_pop = curr_gr;//not necessary here but might become..
+    
+    int f_l = parser.all_gr[next_gr].form_length;
+    int curr_bar = 0;
+    parser.aux_cycle[0].name = "S";
+    
+    parser.gr_pop = next_gr;//WATCH IT!! - make more dynamic??
+    
+    vector<int> aux_t = {0, 0, 0, 0, 0};
+    parser.find_rule(aux_t);
+    
+    //cout << endl << "f_l: " << f_l << endl;
+    //cout << endl << "curr_bar is: " << curr_bar << endl;
+    
+    //int to_g_p = g_p;
+    //if (to_g_p==0) to_g_p = f_l;
+    //if (curr_bar > to_g_p) to_g_p = to_g_p + f_l;
+    
+    
+    //for (int j=curr_bar; j < to_g_p - 1; j++){//g_p - 1 to avoid rewriting on g_p
+    //for (curr_bar; curr_bar < f_l; curr_bar++){//g_p - 1 to avoid rewriting on g_p
+        
+        //find rule with
+        //dynamic assignment of aux_cycle
+        //& is_function
+        //& ALL productions (irrespective of production probabilities), i.e. musical space constraint
+        
+        //vector<int> aux_t = {0, 0, 0, curr_bar % f_l, 0};
+        //parser.setup_t = {0, 0, 0, j, 0};
+        
+        /*
+        cout << endl << "curr_bar it:: " << curr_bar << endl;
+        
+        cout << endl << "aux_cycle: ";
+        for (int k=0; k<parser.aux_cycle.size(); k++) cout << parser.aux_cycle[k].name << " ";
+        cout << endl << "(keeps the last right_side(s?))" << endl;
+        
+        //going forward in cycle as long as functions already there..
+        while (parser.is_function(aux_t)) {
+            
+            if (curr_bar == g_p){
+                
+                //parser.till_function = 0;
+                cout << endl << "breaking in while" << endl;
+                break;
+            }
+            
+            curr_bar = (curr_bar + 1) % f_l;
+            j++;
+            
+            //int ti = j % f_l;
+            //parser.setup_t = {0, 0, 0, j, 0};
+            aux_t = {0, 0, 0, curr_bar, 0};
+            
+            //manually restard aux_cycle (place S on top, else it loops looking for func in isus4
+            if (curr_bar==0) parser.aux_cycle[0].name = "S";
+            
+            cout << endl << "g_p in wh: " << g_p;
+            cout << endl << "curr_bar in while: " << curr_bar << endl;
+            cout << "j in while: " << j << endl;
+            
+            //curr_bar = (curr_bar + 1) % f_l;
+            //j++;
+        }
+         */
+        
+        
+        //UPDATE DIST IN HERE for updated g_p
+       
+        /*
+        //if ((j % f_l) == (to_g_p % f_l)) break;//to avoid rewriting on g_p due to manual j++
+        if (curr_bar == g_p){
+            
+            //parser.till_function = 0;
+            cout << endl << "breaking outside while" << endl;
+            break;
+        }
+        
+        cout << endl << "g_p in before find_rule: " << g_p;
+        cout << endl << "curr_bar before find_rule: " << curr_bar << endl;
+        cout << "j before find rule: " << j << endl;
+        */
+        
+        //parser.find_rule(aux_t);
+        
+        //curr_bar = (curr_bar + 1) % f_l;
+        /*
+         if (j==curr_bar){//filter with is_function only the first time..
+         
+         if (!parser.is_function(aux_t)) parser.find_rule(aux_t);//i.e. in order to avoid rewriting the next FUNCTION to type_level - then loop in (!is_function) find_rule())
+         }
+         else parser.find_rule(aux_t);
+         */
+        
+        //else //aug_sect_rule. / a_s_r. = oti exei o curr_cycle ekei..
+        
+        /*
+         cout << endl << "aux_cycle: ";
+         for (int k=0; k<parser.aux_cycle.size(); k++) cout << parser.aux_cycle[k].name << " ";
+         cout << endl;
+         */
+    //}
+    
+    next_func_chunks = parser.func_chunks;
+    parser.func_chunks.clear();
+    cout << endl << "next_func_chunks size: " << next_func_chunks.size() << endl;
+    
+    parser.rewriting_next = 0;
 }
 
 
-void rewrite_curr_gr(){}
-void rewrite_next_gr(){}
+void Rule_comparer::initiate_aux_cycle(){
+    
+    //find longest form of the 2 grammars
+    int longest_f_l;// = 800;
+    for (int i=0; i < parser.all_gr.size(); i++){
+    
+        if (longest_f_l < parser.all_gr[i].form_length) longest_f_l = parser.all_gr[i].form_length;
+    }
+    
+    //make size of aux cycle
+    for (int i=0; i < longest_f_l; i++){
+    
+        parser.aux_cycle.push_back(G_parser::elem_ID());
+    }
+        
+        //assign curr_cycle to aux_cycle
+    parser.aux_cycle = parser.curr_cycle;
+}
+
 
 
 void Rule_comparer::update_combination(vector<int>& seq_t){

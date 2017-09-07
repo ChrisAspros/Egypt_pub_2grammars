@@ -142,8 +142,8 @@ NEW_GRAMMAR 2
  rule: SectA -> 1.0 decA(1) decA(5) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
  :end_rule
  
- rule: decA -> 1.0 T D T T :end_rule
- 			//-> 0.0 D D D D :end_rule
+ rule: decA -> 0.9 T D T T //:end_rule
+ 			-> 0.1 D D D D :end_rule
  
  
  rule: SectB -> 1.0 decB1(1) decB2(5)
@@ -171,3 +171,5 @@ rule: T -> 1.0 I :end_rule
  rule: I -> 1.0 i6 :end_rule
  rule: II -> 1.0 iim7 :end_rule
  rule: V -> 1.0 v7 :end_rule
+
+ //21 chunks & 6

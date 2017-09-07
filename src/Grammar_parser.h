@@ -154,6 +154,8 @@ public:
     bool transitioning;
     bool comb_setup;
     bool till_function;
+    bool rewriting_curr = 0;
+    bool rewriting_next = 0;
     //bool setting_up;
     bool soon = false;// <= four bars' time (+ smth maybe..)
     bool approaching = true;
