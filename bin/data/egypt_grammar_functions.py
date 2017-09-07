@@ -133,7 +133,7 @@ NEW_GRAMMAR 2
  harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
  end_times { 1 5 9 13 }
  functions { T D SD }
- terminals { i iim7 v7 }
+ terminals { i i6 iim7 v7 }
  
  
  rule: S -> 1.0 SectA(1) SectB(9) //SectA(17) SectC(25) //SectC(16) SectA(24) //SectB(2) //SectA(8) SectC(8) //
@@ -143,6 +143,7 @@ NEW_GRAMMAR 2
  :end_rule
  
  rule: decA -> 1.0 T D T T :end_rule
+ 			//-> 0.0 D D D D :end_rule
  
  
  rule: SectB -> 1.0 decB1(1) decB2(5)

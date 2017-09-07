@@ -710,6 +710,7 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
             //while den einai functions olo to r_side mhn pas sto epomeno r_side
             
             if (r.left_str[0]!="S"){//without this filtering, it rewrites the whole cycle once (because right_str.size() of the S rule is 4, i.e. all the sects..) first and then stops at curr_bar==8 the 2nd time..
+                //else it could be !is_sect in the if below..? - doesn't matter 
                 
                 vector<int> setup_t = seq_t;
                 for (int i=0; i < r.right_side[choices[j]].right_str.size(); i++){

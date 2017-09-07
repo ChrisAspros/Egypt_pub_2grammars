@@ -29,7 +29,6 @@ void Sequencer::setup(){
     metro_on = 1;
     chord_ch = 1;
     metro_ch = 2;
-    
 }
 
 

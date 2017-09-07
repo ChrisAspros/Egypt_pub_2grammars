@@ -54,8 +54,8 @@ void Rule_comparer::combine_rules(vector<int>& seq_t){
 void Rule_comparer::setup_combination(vector<int>& seq_t){
 
     //must be managed dynamically
-    curr_gr = 0;
-    next_gr = 1;
+    curr_gr = parser.gr_pop;//= 0;
+    next_gr = !curr_gr;//= 1;
     
     //dist only ONCE??
     //int dist;
@@ -85,6 +85,7 @@ int Rule_comparer::get_distance_to_goal(vector<int>& seq_t){
     curr_pos = seq_t[3];
     
     //calcuate goal point (we are transitioning)
+    //every 8 bars now.. - CAN CHANGE, based on form significance.., e.g. blues IV significance..!!!
     if (curr_gr == 0){
     
         if (curr_pos > 3 & curr_pos <= 11) g_p = 16;//includes -1
@@ -94,7 +95,7 @@ int Rule_comparer::get_distance_to_goal(vector<int>& seq_t){
     }
     else {//if gr_2
         
-        if (curr_pos > 3 & curr_pos <= 11) g_p = 16;//includes -1
+        if (curr_pos > 3 & curr_pos <= 11) g_p = 0;//includes -1
         if (curr_pos > 11 || curr_pos <= 3) g_p = 8;
     }
     
@@ -112,7 +113,7 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     
     //check all sects tails for enough length
     
-    //find/store the S rule
+    //find/store the S rule (next_gr)
     G_parser::rule S_rule;
     for (int i=0; i<parser.all_gr[next_gr].general_rules.size(); i++){
         
@@ -196,19 +197,12 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     //vector<G_parser::rule> long_rules;
     vector<vector<G_parser::rule>> prolonged_rules;
     
-    //calculate score (& add to aug_sect_rules[...].score)
-        //test lengths
-    
-        //get state of curr_cycle to goal
     parser.aux_cycle = parser.curr_cycle;
-    //watch out for curr_cycle to not be runnign twice for some reason..
     
+    rewrite_t_g();//curr_gr
+    //now we have prser.func_chunkcs (vector<elem_ID>)
     
-    rewrite_t_g();
-    
-    //tsimpaei ena sect parapanw
-    //sto kyklwma den stamataei sto g_p
-    
+    //nmz de xreiazete - aplws 8a koitaei parapisw an xreiazetai extra length..
     for (int i=0; aug_sect_rules.size(); i++){
     
         //if sect length is enough
@@ -226,7 +220,18 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     }
      //*/
     
-
+    
+    //get_next_gr_funcs();
+    
+    //test all points for gr_2
+        //make g_p also for gr_2 or make dynamic..
+    //how is gr_pop managed in normal time and transitioning time?
+    
+    //look at both notes below
+        //test fitness till goal, then the past then the future
+        //OR all (present - past - future) at once??
+    
+    
     //get scores up to goal point
         //(((
         //of most compatible productions (on both sides..)
@@ -250,6 +255,29 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
         //chosen rule&production (i.e. sect & production) of GR2 around goal point (back and forth)
     
         //return the FUNCTION production(vector<string> OR vector<G_parser::elem_ID>)
+    
+    
+//VHMA VHMA na vrw poses fores xreiazetai kai pou to trans_update()
+    
+    //next_gr: make vector of all possible functions till goal.. (irrespective of probabilities)
+    
+    //make map of all possible func_chunkcs.. linearly..
+    //necessary? - or simply test chunk to chunk?
+    //expand all possible sects gr2
+    //get scores..
+    //mix in real time..
+    //till goal
+    //till updating goal
+    //finalise transitions / introduce next_gr
+    //presentation
+    //better grammars
+        //update goal points..
+        //rhythm changes - https://en.wikipedia.org/wiki/Rhythm_changes
+            //https://www.freejazzlessons.com/4-jazz-turnarounds/
+        //https://www.jazzadvice.com/7-killer-turnarounds-for-jazz-improvisation/
+    //orchestrations
+    //mix orchestrations
+
     
     
     /*
@@ -388,50 +416,6 @@ void Rule_comparer::rewrite_t_g(){
     }
     
     cout << endl << "func_chunks size: " << parser.func_chunks.size() << endl;
-    
-    //doesn't store func_chunks..
-        //mhpws kanw excessive iteration trans_update mia panw k mia mesa sto function??
-            // gi multiple productions..?
-    
-
-//VHMA VHMA na vrw poses fores xreiazetai kai pou to trans_update()
-    
-    //test for g_p on top/beginning of form
-        //sta metra a + b + a + c +
-            //ksanasthnetai o kyklos gia to circulation?? e.g. g_p = 8 (i.e. transition start in last 4 bars..)
-                //twra: func_chunks.size() == 0
-    
-    //test for gr_2
-    
-    //git save -- all stops fro all grammars
-    //check outfit
-    
-    //make map of all possible func_chunkcs.. linearly..
-        //necessary? - or simply test chunk to chunk?
-    //expand all possible sects gr2
-    //get scores..
-    //mix in real time..
-        //till goal
-        //till updating goal
-    //finalise transitions / introduce next_gr
-    //presentation
-    //orchestration
-    
-    //trekse rewrites mexri g_p
-    //context to aux_cycle OXI tou curr cycle..
-    //then multiple (and rewrite in the correct cycle..)
-    
-    //to trans_update prepei na kanei store se vector<vector<elem_ID>> wste meta na elegx8oun ola me ola..
-    
-    //to find_rule psaxnei tous swstous kanones? next_gr? (gia expand to function..)
-    //to find_rule psaxnei sto swsto cycle? / stoswsto shmeio tou cycle?
-    
-    //copy all curr_cycle to aux_cycle on setup?
-    //e.g. in is_function
-    
-    //clear elements for next transition e.g. func_chunks
-    
-    //next_gr: make vector of all possible functions till goal.. (irrespective of probabilities)τ
 }
 
 
