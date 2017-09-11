@@ -28,6 +28,7 @@ void Blues_structure::setup(){
     finishing = false;
     
     ch_chords = 1;
+    ch_jazz_organ = 2;
     /*swing drums: *///ch_drums = 2;//bass drum, snare, tom1 (floor), tom2, tom 3, high-hat(closed?), ride, crash
     ch_bass = 3;
     ch_egypt_cymbal = 4;
@@ -36,6 +37,8 @@ void Blues_structure::setup(){
     
     QN_dur = seq.QN_subdivision;//quarternote duration in its subdivisions
     
+    vel_gr1 = 100;
+    vel_gr2 = 100;
     controller_counter = 0;
     upwards = 1;
     //scan_file();
@@ -55,6 +58,7 @@ void Blues_structure::update(){
     //cout << elapsed_mins << endl;
     
     //trying to set up volume automations for DAW
+    /*
     if (controller_counter == 0) upwards = 1;
     if (controller_counter == 127) upwards = 0;
     
@@ -62,6 +66,9 @@ void Blues_structure::update(){
     else controller_counter -= 1;
     //seq.midiOut::sendControlMessage(1, 1, controller_counter);
     seq.controls(1, 1, controller_counter);
+     */
+    
+    seq.velocity = (seq.velocity + 10) % 127;
     
     //cout << "controller counter: " << controller_counter << endl;
     
@@ -77,7 +84,7 @@ void Blues_structure::update(){
     seq.update();//only for cycle_len for now..
     t = seq.timer();
     
-     
+    
     if (seq.only_on("beat", t)){
      
         //cout << "beat: " << t[2] << endl;
@@ -113,6 +120,7 @@ void Blues_structure::update(){
                 t[3] = 0;
                 
                 seq.r_comp.parser.gr_pop = !seq.r_comp.parser.gr_pop;
+                
                 seq.r_comp.parser.gr_changed = 0;
             }
         }
@@ -126,6 +134,9 @@ void Blues_structure::update(){
         string terminal = seq.r_comp.parser.return_terminal(t);
         chord = terminal_to_midi(terminal);
     }
+    
+    update_velocities();//outside the if only on bar to have smoother vel automation
+    //automate based on goal distance in actual version fo the algorithm
     
     /*
     update_state();
@@ -149,6 +160,37 @@ void Blues_structure::update(){
         if (fin_t[3]==t[3] && fin_t[4]==t[4]) play_finale(chord);//play only for one bar more and only on current cycle
     }
     else play_main(chord);
+}
+
+
+void Blues_structure::update_velocities(){
+
+    if (!seq.r_comp.parser.gr_changed){
+        
+        if(seq.r_comp.parser.gr_pop == 0){
+     
+            vel_gr1 = 100;//not transitioning and gr1
+            vel_gr2 = 0;
+        }
+        else {
+        
+            vel_gr1 = 0;//not transitioning and gr2
+            vel_gr2 = 100;
+        }
+    }
+    else {
+    
+        if(seq.r_comp.parser.gr_pop == 0){
+            
+            if (vel_gr1 != 0) vel_gr1--;//fade out till 0
+            if (vel_gr2 != 100) vel_gr2++;//fade in till 100
+        }
+        else {
+            
+            if (vel_gr2 != 0) vel_gr2--;//fade out till 0
+            if (vel_gr1 != 100) vel_gr1++;//fade in till 100
+        }
+    }
 }
 
 
@@ -528,9 +570,14 @@ void Blues_structure::play_bass_finale(vector<int>& chord){
 
 void Blues_structure::play_chords(vector<int>& chord){
     
+    seq.velocity = vel_gr1;
+    
     vector<int> pos_chord = {0, 0, 0, t[3]};
     seq.time_placement(t, chord, pos_chord, QN_dur*4, ch_chords);
     //can't' accept get_chord() by reference
+    
+    seq.velocity = vel_gr2;
+    seq.time_placement(t, chord, pos_chord, QN_dur*4, ch_jazz_organ);
 }
 
 

@@ -40,6 +40,9 @@ public:
     void setup();
     void update();
     
+    void update_velocities();
+    int vel_gr1, vel_gr2;
+    
     void update_state();
     
     void play_drums();
@@ -88,7 +91,7 @@ public:
     
     int QN_dur;
     
-    int ch_chords;
+    int ch_chords, ch_jazz_organ;
     int ch_drums;
     int ch_bass;
     int ch_egypt_cymbal;

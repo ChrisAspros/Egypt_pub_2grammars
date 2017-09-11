@@ -109,7 +109,7 @@ void Sequencer::time_placement(vector<int>& t, vector<int>& notes, vector<int>& 
 
 //needless?
 int Sequencer::on_off(int pitch, int dur, int vel, int channel){
-    midiOut.sendNoteOn(2, pitch+incr, 100);
+    midiOut.sendNoteOn(2, pitch+incr, velocity);
     return dur*4; //duration (converted from semiquavers to beats)
     //midiOut.sendNoteOff(2, pitch+incr, 100);
 }
@@ -117,7 +117,7 @@ int Sequencer::on_off(int pitch, int dur, int vel, int channel){
 void Sequencer::chord_on_off(bool on_off, vector<int>& chord, int ch, int vel){//can receive one note too(not chord necessarily)
     if (on_off){
         for (int i=0; i<chord.size(); i++){
-            midiOut.sendNoteOn(ch, chord[i], vel);
+            midiOut.sendNoteOn(ch, chord[i], velocity);
         }
     }
     else if (!on_off) {

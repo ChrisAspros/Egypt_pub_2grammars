@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "525213469.834976"
+            timestampString = "526858618.600202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "525621525.230429"
+            timestampString = "526858618.600202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
             <Locations>
