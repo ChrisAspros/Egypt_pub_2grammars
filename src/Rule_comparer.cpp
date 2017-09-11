@@ -86,7 +86,7 @@ int Rule_comparer::get_distance_to_goal(vector<int>& seq_t){
     
     //calcuate goal point (we are transitioning)
     //every 8 bars now.. - CAN CHANGE, based on form significance.., e.g. blues IV significance..!!!
-    if (curr_gr == 0){
+    if (curr_gr == 0 || curr_gr == 1){
     
         if (curr_pos > 3 & curr_pos <= 11) g_p = 16;//includes -1
         if (curr_pos > 11 & curr_pos <= 19) g_p = 24;

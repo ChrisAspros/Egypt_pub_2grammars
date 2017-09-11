@@ -139,35 +139,69 @@ rule: bVII -> 1.0 bviim :end_rule
 
 
 
-NEW_GRAMMAR 2
+NEW_GRAMMAR 2 //A train grammar
  
  time_signature 4
- form_length 16
- harmonic_rhythm 2 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
- end_times { 1 5 9 13 }
+ form_length 32
+ harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
+ //end_times { 1 5 9 13 }
+ end_times { 1 5 9 13 17 21 25 29 }
  functions { T D SD }
- terminals { i i6 iim7 v7 }
+ terminals { i i6 i7 iim7 ii7 iv iv6 v7 }
  
  
- rule: S -> 1.0 SectA(1) SectB(9) //SectA(17) SectC(25) //SectC(16) SectA(24) //SectB(2) //SectA(8) SectC(8) //
+ rule: S -> 1.0 SectA(1) SectA(9) SectB(17) SectA(25) //SectC(16) SectA(24) //SectB(2) //SectA(8) SectC(8) //
  :end_rule
  
- rule: SectA -> 1.0 decA(1) decA2(5) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
+ //rule: SectA -> 1.0 decA(1) decA2(5) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
  :end_rule
  
- rule: decA -> 0.9 T D T T //:end_rule
+
+rule: SectA -> 1.0 decT(1) decSD(3) decCad(5) decT(7) :end_rule
+//rule: SectA2 -> 1.0 decT(1) decDD(3) decCad(5) decT2(7) :end_rule
+rule: SectB -> 1.0 decSD(1) decSD(5) decCad(7) :end_rule
+
+rule: decT -> 1.0 T T :end_rule
+rule: decSD -> 1.0 SD SD :end_rule
+rule: decSD_17 -> 1.0 SD SD SD SD :end_rule
+rule: decCad -> 1.0 SD D :end_rule
+
+rule: T -> 1.0 I :end_rule
+rule: SD -> 1.0 II :end_rule
+rule: SD_17 -> 1.0 IV :end_rule
+rule: SD_21 -> 1.0 II :end_rule
+rule: D -> 1.0 V :end_rule
+
+//rule: iv|iv6 SD -> 1.0 iv|iv6 IV //ALLIWS SD_18 SD_19 etc..
+				:end_rule
+
+rule: SD_18 -> 1.0 IV :end_rule
+rule: SD_19 -> 1.0 IV :end_rule
+rule: SD_20 -> 1.0 IV :end_rule
+
+
+rule: I -> 0.5 i 
+		-> 0.5 i6
+		:end_rule
+rule: I_16 -> 1.0 i7 :end_rule
+rule: II -> 0.7 ii7
+		 -> 0.3 iim7 :end_rule
+rule: IV -> 0.5 iv6 
+		 -> 0.5 iv :end_rule
+
+//rule: decA -> 0.9 T D T T //:end_rule
  			-> 0.1 D D D D :end_rule
 
- rule: decA2 -> 0.8 T D T T //:end_rule
+//rule: decA2 -> 0.8 T D T T //:end_rule
  			-> 0.1 D D D D
- 			-> 0.1 SD D SD D :send_rule
+ 			-> 0.1 SD D SD D :end_rule
  
- rule: SectB -> 1.0 decB1(1) decB2(5)
- :end_rule
+ //rule: SectB -> 1.0 decB1(1) decB2(5)
+ //:end_rule
  
- rule: decB1 -> 1.0 SD SD SD SD :end_rule
+ //rule: decB1 -> 1.0 SD SD SD SD :end_rule
  
- rule: decB2 -> 1.0 SD D SD T :end_rule
+ //rule: decB2 -> 1.0 SD D SD T :end_rule
  
  
  //rule: SectC -> 1.0 decC(1) decC(3) decC(5) decC(7) :end_rule

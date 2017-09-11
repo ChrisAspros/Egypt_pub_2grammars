@@ -19,6 +19,8 @@ public:
     void keyPressed(int key);
     void keyReleased(int key);
     
+    int frame_sp;
+    
     int channel, note, velocity;
     
     void stop_all_midi_2();
