@@ -555,6 +555,7 @@ map<string, vector<int>> Blues_structure::chord_translation{//no static here
     {"immaj", {48, 8}},
     {"i6", {48, 3}},
     {"i7", {48, 6}},
+    {"ii7", {50, 6}},
     {"bii", {49, 0}},
     {"biisus2", {49, 10}},
     {"iim7", {50, 4}},
