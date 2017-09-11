@@ -5,6 +5,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    
+    ofSetVerticalSync(false);//unlocks the refresh rate from my monitor sync//https://forum.openframeworks.cc/t/is-the-glfw-limit-the-framerate-at-60hz/17632
 
     //ofSetWindowShape(575, 800);
     ofSetWindowPosition(708, 0);
@@ -14,7 +16,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    ofSetFrameRate(500); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
+    ofSetFrameRate(50); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
     blues.seq.r_comp.parser.gr_pop = 0
@@ -122,6 +124,7 @@ void ofApp::update(){
  make pp
  rehearse
  */
+
 
 void ofApp::draw(){
 

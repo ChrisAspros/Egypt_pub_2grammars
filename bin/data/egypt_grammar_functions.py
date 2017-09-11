@@ -74,26 +74,39 @@ rule: SD -> 1.0 bII :end_rule
 rule: D -> 1.0 bVII :end_rule
 
 
-rule: SectB -> 0.5 decB1(1) decB2(5)
-			-> 0.5 decTest1(1) decTest1(5)
+rule: SectB -> 1.0 decB1(1) decB2(5)
+			//-> 0.5 decTest1(1) decTest1(5)
 			//-> 0.9 SD SD SD SD SD SD SD SD
 			:end_rule
 
 rule: decTest1 -> 1.0 T T T T :end_rule
 				//-> 0.1 SD SD SD SD :end_rule
 
-rule: decB1 -> 1.0 SD T SD D :end_rule
+//rule: decB1 -> 1.0 SD T SD D :end_rule
 
-rule: decB2 -> 0.9 SD T D T //:end_rule
+//rule: decB2 -> 0.9 SD T D T //:end_rule
 			-> 0.1 D D D D :end_rule
+
+rule: decB1 -> 1.0 SD SD T SD :end_rule
+
+rule: decB2 -> 1.0 SD SD SD D :end_rule
+
+rule: SD_9 -> 1.0 IV :end_rule //VGAZEI BUG logw mult choices?? petaei ta ":end" kai "rule:" ws non-T - mallon gt to "SD_9" den einai Function ("SD"...)
+rule: SD_10 -> 1.0 bVI :end_rule //de 8a prepe se kairo eirhnhs (i.e. non-Transitioning)
+rule: T_11 -> 1.0 IIIo :end_rule
+rule: SD_12 -> 1.0 IV :end_rule
+rule: SD_13 -> 1.0 IV :end_rule
+rule: SD_14 -> 1.0 bVI :end_rule
+//rule: SD_15 -> 1.0 bII :end_rule
+//rule: SD_16 -> 1.0 bVII :end_rule
 
 
 
 rule: SectC -> 1.0 decC(1) decC(3) decC(5) decC(7) :end_rule
 
-rule: decC -> 0.5 D T //:end_rule
-			-> 0.2 SD SD
-			-> 0.3 T T :end_rule
+rule: decC -> 0.6 D T //:end_rule
+			//-> 0.2 SD SD
+			-> 0.4 T T :end_rule
 
 
 
@@ -130,7 +143,7 @@ NEW_GRAMMAR 2
  
  time_signature 4
  form_length 16
- harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
+ harmonic_rhythm 2 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
  end_times { 1 5 9 13 }
  functions { T D SD }
  terminals { i i6 iim7 v7 }
@@ -139,12 +152,15 @@ NEW_GRAMMAR 2
  rule: S -> 1.0 SectA(1) SectB(9) //SectA(17) SectC(25) //SectC(16) SectA(24) //SectB(2) //SectA(8) SectC(8) //
  :end_rule
  
- rule: SectA -> 1.0 decA(1) decA(5) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
+ rule: SectA -> 1.0 decA(1) decA2(5) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
  :end_rule
  
  rule: decA -> 0.9 T D T T //:end_rule
  			-> 0.1 D D D D :end_rule
- 
+
+ rule: decA2 -> 0.8 T D T T //:end_rule
+ 			-> 0.1 D D D D
+ 			-> 0.1 SD D SD D :send_rule
  
  rule: SectB -> 1.0 decB1(1) decB2(5)
  :end_rule

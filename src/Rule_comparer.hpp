@@ -55,6 +55,11 @@ public:
     vector<vector<G_parser::elem_ID>> curr_func_chunks;
     vector<vector<G_parser::elem_ID>> next_func_chunks;
     
+    void construct_curr_lines();
+    void construct_next_lines();
+    vector<vector<G_parser::elem_ID>> curr_func_lines;
+    vector<vector<G_parser::elem_ID>> next_func_lines;
+    
     int dist;
     int thread;
     void get_goal_point();
