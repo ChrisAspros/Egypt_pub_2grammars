@@ -143,7 +143,7 @@ NEW_GRAMMAR 2
  
  time_signature 4
  form_length 16
- harmonic_rhythm 2 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
+ harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
  end_times { 1 5 9 13 }
  functions { T D SD }
  terminals { i i6 iim7 v7 }
@@ -160,7 +160,7 @@ NEW_GRAMMAR 2
 
  rule: decA2 -> 0.8 T D T T //:end_rule
  			-> 0.1 D D D D
- 			-> 0.1 SD D SD D :send_rule
+ 			-> 0.1 SD D SD D :end_rule
  
  rule: SectB -> 1.0 decB1(1) decB2(5)
  :end_rule
