@@ -27,18 +27,32 @@ void Blues_structure::setup(){
     cadencing = false;
     finishing = false;
     
+    //gr1 channels
     ch_chords = 1;
-    ch_jazz_organ = 2;
     /*swing drums: *///ch_drums = 2;//bass drum, snare, tom1 (floor), tom2, tom 3, high-hat(closed?), ride, crash
     ch_bass = 3;
     ch_egypt_cymbal = 4;
+    
+    //gr2 channels
+    ch_jazz_organ = 11;
+    ch_drums = 12;
     
     drum_notes = {36, 38, 40, 41, 43, 45, 47, 48};//respectively..
     
     QN_dur = seq.QN_subdivision;//quarternote duration in its subdivisions
     
-    vel_gr1 = 100;
-    vel_gr2 = 100;
+    if (seq.r_comp.parser.gr_pop==0){
+    
+        vel_gr1 = 100;
+        vel_gr2 = 0;
+    }
+    else {
+        
+        vel_gr1 = 0;
+        vel_gr2 = 100;
+    }
+
+    //vel_gr2 = 100;
     controller_counter = 0;
     upwards = 1;
     //scan_file();
@@ -68,7 +82,7 @@ void Blues_structure::update(){
     seq.controls(1, 1, controller_counter);
      */
     
-    seq.velocity = (seq.velocity + 10) % 127;
+    //seq.velocity = (seq.velocity + 10) % 127;
     
     //cout << "controller counter: " << controller_counter << endl;
     
@@ -165,32 +179,36 @@ void Blues_structure::update(){
 
 void Blues_structure::update_velocities(){
 
-    if (!seq.r_comp.parser.gr_changed){
-        
-        if(seq.r_comp.parser.gr_pop == 0){
-     
-            vel_gr1 = 100;//not transitioning and gr1
-            vel_gr2 = 0;
-        }
-        else {
-        
-            vel_gr1 = 0;//not transitioning and gr2
-            vel_gr2 = 100;
-        }
-    }
-    else {
+    if (!(vel_smoothener % 5)){//less than 4 means less smooth
     
-        if(seq.r_comp.parser.gr_pop == 0){
+        if (!seq.r_comp.parser.gr_changed){
             
-            if (vel_gr1 != 0) vel_gr1--;//fade out till 0
-            if (vel_gr2 != 100) vel_gr2++;//fade in till 100
+            if(seq.r_comp.parser.gr_pop == 0){
+         
+                vel_gr1 = 100;//not transitioning and gr1
+                vel_gr2 = 0;
+            }
+            else {
+            
+                vel_gr1 = 0;//not transitioning and gr2
+                vel_gr2 = 100;
+            }
         }
         else {
-            
-            if (vel_gr2 != 0) vel_gr2--;//fade out till 0
-            if (vel_gr1 != 100) vel_gr1++;//fade in till 100
+        
+            if(seq.r_comp.parser.gr_pop == 0){
+                
+                if (vel_gr1 != 0) vel_gr1--;//fade out till 0
+                if (vel_gr2 != 100) vel_gr2++;//fade in till 100
+            }
+            else {
+                
+                if (vel_gr2 != 0) vel_gr2--;//fade out till 0
+                if (vel_gr1 != 100) vel_gr1++;//fade in till 100
+            }
         }
     }
+    vel_smoothener++;
 }
 
 
@@ -260,7 +278,8 @@ void Blues_structure::play_drums(){
     if (cadencing && !finishing && cad_t[3]+1==t[3]) play_drums_cad();
     else if (finishing) play_drums_fin();
     //else play_drums_normal();
-    else play_egypt_cymbal();
+    play_egypt_cymbal();
+    play_drums_normal();
     
     //apo fin se rec pws pame sto grammar??? me rec pali??
     
@@ -270,6 +289,7 @@ void Blues_structure::play_drums(){
 void Blues_structure::play_egypt_cymbal(){
     
     //printf ("cymbal");
+    seq.velocity = vel_gr1;
     
     notes_v = {55, 60, 94};
     for (int i=0; i<seq.r_comp.parser.all_gr[seq.r_comp.parser.gr_pop].form_length-1; i++) multiple_bars.push_back(i);
@@ -290,6 +310,8 @@ void Blues_structure::play_egypt_cymbal(){
 
 
 void Blues_structure::play_drums_normal(){
+    
+    seq.velocity = vel_gr2;
     
     //BASS DRUM
     notes_v = {drum_notes[0]};
@@ -519,6 +541,8 @@ void Blues_structure::play_drums_finale(){
 
 
 void Blues_structure::play_bass(vector<int>& chord){
+    
+    seq.velocity = vel_gr1;
     
     vector<int> b_note;
     vector<int> pos_bass;

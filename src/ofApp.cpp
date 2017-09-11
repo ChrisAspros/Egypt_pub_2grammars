@@ -18,7 +18,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp = 200;
+    frame_sp = 50;
     
     ofSetFrameRate(frame_sp); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 

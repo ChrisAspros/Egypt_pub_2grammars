@@ -42,6 +42,7 @@ public:
     
     void update_velocities();
     int vel_gr1, vel_gr2;
+    int vel_smoothener;
     
     void update_state();
     
