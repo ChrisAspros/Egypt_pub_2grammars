@@ -19,7 +19,9 @@ public:
     void keyPressed(int key);
     void keyReleased(int key);
     
-    int frame_sp;
+    void update_speed();
+    
+    int frame_sp, frame_sp1, frame_sp2;
     
     int channel, note, velocity;
     
@@ -33,6 +35,8 @@ public:
     bool play_gr1, play_gr2;
     //bool gr_changed = 0;
     bool show_trans;
+    bool speedup, slowdown, speed_done;
+    int speeding_smoothener = 0;
     
     bool transitioning;
     bool trans_complete;

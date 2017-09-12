@@ -915,7 +915,7 @@ void G_parser::start_cycle(vector<int>& seq_t){
         cout << "form length on start_cycle: " << all_gr[gr_pop].form_length << endl;
     }
     /*
-    if (gr_changed){
+    if (!gr_changed){
         
         //curr_cycle[seq_t[3]+1].name = "S";
         //curr_cycle[0].name = "S";
@@ -924,7 +924,7 @@ void G_parser::start_cycle(vector<int>& seq_t){
         //3. sigoura otan seq_t[2]==0?
         
         reset_t = 1;
-        gr_changed = 0;
+        gr_changed = 1;
         initiate_cycle();
     }
      */

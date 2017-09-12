@@ -18,13 +18,16 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp = 50;
+    frame_sp1 = 40;
+    frame_sp2 = 60;
+    
+    frame_sp = frame_sp1;
     
     ofSetFrameRate(frame_sp); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
     blues.seq.r_comp.parser.gr_pop = 0;
-    blues.seq.r_comp.parser.gr_changed = 0;
+    blues.seq.r_comp.parser.gr_changed = 1;//true means it doesn't need to change now..
     blues.setup();
     
     //only to accept "b" (after gr1 - "a" non-pressed) or "a" (after gr2 - "b" non-pressed) and start from top
@@ -59,6 +62,8 @@ void ofApp::setup(){
 
 void ofApp::update(){
     
+    //if (!speed_done) update_speed();
+    update_speed();
     
     //sleep(10); //debug plays only 1 note with this in..(??)
     //ofSleepMillis();//??
@@ -117,6 +122,31 @@ void ofApp::update(){
     
     //glfwCreateWindow
      */
+}
+
+void ofApp::update_speed(){
+
+    //control smoothness of speeding up / slowing down
+    if (!(speeding_smoothener % 20)){
+    
+        if (speedup){
+        
+            frame_sp ++;
+            ofSetFrameRate(frame_sp);
+            if (frame_sp == frame_sp2) speedup = 0;
+        }
+        
+        if (slowdown){
+        
+            frame_sp --;
+            ofSetFrameRate(frame_sp);
+            if (frame_sp == frame_sp1) slowdown = 0;
+        }
+        
+        speeding_smoothener = 0;
+    }
+    
+    speeding_smoothener++;
 }
 
 /*
@@ -309,7 +339,11 @@ void ofApp::keyPressed(int key){
     //abrupt grammar change UI
     if (key == 'a' || key == 'A') {
         
-        if (play_gr2) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+        if (play_gr2){
+            
+            blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+            slowdown = 1;
+        }
         
         //blues.seq.r_comp.parser.gr_pop = 0;
         show_gr1 = 1;
@@ -321,7 +355,11 @@ void ofApp::keyPressed(int key){
     }
     if (key == 'b' || key == 'B') {
         
-        if (play_gr1) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+        if (play_gr1){
+        
+            blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+            speedup = 1;
+        }
         
         //blues.seq.r_comp.parser.gr_pop = 1;
         show_gr2 = 1;
