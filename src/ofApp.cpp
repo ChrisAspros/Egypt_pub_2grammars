@@ -87,6 +87,8 @@ void ofApp::update(){
     }
      */
     
+    tracking_repl_A_B();
+    
     //updating OSC on every beat only (no more needed for now..)
     if(blues.seq.only_on("beat", blues.t)){
         
@@ -293,6 +295,44 @@ void ofApp::draw(){
     
     arrow.draw();
     ofPopMatrix();
+}
+
+
+void ofApp::tracking_repl_A_B(){
+
+    //abrupt grammar change UI
+    if (OSC.room1) {
+        
+        if (play_gr2){
+            
+            blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+            slowdown = 1;
+        }
+        
+        //blues.seq.r_comp.parser.gr_pop = 0;
+        show_gr1 = 1;
+        show_gr2 = 0;
+        play_gr1 = 1;
+        play_gr2 = 0;
+        
+        show_p_e_input = 1;//to allow showing
+    }
+    if (OSC.room2) {
+        
+        if (play_gr1){
+            
+            blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+            speedup = 1;
+        }
+        
+        //blues.seq.r_comp.parser.gr_pop = 1;
+        show_gr2 = 1;
+        show_gr1 = 0;
+        play_gr2 = 1;
+        play_gr1 = 0;
+        
+        show_p_e_input = 1;
+    }
 }
 
 

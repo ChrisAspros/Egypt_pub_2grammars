@@ -20,6 +20,7 @@ public:
     void keyReleased(int key);
     
     void update_speed();
+    void tracking_repl_A_B();
     
     int frame_sp, frame_sp1, frame_sp2;
     

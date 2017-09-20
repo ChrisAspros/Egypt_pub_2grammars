@@ -165,6 +165,7 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
             sect_names_aux.push_back(sect_name);
             aug_sect_rules.push_back(aug_sect_rule());
             aug_sect_rules[j].sect_name = sect_name;
+            aug_sect_rules[j].position = S_rule.prod_times[j];
         }
     }
     
@@ -174,7 +175,7 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
         //search in general rules
         for (int j=0; j < parser.all_gr[next_gr].general_rules.size(); j++){
         
-            for (int k=0; k < parser.all_gr[next_gr].general_rules[j].left_str.size(); j++){
+            for (int k=0; k < parser.all_gr[next_gr].general_rules[j].left_str.size(); k++){
             
                 if (sect_names_aux[i] == parser.all_gr[next_gr].general_rules[j].left_str[k]){
                 
@@ -200,13 +201,35 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     initiate_aux_cycle();//size of longest form of the grammars
     
     rewrite_funcs();//curr_gr
-    //now we have parser.func_chunkcs (vector<elem_ID>)
+    //now we have parser.func_chunks (vector<elem_ID>)
+        //curr_func_chunks & next_func_chunks
     
-    //compare next func chunks to next func chunks..
+    //check if func chunks OK
+        //make them multiple productions of FUNCTIONS in gr2 (for testing..)
+    
+    //work from func chuncs - no lines??
+    
+    //compare next func chunks to curr func chunks till goal
+    //keep N best
+    //check scores (all, regardless of rewrite probability for now..) of next_func_chunks with history
+        //e.g. for another section..
+        //this is simpler cuze history is static..
+    //keep the one best FUNCs combo (curr_gr - next_gr)
+    //place Sect* on g_p
+    //mix transition FUNCs in time
+    //manage cycle placemebt of Sect after transition..
+    
+    //make amendments for 'T' instead of 'A'-'B'
+    
+        //(NOT FOR NOW)for looking at the future just make curr func chunks get further than g_p in the first place..
+    
     //maybe 1 twice with different input??
-    construct_next_lines();
     
     construct_curr_lines();
+    //construct_next_lines();
+    compare_t_g();
+    
+    
     
     //THEN COMPARE LINES BASED ON HARMONIC RHYTHMS...
     
@@ -226,7 +249,7 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     //decide best point - place best sect at goal point.. (Sect rules have been stored!!)
 
     
-    //nmz de xreiazete - aplws 8a koitaei parapisw an xreiazetai extra length..
+    //nmz de xreiazetai - aplws 8a koitaei parapisw an xreiazetai extra length..
     for (int i=0; aug_sect_rules.size(); i++){
     
         //if sect length is enough
@@ -341,6 +364,77 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
 }
 
 
+void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
+    
+
+    //get unrewritten funcs area (distance) t_g, i.e. un_dist
+    cout << endl << "un_dist: " << un_dist << endl;
+    
+    //get all sufficient sized (if need, combine) sect tails
+        //from sect_rules find their position and work backwards..
+    
+    //think if lines are necessary..
+    
+    int enough_length = 0;
+    
+    for (int i = 0; i < curr_func_chunks.size(); i++){
+    
+        
+    }
+    
+    /*
+    for (int i = 0; i < aug_sect_rules.size(); i++){
+    
+        START FROM HERE!!
+        //in C++ is it possible to see if that time exists for func_chunks??
+        
+        add rules for as long as combined r_len is long enough..
+            
+        int aux_chunk_size;
+        while (aux_chunk_size < un_dist){
+            
+            add next previous chunk..
+            
+            aux_chunk_size = aux_chunk_size + next_func_chunks[i].size();
+        }
+        
+        //calculate backwards from g_p - un-dist
+            //when time found, then combine/keep for comparision all func chuncs till sect/g_p
+        
+        for (int i =  ;1;){
+        
+            
+        }
+        
+        //if that bar
+        
+        //if not enough get another, a.s.o.
+        
+        int func_till_sect = aug_sect_rules[(i+1) % aug_sect_rules.size()].position - ;
+        
+        enough_length = enough_length + func_till_sect;
+        
+        if (enough_length >= un_dist) break;
+        if (curr_func_chunk[j].size() >= un_dist) keep chunk set..;
+    }
+    */
+    
+    //calculate number of func_chunks needed to cover distance (un_dist)
+    
+    //Sect
+    
+    //get score of all possibilities (next_gr vs curr_gr)
+        //some how keep track of it, or simply keep the best N couples all at once..
+    //
+ 
+}
+
+
+void Rule_comparer::compare_hist(){//history with N best (next_gr side of the pair)
+    
+}
+
+
 void Rule_comparer::rewrite_funcs(){
 
     rewrite_curr_gr_t_g();//till funcs till g_p (goal point)
@@ -414,6 +508,14 @@ void Rule_comparer::rewrite_curr_gr_t_g(){
             cout << endl << "g_p in wh: " << g_p;
             cout << endl << "curr_bar in while: " << curr_bar << endl;
             cout << "j in while: " << j << endl;
+        }
+        
+        //only for the first time, to get the distance of unrewritten funcs to g_p
+        if (!un_dist_found){
+        
+            un_dist = dist - j;
+            curr_bar_undist = curr_bar;
+            un_dist_found = 1;
         }
         
         
@@ -612,6 +714,48 @@ void Rule_comparer::construct_next_lines(){
 void Rule_comparer::construct_curr_lines(){
 
     //next_func_chunks
+    //vres shmeio arxhs un_dist
+    
+    curr_func_lines.push_back(vector<G_parser::elem_ID>());//first_line
+    
+    for (int i=0; i < un_dist; i++){
+    
+        int same_time_counter = 0;
+        
+        for (int j=0; j < curr_func_chunks.size(); j++){
+            
+            if (curr_func_chunks[j][0].time[1] == curr_bar_undist) {
+            
+                same_time_counter ++;
+                //curr_func_lines.push_back(vector<G_parser::elem_ID>());
+                
+                int aux_size = curr_func_lines.size();
+                if (aux_size == 0) aux_size = 1;
+                
+                for (int l=0; l < aux_size; l++){
+                
+                    if (same_time_counter > 0) curr_func_lines.push_back(vector<G_parser::elem_ID>());//!ENA panw?
+                        //DYO panw??
+                    //copy the previous?? - what with the first iteration (no previous..)
+                    
+                    for (int k=0; k < curr_func_chunks[j].size(); k++){
+                        
+                        //curr_func_lines[-1].push_back(curr_func_chunks[j][k]);
+                        curr_func_lines[l].push_back(curr_func_chunks[j][k]);
+                    }
+                    
+                    //curr_func_lines.push_back(vector<G_parser::elem_ID>());
+                }
+                //curr_func_lines.push_back(vector<G_parser::elem_ID>());
+            }
+            //else break; //???
+            
+        }
+        
+        curr_bar_undist = (curr_bar_undist + 1) % parser.all_gr[curr_gr].form_length;
+    }
+    
+    //make all possible curr_lines to g_p
 }
 
 
