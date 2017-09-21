@@ -42,7 +42,7 @@ public:
     
     //CONTROL MESSAGES
     void controls(int ch, int cntr, int val);
-    
+    int velocity = 100;
     
     //CHORDS
     void play_chord_sequence(vector<int>& t);//when, which chord etc..

@@ -64,10 +64,29 @@ DOCUMENTATION
 rule: S -> 1.0 SectA(1) SectB(9) SectA(17) SectC(25) //SectC(16) SectA(24) //SectB(2) //SectA(8) SectC(8) //
 		:end_rule
 
-rule: SectA -> 1.0 decA(1) decA(5) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
+
+//rule: SectA -> 1.0 decA(1) decA(5) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
 			:end_rule
 
-rule: decA -> 1.0 T SD D T :end_rule
+//rule: decA -> 1.0 T SD D T :end_rule
+
+
+
+for curr_lines...
+rule: SectA -> 1.0 decA(1) decA1(5) decA2(7) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
+			:end_rule
+
+rule: decA -> 0.9 T SD D T //:end_rule
+			-> 0.2 D T D T :end_rule
+
+rule: decA1 -> 0.9 T SD
+			-> 0.1 SD T :end_rule
+
+rule: decA2 -> 0.8 T T
+			-> 0.1 SD SD
+			-> 0.1 D D :end_rule
+
+
 
 rule: T -> 1.0 I :end_rule
 rule: SD -> 1.0 bII :end_rule
@@ -161,8 +180,21 @@ rule: SectA -> 1.0 decT(1) decSD(3) decCad(5) decT(7) :end_rule
 //rule: SectA2 -> 1.0 decT(1) decDD(3) decCad(5) decT2(7) :end_rule
 rule: SectB -> 1.0 decSD(1) decSD(5) decCad(7) :end_rule
 
-rule: decT -> 1.0 T T :end_rule
+
+//rule: decT -> 1.0 T T :end_rule
+rule: decT -> 0.5 T T //only for testing instead //decT is placed 6 times in the form so 
+//for 1 choice we have 1 line in total, but for 3 choices we have 3^6 = 729 lines.. (next_func_lines)
+	  		-> 0.3 D D 
+	  		-> 0.2 D SD 
+	  		:end_rule
+
 rule: decSD -> 1.0 SD SD :end_rule
+//rule: decSD -> 0.5 SD SD //only for testing instead
+	  		-> 0.3 T SD 
+	  		-> 0.2 SD T 
+	  		:end_rule
+
+
 rule: decSD_17 -> 1.0 SD SD SD SD :end_rule
 rule: decCad -> 1.0 SD D :end_rule
 

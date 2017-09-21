@@ -11,20 +11,26 @@ void ofApp::setup(){
     //this is from the merged branch
     
     //ofSetWindowShape(575, 800);
-    ofSetWindowPosition(708, 0);
+    ofSetWindowPosition(1700, -300);//(708, 0);
+    
+    //run_ID = rand();;
+    tracked_randomised = 0;//0 is tracked, is randomised 1
     
     //midiOut.openPort(0);
     
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp = 200;
+    frame_sp1 = 40;
+    frame_sp2 = 60;
+    
+    frame_sp = frame_sp1;
     
     ofSetFrameRate(frame_sp); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
     blues.seq.r_comp.parser.gr_pop = 0;
-    blues.seq.r_comp.parser.gr_changed = 0;
+    blues.seq.r_comp.parser.gr_changed = 1;//true means it doesn't need to change now..
     blues.setup();
     
     //only to accept "b" (after gr1 - "a" non-pressed) or "a" (after gr2 - "b" non-pressed) and start from top
@@ -59,6 +65,8 @@ void ofApp::setup(){
 
 void ofApp::update(){
     
+    //if (!speed_done) update_speed();
+    update_speed();
     
     //sleep(10); //debug plays only 1 note with this in..(??)
     //ofSleepMillis();//??
@@ -82,10 +90,26 @@ void ofApp::update(){
     }
      */
     
+    if (!tracked_randomised){//0 is tracked, is randomised 1)
+    
+        /*
+        tracking_repl_A_B();
+        if(blues.seq.only_on("beat", blues.t)) ;OSC.update();
+         */
+    }
+    else {
+    
+        //clock_input();
+    }
+    
+    
+    
+    
     //updating OSC on every beat only (no more needed for now..)
     if(blues.seq.only_on("beat", blues.t)){
         
-        OSC.update();
+        //OSC.update();
+        logger.update();
         blues.ending = OSC._ending;
         blues.goal_reached = OSC._goal_reached;
         
@@ -117,6 +141,31 @@ void ofApp::update(){
     
     //glfwCreateWindow
      */
+}
+
+void ofApp::update_speed(){
+
+    //control smoothness of speeding up / slowing down
+    if (!(speeding_smoothener % 20)){
+    
+        if (speedup){
+        
+            frame_sp ++;
+            ofSetFrameRate(frame_sp);
+            if (frame_sp == frame_sp2) speedup = 0;
+        }
+        
+        if (slowdown){
+        
+            frame_sp --;
+            ofSetFrameRate(frame_sp);
+            if (frame_sp == frame_sp1) slowdown = 0;
+        }
+        
+        speeding_smoothener = 0;
+    }
+    
+    speeding_smoothener++;
 }
 
 /*
@@ -266,6 +315,44 @@ void ofApp::draw(){
 }
 
 
+void ofApp::tracking_repl_A_B(){
+
+    //abrupt grammar change UI
+    if (OSC.room1) {
+        
+        if (play_gr2){
+            
+            blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+            slowdown = 1;
+        }
+        
+        //blues.seq.r_comp.parser.gr_pop = 0;
+        show_gr1 = 1;
+        show_gr2 = 0;
+        play_gr1 = 1;
+        play_gr2 = 0;
+        
+        show_p_e_input = 1;//to allow showing
+    }
+    if (OSC.room2) {
+        
+        if (play_gr1){
+            
+            blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+            speedup = 1;
+        }
+        
+        //blues.seq.r_comp.parser.gr_pop = 1;
+        show_gr2 = 1;
+        show_gr1 = 0;
+        play_gr2 = 1;
+        play_gr1 = 0;
+        
+        show_p_e_input = 1;
+    }
+}
+
+
 void ofApp::keyPressed(int key){
 
     //transition and changes UI
@@ -309,7 +396,11 @@ void ofApp::keyPressed(int key){
     //abrupt grammar change UI
     if (key == 'a' || key == 'A') {
         
-        if (play_gr2) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+        if (play_gr2){
+            
+            blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+            slowdown = 1;
+        }
         
         //blues.seq.r_comp.parser.gr_pop = 0;
         show_gr1 = 1;
@@ -321,7 +412,11 @@ void ofApp::keyPressed(int key){
     }
     if (key == 'b' || key == 'B') {
         
-        if (play_gr1) blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+        if (play_gr1){
+        
+            blues.seq.r_comp.parser.gr_changed = !blues.seq.r_comp.parser.gr_changed;
+            speedup = 1;
+        }
         
         //blues.seq.r_comp.parser.gr_pop = 1;
         show_gr2 = 1;
@@ -358,6 +453,89 @@ void ofApp::keyReleased(int key){
         frame_sp = 50;
         ofSetFrameRate(frame_sp);
     }
+}
+
+
+void ofApp::pass_log_values(){
+
+    //in a paper write what we want for this and the next study run
+        //now bad transitions (unintelligent), next getter, intelligent
+        //now repetitive (within a style?)
+        //next 
+    //che to buy these books - tell Dawn to buy..
+    
+    //in a questionnaire..!!
+        //think evaluation write-up, what answers do we need for the questionnaire to be able to tell us..
+    //this has 2 styles.. and transitions
+        //how abrupt is it, and why??
+        //on a scale 1 to 10 is this abrupt..
+        //control orchestration
+            //we watn the grammar to move from one to the other..
+            //similarity of orchestrations..
+        //melodic..
+    //all of them find it repetitive but they don't see it as a bad thing
+    //
+    //to what extent is repetition part of a style!!!!
+    //styles that are closely to each other...!!!
+        //different but not so different.. so that we don't get as much abruptnes..
+    //
+    
+    //check what a nice python log is..
+    
+    /*
+    //clock (in logger)
+        //how long does transition/recover take etc..
+        //descritise time in some way..
+            //assume
+     
+        start
+        generate ID
+            compare for uniqueness
+            appear screen
+            goes in questionnaiere
+        get current time -> T (baseline time)
+        start logging
+            (use prepared logger class?)
+        find difference between times.. current time - actual time etc..
+        stop button
+        commit the log.. (use 'touch' to say one psecific time..)
+        have a button for deleting the log..
+     
+     
+    keep MIDI file, AUDIO file, log file..
+     
+    //run_ID (in logger)
+     
+     
+    //tracked VS randomised
+    logger.tracked_randomised = tracked_randomised; //0 for tracked 1 for randomised
+    
+    //tracking state
+    logger.room1 = OSC.room1;
+    logger.room2 = OSC.room2;
+    logger.new_read = OSC.new_read;
+    logger.previous_read = OSC.previous_read;
+    
+    //transition stage
+    logger.transitioning = transitioning;
+    logger.transition_entered = transition_entered;
+    logger.transition_complete = transition_complete;
+    logger.curr_gr = r_comp.curr_gr;
+    logger.next_gr = r_comp.next_gr;
+    
+    //music decisions
+        //rules - rewrites
+    
+    logger.curr_func_chunks = r_comp.curr_func_chunks;
+    logger.next_func_chunks = r_comp.next_func_chunks;
+    
+    //scores
+    //choices (from current andnext gr)
+    
+    //context awareness
+    
+    //final cycle choices.. - states!!
+     */
 }
 
 

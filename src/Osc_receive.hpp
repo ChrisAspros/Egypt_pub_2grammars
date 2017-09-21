@@ -21,15 +21,25 @@
 class Osc_receive{
 
 public:
+    
     void setup();
     void update();
+    void get_beacons();
+    void update_transition_state();
 
     ofxOscReceiver receive;
     //bool _ending = true;//, goal_reched;
     bool _ending, _goal_reached;
     float oscX = 0.0;
     float oscY = 0.0;
-
+    
+    vector<string> beacon_list; //vector<STRING> ??
+    vector<string> previous_read;
+    vector<string> new_read;
+    string beacon;
+    
+    vector<string> b_r1, b_r2;//beacons room 1 and 2
+    bool room1, room2, transitioning;
 };
 
 #endif /* Osc_receive_hpp */

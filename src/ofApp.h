@@ -8,6 +8,7 @@
 #include "Blues_structure.h"//??
 //#include "Sequencer.h"
 #include "Osc_receive.hpp"
+#include "Logger.hpp"
 #include "Grammar_parser.h"
 
 class ofApp : public ofBaseApp{
@@ -19,7 +20,12 @@ public:
     void keyPressed(int key);
     void keyReleased(int key);
     
-    int frame_sp;
+    void update_speed();
+    void tracking_repl_A_B();
+    
+    void pass_log_values();
+    
+    int frame_sp, frame_sp1, frame_sp2;
     
     int channel, note, velocity;
     
@@ -33,6 +39,8 @@ public:
     bool play_gr1, play_gr2;
     //bool gr_changed = 0;
     bool show_trans;
+    bool speedup, slowdown, speed_done;
+    int speeding_smoothener = 0;
     
     bool transitioning;
     bool trans_complete;
@@ -40,10 +48,16 @@ public:
     string stage_num;
     int trans_stage;
     
+    
+    //for logging
+    int run_ID;
+    bool tracked_randomised;//0 is tracked, is randomised 1
+    
 private:
     //Sequencer seq;
     Blues_structure blues;
     Osc_receive OSC;
+    Logger logger;
     //Sequencer seq;
     //G_parser par;
     

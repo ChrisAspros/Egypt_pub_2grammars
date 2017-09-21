@@ -27,15 +27,35 @@ void Blues_structure::setup(){
     cadencing = false;
     finishing = false;
     
+    //gr1 channels
     ch_chords = 1;
-    /*swing drums: *///ch_drums = 2;//bass drum, snare, tom1 (floor), tom2, tom 3, high-hat(closed?), ride, crash
-    ch_bass = 3;
+    /*swing drums: *///ch_drums = 2;//bass drum, snare, tom1 (floor), tom2, tom 3, high-hat(open?), ride, crash
+    drum_notes = {36, 38, 43, 45, 47, 48, 51, 49};//respectively..
     ch_egypt_cymbal = 4;
+    ch_egypt_mel = 3;
     
-    drum_notes = {36, 38, 40, 41, 43, 45, 47, 48};//respectively..
+    //gr2 channels
+    ch_jazz_organ = 11;
+    ch_drums = 12;
+    ch_bass = 13;//train
+    ch_train_mel = 14;
+    
+    
     
     QN_dur = seq.QN_subdivision;//quarternote duration in its subdivisions
     
+    if (seq.r_comp.parser.gr_pop==0){
+    
+        vel_gr1 = 100;
+        vel_gr2 = 0;
+    }
+    else {
+        
+        vel_gr1 = 0;
+        vel_gr2 = 100;
+    }
+
+    //vel_gr2 = 100;
     controller_counter = 0;
     upwards = 1;
     //scan_file();
@@ -55,6 +75,7 @@ void Blues_structure::update(){
     //cout << elapsed_mins << endl;
     
     //trying to set up volume automations for DAW
+    /*
     if (controller_counter == 0) upwards = 1;
     if (controller_counter == 127) upwards = 0;
     
@@ -62,6 +83,9 @@ void Blues_structure::update(){
     else controller_counter -= 1;
     //seq.midiOut::sendControlMessage(1, 1, controller_counter);
     seq.controls(1, 1, controller_counter);
+     */
+    
+    //seq.velocity = (seq.velocity + 10) % 127;
     
     //cout << "controller counter: " << controller_counter << endl;
     
@@ -77,7 +101,7 @@ void Blues_structure::update(){
     seq.update();//only for cycle_len for now..
     t = seq.timer();
     
-     
+    
     if (seq.only_on("beat", t)){
      
         //cout << "beat: " << t[2] << endl;
@@ -99,7 +123,9 @@ void Blues_structure::update(){
         seq.r_comp.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.r_comp.parser.update_cycle();
         
         //RE-STARTING CYCLE (disrupting from top for new grammar)
-        if (seq.r_comp.parser.gr_changed){
+        if (!seq.r_comp.parser.gr_changed){
+            
+            //automate_vel = 1;
             
             //check if bar is an end_time
             vector<int> e_t = seq.r_comp.parser.all_gr[seq.r_comp.parser.gr_pop].end_times;
@@ -113,7 +139,8 @@ void Blues_structure::update(){
                 t[3] = 0;
                 
                 seq.r_comp.parser.gr_pop = !seq.r_comp.parser.gr_pop;
-                seq.r_comp.parser.gr_changed = 0;
+                
+                seq.r_comp.parser.gr_changed = 1;
             }
         }
         
@@ -121,11 +148,23 @@ void Blues_structure::update(){
         if(seq.r_comp.parser.transitioning) seq.r_comp.combine_rules(t);
         else seq.r_comp.parser.find_rule(t);
         
+        if (seq.r_comp.trans_complete) seq.r_comp.un_dist_found = 0;//to get unrewritten functs till g_p only once in a transition..
+        
         //if(!seq.r_comp.parser.transitioning || transition_complete) seq.r_comp.parser.find_rule(t);
         //else seq.r_comp.combine_rules(t);
         string terminal = seq.r_comp.parser.return_terminal(t);
         chord = terminal_to_midi(terminal);
     }
+    
+    //if (automate_vel) {
+        
+        //fade_to_gr1 = seq.r_comp.parser.gr_pop;//fade to the opposite of the currect grammar
+        
+    update_velocities();
+    //}
+    
+    //outside the if only on bar to have smoother vel automation
+    //automate based on goal distance in actual version fo the algorithm
     
     /*
     update_state();
@@ -149,6 +188,76 @@ void Blues_structure::update(){
         if (fin_t[3]==t[3] && fin_t[4]==t[4]) play_finale(chord);//play only for one bar more and only on current cycle
     }
     else play_main(chord);
+}
+
+
+void Blues_structure::update_velocities(){
+
+    //bool vel_aut_complete;//velocity automation complete
+    //bool fade_to_gr1;
+    /*
+    if (vel_gr1 <= 100 || vel_gr1 >= 0){
+    
+        fade_to_gr1 = !fade_to_gr1;
+        //automate_vel = 0;
+    }
+    //if (vel_gr1 >= 0) fade_to_gr1 = 1;
+     */
+     
+    if (!(vel_smoothener % 5)){//less than 5 means less smooth
+        
+        //this version may be useful for transition-based step-by-step automation control
+            //but for 'A' - 'B' version it does abrupt step on end time (especially if 'A/B' near end time..)
+        if (seq.r_comp.parser.gr_changed){
+            
+            if(seq.r_comp.parser.gr_pop == 0){
+         
+                vel_gr1 = 100;//not transitioning and gr1
+                vel_gr2 = 0;
+            }
+            else {
+            
+                vel_gr1 = 0;//not transitioning and gr2
+                vel_gr2 = 100;
+            }
+        }
+        else {
+        
+            if(seq.r_comp.parser.gr_pop == 0){
+                
+                if (vel_gr1 != 0) vel_gr1--;//fade out till 0
+                if (vel_gr2 != 100) vel_gr2++;//fade in till 100
+            }
+            else {
+                
+                if (vel_gr2 != 0) vel_gr2--;//fade out till 0
+                if (vel_gr1 != 100) vel_gr1++;//fade in till 100
+            }
+        }
+        
+        /*
+         if (!fade_to_gr1){
+         
+         vel_gr1--;//fade out till 0
+         vel_gr2++;//fade in till 100
+         //vel_aut_complete = 0;
+         
+         if (vel_gr1 == 0 || vel_gr2 == 100) automate_vel = 0;
+         }
+         else {
+         
+         vel_gr2--;//fade out till 0
+         vel_gr1++;//fade in till 100
+         //vel_aut_complete = 0;
+         
+         if (vel_gr2 == 0 || (vel_gr1 == 100)) automate_vel = 0;
+         }
+         */
+        
+        vel_smoothener = 0;
+    }
+    
+    vel_smoothener++;
 }
 
 
@@ -179,7 +288,9 @@ void Blues_structure::update_state(){
 void Blues_structure::play_main(vector<int>& chord){
     
     play_chords(chord);
-    play_bass(chord);
+    play_train_bass(chord);
+    play_train_mel(chord);
+    play_egypt_mel(chord);
     play_drums();
     
     if (elapsed_mins == 5){
@@ -218,7 +329,8 @@ void Blues_structure::play_drums(){
     if (cadencing && !finishing && cad_t[3]+1==t[3]) play_drums_cad();
     else if (finishing) play_drums_fin();
     //else play_drums_normal();
-    else play_egypt_cymbal();
+    play_egypt_cymbal();
+    play_drums_normal();
     
     //apo fin se rec pws pame sto grammar??? me rec pali??
     
@@ -228,6 +340,7 @@ void Blues_structure::play_drums(){
 void Blues_structure::play_egypt_cymbal(){
     
     //printf ("cymbal");
+    seq.velocity = vel_gr1;
     
     notes_v = {55, 60, 94};
     for (int i=0; i<seq.r_comp.parser.all_gr[seq.r_comp.parser.gr_pop].form_length-1; i++) multiple_bars.push_back(i);
@@ -248,6 +361,8 @@ void Blues_structure::play_egypt_cymbal(){
 
 
 void Blues_structure::play_drums_normal(){
+    
+    seq.velocity = vel_gr2;
     
     //BASS DRUM
     notes_v = {drum_notes[0]};
@@ -317,11 +432,12 @@ void Blues_structure::play_drums_normal(){
      
     //RIDE
     notes_v = {drum_notes[6]};//{drum_notes[0]};
-    multiple_bars = {0, 1, 2, 4, 5, 6, 8, 9, 10};//to avoid playing when e.g. snare is too busy (drummer had only two arms..)
+    for (int i=0; i < seq.r_comp.parser.all_gr[1].form_length; i++) multiple_bars.push_back(i);
+    //multiple_bars = {0, 1, 2, 4, 5, 6, 8, 9, 10};//to avoid playing when e.g. snare is too busy (drummer had only two arms..)
     
     for (int i=0; i<multiple_bars.size(); i++){
         
-        pos_drums = {0, 0, t[2], multiple_bars[i]};
+        pos_drums = {0, 0, t[2], multiple_bars[i]};//if all bars then t[3] instead of multiple bars..
         seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
         pos_drums = {0, 2, t[2], multiple_bars[i]};
         seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
@@ -475,8 +591,10 @@ void Blues_structure::play_drums_finale(){
     seq.time_placement(t, notes_v, pos_drums, QN_dur, ch_drums);
 }
 
-
-void Blues_structure::play_bass(vector<int>& chord){
+void Blues_structure::play_egypt_mel(vector<int>& chord){
+    
+    seq.velocity = vel_gr1;
+    //seq.velocity = 100;
     
     vector<int> b_note;
     vector<int> pos_bass;
@@ -487,18 +605,223 @@ void Blues_structure::play_bass(vector<int>& chord){
     
     if (chord.size()==4) bass_patt = {0, 1, 2, 1, 3, 2, 1, 2};
     else if (chord.size()==3) bass_patt = {0, 1, 2, 1, 0, 2, 1, 2};
-        
+    
     if (seq.only_on("beat", t)){
         
         b_note = {chord[bass_patt[t[2]*2]]};
         pos_bass = {0, 0, t[2], t[3]};
-        seq.time_placement(t, b_note, pos_bass, dur_bass, ch_bass);
+        seq.time_placement(t, b_note, pos_bass, dur_bass, ch_egypt_mel);
         b_note = {chord[bass_patt[t[2]*2+1]]};
         pos_bass = {0, 2, t[2], t[3]};
-        seq.time_placement(t, b_note, pos_bass, dur_bass, ch_bass);
+        seq.time_placement(t, b_note, pos_bass, dur_bass, ch_egypt_mel);
     }
 }
 
+
+void Blues_structure::play_train_bass(vector<int>& chord){
+    
+    seq.velocity = vel_gr2;
+    //seq.velocity = 100;
+    
+    vector<int> b_note;
+    vector<int> pos_bass;
+    int dur_bass = 1;//QN_dur;
+    
+    vector<int> bass_patt;
+    int count = 0;
+    
+    if (chord.size()==4) bass_patt = {0, 1, 2, 1, 3, 2, 1, 2};
+    else if (chord.size()==3) bass_patt = {0, 1, 2, 1, 0, 2, 1, 2};
+        
+    //if (seq.only_on("beat", t)){
+        
+        b_note = {chord[bass_patt[t[2]*2]] - 12};//-12 for an octave down..
+        pos_bass = {0, 0, t[2], t[3]};
+        seq.time_placement(t, b_note, pos_bass, dur_bass, ch_bass);
+    
+        b_note = {chord[bass_patt[t[2]*2+1]] - 12};
+        pos_bass = {0, 2, t[2], t[3]};
+        seq.time_placement(t, b_note, pos_bass, dur_bass, ch_bass);
+         //*/
+    //}
+}
+
+void Blues_structure::play_train_mel(vector<int>& chord){
+    
+    seq.velocity = vel_gr2;
+    //seq.velocity = 100;
+    
+    vector<int> m_note;
+    vector<int> pos_mel;
+    int dur_mel;//
+    
+    //Melody of A
+    for (int i=0; i < seq.r_comp.parser.all_gr[1].form_length; i+=8){
+
+        //play B mel
+        if (i==16){
+
+            //bar 16
+            m_note = {69};
+            pos_mel = {0, 0, 0, i};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {72};
+            pos_mel = {0, 2, 0, i};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 10, ch_train_mel);
+            
+            //bar 17
+            m_note = {76};
+            pos_mel = {0, 0, 0, i+1};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {65};
+            pos_mel = {0, 2, 0, i+1};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 4, ch_train_mel);
+            m_note = {69};
+            pos_mel = {0, 0, 2, i+1};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {72};
+            pos_mel = {0, 0, 3, i+1};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+
+            //bar 18 - 19
+            m_note = {76};
+            pos_mel = {0, 0, 0, i+2};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {69};
+            pos_mel = {0, 2, 0, i+2};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 21, ch_train_mel);
+
+            //bar 20
+            m_note = {69};
+            pos_mel = {0, 0, 0, i+4};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {72};
+            pos_mel = {0, 2, 0, i+4};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 10, ch_train_mel);
+            
+            //bar 21
+            m_note = {76};
+            pos_mel = {0, 0, 0, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {66};
+            pos_mel = {0, 2, 0, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 4, ch_train_mel);
+            m_note = {69};
+            pos_mel = {0, 0, 2, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {72};
+            pos_mel = {0, 0, 3, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            
+            //bar 22
+            m_note = {76};
+            pos_mel = {0, 0, 0, i+6};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {69};
+            pos_mel = {0, 2, 0, i+6};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 15, ch_train_mel);
+
+            //bar 23
+            m_note = {68};
+            pos_mel = {0, 0, 2, i+7};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 6, ch_train_mel);
+        }
+        else {
+
+            //bars 1-2
+            m_note = {55 + 12};
+            pos_mel = {0, 0, 0, i};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 13, ch_train_mel);
+            m_note = {64 + 12};
+            pos_mel = {0, 1, 0, i+1};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 5, ch_train_mel);
+            m_note = {55 + 12};
+            pos_mel = {0, 0, 2, i+1};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {60 + 12};
+            pos_mel = {0, 0, 3, i+1};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            
+            //bars 3-4
+            m_note = {76};
+            pos_mel = {0, 0, 0, i+2};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {68};
+            pos_mel = {0, 2, 0, i+2};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 20, ch_train_mel);
+            
+            //bars 5-8
+            m_note = {69};
+            pos_mel = {0, 0, 0, i+4};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 11, ch_train_mel);
+            m_note = {69};
+            pos_mel = {0, 0, 0, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {70};
+            pos_mel = {0, 2, 0, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 1, ch_train_mel);
+            m_note = {71};
+            pos_mel = {0, 0, 1, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {76};
+            pos_mel = {0, 2, 1, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 1, ch_train_mel);
+            m_note = {67};
+            pos_mel = {0, 0, 2, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {66};
+            pos_mel = {0, 2, 2, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 1, ch_train_mel);
+            m_note = {65};
+            pos_mel = {0, 0, 3, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {73};
+            pos_mel = {0, 2, 3, i+5};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 1, ch_train_mel);
+            m_note = {72};
+            pos_mel = {0, 0, 0, i+6};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 2, ch_train_mel);
+            m_note = {64};
+            pos_mel = {0, 2, 0, i+6};//tick, semiq, beat, bar
+            seq.time_placement(t, m_note, pos_mel, 20, ch_train_mel);
+
+        
+        }
+    }
+    
+    //automation - itarative melody management try..
+     /*
+     vector<int> pitches_A = {67, 76, 67, 72, 76, 68,c69, 69, 70, 71, 76, 67, 66, 65, 73, 72, 67};
+     vector<int> pitches_B;
+     vector<int> durs_A = {14, 4, 3, 3, 2, 22, 12, 2, 1, 2, 1, 2, 1, 2, 1, 2, 22};//use this as full duration for melody itrative building AND manually subtract duration where necessary
+     vector<int> durs_B;
+     
+     int tick, semiq, beat, bar;//need to be global in class?s
+     for (int j=0; j < pitches_A.size(); j++){
+     
+     //filter durations
+     
+     m_note = {pitches_A[j]};
+     if (j==0) {
+     
+     tick=0;
+     semiq=0;
+     beat=0;
+     bar=0;
+     }
+     
+     else {
+     
+     durs_A
+     
+     pos_mel = {0, 0, 0, i};//tick, semiq, beat, bar
+     seq.time_placement(t, m_note, pos_mel, 12, ch_train_mel);
+     }
+     }
+     */
+    //*/
+    //}
+}
 
 void Blues_structure::play_bass_fin(vector<int>& chord){
 }
@@ -528,9 +851,14 @@ void Blues_structure::play_bass_finale(vector<int>& chord){
 
 void Blues_structure::play_chords(vector<int>& chord){
     
+    seq.velocity = vel_gr1;
+    
     vector<int> pos_chord = {0, 0, 0, t[3]};
     seq.time_placement(t, chord, pos_chord, QN_dur*4, ch_chords);
     //can't' accept get_chord() by reference
+    
+    seq.velocity = vel_gr2;
+    seq.time_placement(t, chord, pos_chord, QN_dur*4, ch_jazz_organ);
 }
 
 

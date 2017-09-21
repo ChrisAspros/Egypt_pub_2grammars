@@ -40,6 +40,12 @@ public:
     void setup();
     void update();
     
+    void update_velocities();
+    int vel_gr1, vel_gr2;
+    int vel_smoothener;
+    //bool automate_vel = 0;
+    //bool fade_to_gr1 = 0;
+    
     void update_state();
     
     void play_drums();
@@ -49,8 +55,10 @@ public:
     void play_drums_finale();
     
     void play_egypt_cymbal();
+    void play_egypt_mel(vector<int>& chord);
     
-    void play_bass(vector<int>& chord);
+    void play_train_bass(vector<int>& chord);
+    void play_train_mel(vector<int>& chord);
     void play_bass_fin(vector<int>& chord);
     void play_bass_finale(vector<int>& chord);
     
@@ -88,10 +96,10 @@ public:
     
     int QN_dur;
     
-    int ch_chords;
-    int ch_drums;
+    int ch_chords, ch_jazz_organ;
+    int ch_drums, ch_train_mel;
     int ch_bass;
-    int ch_egypt_cymbal;
+    int ch_egypt_cymbal, ch_egypt_mel;
     
     vector<int> chord;
     vector<int> drum_notes;
