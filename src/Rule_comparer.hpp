@@ -61,8 +61,7 @@ public:
     void compare_t_g();
     void compare_hist();
     
-    void construct_curr_lines();
-    void construct_next_lines();
+    vector<vector<G_parser::elem_ID>> construct_lines(vector<vector<G_parser::elem_ID>> func_chunks, int gr_num, int length, int init_curr_bar);
     vector<vector<G_parser::elem_ID>> curr_func_lines;
     //vector<G_parser::elem_ID> curr_func_lines;
     vector<vector<G_parser::elem_ID>> next_func_lines;

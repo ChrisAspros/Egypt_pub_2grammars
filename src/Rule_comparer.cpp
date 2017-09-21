@@ -225,8 +225,11 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     
     //maybe 1 twice with different input??
     
-    construct_curr_lines();
-    //construct_next_lines();
+    //to get scores, isolate the next_func lines portions I need..
+    curr_func_lines = construct_lines (curr_func_chunks, curr_gr, un_dist, curr_bar_undist);
+    next_func_lines = construct_lines (next_func_chunks, next_gr, parser.all_gr[next_gr].form_length, 0);
+    
+    
     compare_t_g();
     
     
@@ -236,7 +239,6 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     //then add existing funcs to the game..
         //correlation of history with most likely of each sect's tail..
             //variable history length..
-    
     
     //test fitness
     //in 2 cycles (curr_gr & next_gr)
@@ -608,155 +610,68 @@ void Rule_comparer::initiate_aux_cycle(){
     parser.aux_cycle = parser.curr_cycle;
 }
 
-//make all linear combinations for next_gr
-//
-
-//for curr_lines
-        //for (int k=0; k < dist; k++){
-    //watch your k == curr_bar
-    //watch your dist == g_p - curr_bar
 
 
-//giati etsi - 8a volepsei?
 //einai form-aware mexri edw?? - context-aware
-//mhpws na ftiaxnontai oi grammes oloklhres apo chunk phase??
 //check paper suggestion.. - will work??
     //exei nohma to expansion?? EINAI form-aware??
 //go through method
 //implement algor thought
 
-void Rule_comparer::construct_next_lines(){
-    //constructing all possible lines of next_gr till goal..
+//does it cover 2 vs 4-bar long phrases? -  does it include all?
+
+/*
+ merge..
+gitsave
+get to construct these in the beginning?
+get score
+mix in r/t only this..
+ expand score to past
+ expand score to future
+ mix in r/t
+construct func_lines on start? beginning?
+*/
+
+//make dynamic
+vector<vector<G_parser::elem_ID>> Rule_comparer::construct_lines(vector<vector<G_parser::elem_ID>> func_chunks, int gr_num, int length, int init_curr_bar){//make all possible curr/next_lines
     
-    int l_c;//line count
+    vector<vector<G_parser::elem_ID>> prelast_lines;
+    vector<vector<G_parser::elem_ID>> last_lines;
     
-    //int k = 0;
-    for (int k=0; k < parser.all_gr[next_gr].form_length; k++){
+    prelast_lines.push_back(vector<G_parser::elem_ID>());
+    
+    for (int i=0; i < length; i++){//un_dist; i++){
         
-        int i=0;
-        while (i < next_func_chunks.size()){// && next_func_chunks[i][0].time[1] == k){
+        for (int j=0; j < func_chunks.size(); j++){
             
-            if (next_func_chunks[i][0].time[1] == k){
+            if (func_chunks[j][0].time[1] == init_curr_bar) {
                 
-                next_func_lines.push_back(vector<G_parser::elem_ID>());
-                l_c = next_func_lines.size() - 1;
-                
-                //if not the first, load previous line(s??)
-                if (k != 0){
+                for (int l=0; l < prelast_lines.size(); l++){
                     
-                    for (int j=0; j < next_func_lines[l_c - 1].size(); j++){
+                    last_lines.push_back(vector<G_parser::elem_ID>());
+                    last_lines[last_lines.size()-1] = prelast_lines[l];//push existing
+                    
+                    for (int k=0; k < func_chunks[j].size(); k++){
                         
-                        next_func_lines[l_c].push_back(next_func_lines[l_c - 1][j]);
+                        last_lines[last_lines.size()-1].push_back(func_chunks[j][k]);
                     }
                 }
-                
-                //add new
-                for (int j=0; j < next_func_chunks[i].size(); j++){
-                    
-                    next_func_lines[l_c].push_back(next_func_chunks[i][j]);
-                }
-                
-                i++;
             }
-            else k = next_func_chunks[i][0].time[1];
-            
-            //i++;
-        }
-
-        
-    }
-    
-    /*
-    int l_c;//line count
-    
-    //search for
-    int k = 0;
-    //for (int k=0; k < parser.all_gr[next_gr].form_length; k++){
-     
-    //for (int i=0; i < next_func_chunks.size(); i++){
-    int i=0;
-    while (i < next_func_chunks.size()){// && next_func_chunks[i][0].time[1] == k){
-        
-        if (next_func_chunks[i][0].time[1] == k){
-        
-            next_func_lines.push_back(vector<G_parser::elem_ID>());
-            l_c = next_func_lines.size() - 1;
-            
-            //if not the first, load previous line(s??)
-            if (k != 0){
-            
-                for (int j=0; j < next_func_lines[l_c - 1].size(); j++){
-                    
-                    next_func_lines[l_c].push_back(next_func_lines[l_c - 1][j]);
-                }
-            }
-            
-            //add new
-            for (int j=0; j < next_func_chunks[i].size(); j++){
+            else if (last_lines.size() > 0){
                 
-                next_func_lines[l_c].push_back(next_func_chunks[i][j]);
-            }
-            
-            i++;
-        }
-        else k = next_func_chunks[i][0].time[1];
-        
-        //i++;
-    }
-    //ADD k++??
-    //curr_func_chunks
-    
-    //}
-     */
-}
-
-
-void Rule_comparer::construct_curr_lines(){
-
-    //next_func_chunks
-    //vres shmeio arxhs un_dist
-    
-    curr_func_lines.push_back(vector<G_parser::elem_ID>());//first_line
-    
-    for (int i=0; i < un_dist; i++){
-    
-        int same_time_counter = 0;
-        
-        for (int j=0; j < curr_func_chunks.size(); j++){
-            
-            if (curr_func_chunks[j][0].time[1] == curr_bar_undist) {
-            
-                same_time_counter ++;
-                //curr_func_lines.push_back(vector<G_parser::elem_ID>());
-                
-                int aux_size = curr_func_lines.size();
-                if (aux_size == 0) aux_size = 1;
-                
-                for (int l=0; l < aux_size; l++){
-                
-                    if (same_time_counter > 0) curr_func_lines.push_back(vector<G_parser::elem_ID>());//!ENA panw?
-                        //DYO panw??
-                    //copy the previous?? - what with the first iteration (no previous..)
-                    
-                    for (int k=0; k < curr_func_chunks[j].size(); k++){
-                        
-                        //curr_func_lines[-1].push_back(curr_func_chunks[j][k]);
-                        curr_func_lines[l].push_back(curr_func_chunks[j][k]);
-                    }
-                    
-                    //curr_func_lines.push_back(vector<G_parser::elem_ID>());
-                }
-                //curr_func_lines.push_back(vector<G_parser::elem_ID>());
+                prelast_lines = last_lines;
+                last_lines.erase(last_lines.begin(), last_lines.end());
             }
             //else break; //???
             
         }
         
-        curr_bar_undist = (curr_bar_undist + 1) % parser.all_gr[curr_gr].form_length;
+        init_curr_bar = (init_curr_bar + 1) % parser.all_gr[gr_num].form_length;
     }
     
-    //make all possible curr_lines to g_p
+    return prelast_lines;
 }
+
 
 
 void Rule_comparer::update_combination(vector<int>& seq_t){

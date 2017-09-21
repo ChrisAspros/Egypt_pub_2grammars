@@ -11,7 +11,10 @@ void ofApp::setup(){
     //this is from the merged branch
     
     //ofSetWindowShape(575, 800);
-    ofSetWindowPosition(708, 0);
+    ofSetWindowPosition(1700, -300);//(708, 0);
+    
+    //run_ID = rand();;
+    tracked_randomised = 0;//0 is tracked, is randomised 1
     
     //midiOut.openPort(0);
     
@@ -87,12 +90,26 @@ void ofApp::update(){
     }
      */
     
-    tracking_repl_A_B();
+    if (!tracked_randomised){//0 is tracked, is randomised 1)
+    
+        /*
+        tracking_repl_A_B();
+        if(blues.seq.only_on("beat", blues.t)) ;OSC.update();
+         */
+    }
+    else {
+    
+        //clock_input();
+    }
+    
+    
+    
     
     //updating OSC on every beat only (no more needed for now..)
     if(blues.seq.only_on("beat", blues.t)){
         
-        OSC.update();
+        //OSC.update();
+        logger.update();
         blues.ending = OSC._ending;
         blues.goal_reached = OSC._goal_reached;
         
@@ -436,6 +453,89 @@ void ofApp::keyReleased(int key){
         frame_sp = 50;
         ofSetFrameRate(frame_sp);
     }
+}
+
+
+void ofApp::pass_log_values(){
+
+    //in a paper write what we want for this and the next study run
+        //now bad transitions (unintelligent), next getter, intelligent
+        //now repetitive (within a style?)
+        //next 
+    //che to buy these books - tell Dawn to buy..
+    
+    //in a questionnaire..!!
+        //think evaluation write-up, what answers do we need for the questionnaire to be able to tell us..
+    //this has 2 styles.. and transitions
+        //how abrupt is it, and why??
+        //on a scale 1 to 10 is this abrupt..
+        //control orchestration
+            //we watn the grammar to move from one to the other..
+            //similarity of orchestrations..
+        //melodic..
+    //all of them find it repetitive but they don't see it as a bad thing
+    //
+    //to what extent is repetition part of a style!!!!
+    //styles that are closely to each other...!!!
+        //different but not so different.. so that we don't get as much abruptnes..
+    //
+    
+    //check what a nice python log is..
+    
+    /*
+    //clock (in logger)
+        //how long does transition/recover take etc..
+        //descritise time in some way..
+            //assume
+     
+        start
+        generate ID
+            compare for uniqueness
+            appear screen
+            goes in questionnaiere
+        get current time -> T (baseline time)
+        start logging
+            (use prepared logger class?)
+        find difference between times.. current time - actual time etc..
+        stop button
+        commit the log.. (use 'touch' to say one psecific time..)
+        have a button for deleting the log..
+     
+     
+    keep MIDI file, AUDIO file, log file..
+     
+    //run_ID (in logger)
+     
+     
+    //tracked VS randomised
+    logger.tracked_randomised = tracked_randomised; //0 for tracked 1 for randomised
+    
+    //tracking state
+    logger.room1 = OSC.room1;
+    logger.room2 = OSC.room2;
+    logger.new_read = OSC.new_read;
+    logger.previous_read = OSC.previous_read;
+    
+    //transition stage
+    logger.transitioning = transitioning;
+    logger.transition_entered = transition_entered;
+    logger.transition_complete = transition_complete;
+    logger.curr_gr = r_comp.curr_gr;
+    logger.next_gr = r_comp.next_gr;
+    
+    //music decisions
+        //rules - rewrites
+    
+    logger.curr_func_chunks = r_comp.curr_func_chunks;
+    logger.next_func_chunks = r_comp.next_func_chunks;
+    
+    //scores
+    //choices (from current andnext gr)
+    
+    //context awareness
+    
+    //final cycle choices.. - states!!
+     */
 }
 
 

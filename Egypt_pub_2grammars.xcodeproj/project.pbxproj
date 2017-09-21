@@ -23,6 +23,7 @@
 		901641701EFAD4A000EA885A /* Osc_receive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9016416A1EFAD4A000EA885A /* Osc_receive.cpp */; };
 		901641711EFAD4A000EA885A /* Sequencer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9016416C1EFAD4A000EA885A /* Sequencer.cpp */; };
 		903B2B9D1F4C794F00E70370 /* Rule_comparer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 903B2B9B1F4C794F00E70370 /* Rule_comparer.cpp */; };
+		90E52C221F73C36E0017116B /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90E52C201F73C36E0017116B /* Logger.cpp */; };
 		916A506838DC204FEFBA4813 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 79C364D74DEFBABA08E4E9A2 /* ofxOscReceiver.cpp */; };
 		B1ACDFF67F1AB40792F7E3C0 /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08BF3ADD532836850D8C5AF3 /* ofxOscParameterSync.cpp */; };
 		B8D3B5F129A667AB05A8C7C5 /* ofxMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33C346FE720997A985A1C7E8 /* ofxMidi.cpp */; };
@@ -102,6 +103,8 @@
 		9016416D1EFAD4A000EA885A /* Sequencer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequencer.h; sourceTree = "<group>"; };
 		903B2B9B1F4C794F00E70370 /* Rule_comparer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rule_comparer.cpp; sourceTree = "<group>"; };
 		903B2B9C1F4C794F00E70370 /* Rule_comparer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Rule_comparer.hpp; sourceTree = "<group>"; };
+		90E52C201F73C36E0017116B /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
+		90E52C211F73C36E0017116B /* Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
 		9550B280C38071B5CD572866 /* ofxMidiOut.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiOut.cpp; path = ../../../../addons/ofxMidi/src/ofxMidiOut.cpp; sourceTree = SOURCE_ROOT; };
 		986B11F04FE0ADAF4674F4DA /* OscHostEndianness.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscHostEndianness.h; path = ../../../../addons/ofxOsc/libs/oscpack/src/osc/OscHostEndianness.h; sourceTree = SOURCE_ROOT; };
 		98D06015E5E7EDF1E32B8434 /* ofxOscReceiver.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscReceiver.h; path = ../../../../addons/ofxOsc/src/ofxOscReceiver.h; sourceTree = SOURCE_ROOT; };
@@ -332,6 +335,8 @@
 			children = (
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				90E52C201F73C36E0017116B /* Logger.cpp */,
+				90E52C211F73C36E0017116B /* Logger.hpp */,
 				901641661EFAD4A000EA885A /* Blues_structure.cpp */,
 				901641671EFAD4A000EA885A /* Blues_structure.h */,
 				9016416C1EFAD4A000EA885A /* Sequencer.cpp */,
@@ -481,6 +486,7 @@
 				9016416E1EFAD4A000EA885A /* Blues_structure.cpp in Sources */,
 				DBD76DE6D65C641C5A68C83B /* ofxOscBundle.cpp in Sources */,
 				901641711EFAD4A000EA885A /* Sequencer.cpp in Sources */,
+				90E52C221F73C36E0017116B /* Logger.cpp in Sources */,
 				16AD2690D75611A44CAA2672 /* ofxOscMessage.cpp in Sources */,
 				B1ACDFF67F1AB40792F7E3C0 /* ofxOscParameterSync.cpp in Sources */,
 				916A506838DC204FEFBA4813 /* ofxOscReceiver.cpp in Sources */,
