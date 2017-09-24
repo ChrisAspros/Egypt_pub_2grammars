@@ -65,6 +65,14 @@ public:
     vector<vector<G_parser::elem_ID>> curr_func_lines;
     //vector<G_parser::elem_ID> curr_func_lines;
     vector<vector<G_parser::elem_ID>> next_func_lines;
+    vector<vector<vector<int>>> un_dist_scores;
+    vector<vector<vector<int>>> get_un_dist_scores();
+    vector<vector<int>> sorted_scores;
+    //vector<vector<int>> sort_scores();
+    vector<vector<int>> best_scores;
+    vector<vector<int>> get_best_scores();
+    int score_pc = 20;//percentage of best scores
+    int b_s_pop;
     
     int dist;
     int thread;

@@ -48,7 +48,7 @@ void ofApp::setup(){
     
     //cout << "set up" << endl << endl << endl;
     
-    openSans.load("/Users/christodoulosaspromallis/Documents/UCL/PhD_Y_3/OF/of_v0.9.8_osx_release/apps/myApps/ICMC_test/from_SMC/bin/data/open-sans/OpenSans-Regular.ttf", 19.5);
+    openSans.load("/Users/christodoulosaspromallis/Documents/UCL/PhD_Y_3/OF/of_v0.9.8_osx_release/apps/myApps/ICMC_test/Egypt_pub_2grammars/bin/data/open-sans/OpenSans-Regular.ttf", 19.5);
     
     //gr_pop
     
@@ -92,10 +92,10 @@ void ofApp::update(){
     
     if (!tracked_randomised){//0 is tracked, is randomised 1)
     
-        /*
+        ///*
         tracking_repl_A_B();
         if(blues.seq.only_on("beat", blues.t)) ;OSC.update();
-         */
+         //*/
     }
     else {
     

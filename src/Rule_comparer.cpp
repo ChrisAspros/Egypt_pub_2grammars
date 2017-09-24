@@ -55,7 +55,7 @@ void Rule_comparer::setup_combination(vector<int>& seq_t){
 
     //must be managed dynamically
     curr_gr = parser.gr_pop;//= 0;
-    next_gr = !curr_gr;//= 1;
+    next_gr = !curr_gr;//cuz we only hae 2 grammars for now..
     
     //dist only ONCE??
     //int dist;
@@ -372,10 +372,19 @@ void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
     //get unrewritten funcs area (distance) t_g, i.e. un_dist
     cout << endl << "un_dist: " << un_dist << endl;
     
-    //get all sufficient sized (if need, combine) sect tails
-        //from sect_rules find their position and work backwards..
+    //get_un_dist_scores (withou histories)
+    //compare curr_-next_func_lines for all Sect endings..
+        //(for necessary length - could even be longer than a sect)
     
-    //think if lines are necessary..
+    //scores of non-rewritten functions till goal (without histories..)
+    un_dist_scores = get_un_dist_scores();
+    
+    //get percentage of best scores (depending how local vs form-aware we want the transition to be..)
+    //1 for 10%, 2 for 20%,... 5 for 50%.
+    best_scores = get_best_scores();//score, i, j, l
+    
+    
+    
     
     int enough_length = 0;
     
@@ -383,43 +392,6 @@ void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
     
         
     }
-    
-    /*
-    for (int i = 0; i < aug_sect_rules.size(); i++){
-    
-        START FROM HERE!!
-        //in C++ is it possible to see if that time exists for func_chunks??
-        
-        add rules for as long as combined r_len is long enough..
-            
-        int aux_chunk_size;
-        while (aux_chunk_size < un_dist){
-            
-            add next previous chunk..
-            
-            aux_chunk_size = aux_chunk_size + next_func_chunks[i].size();
-        }
-        
-        //calculate backwards from g_p - un-dist
-            //when time found, then combine/keep for comparision all func chuncs till sect/g_p
-        
-        for (int i =  ;1;){
-        
-            
-        }
-        
-        //if that bar
-        
-        //if not enough get another, a.s.o.
-        
-        int func_till_sect = aug_sect_rules[(i+1) % aug_sect_rules.size()].position - ;
-        
-        enough_length = enough_length + func_till_sect;
-        
-        if (enough_length >= un_dist) break;
-        if (curr_func_chunk[j].size() >= un_dist) keep chunk set..;
-    }
-    */
     
     //calculate number of func_chunks needed to cover distance (un_dist)
     
@@ -429,6 +401,97 @@ void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
         //some how keep track of it, or simply keep the best N couples all at once..
     //
  
+}
+
+
+vector<vector<vector<int>>> Rule_comparer::get_un_dist_scores(){
+
+    vector<vector<vector<int>>> _un_dist_scores;
+    
+    for (int i=0; i < aug_sect_rules.size(); i++){
+        
+        _un_dist_scores.push_back(vector<vector<int>>());
+        
+        for (int j=0; j < curr_func_lines.size(); j++){
+            
+            _un_dist_scores[i].push_back(vector<int>());
+            
+            for (int l=0; l < next_func_lines.size(); l++){
+                
+                int score = 0;
+                int m = abs(aug_sect_rules[(i+1)%aug_sect_rules.size()].position - un_dist) % parser.all_gr[next_gr].form_length;
+                
+                for (int k=0; k < curr_func_lines[j].size(); k++){
+                    
+                    if (next_func_lines[l][m].name == curr_func_lines[j][k].name) score++;
+                    
+                    m++;
+                }
+                
+                _un_dist_scores[i][j].push_back(score);
+            }
+        }
+    }
+    
+    return _un_dist_scores;
+}
+
+
+vector<vector<int>> Rule_comparer::get_best_scores(){
+
+    vector<vector<int>> _sorted_scores;
+    vector<vector<int>> _best_scores;
+    int s_pop = 0; //scores population
+    
+    //store un_dist_scores in _sorted_scores
+    for (int i=0; i < un_dist_scores.size(); i++){
+    
+        for (int j=0; j < un_dist_scores[i].size(); j++){
+            
+            for (int l=0; l < un_dist_scores[i][j].size(); l++){
+            
+                _sorted_scores.push_back(vector<int>());//storing them to get them descending later..
+                //score, i, j, l
+                _sorted_scores[s_pop].push_back(un_dist_scores[i][j][l]);
+                _sorted_scores[s_pop].push_back(i);
+                _sorted_scores[s_pop].push_back(j);
+                _sorted_scores[s_pop].push_back(l);
+                
+                s_pop ++;
+            }
+        }
+    }
+
+    
+    //SORT _sorted_scores
+    for (int n=0; n < _sorted_scores.size() - 1; n++){
+        
+        for (int a=0; a < _sorted_scores.size() - 1; a++){
+            
+            if (_sorted_scores[a][0] < _sorted_scores[a+1][0]){
+                
+                vector<int> aux_score = _sorted_scores[a];
+                _sorted_scores[a] = _sorted_scores[a+1];
+                _sorted_scores[a+1] = aux_score;
+            }
+        }
+    }
+    
+    sorted_scores = _sorted_scores;
+    
+    //get percentage of sorted scores for best scores (depending how local vs form-aware we want the transition to be..)
+    //1 for 10%, 2 for 20%,... 5 for 50%..
+    //int b_s_pop = int(_sorted_scores.size() * (score_pc / 100));//best_scores population
+    b_s_pop = int(float(_sorted_scores.size()) * (float(score_pc) / 100.0));//best_scores population
+        
+    for (int n=0; n < b_s_pop; n++){
+    
+        _best_scores.push_back(_sorted_scores[n]);
+    }
+    
+    //keep the first cause they may be the most distinct (earlier in the form)
+    
+    return _best_scores;
 }
 
 

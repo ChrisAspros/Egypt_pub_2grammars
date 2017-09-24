@@ -181,8 +181,8 @@ rule: SectA -> 1.0 decT(1) decSD(3) decCad(5) decT(7) :end_rule
 rule: SectB -> 1.0 decSD(1) decSD(5) decCad(7) :end_rule
 
 
-//rule: decT -> 1.0 T T :end_rule
-rule: decT -> 0.5 T T //only for testing instead //decT is placed 6 times in the form so 
+rule: decT -> 1.0 T T :end_rule
+//rule: decT -> 0.5 T T //only for testing instead //decT is placed 6 times in the form so 
 //for 1 choice we have 1 line in total, but for 3 choices we have 3^6 = 729 lines.. (next_func_lines)
 	  		-> 0.3 D D 
 	  		-> 0.2 D SD 
