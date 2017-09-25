@@ -231,8 +231,12 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     
     
     compare_t_g();
+    compare_include_history(form_pc);
     
+    //compare_include_future(form_pc);
     
+    //mix_in_rt();
+    //implement_recovery();//end of version_A!! - version b with constraint / diminishing of the musical space (style/chord et.c) at the note level.. - set theory..
     
     //THEN COMPARE LINES BASED ON HARMONIC RHYTHMS...
     
@@ -382,25 +386,6 @@ void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
     //get percentage of best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%.
     best_scores = get_best_scores();//score, i, j, l
-    
-    
-    
-    
-    int enough_length = 0;
-    
-    for (int i = 0; i < curr_func_chunks.size(); i++){
-    
-        
-    }
-    
-    //calculate number of func_chunks needed to cover distance (un_dist)
-    
-    //Sect
-    
-    //get score of all possibilities (next_gr vs curr_gr)
-        //some how keep track of it, or simply keep the best N couples all at once..
-    //
- 
 }
 
 
@@ -483,7 +468,7 @@ vector<vector<int>> Rule_comparer::get_best_scores(){
     //1 for 10%, 2 for 20%,... 5 for 50%..
     //int b_s_pop = int(_sorted_scores.size() * (score_pc / 100));//best_scores population
     b_s_pop = int(float(_sorted_scores.size()) * (float(score_pc) / 100.0));//best_scores population
-        
+    
     for (int n=0; n < b_s_pop; n++){
     
         _best_scores.push_back(_sorted_scores[n]);
@@ -495,8 +480,29 @@ vector<vector<int>> Rule_comparer::get_best_scores(){
 }
 
 
-void Rule_comparer::compare_hist(){//history with N best (next_gr side of the pair)
+void Rule_comparer::compare_include_history(int form_pc){//history with N best (next_gr side of the pair)
     
+    //capture history
+    vector<G_parser::elem_ID> history;
+    history = parser.function_cycle;
+    
+    parser.function_cycle.clear();//parser.function_cycle.empty();
+    
+    //why function_cycle + 1??? - perhaps keeps and places from previous it ({functions}) check, e.g. for no reason it placed D after T and the actual was SD after T..
+    //thus keep up to curr_bar which keeps correct functions
+    
+    //why intermediate functions gets another 3??
+    
+    //capture between history and first curr_un_dist - push to history
+    //for ()
+    
+    //check fitness with best_scores..
+    
+    
+    //delete/clear/empty / re-start function_cycle (for memory leak management..)
+        //make sure it restarts fine after delete.. - should be fine as is!!
+        
+    //gitsave
 }
 
 
@@ -559,6 +565,8 @@ void Rule_comparer::rewrite_curr_gr_t_g(){
                 cout << endl << "breaking in while" << endl;
                 break;
             }
+            
+            //intermediate_functions.push_back(parser.aux_cycle[curr_bar]);
             
             curr_bar = (curr_bar + 1) % f_l;
             j++;

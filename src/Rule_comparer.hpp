@@ -59,7 +59,11 @@ public:
     vector<vector<G_parser::elem_ID>> next_func_chunks;
     
     void compare_t_g();
-    void compare_hist();
+    void compare_include_history(int _form_pc);
+    void compare_include_future(int _form_pc);
+    
+    void mix_in_rt();
+    void implement_recovery();
     
     vector<vector<G_parser::elem_ID>> construct_lines(vector<vector<G_parser::elem_ID>> func_chunks, int gr_num, int length, int init_curr_bar);
     vector<vector<G_parser::elem_ID>> curr_func_lines;
@@ -73,6 +77,10 @@ public:
     vector<vector<int>> get_best_scores();
     int score_pc = 20;//percentage of best scores
     int b_s_pop;
+    
+    vector<G_parser::elem_ID> intermediate_functions;
+    
+    int form_pc;//form percentage to check for history & future..
     
     int dist;
     int thread;

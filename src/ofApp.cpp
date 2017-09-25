@@ -11,7 +11,7 @@ void ofApp::setup(){
     //this is from the merged branch
     
     //ofSetWindowShape(575, 800);
-    ofSetWindowPosition(1700, -300);//(708, 0);
+    ofSetWindowPosition(708, 0);//(1700, -300);
     
     //run_ID = rand();;
     tracked_randomised = 0;//0 is tracked, is randomised 1
@@ -21,7 +21,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp1 = 40;
+    frame_sp1 = 200;//40;
     frame_sp2 = 60;
     
     frame_sp = frame_sp1;

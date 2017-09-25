@@ -666,7 +666,7 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
     cout << endl;
     
     //keep elem if FUNCTION - must happen here to not miss the pre-produced functions (else, every 4 bars..)
-    //keep_func_hist(seq_t);
+    if (!transitioning) keep_func_hist(seq_t);
     
     vector<elem_ID> production;
     vector<int> choices = rewrite_choices(r);
@@ -864,6 +864,7 @@ void G_parser::trans_update(vector<elem_ID>& production, rule& r, vector<int>& s
             
                 func_chunk.push_back(production[i]);//chunk of functions..
             }
+            
             func_chunks.push_back(func_chunk);
             func_chunk.clear();
             //function_count = 0;
@@ -895,6 +896,7 @@ void G_parser::keep_func_hist(vector<int>& seq_t){
         function_cycle.push_back(curr_cycle[seq_t[3]]);
     }
     
+    /*
     //test function cycle
     cout << endl << endl << endl << "FUNCTION_CYCLE: ";
     for (int i = 0; i < function_cycle.size(); i++){
@@ -902,6 +904,7 @@ void G_parser::keep_func_hist(vector<int>& seq_t){
         cout << function_cycle[i].name << " ";
     }
     cout << endl << endl << endl;
+     */
 }
 
 
