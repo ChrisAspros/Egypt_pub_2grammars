@@ -24,12 +24,15 @@ public:
     bool transitioning;
     bool trans_complete;
     bool un_dist_found;
-    int un_dist, curr_bar_undist;
+    int un_dist, undist_bar;
     
     int curr_gr;
     int next_gr;
     
     void combine_rules(vector<int>& seq_t);//the main/central function of the class
+    
+    vector<int> get_sect_lengths(G_parser::rule _S_rule, int _gr_pop);
+    vector<int> sect_lengths_curr, sect_lengths_next;
     
     struct aug_sect_rule{//augmented sect rules
     
@@ -44,6 +47,8 @@ public:
     vector<aug_sect_rule> aug_sect_rules;
     
     vector<G_parser::elem_ID> find_best_rule(vector<int>& seq_t);
+    G_parser::rule get_S_rule(int _gr_pop);
+    G_parser::rule S_rule_curr, S_rule_next;
     vector<G_parser::elem_ID> best_r;//needs to be global?
     
     //vector<G_parser::elem_ID> aux_cycle;
@@ -73,14 +78,16 @@ public:
     vector<vector<vector<int>>> get_un_dist_scores();
     vector<vector<int>> sorted_scores;
     //vector<vector<int>> sort_scores();
-    vector<vector<int>> best_scores;
-    vector<vector<int>> get_best_scores();
+    vector<vector<int>> best_local_scores;
+    vector<vector<int>> get_best_local_scores();
     int score_pc = 20;//percentage of best scores
     int b_s_pop;
     
     vector<G_parser::elem_ID> intermediate_functions;
+    vector<G_parser::elem_ID> history;
     
-    int form_pc;//form percentage to check for history & future..
+    int form_pc = 2;//for now i.e. number of previous sects to include as history
+    //form percentage to check for history & future..
     
     int dist;
     int thread;

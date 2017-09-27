@@ -114,30 +114,23 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     //check all sects tails for enough length
     
     //find/store the S rule (next_gr)
-    G_parser::rule S_rule;
-    for (int i=0; i<parser.all_gr[next_gr].general_rules.size(); i++){
-        
-        for (int j=0; j<parser.all_gr[next_gr].general_rules[i].left_str.size(); j++){
-            
-            if (parser.all_gr[next_gr].general_rules[i].left_str[j] == "S"){
-                
-                S_rule = parser.all_gr[next_gr].general_rules[i];
-                break;
-            }
-        }
-    }
+    S_rule_curr = get_S_rule(curr_gr);
+    S_rule_next = get_S_rule(next_gr);
+    
     
     //find sect lengths
-    vector<int> sect_lengths;
-    vector<string> combined_sects;
+    sect_lengths_curr = get_sect_lengths(S_rule_curr, curr_gr);
+    sect_lengths_next = get_sect_lengths(S_rule_next, next_gr);
+    
+    /*
     //check Sect lengths
     //compare prod times of Sects
-    for (int i=0; i < S_rule.prod_times.size(); i++){
+    for (int i=0; i < S_rule_next.prod_times.size(); i++){
         
         //calculate sect lengths
         int len;
-        if (i == S_rule.prod_times.size() - 1) len = parser.all_gr[next_gr].form_length - S_rule.prod_times[i];
-        else len = S_rule.prod_times[i+1] - S_rule.prod_times[i];
+        if (i == S_rule_next.prod_times.size() - 1) len = parser.all_gr[next_gr].form_length - S_rule_next.prod_times[i];
+        else len = S_rule_next.prod_times[i+1] - S_rule_next.prod_times[i];
         sect_lengths.push_back(len);
     }
     /*
@@ -151,21 +144,21 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     vector<G_parser::rule> sect_rules;
     //aug_sect_rule asr;//augmented section rule
         //get sect names
-    for (int i=0; i < S_rule.right_side.size(); i++){
+    for (int i=0; i < S_rule_next.right_side.size(); i++){
         
-        for (int j=0; j < S_rule.right_side[i].right_str.size(); j++){
+        for (int j=0; j < S_rule_next.right_side[i].right_str.size(); j++){
             
             string sect_name;//isolated from time sing, i.e. e.g. (5).
             int k=0;
-            while (S_rule.right_side[i].right_str[j][k] != '('){
+            while (S_rule_next.right_side[i].right_str[j][k] != '('){
             
-                sect_name.push_back(S_rule.right_side[i].right_str[j][k]);
+                sect_name.push_back(S_rule_next.right_side[i].right_str[j][k]);
                 k++;
             }
             sect_names_aux.push_back(sect_name);
             aug_sect_rules.push_back(aug_sect_rule());
             aug_sect_rules[j].sect_name = sect_name;
-            aug_sect_rules[j].position = S_rule.prod_times[j];
+            aug_sect_rules[j].position = S_rule_next.prod_times[j];
         }
     }
     
@@ -183,7 +176,7 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
                     break;//because only 1 "Sect" on the left_str of a sect rule
                 }
             }
-            aug_sect_rules[i].r_len = sect_lengths[i];
+            aug_sect_rules[i].r_len = sect_lengths_next[i];
             aug_sect_rules[i].next_sect = sect_names_aux[(i+1) % sect_names_aux.size()];
         }
         
@@ -226,7 +219,7 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     //maybe 1 twice with different input??
     
     //to get scores, isolate the next_func lines portions I need..
-    curr_func_lines = construct_lines (curr_func_chunks, curr_gr, un_dist, curr_bar_undist);
+    curr_func_lines = construct_lines (curr_func_chunks, curr_gr, un_dist, undist_bar);
     next_func_lines = construct_lines (next_func_chunks, next_gr, parser.all_gr[next_gr].form_length, 0);
     
     
@@ -370,6 +363,48 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
 }
 
 
+vector<int> Rule_comparer::get_sect_lengths(G_parser::rule _S_rule, int _gr_pop){
+
+    vector<int> sect_lengths;
+    
+    for (int i=0; i < _S_rule.prod_times.size(); i++){
+        
+        //calculate sect lengths
+        int len;
+        if (i == _S_rule.prod_times.size() - 1) len = parser.all_gr[_gr_pop].form_length - _S_rule.prod_times[i];
+        else len = _S_rule.prod_times[i+1] - _S_rule.prod_times[i];
+        sect_lengths.push_back(len);
+    }
+    /*
+     cout << endl << "sect_lengths: " << endl;
+     for (int i=0; i < sect_lengths.size(); i++) cout << sect_lengths[i] << endl;
+     cout << endl;
+     */
+    
+    return sect_lengths;
+}
+
+
+G_parser::rule Rule_comparer::get_S_rule(int _gr_pop){
+
+    G_parser::rule _S_rule;
+    
+    for (int i=0; i<parser.all_gr[_gr_pop].general_rules.size(); i++){
+        
+        for (int j=0; j<parser.all_gr[_gr_pop].general_rules[i].left_str.size(); j++){
+            
+            if (parser.all_gr[_gr_pop].general_rules[i].left_str[j] == "S"){
+                
+                _S_rule = parser.all_gr[_gr_pop].general_rules[i];
+                break;
+            }
+        }
+    }
+    
+    return _S_rule;
+}
+
+
 void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
     
 
@@ -385,7 +420,7 @@ void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
     
     //get percentage of best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%.
-    best_scores = get_best_scores();//score, i, j, l
+    best_local_scores = get_best_local_scores();//score, i, j, l
 }
 
 
@@ -422,7 +457,7 @@ vector<vector<vector<int>>> Rule_comparer::get_un_dist_scores(){
 }
 
 
-vector<vector<int>> Rule_comparer::get_best_scores(){
+vector<vector<int>> Rule_comparer::get_best_local_scores(){
 
     vector<vector<int>> _sorted_scores;
     vector<vector<int>> _best_scores;
@@ -483,22 +518,69 @@ vector<vector<int>> Rule_comparer::get_best_scores(){
 void Rule_comparer::compare_include_history(int form_pc){//history with N best (next_gr side of the pair)
     
     //capture history
-    vector<G_parser::elem_ID> history;
+    //vector<G_parser::elem_ID> history;
     history = parser.function_cycle;
     
-    parser.function_cycle.clear();//parser.function_cycle.empty();
+    parser.function_cycle.clear();//to avoid memory leak..
     
-    //why intermediate functions gets another 3??
+    //captures between history and first curr_un_dist
+    for (int i=0; i < intermediate_functions.size(); i++){
     
-    //capture between history and first curr_un_dist - push to history
-    //for ()
+        history.push_back(intermediate_functions[i]);
+    }
+    
+    
+    
+    //calculate new scores including history
+    //whole section before g_p
+    int t_s = S_rule_curr.prod_times.size();//times size
+    int prev_sect_start;
+    
+    //iterate this as necessary..
+    for (int i=0; i < t_s; i++){
+    
+        if (g_p == S_rule_curr.prod_times[i]) prev_sect_start = S_rule_curr.prod_times[((i-form_pc) + t_s) % t_s];
+    }
+    
+    //compare with best_local_scores - score, i, j, l
+    
+    int curr_t = (undist_bar - intermediate_functions.size()) - 1;//current bar wwhen the transition occurs - else pass seq_t in function
+    
+    intermediate_functions.clear();
+    
+    /*
+    //make new scores
+    for (int n=0; n < best_local_scores.size(); n++){
+    
+        //compare each gr_2 tail of tail with history
+        //best_local_scores[n]
+        
+        for (int k = 0; k < curr_t; k = k)
+        
+            prev_sect_start
+            curr_t
+        next_func_lines
+        curr_func_lines
+        //keep new scores of combos..
+    }
+    
+    //sort - keep best..
+    prev_sect_start
+     */
+     
+    //check other abs
+    
+    //if (!(best_rule.size()==1)) compare_include_history(form_pc);
+    
+    //iterate if no winner..
     
     //check fitness with best_scores..
     
     
-    //delete/clear/empty / re-start function_cycle (for memory leak management..)
-        //make sure it restarts fine after delete.. - should be fine as is!!
-        
+    //make sure parser.function_cycle restarts fine after delete.. - should be fine as is!!
+    
+    //clear history if not needed anymore..
+    
     //gitsave
 }
 
@@ -587,7 +669,7 @@ void Rule_comparer::rewrite_curr_gr_t_g(){
         if (!un_dist_found){
         
             un_dist = dist - j;
-            curr_bar_undist = curr_bar;
+            undist_bar = curr_bar;
             un_dist_found = 1;
         }
         
