@@ -148,7 +148,7 @@ void Blues_structure::update(){
         if(seq.r_comp.parser.transitioning) seq.r_comp.combine_rules(t);
         else seq.r_comp.parser.find_rule(t);
         
-        if (seq.r_comp.trans_complete) seq.r_comp.un_dist_found = 0;//to get unrewritten functs till g_p only once in a transition..
+        //if (seq.r_comp.trans_complete) seq.r_comp.un_dist_found = 0;//to get unrewritten funcs till g_p only once in a transition..
         
         //if(!seq.r_comp.parser.transitioning || transition_complete) seq.r_comp.parser.find_rule(t);
         //else seq.r_comp.combine_rules(t);

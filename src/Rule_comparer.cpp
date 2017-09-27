@@ -488,9 +488,6 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     
     parser.function_cycle.clear();//parser.function_cycle.empty();
     
-    //why function_cycle + 1??? - perhaps keeps and places from previous it ({functions}) check, e.g. for no reason it placed D after T and the actual was SD after T..
-    //thus keep up to curr_bar which keeps correct functions
-    
     //why intermediate functions gets another 3??
     
     //capture between history and first curr_un_dist - push to history
@@ -509,6 +506,7 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
 void Rule_comparer::rewrite_funcs(){
 
     rewrite_curr_gr_t_g();//till funcs till g_p (goal point)
+    
     rewrite_next_all();//expand all next form till funcs
     
     //cout << endl << "for b.p." << endl;
@@ -529,7 +527,7 @@ void Rule_comparer::rewrite_curr_gr_t_g(){
     int f_l = parser.all_gr[curr_gr].form_length;
     
     
-    int curr_bar = (f_l + g_p - (dist)) % f_l;
+    int curr_bar = (f_l + g_p - (dist)) % f_l;//17
     //int curr_bar =
     
     cout << endl << "f_l: " << f_l << endl;
@@ -557,7 +555,7 @@ void Rule_comparer::rewrite_curr_gr_t_g(){
         cout << endl << "(keeps the last right_side(s?))" << endl;
         
         //going forward in cycle as long as functions already there..
-        while (parser.is_function(aux_t)) {
+        while (parser.is_function(aux_t)){ //CHECK THIS--> //&& !un_dist_found) {
             
             if (curr_bar == g_p){
                 
@@ -566,7 +564,9 @@ void Rule_comparer::rewrite_curr_gr_t_g(){
                 break;
             }
             
-            //intermediate_functions.push_back(parser.aux_cycle[curr_bar]);
+            //so that it doesn't get the next func even when it's not pre-rewritten..
+            //AND THIS--> if (!un_dist_found) //IT COMES I LATER AS WELL and it SHOULDN'T
+            if (!un_dist_found) intermediate_functions.push_back(parser.aux_cycle[curr_bar]);
             
             curr_bar = (curr_bar + 1) % f_l;
             j++;

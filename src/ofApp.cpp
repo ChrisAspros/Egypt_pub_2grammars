@@ -31,6 +31,7 @@ void ofApp::setup(){
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
     blues.seq.r_comp.parser.gr_pop = 0;
     blues.seq.r_comp.parser.gr_changed = 1;//true means it doesn't need to change now..
+    blues.seq.r_comp.un_dist_found = 0;
     blues.setup();
     
     //only to accept "b" (after gr1 - "a" non-pressed) or "a" (after gr2 - "b" non-pressed) and start from top
