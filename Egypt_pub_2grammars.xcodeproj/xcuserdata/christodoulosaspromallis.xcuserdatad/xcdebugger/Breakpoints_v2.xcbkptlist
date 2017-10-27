@@ -134,15 +134,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530739491.894921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530820491.32319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "618"
-            endingLineNumber = "618"
-            landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
+            startingLineNumber = "640"
+            endingLineNumber = "640"
+            landmarkName = "Rule_comparer::rewrite_funcs()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,12 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530820491.32319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "754"
-            endingLineNumber = "754"
-            landmarkName = "Rule_comparer::initiate_aux_cycle()"
+            startingLineNumber = "776"
+            endingLineNumber = "776"
+            landmarkName = "Rule_comparer::rewrite_next_all()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530820491.32319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "Rule_comparer::get_un_dist_scores()"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,74 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530820491.32319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "471"
-            endingLineNumber = "471"
-            landmarkName = "Rule_comparer::get_best_local_scores()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Rule_comparer::compare_t_g()"
-                  moduleName = "Egypt_pub_2grammarsDebug"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/christodoulosaspromallis/Documents/UCL/PhD_Y_3/OF/of_v0.9.8_osx_release/apps/myApps/ICMC_test/Egypt_pub_2grammars/src/Rule_comparer.cpp"
-                  timestampString = "527880356.947168"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "509"
-                  endingLineNumber = "509"
-                  offsetFromSymbolStart = "4865">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Rule_comparer::compare_t_g()"
-                  moduleName = "Egypt_pub_2grammarsDebug"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/christodoulosaspromallis/Documents/UCL/PhD_Y_3/OF/of_v0.9.8_osx_release/apps/myApps/ICMC_test/Egypt_pub_2grammars/src/Rule_comparer.cpp"
-                  timestampString = "527880356.950765"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "509"
-                  endingLineNumber = "509"
-                  offsetFromSymbolStart = "4897">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Rule_comparer::compare_t_g()"
-                  moduleName = "Egypt_pub_2grammarsDebug"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/christodoulosaspromallis/Documents/UCL/PhD_Y_3/OF/of_v0.9.8_osx_release/apps/myApps/ICMC_test/Egypt_pub_2grammars/src/Rule_comparer.cpp"
-                  timestampString = "527880356.953149"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "509"
-                  endingLineNumber = "509"
-                  offsetFromSymbolStart = "5686">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "Rule_comparer::compare_t_g()"
             landmarkType = "7">
          </BreakpointContent>
@@ -345,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530820491.32319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "515"
-            endingLineNumber = "515"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
             landmarkName = "Rule_comparer::get_best_local_scores()"
             landmarkType = "7">
          </BreakpointContent>
@@ -361,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530820491.32319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "529"
+            endingLineNumber = "529"
             landmarkName = "Rule_comparer::get_best_local_scores()"
             landmarkType = "7">
          </BreakpointContent>
@@ -373,29 +310,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530820491.32319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "587"
-            endingLineNumber = "587">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
+            startingLineNumber = "621"
+            endingLineNumber = "621"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -407,75 +330,123 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530820491.32319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "663"
+            endingLineNumber = "663"
+            landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "530820491.32319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "675"
+            endingLineNumber = "675"
+            landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "530820491.32319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "691"
+            endingLineNumber = "691"
+            landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "530820491.32319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "549"
+            endingLineNumber = "549"
+            landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "530820491.32319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "604"
+            endingLineNumber = "604"
+            landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "530820491.32319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "556"
+            endingLineNumber = "556"
+            landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "530820491.32319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "566"
+            endingLineNumber = "566"
+            landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "530820491.32319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "591"
             endingLineNumber = "591"
-            landmarkName = "Rule_comparer::rewrite_funcs()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "641"
-            endingLineNumber = "641"
-            landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "653"
-            endingLineNumber = "653"
-            landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "669"
-            endingLineNumber = "669"
-            landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "531"
-            endingLineNumber = "531"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -487,11 +458,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "528226593.274908"
+            timestampString = "530820491.32319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "568"
-            endingLineNumber = "568"
+            startingLineNumber = "599"
+            endingLineNumber = "599"
+            landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "530820491.32319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>

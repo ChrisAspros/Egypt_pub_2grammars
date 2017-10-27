@@ -196,7 +196,8 @@ rule: decSD -> 1.0 SD SD :end_rule
 
 
 rule: decSD_17 -> 1.0 SD SD SD SD :end_rule
-rule: decCad -> 1.0 SD D :end_rule
+rule: decCad -> 0.9 SD D//-> 1.0 SD D :end_rule
+			 -> 0.1 D D :end_rule
 
 rule: T -> 1.0 I :end_rule
 rule: SD -> 1.0 II :end_rule

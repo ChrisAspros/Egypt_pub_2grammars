@@ -65,6 +65,10 @@ public:
     
     void compare_t_g();
     void compare_include_history(int _form_pc);
+    vector<vector<int>> hist_scores;
+    vector<vector<int>> sorted_hist_scores;
+    vector<vector<int>> best_hist_scores;
+    
     void compare_include_future(int _form_pc);
     
     void mix_in_rt();
@@ -75,10 +79,13 @@ public:
     //vector<G_parser::elem_ID> curr_func_lines;
     vector<vector<G_parser::elem_ID>> next_func_lines;
     vector<vector<vector<int>>> un_dist_scores;
+    vector<vector<int>> formed_local_scores;
     vector<vector<vector<int>>> get_un_dist_scores();
-    vector<vector<int>> sorted_scores;
+    vector<vector<int>> sort_scores(vector<vector<int>> _unsorted_scores);
+    vector<vector<int>> sorted_local_scores;
     //vector<vector<int>> sort_scores();
     vector<vector<int>> best_local_scores;
+    vector<vector<int>> form_scores();
     vector<vector<int>> get_best_local_scores();
     int score_pc = 20;//percentage of best scores
     int b_s_pop;

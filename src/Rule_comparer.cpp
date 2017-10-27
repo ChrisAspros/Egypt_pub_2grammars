@@ -224,6 +224,7 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     
     
     compare_t_g();
+    
     compare_include_history(form_pc);
     
     //compare_include_future(form_pc);
@@ -417,6 +418,7 @@ void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
     
     //scores of non-rewritten functions till goal (without histories..)
     un_dist_scores = get_un_dist_scores();
+    formed_local_scores = form_scores();
     
     //get percentage of best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%.
@@ -457,31 +459,38 @@ vector<vector<vector<int>>> Rule_comparer::get_un_dist_scores(){
 }
 
 
-vector<vector<int>> Rule_comparer::get_best_local_scores(){
+vector<vector<int>> Rule_comparer::form_scores(){
+//set score in: score, i, j, l form.
 
-    vector<vector<int>> _sorted_scores;
-    vector<vector<int>> _best_scores;
+    vector<vector<int>> _formed_scores;
     int s_pop = 0; //scores population
     
     //store un_dist_scores in _sorted_scores
     for (int i=0; i < un_dist_scores.size(); i++){
-    
+        
         for (int j=0; j < un_dist_scores[i].size(); j++){
             
             for (int l=0; l < un_dist_scores[i][j].size(); l++){
-            
-                _sorted_scores.push_back(vector<int>());//storing them to get them descending later..
+                
+                _formed_scores.push_back(vector<int>());//storing them to get them descending later..
                 //score, i, j, l
-                _sorted_scores[s_pop].push_back(un_dist_scores[i][j][l]);
-                _sorted_scores[s_pop].push_back(i);
-                _sorted_scores[s_pop].push_back(j);
-                _sorted_scores[s_pop].push_back(l);
+                _formed_scores[s_pop].push_back(un_dist_scores[i][j][l]);
+                _formed_scores[s_pop].push_back(i);
+                _formed_scores[s_pop].push_back(j);
+                _formed_scores[s_pop].push_back(l);
                 
                 s_pop ++;
             }
         }
     }
+    
+    return _formed_scores;
+}
 
+
+vector<vector<int>> Rule_comparer::sort_scores(vector<vector<int>> _unsorted_scores){
+
+    vector<vector<int>> _sorted_scores = _unsorted_scores;
     
     //SORT _sorted_scores
     for (int n=0; n < _sorted_scores.size() - 1; n++){
@@ -497,16 +506,25 @@ vector<vector<int>> Rule_comparer::get_best_local_scores(){
         }
     }
     
-    sorted_scores = _sorted_scores;
+    return _sorted_scores;
+}
+
+
+vector<vector<int>> Rule_comparer::get_best_local_scores(){
+
+    vector<vector<int>> _best_scores;
+    
+    sorted_local_scores = sort_scores(formed_local_scores);
     
     //get percentage of sorted scores for best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%..
     //int b_s_pop = int(_sorted_scores.size() * (score_pc / 100));//best_scores population
-    b_s_pop = int(float(_sorted_scores.size()) * (float(score_pc) / 100.0));//best_scores population
+    b_s_pop = int(float(sorted_local_scores.size()) * (float(score_pc) / 100.0));//best_scores population
+    if (b_s_pop == 0) b_s_pop = 2;
     
     for (int n=0; n < b_s_pop; n++){
     
-        _best_scores.push_back(_sorted_scores[n]);
+        _best_scores.push_back(sorted_local_scores[n]);
     }
     
     //keep the first cause they may be the most distinct (earlier in the form)
@@ -529,58 +547,86 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
         history.push_back(intermediate_functions[i]);
     }
     
-    
+    intermediate_functions.clear();
     
     //calculate new scores including history
     //whole section before g_p
     int t_s = S_rule_curr.prod_times.size();//times size
-    int prev_sect_start;
+    int prev_sect_start, s_len;
     
     //iterate this as necessary..
     for (int i=0; i < t_s; i++){
     
-        if (g_p == S_rule_curr.prod_times[i]) prev_sect_start = S_rule_curr.prod_times[((i-form_pc) + t_s) % t_s];
+        if (g_p == S_rule_curr.prod_times[i]){
+            
+            prev_sect_start = S_rule_curr.prod_times[((i-form_pc) + t_s) % t_s];
+            s_len = sect_lengths_curr[((i-form_pc) + t_s) % t_s];
+        }
     }
     
     //compare with best_local_scores - score, i, j, l
     
-    int curr_t = (undist_bar - intermediate_functions.size()) - 1;//current bar wwhen the transition occurs - else pass seq_t in function
+    //int curr_t = (undist_bar - intermediate_functions.size()) - 1;//current bar wwhen the transition occurs - else pass seq_t in function
     
-    intermediate_functions.clear();
     
-    /*
+    
+    int curr_f_l = parser.all_gr[curr_gr].form_length;
+    int next_f_l = parser.all_gr[next_gr].form_length;
+    int add_hist_length = ((undist_bar - prev_sect_start) + curr_f_l ) % curr_f_l;
+    //int aux_time = prev_sect_start;
+    
     //make new scores
     for (int n=0; n < best_local_scores.size(); n++){
     
         //compare each gr_2 tail of tail with history
         //best_local_scores[n]
         
-        for (int k = 0; k < curr_t; k = k)
+        //for s_len
         
-            prev_sect_start
-            curr_t
-        next_func_lines
-        curr_func_lines
+        int _score, _i, _j, _l;
+        _score = best_local_scores[n][0];
+        _i = best_local_scores[n][1];
+        _j = best_local_scores[n][2];
+        _l = best_local_scores[n][3];
+        
+        int aux_score = 0;
+        
+        //get start position in next_lines[_l] : distance of prev_sect_start from g_p.. : befpor the sect end..
+        int prev_dist_g_p = ((g_p + curr_f_l) - prev_sect_start) % curr_f_l;
+        int next_lines_pos = ((S_rule_next.prod_times[(_i + 1) % S_rule_next.prod_times.size()] + next_f_l) - prev_dist_g_p) % next_f_l;
+        
+        //get start position in history
+        int hist_pos = history.size() - add_hist_length;
+        
+        for (int k = 0; k < add_hist_length; k++){
+            
+            //compare preceding of next_func_lines with history for this lenght..
+            if (next_func_lines[_l][next_lines_pos].name == history[hist_pos].name) aux_score ++;
+         
+            next_lines_pos = (next_lines_pos + 1) % next_f_l;
+            hist_pos ++;
+        }
+        
+        hist_scores.push_back(best_local_scores[n]);
+        hist_scores[n][0] += aux_score;//adds history score to local score..
+        
         //keep new scores of combos..
     }
     
-    //sort - keep best..
-    prev_sect_start
-     */
+    sorted_hist_scores = sort_scores(hist_scores);
+    
+    //??iterate / look further back..
+    //best_hist_scores = get_best_hist_scores();
+    
+    /*
+    keep the i, j, l I need
+        
+        start r_t mixing..
+    */
      
-    //check other abs
-    
-    //if (!(best_rule.size()==1)) compare_include_history(form_pc);
-    
-    //iterate if no winner..
-    
-    //check fitness with best_scores..
-    
-    
+    //*/
     //make sure parser.function_cycle restarts fine after delete.. - should be fine as is!!
-    
     //clear history if not needed anymore..
-    
     //gitsave
 }
 
