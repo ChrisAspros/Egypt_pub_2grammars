@@ -68,6 +68,10 @@ public:
     vector<vector<int>> hist_scores;
     vector<vector<int>> sorted_hist_scores;
     vector<vector<int>> best_hist_scores;
+    vector<vector<int>> top_curr_func_line_scores;
+    vector<vector<int>> top_next_func_line_scores;
+    vector<vector<int>> earliest_next_form_scores;
+    vector<int> final_best_score;
     
     void compare_include_future(int _form_pc);
     
@@ -83,7 +87,10 @@ public:
     vector<vector<vector<int>>> get_un_dist_scores();
     vector<vector<int>> sort_scores(vector<vector<int>> _unsorted_scores);
     vector<vector<int>> sorted_local_scores;
-    //vector<vector<int>> sort_scores();
+    vector<vector<int>> get_best_hist_scores(vector<vector<int>> _scores);
+    vector<vector<int>> get_top_curr_func_line_scores(vector<vector<int>> _scores);
+    vector<vector<int>> get_sort_n_best_scores(vector<vector<int>> _scores);
+    //vector<vector<int>> get_earliest_next_form_scores(vector<vector<int>> _scores);
     vector<vector<int>> best_local_scores;
     vector<vector<int>> form_scores();
     vector<vector<int>> get_best_local_scores();

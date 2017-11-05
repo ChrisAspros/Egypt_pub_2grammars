@@ -510,6 +510,74 @@ vector<vector<int>> Rule_comparer::sort_scores(vector<vector<int>> _unsorted_sco
 }
 
 
+vector<vector<int>> Rule_comparer::get_best_hist_scores(vector<vector<int>> _scores){
+
+    //int top_score = _scores[0][0];
+    vector<vector<int>> _best_hist_scores;
+    
+    int n=0;
+    
+    while(_scores[0][0] == _scores[n][0]){
+    
+        _best_hist_scores.push_back(_scores[n]);
+        n++;
+    }
+    
+    return _best_hist_scores;
+}
+
+
+vector<vector<int>> Rule_comparer::get_top_curr_func_line_scores(vector<vector<int>> _scores){
+
+    //int top_score = _scores[0][0];
+    vector<vector<int>> _t_f_l_scores;
+    
+    int n=0;
+    
+    while(_scores[0][2] == _scores[n][2]){
+        
+        _t_f_l_scores.push_back(_scores[n]);
+        n++;
+        if (n >= _scores.size()-1) break;
+    }
+    
+    return _t_f_l_scores;
+}
+
+vector<vector<int>> Rule_comparer::get_sort_n_best_scores(vector<vector<int>> _scores){
+
+    //int top_score = _scores[0][0];
+    vector<vector<int>> _s_n_b_scores;
+    
+    //SORT based on 'l'
+    for (int n=0; n < _scores.size() - 1; n++){
+        
+        for (int a=0; a < _scores.size() - 1; a++){
+            
+            if (_scores[a][3] > _scores[a+1][3]){
+                
+                vector<int> aux_score = _scores[a];
+                _scores[a] = _scores[a+1];
+                _scores[a+1] = aux_score;
+            }
+        }
+    }
+    
+    
+    int n=0;
+    
+    //keep only the ones with the best 'l'
+    while(_scores[0][3] == _scores[n][3]){
+        
+        _s_n_b_scores.push_back(_scores[n]);
+        n++;
+        if (n >= _scores.size()-1) break;
+    }
+    
+    return _s_n_b_scores;
+}
+
+
 vector<vector<int>> Rule_comparer::get_best_local_scores(){
 
     vector<vector<int>> _best_scores;
@@ -614,10 +682,23 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     }
     
     sorted_hist_scores = sort_scores(hist_scores);
+    best_hist_scores = get_best_hist_scores(sorted_hist_scores);//keep all of no1 scores..
+    top_curr_func_line_scores = get_top_curr_func_line_scores(best_hist_scores);//keep scores of the most likely (i.e. smallest pop number) of curr_func_lines, i.e. 'j'..
+    top_next_func_line_scores = get_sort_n_best_scores(top_curr_func_line_scores);//best of 'l'
+    earliest_next_form_scores = get_sort_n_best_scores(top_next_func_line_scores);
+    final_best_score = earliest_next_form_scores[0];//in case (even though unlikely) theres is more than one, keep the 1st (enough refinement till here anyway..)
     
-    //??iterate / look further back..
+    
+    
+    //start mixing..
+    
+    /*
+    ??iterate / look further back..
     //best_hist_scores = get_best_hist_scores();
     
+    for petrie just mix hist & ahead
+    for unity predict and change smth else..
+    */
     /*
     keep the i, j, l I need
         
