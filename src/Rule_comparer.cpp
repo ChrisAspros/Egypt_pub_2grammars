@@ -901,7 +901,7 @@ void Rule_comparer::update_combination(vector<int>& seq_t){
     //get start and end of (initially needed) morph
     int start_t = curr_func_lines[0][0].time[1];
     int end_t = curr_func_lines[0][curr_func_lines[0].size()-1].time[1];
-    int morph_len = (end_t - start_t) + 1;
+    int morph_len = (((end_t - start_t) + 1) + parser.all_gr[next_gr].form_length) % parser.all_gr[next_gr].form_length;
     
     //translate score to func members
     //final_best_score[2]//score, i, j, l;
@@ -913,7 +913,7 @@ void Rule_comparer::update_combination(vector<int>& seq_t){
     vector<G_parser::elem_ID> curr_best = curr_func_lines[_j];
     vector<G_parser::elem_ID> next_best;
     int pts = S_rule_next.prod_times.size();
-    int n_f_l_pos  = S_rule_next.prod_times[(_i + 1) % pts] - morph_len;//next _func_line position for selected '_i'
+    int n_f_l_pos  = ((S_rule_next.prod_times[(_i + 1) % pts] - morph_len) + parser.all_gr[next_gr].form_length) % parser.all_gr[next_gr].form_length;//next _func_line position for selected '_i'
         //here _i - 1 because by form_pc we are looking at one section back..
         /*
          _i is at the previous section of g_p (and optimum start Sect of next_gr)
@@ -923,7 +923,7 @@ void Rule_comparer::update_combination(vector<int>& seq_t){
     for (int m=0; m < morph_len; m++){
         
         next_best.push_back(next_func_lines[_l][n_f_l_pos]);
-        n_f_l_pos ++;
+        n_f_l_pos = (n_f_l_pos + 1) % parser.all_gr[next_gr].form_length;
     }
     
     //choose functions probabilistically - weighted (if 4, 20 - 40 - 60- 80)
@@ -968,6 +968,7 @@ vector<string> Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _cur
     float percentage = percentage_unit;
     
     //for testing of weighted probabilistic mixing
+    /*
     _curr_best[0].name = "GR1";
     _curr_best[1].name = "GR1";
     _curr_best[2].name = "GR1";
@@ -976,7 +977,8 @@ vector<string> Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _cur
     _next_best[1].name = "GR2";
     _next_best[2].name = "GR2";
     _next_best[3].name = "GR2";
-    
+     */
+     
     //WEIGHT-CHOOSE FUNCTIONS
     vector<G_parser::elem_ID> _chosen_functions;
     
@@ -984,7 +986,7 @@ vector<string> Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _cur
         
         float random = (rand()%100);
         if (random >= percentage) _chosen_functions.push_back(_curr_best[i]);
-        else _chosen_functions.push_back(_next_best[i]);
+        else _chosen_functions.push_back(_next_best[i]);//might break if transition on first 4 bars.. (_next_best is empty..)
 
         //restore elem_ID times to match parser.morph_cycle times
         //_chosen_functions[i].time[1] = i;
@@ -1020,7 +1022,10 @@ vector<string> Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _cur
     
     parser.updating_morph = 0;
     
+    //test for all positions
+    //give to morph_cycle (gets only the last in its first position..?)
     //gitsave
+    //home..
     
     cout << endl << "BP1:" << endl;
     //get the .times straight - next_func_lines has different times..
