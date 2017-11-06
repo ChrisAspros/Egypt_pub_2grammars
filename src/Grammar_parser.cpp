@@ -562,6 +562,12 @@ void G_parser::find_rule(vector<int>& seq_t){
         //stop if function
         if (!is_function(seq_t)) find_rule(seq_t);
     }
+    /*
+    else if (updating_morph){
+    
+        
+    }
+     */
     else {
         //stop if terminal
         if (!is_terminal(seq_t)) find_rule(seq_t);
@@ -703,7 +709,8 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
         if (!transitioning) update_cycle(production, r, seq_t);
         else {
             
-            trans_update(production, r, seq_t);
+            if (updating_morph) morph_update(production, seq_t);
+            else trans_update(production, r, seq_t);
             
              
             //isolate t (setup_t) for itarations for all right_side without changing aux_t in order to then move to next right_side
@@ -810,6 +817,15 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
     cout << "new cycle (update_cycle()): ";
     for (int i=0; i<all_gr[gr_pop].form_length; i++) cout << curr_cycle[i].name << " ";
     cout << endl << "=======" << endl;
+}
+
+
+void G_parser::morph_update(vector<elem_ID>& production, vector<int>& seq_t){
+
+    for(int i=0; i<production.size(); i++){
+        
+        morph_cycle[production[i].time[1]] = production[i];
+    }
 }
 
 

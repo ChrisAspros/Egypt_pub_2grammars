@@ -46,7 +46,8 @@ public:
     
     vector<aug_sect_rule> aug_sect_rules;
     
-    vector<G_parser::elem_ID> find_best_rule(vector<int>& seq_t);
+    //vector<G_parser::elem_ID>
+    void find_best_rule(vector<int>& seq_t);
     G_parser::rule get_S_rule(int _gr_pop);
     G_parser::rule S_rule_curr, S_rule_next;
     vector<G_parser::elem_ID> best_r;//needs to be global?
@@ -90,7 +91,7 @@ public:
     vector<vector<int>> get_best_hist_scores(vector<vector<int>> _scores);
     vector<vector<int>> get_top_curr_func_line_scores(vector<vector<int>> _scores);
     vector<vector<int>> get_sort_n_best_scores(vector<vector<int>> _scores);
-    //vector<vector<int>> get_earliest_next_form_scores(vector<vector<int>> _scores);
+    vector<vector<int>> get_earliest_next_form_scores(vector<vector<int>> _scores);
     vector<vector<int>> best_local_scores;
     vector<vector<int>> form_scores();
     vector<vector<int>> get_best_local_scores();
@@ -99,6 +100,8 @@ public:
     
     vector<G_parser::elem_ID> intermediate_functions;
     vector<G_parser::elem_ID> history;
+    
+    vector<string> weight_choose_morph(vector<G_parser::elem_ID> _curr_best, vector<G_parser::elem_ID> _next_best);
     
     int form_pc = 2;//for now i.e. number of previous sects to include as history
     //form percentage to check for history & future..

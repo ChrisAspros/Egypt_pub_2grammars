@@ -128,6 +128,7 @@ public:
     
     vector<elem_ID> curr_cycle;
     vector<elem_ID> aux_cycle;
+    vector<elem_ID> morph_cycle;
     int gp;
     int cc;
     //vector<int> setup_t;
@@ -136,6 +137,7 @@ public:
     vector<vector<elem_ID>> func_chunks;
     void update_cycle(vector<elem_ID>& production, rule& r, vector<int>& seq_t);//size() = [form_length * harmonic_rhythm]
     void trans_update(vector<elem_ID>& production, rule& r, vector<int>& seq_t);
+    void morph_update(vector<elem_ID>& production, vector<int>& seq_t);
     void start_cycle(vector<int>& seq_t);
     void update_ending(vector<int>& seq_t);
     void update_cad(vector<int>& seq_t);
@@ -156,6 +158,7 @@ public:
     bool till_function;
     bool rewriting_curr = 0;
     bool rewriting_next = 0;
+    bool updating_morph = 0;
     //bool setting_up;
     bool soon = false;// <= four bars' time (+ smth maybe..)
     bool approaching = true;

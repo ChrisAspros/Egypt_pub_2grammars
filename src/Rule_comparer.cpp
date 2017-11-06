@@ -18,6 +18,10 @@ void Rule_comparer::combine_rules(vector<int>& seq_t){
     //UPDATING - running the cycle now.. (pairnei ta hnia..)
     update_combination(seq_t);
     
+    //get engine to keep playing
+    
+    //exchange curr_/next_grammars
+    //necessary to empty elements in find_best_rule?? e.g. S_rule_next, aux cycle, hist, etc. etc.etc....?
     
     //((((
     
@@ -109,7 +113,7 @@ int Rule_comparer::get_distance_to_goal(vector<int>& seq_t){
 
 
 
-vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
+void Rule_comparer::find_best_rule(vector<int>& seq_t){
     
     //check all sects tails for enough length
     
@@ -222,56 +226,12 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
     curr_func_lines = construct_lines (curr_func_chunks, curr_gr, un_dist, undist_bar);
     next_func_lines = construct_lines (next_func_chunks, next_gr, parser.all_gr[next_gr].form_length, 0);
     
-    
     compare_t_g();
-    
     compare_include_history(form_pc);
-    
     //compare_include_future(form_pc);
     
     //mix_in_rt();
-    //implement_recovery();//end of version_A!! - version b with constraint / diminishing of the musical space (style/chord et.c) at the note level.. - set theory..
-    
-    //THEN COMPARE LINES BASED ON HARMONIC RHYTHMS...
-    
-    //then add existing funcs to the game..
-        //correlation of history with most likely of each sect's tail..
-            //variable history length..
-    
-    //test fitness
-    //in 2 cycles (curr_gr & next_gr)
-    //keep N best (2 sides: curr & next) - up to N^2 combinations..
-    //higher N - less stress on locality / more on large scale form
-    //look back
-    //functions already played combined with
-    //next_gr previous possible functions (for each decided point)
-    
-    //decide best point - place best sect at goal point.. (Sect rules have been stored!!)
-
-    
-    //nmz de xreiazetai - aplws 8a koitaei parapisw an xreiazetai extra length..
-    for (int i=0; aug_sect_rules.size(); i++){
-    
-        //if sect length is enough
-        if (dist-1 <= aug_sect_rules[i].r_len){//dist-1 logw pre-production of next bar..
-            
-            //expand that sect
-        }
-        else{
-            
-            //expand that sect and another..
-            
-            //LATER
-            //make new combo rule: manually build rule, assign right side etc..
-                //prolonged_rules[][] =
-                //for now just combine with previous
-                //in future check&combine iteratively
-        }
-    }
-     //*/
-    
-    
-    //(((why not the MOST LIKELY till goal?? - because compatibility and smoothness is the major focus here..)))
+    //implement_recovery();//end of version_A!! - version b with constraint / diminishing of the musical space (style/chord et.c) at the note level.. - set theory.. (instead of constraint at the function level..)
     
     //look ahead??
     
@@ -284,33 +244,6 @@ vector<G_parser::elem_ID> Rule_comparer::find_best_rule(vector<int>& seq_t){
         //based on transition phase
     
     //if g_p reached end transition (for now..) OR re do the proces..
-    
-    
-    //get scores up to goal point
-        //(((
-        //of most compatible productions (on both sides..)
-            //force the most compatible productions????
-        //)))
-    
-        //search gr1 up to goal (existing + to-be-expaned)
-        //search gr2 (for a sect start at goal) distance-to-goal-long before THAT sect, i.e. its TAIL!
-    
-    //keep rules&productions with 2/3 best scores.. (based on N, input etc..)
-    
-    //check history
-        //compare function_cycle with MOST LIKELY production preceding the GR2 rule..
-        //if same scores ---> check more history (bars one-by-one)
-            //if no more available then chose at random (or 1st..)
-    
-    //??check future??
-    
-    //return
-        //chosen (rule&)production of GR1 to goal point
-        //chosen rule&production (i.e. sect & production) of GR2 around goal point (back and forth)
-    
-        //return the FUNCTION production(vector<string> OR vector<G_parser::elem_ID>)
-    
-    
     
     
 //VHMA VHMA na vrw poses fores xreiazetai kai pou to trans_update()
@@ -538,7 +471,7 @@ vector<vector<int>> Rule_comparer::get_top_curr_func_line_scores(vector<vector<i
         
         _t_f_l_scores.push_back(_scores[n]);
         n++;
-        if (n >= _scores.size()-1) break;
+        if (n > _scores.size()-1) break;
     }
     
     return _t_f_l_scores;
@@ -571,10 +504,26 @@ vector<vector<int>> Rule_comparer::get_sort_n_best_scores(vector<vector<int>> _s
         
         _s_n_b_scores.push_back(_scores[n]);
         n++;
-        if (n >= _scores.size()-1) break;
+        if (n > _scores.size()-1) break;
     }
     
     return _s_n_b_scores;
+}
+
+
+vector<vector<int>> Rule_comparer::get_earliest_next_form_scores(vector<vector<int>> _scores){
+
+    //get earliest BUT PRIORITISE i == S_rule_next.times[-1]
+    
+    vector<vector<int>> aux_scores;
+    
+    for (int n=0; n < _scores.size(); n++){
+    
+        if (_scores[n][1] == (S_rule_next.prod_times.size() - 1)) aux_scores.push_back(_scores[n]);
+    }
+    
+    if (aux_scores.size() > 0) return aux_scores;
+    else return get_sort_n_best_scores(_scores);
 }
 
 
@@ -685,30 +634,20 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     best_hist_scores = get_best_hist_scores(sorted_hist_scores);//keep all of no1 scores..
     top_curr_func_line_scores = get_top_curr_func_line_scores(best_hist_scores);//keep scores of the most likely (i.e. smallest pop number) of curr_func_lines, i.e. 'j'..
     top_next_func_line_scores = get_sort_n_best_scores(top_curr_func_line_scores);//best of 'l'
-    earliest_next_form_scores = get_sort_n_best_scores(top_next_func_line_scores);
+    
+    //earliest_next_form_scores = get_sort_n_best_scores(top_next_func_line_scores);
+    earliest_next_form_scores = get_earliest_next_form_scores(top_next_func_line_scores);
+    
     final_best_score = earliest_next_form_scores[0];//in case (even though unlikely) theres is more than one, keep the 1st (enough refinement till here anyway..)
     
-    
+    /*
+    //The classicness (high probability in the style) of curr_/next_line are far more important than the position in the form, i.e. recognisabiity) the most classic of the style (the most probable lines..)
+        this way I know how much I am in/out of style (of curr/next gr) for in favour of compatibility.. (include in LOG)
+     */
     
     //start mixing..
     
-    /*
-    ??iterate / look further back..
-    //best_hist_scores = get_best_hist_scores();
-    
-    for petrie just mix hist & ahead
-    for unity predict and change smth else..
-    */
-    /*
-    keep the i, j, l I need
-        
-        start r_t mixing..
-    */
-     
-    //*/
     //make sure parser.function_cycle restarts fine after delete.. - should be fine as is!!
-    //clear history if not needed anymore..
-    //gitsave
 }
 
 
@@ -768,7 +707,7 @@ void Rule_comparer::rewrite_curr_gr_t_g(){
             
             if (curr_bar == g_p){
                 
-                //parser.till_function = 0;
+                parser.till_function = 0;
                 cout << endl << "breaking in while" << endl;
                 break;
             }
@@ -808,7 +747,7 @@ void Rule_comparer::rewrite_curr_gr_t_g(){
         //if ((j % f_l) == (to_g_p % f_l)) break;//to avoid rewriting on g_p due to manual j++
         if (curr_bar == g_p){
             
-            //parser.till_function = 0;
+            parser.till_function = 0;
             cout << endl << "breaking outside while" << endl;
             break;
         }
@@ -957,13 +896,53 @@ vector<vector<G_parser::elem_ID>> Rule_comparer::construct_lines(vector<vector<G
 void Rule_comparer::update_combination(vector<int>& seq_t){
 
     //if still transitioning
-    
     //before g_p
     
-    //choose probabilistically - weighted
-    //(re)place in cycle
+    //get start and end of (initially needed) morph
+    int start_t = curr_func_lines[0][0].time[1];
+    int end_t = curr_func_lines[0][curr_func_lines[0].size()-1].time[1];
+    int morph_len = (end_t - start_t) + 1;
+    
+    //translate score to func members
+    //final_best_score[2]//score, i, j, l;
+    int _i = final_best_score[1];
+    int _j = final_best_score[2];
+    int _l = final_best_score[3];
+    
+    //get best vector<elem_ID> of both sides..
+    vector<G_parser::elem_ID> curr_best = curr_func_lines[_j];
+    vector<G_parser::elem_ID> next_best;
+    int pts = S_rule_next.prod_times.size();
+    int n_f_l_pos  = S_rule_next.prod_times[(_i + 1) % pts] - morph_len;//next _func_line position for selected '_i'
+        //here _i - 1 because by form_pc we are looking at one section back..
+        /*
+         _i is at the previous section of g_p (and optimum start Sect of next_gr)
+         the search expands to one sect earlier (due to form_pc = 2)
+         so last _i is ok for beginning of form 2
+         */
+    for (int m=0; m < morph_len; m++){
+        
+        next_best.push_back(next_func_lines[_l][n_f_l_pos]);
+        n_f_l_pos ++;
+    }
+    
+    //choose functions probabilistically - weighted (if 4, 20 - 40 - 60- 80)
+    vector<string> terminals_morph = weight_choose_morph(curr_best, next_best);
+    
+    //choose terminals probabilistically - weighted
+        //choose gr_1 or gr_2 for functions to terminal (weighted)
+    //(after weighted decision) place terminals in main cycle
+
+    //release to keep main playing..
+    
+    //place Next Sect for start of gr 2
+        //S_rule_next.right_side[0].right_str[(_i+1) % right_str.size()] - BUT withoug the '(*)'.. - chars till '('
+    
+    //restart from point of next_gr in the form (like in the A-B way kind of..)
     
     //on reaching g_p (for LATER..)
+    
+    cout << endl << "BP:" << endl;
     
     //if stage (4 or) 5
     //place chosen sect non-T of GR_2 / restor cycle with offset bar count
@@ -980,6 +959,69 @@ void Rule_comparer::update_combination(vector<int>& seq_t){
     //step back stages gradually (normalise till sect/g_p)
     //i.e. like reconciliation microgrammar, but more clever here..
 }
+
+
+vector<string> Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, vector<G_parser::elem_ID> _next_best){
+
+    int l = _curr_best.size();
+    float percentage_unit = 100.0 / (l + 1);
+    
+    
+    //WEIGHT-CHOOSE FUNCTIONS
+    vector<G_parser::elem_ID> _chosen_functions;
+    
+    for (int i=0; i < l; i++){
+        
+        float random = (rand()%100) / 100.0;
+        if (random >= percentage_unit) _chosen_functions.push_back(_curr_best[i]);
+        else _chosen_functions.push_back(_next_best[i]);
+
+        //restore elem_ID times to match parser.morph_cycle times
+        _chosen_functions[i].time[1] = i;
+        
+        //build parser.morph_cycle
+        parser.morph_cycle.push_back(_chosen_functions[i]);
+        
+        percentage_unit += percentage_unit;
+    }
+    
+    
+    //WEIGHT-CHOOSE TERMINALS
+    percentage_unit = 100.0 / (l + 1);
+    
+    parser.updating_morph = 1;
+    
+    for (int i=0; i < l; i++){
+        
+        float random = (rand()%100) / 100.0;
+        if (random >= percentage_unit) parser.gr_pop = curr_gr;
+        else parser.gr_pop = next_gr;
+        
+        vector<int> _t = {0, 0, 0, i, 0};
+        //LAST ZERO-WHAT IF WE ARE IN further cycles?? - check also for transitions...!!!!! + aux_t further up..!!
+            //probably not a problem (especially if aux_cycle deleted / reinitiated for the next transition)
+        parser.find_rule(_t);
+        
+        percentage_unit += percentage_unit;
+    }
+    
+    parser.updating_morph = 0;
+    
+    //parser.transitioning=false? - too soon??
+    
+    //does beginning of next_gr I I II II
+    //needs find_rule iteration till it's a terminal of either grammars..
+    
+    cout << endl << "BP1:" << endl;
+    //get the .times straight - next_func_lines has different times..
+    
+    vector<string> _term_morph;
+    
+    return _term_morph;
+    
+    
+}
+
 
 /*COMMENTS
  //get func_chunks of next_gr

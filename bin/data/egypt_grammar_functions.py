@@ -77,7 +77,7 @@ rule: SectA -> 1.0 decA(1) decA1(5) decA2(7) //could be decA1(1) decA2(5) || dec
 			:end_rule
 
 rule: decA -> 0.9 T SD D T //:end_rule
-			-> 0.2 D T D T :end_rule
+			-> 0.1 D T D T :end_rule
 
 rule: decA1 -> 0.9 T SD
 			-> 0.1 SD T :end_rule
