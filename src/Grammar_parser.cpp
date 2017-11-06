@@ -558,7 +558,7 @@ void G_parser::find_rule(vector<int>& seq_t){
         }
     }
     
-    if (till_function){//!comb_setup & transitioning){
+    if (till_function){// && !updating_morph){//!comb_setup & transitioning){
         //stop if function
         if (!is_function(seq_t)) find_rule(seq_t);
     }
@@ -709,7 +709,7 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
         if (!transitioning) update_cycle(production, r, seq_t);
         else {
             
-            if (updating_morph) morph_update(production, seq_t);
+            if (updating_morph) morph_update(production, r, seq_t);
             else trans_update(production, r, seq_t);
             
              
@@ -731,7 +731,10 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
                     
                     //if (cc==gp) break;
                     
-                    if(!is_function(setup_t)) find_rule(setup_t);
+                    if(till_function){
+                    
+                        if(!is_function(setup_t)) find_rule(setup_t);
+                    }
                     
                     //trans_update(production, r, seq_t);
                     
@@ -820,11 +823,16 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
 }
 
 
-void G_parser::morph_update(vector<elem_ID>& production, vector<int>& seq_t){
+void G_parser::morph_update(vector<elem_ID> production, rule& r, vector<int>& seq_t){
 
+    cout << endl << "Morph_update" << endl;
+    
     for(int i=0; i<production.size(); i++){
         
-        morph_cycle[production[i].time[1]] = production[i];
+        morph_cycle[i] = production[i];
+        aux_cycle[production[i].time[1]] = production[i];
+        curr_cycle[production[i].time[1]] = production[i];
+        //aux_cycle[seq_t[3]] = production[i];
     }
 }
 

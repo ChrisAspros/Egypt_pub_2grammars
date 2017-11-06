@@ -965,52 +965,62 @@ vector<string> Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _cur
 
     int l = _curr_best.size();
     float percentage_unit = 100.0 / (l + 1);
+    float percentage = percentage_unit;
     
+    //for testing of weighted probabilistic mixing
+    _curr_best[0].name = "GR1";
+    _curr_best[1].name = "GR1";
+    _curr_best[2].name = "GR1";
+    _curr_best[3].name = "GR1";
+    _next_best[0].name = "GR2";
+    _next_best[1].name = "GR2";
+    _next_best[2].name = "GR2";
+    _next_best[3].name = "GR2";
     
     //WEIGHT-CHOOSE FUNCTIONS
     vector<G_parser::elem_ID> _chosen_functions;
     
     for (int i=0; i < l; i++){
         
-        float random = (rand()%100) / 100.0;
-        if (random >= percentage_unit) _chosen_functions.push_back(_curr_best[i]);
+        float random = (rand()%100);
+        if (random >= percentage) _chosen_functions.push_back(_curr_best[i]);
         else _chosen_functions.push_back(_next_best[i]);
 
         //restore elem_ID times to match parser.morph_cycle times
-        _chosen_functions[i].time[1] = i;
+        //_chosen_functions[i].time[1] = i;
+        _chosen_functions[i].time[1] = _curr_best[i].time[1];
         
         //build parser.morph_cycle
         parser.morph_cycle.push_back(_chosen_functions[i]);
+        parser.aux_cycle[_curr_best[i].time[1]] = _chosen_functions[i];
         
-        percentage_unit += percentage_unit;
+        percentage += percentage_unit;
     }
     
     
     //WEIGHT-CHOOSE TERMINALS
-    percentage_unit = 100.0 / (l + 1);
+    percentage = percentage_unit;
     
     parser.updating_morph = 1;
+    parser.till_function = 0;
     
     for (int i=0; i < l; i++){
         
-        float random = (rand()%100) / 100.0;
-        if (random >= percentage_unit) parser.gr_pop = curr_gr;
+        float random = (rand()%100);
+        if (random >= percentage) parser.gr_pop = curr_gr;
         else parser.gr_pop = next_gr;
         
-        vector<int> _t = {0, 0, 0, i, 0};
+        vector<int> _t = {0, 0, 0, _curr_best[i].time[1], 0};
         //LAST ZERO-WHAT IF WE ARE IN further cycles?? - check also for transitions...!!!!! + aux_t further up..!!
             //probably not a problem (especially if aux_cycle deleted / reinitiated for the next transition)
         parser.find_rule(_t);
         
-        percentage_unit += percentage_unit;
+        percentage += percentage_unit;
     }
     
     parser.updating_morph = 0;
     
-    //parser.transitioning=false? - too soon??
-    
-    //does beginning of next_gr I I II II
-    //needs find_rule iteration till it's a terminal of either grammars..
+    //gitsave
     
     cout << endl << "BP1:" << endl;
     //get the .times straight - next_func_lines has different times..

@@ -137,7 +137,7 @@ public:
     vector<vector<elem_ID>> func_chunks;
     void update_cycle(vector<elem_ID>& production, rule& r, vector<int>& seq_t);//size() = [form_length * harmonic_rhythm]
     void trans_update(vector<elem_ID>& production, rule& r, vector<int>& seq_t);
-    void morph_update(vector<elem_ID>& production, vector<int>& seq_t);
+    void morph_update(vector<elem_ID> production,rule& r, vector<int>& seq_t);
     void start_cycle(vector<int>& seq_t);
     void update_ending(vector<int>& seq_t);
     void update_cad(vector<int>& seq_t);

@@ -114,13 +114,13 @@ void Osc_receive::update_transition_state(){
         if (((new_read[0] == "4.0" || new_read[0] == "1.0") && room1) || ((new_read[0] == "1.0" || new_read[0] == "2.0" || new_read[0] == "5.0") && room2)){
         
             cout << endl << endl << endl << "DOES TRANSITION" << endl;
-            transitioning = 1;
+            //transitioning = 1;
         }
         //else if (previous_read[0] == "4.0" && room1) transitioning = 1;
         else {
         
             cout << endl << endl << endl << "DON'T DO TRANSITION" << endl;
-            transitioning = 0;
+            //transitioning = 0;
         }
     }
 }

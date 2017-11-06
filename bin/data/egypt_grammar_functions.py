@@ -22,7 +22,7 @@ harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2)
 //optimal_form { I I bVII I I bII bVII I IV IIIo IV I IV IV bVII bVII I I bVII I I bII bVII I bII I bVII I bII I bVII I }
 end_times { 1 5 9 13 17 21 25 29 }
 functions { T D SD }
-terminals { i isus4 im immaj i6 i7 bii biisus2 iim7 iiim iiim7 iiio iv ivsus4 iv6 iv7 ivm v7 vo bvi bviim }
+terminals { i isus4 im immaj i6 i7 bii biisus2 iim7 ii7 iiim iiim7 iiio iv ivsus4 iv6 iv7 ivm v7 vo bvi bviim }
 
 
 //decision_heads dec_* //apply to decision_bars elem

@@ -77,6 +77,20 @@ void ofApp::update(){
     //string s = curr_cycle[t[3]].name;
     //if (goal_reached && (s=="i" || s=="i6" || s=="i7")) break;
 
+    
+    blues.seq.r_comp.parser.transitioning = transitioning;
+    blues.seq.r_comp.trans_complete = trans_complete;
+    
+    if (transitioning){
+    
+        cout << "";
+    }
+    
+    if (!transitioning){
+        
+        cout << "";
+    }
+    
     blues.update();
     
     /*
@@ -121,8 +135,8 @@ void ofApp::update(){
         //cout << "ending: " << ending << ", g_r: " << goal_reached << endl;
     }
     
-    blues.seq.r_comp.parser.transitioning = transitioning;
-    blues.seq.r_comp.trans_complete = trans_complete;
+    //blues.seq.r_comp.parser.transitioning = transitioning;
+    //blues.seq.r_comp.trans_complete = trans_complete;
     
     //if (ofApp_is_stopped) blues.seq.stop_all_MIDI();
     
