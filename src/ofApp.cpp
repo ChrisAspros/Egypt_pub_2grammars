@@ -78,7 +78,7 @@ void ofApp::update(){
     //if (goal_reached && (s=="i" || s=="i6" || s=="i7")) break;
 
     
-    blues.seq.r_comp.parser.transitioning = transitioning;
+    //blues.seq.r_comp.parser.transitioning = transitioning;
     blues.seq.r_comp.trans_complete = trans_complete;
     
     if (transitioning){
@@ -400,7 +400,8 @@ void ofApp::keyPressed(int key){
     if (key == '4' && (transitioning || show_trans)) stage_num = "4"; trans_stage = 4;
     if (key == '5' && (transitioning || show_trans)){
         
-        transitioning = !transitioning;
+        cout << "test";
+        //transitioning = !transitioning;
         trans_complete = 1;
         stage_num = "0";
         trans_stage = 0;

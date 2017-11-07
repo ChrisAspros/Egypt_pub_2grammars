@@ -18,8 +18,14 @@ void Rule_comparer::combine_rules(vector<int>& seq_t){
     //UPDATING - running the cycle now.. (pairnei ta hnia..)
     update_combination(seq_t);
     
+    rules_combined = 1;
+    parser.transitioning = 0;
+    parser.gr_pop = 0;//curr_gr;
+    //place_next_sect();
+    
     //get engine to keep playing
     
+    cout << endl << "BP:" << endl;
     //exchange curr_/next_grammars
     //necessary to empty elements in find_best_rule?? e.g. S_rule_next, aux cycle, hist, etc. etc.etc....?
     
@@ -926,23 +932,9 @@ void Rule_comparer::update_combination(vector<int>& seq_t){
         n_f_l_pos = (n_f_l_pos + 1) % parser.all_gr[next_gr].form_length;
     }
     
-    //choose functions probabilistically - weighted (if 4, 20 - 40 - 60- 80)
-    vector<string> terminals_morph = weight_choose_morph(curr_best, next_best);
-    
-    //choose terminals probabilistically - weighted
-        //choose gr_1 or gr_2 for functions to terminal (weighted)
-    //(after weighted decision) place terminals in main cycle
-
-    //release to keep main playing..
-    
-    //place Next Sect for start of gr 2
-        //S_rule_next.right_side[0].right_str[(_i+1) % right_str.size()] - BUT withoug the '(*)'.. - chars till '('
-    
-    //restart from point of next_gr in the form (like in the A-B way kind of..)
-    
-    //on reaching g_p (for LATER..)
-    
-    cout << endl << "BP:" << endl;
+    //chooses functions/terminals probabilistically - weighted (distrubuted probabilities based on morph length)
+        //& places them in cycles..
+    weight_choose_morph(curr_best, next_best);
     
     //if stage (4 or) 5
     //place chosen sect non-T of GR_2 / restor cycle with offset bar count
@@ -961,7 +953,7 @@ void Rule_comparer::update_combination(vector<int>& seq_t){
 }
 
 
-vector<string> Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, vector<G_parser::elem_ID> _next_best){
+void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, vector<G_parser::elem_ID> _next_best){
 
     int l = _curr_best.size();
     float percentage_unit = 100.0 / (l + 1);
@@ -1021,20 +1013,39 @@ vector<string> Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _cur
     }
     
     parser.updating_morph = 0;
-    
-    //test for all positions
+
     //give to morph_cycle (gets only the last in its first position..?)
-    //gitsave
-    //home..
     
     cout << endl << "BP1:" << endl;
-    //get the .times straight - next_func_lines has different times..
     
-    vector<string> _term_morph;
+    //vector<string> _term_morph;
+    //return _term_morph;
+}
+
+
+void Rule_comparer::place_next_sect(){
+
+    //place Next Sect for start of gr s
+    //S_rule_next.right_side[0].right_str[(_i+1) % right_str.size()] - BUT withoug the '(*)'.. - chars till '('
     
-    return _term_morph;
+    int _i = final_best_score[1];
     
+    n_s_pos = S_rule_next.prod_times[(_i+1) % S_rule_next.prod_times.size()];//next sect position
     
+    string sect = S_rule_next.right_side[0].right_str[(_i+1) % S_rule_next.right_side[0].right_str.size()];//optimal sect start
+    
+    string sect_naked;//take the '(' out of SectA(*)
+    for (int c=0; c < sect.size(); c++){
+    
+        if (sect[c] != '(') sect_naked.push_back(sect[c]);
+        else break;
+    }
+    
+    parser.curr_cycle[n_s_pos].name = sect_naked;
+    
+    //restart from point of next_gr in the form (like in the A-B way kind of..)
+        //maybe when g_p reached??
+    cout << endl << "BP:" << endl;
 }
 
 

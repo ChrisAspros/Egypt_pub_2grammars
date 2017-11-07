@@ -29,7 +29,10 @@ public:
     int curr_gr;
     int next_gr;
     
+    int n_s_pos;//next sect position
+    
     void combine_rules(vector<int>& seq_t);//the main/central function of the class
+    bool rules_combined;
     
     vector<int> get_sect_lengths(G_parser::rule _S_rule, int _gr_pop);
     vector<int> sect_lengths_curr, sect_lengths_next;
@@ -101,7 +104,7 @@ public:
     vector<G_parser::elem_ID> intermediate_functions;
     vector<G_parser::elem_ID> history;
     
-    vector<string> weight_choose_morph(vector<G_parser::elem_ID> _curr_best, vector<G_parser::elem_ID> _next_best);
+    void weight_choose_morph(vector<G_parser::elem_ID> _curr_best, vector<G_parser::elem_ID> _next_best);
     
     int form_pc = 2;//for now i.e. number of previous sects to include as history
     //form percentage to check for history & future..
@@ -113,6 +116,7 @@ public:
     int length_to_goal;//number of bars until goal
     
     void update_combination(vector<int>& seq_t);
+    void place_next_sect();
     
     void initiate_aux_cycle();
     

@@ -144,9 +144,28 @@ void Blues_structure::update(){
             }
         }
         
+        //reset_time
         
-        if(seq.r_comp.parser.transitioning) seq.r_comp.combine_rules(t);
-        else seq.r_comp.parser.find_rule(t);
+        if ((t[3]==8) && (t[4]==0)) seq.r_comp.parser.transitioning = 1;
+        
+        if(seq.r_comp.parser.transitioning && !seq.r_comp.rules_combined) seq.r_comp.combine_rules(t);
+        //else seq.r_comp.parser.find_rule(t);
+        //seq.r_comp.parser.find_rule(t);
+        
+        if ((t[3] == seq.r_comp.g_p) && seq.r_comp.rules_combined){// && seq.r_comp.parser.transitioning){
+         
+            seq.r_comp.place_next_sect();
+            //seq.t[3] = seq.r_comp.n_s_pos;
+            t[3] = seq.r_comp.n_s_pos;
+            seq.bar = seq.r_comp.n_s_pos;
+            
+            //end _transitioning();
+            seq.r_comp.parser.transitioning = 0;
+            seq.r_comp.rules_combined = 0;
+            seq.r_comp.parser.gr_pop = !seq.r_comp.parser.gr_pop;
+        }
+        
+        seq.r_comp.parser.find_rule(t);
         
         //if (seq.r_comp.trans_complete) seq.r_comp.un_dist_found = 0;//to get unrewritten funcs till g_p only once in a transition..
         
