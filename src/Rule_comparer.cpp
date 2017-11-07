@@ -20,9 +20,16 @@ void Rule_comparer::combine_rules(vector<int>& seq_t){
     
     rules_combined = 1;
     parser.transitioning = 0;
-    parser.gr_pop = 0;//curr_gr;
+    //parser.gr_pop = next_gr;//already in build_next_form()
     //place_next_sect();
     
+    //too early..
+    /*
+    int aux_gr = next_gr;
+    next_gr = curr_gr;
+    curr_gr = aux_gr;
+     */
+     
     //get engine to keep playing
     
     cout << endl << "BP:" << endl;
@@ -676,7 +683,7 @@ void Rule_comparer::rewrite_curr_gr_t_g(){
     
     //expand to functions
     parser.till_function = 1;
-    parser.gr_pop = curr_gr;//not necessary here but might become..
+    //parser.gr_pop = curr_gr;//not necessary here but might become..
     
     int f_l = parser.all_gr[curr_gr].form_length;
     
@@ -1023,15 +1030,29 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
 }
 
 
-void Rule_comparer::place_next_sect(){
+void Rule_comparer::build_next_form(){
 
-    //place Next Sect for start of gr s
-    //S_rule_next.right_side[0].right_str[(_i+1) % right_str.size()] - BUT withoug the '(*)'.. - chars till '('
+    parser.building_next_form = true;
     
+    parser.initiate_cycle();
+    
+    //get intro point to next form, i.e. n_s_pos
     int _i = final_best_score[1];
-    
     n_s_pos = S_rule_next.prod_times[(_i+1) % S_rule_next.prod_times.size()];//next sect position
     
+    vector<int> aux_t = {0, 0, 0, 0, 0};
+    
+    //SET GR_pop??
+    //parser.gr_pop = next_gr;
+    
+    parser.find_rule(aux_t);//under building_next_form, i.e. rewrite S_rule till sects
+    
+    parser.building_next_form = false;//to put find_rule in normal iterative mode for future..
+    
+    //unfold S_rule_next in curr_cycle
+        //manually OR through find_rule (with stop at Sect)
+    
+    /*
     string sect = S_rule_next.right_side[0].right_str[(_i+1) % S_rule_next.right_side[0].right_str.size()];//optimal sect start
     
     string sect_naked;//take the '(' out of SectA(*)
@@ -1041,11 +1062,21 @@ void Rule_comparer::place_next_sect(){
         else break;
     }
     
+    //making sure it starts with "S" if top of the form..
+    if (n_s_pos==0) sect_naked = "S";
+    
     parser.curr_cycle[n_s_pos].name = sect_naked;
     
     //restart from point of next_gr in the form (like in the A-B way kind of..)
         //maybe when g_p reached??
     cout << endl << "BP:" << endl;
+     */
+}
+
+
+void Rule_comparer::build_next_sects(){
+
+    
 }
 
 

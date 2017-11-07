@@ -17,8 +17,8 @@ public:
 	void setup();
 	void update();
 	void draw();
-    void keyPressed(int key);
-    void keyReleased(int key);
+    //void keyPressed(int key);
+    //void keyReleased(int key);
     
     void update_speed();
     void tracking_repl_A_B();

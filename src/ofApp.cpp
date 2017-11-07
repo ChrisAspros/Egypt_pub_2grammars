@@ -21,7 +21,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp1 = 200;//40;
+    frame_sp1 = 500;//40;
     frame_sp2 = 60;
     
     frame_sp = frame_sp1;
@@ -77,9 +77,8 @@ void ofApp::update(){
     //string s = curr_cycle[t[3]].name;
     //if (goal_reached && (s=="i" || s=="i6" || s=="i7")) break;
 
-    
     //blues.seq.r_comp.parser.transitioning = transitioning;
-    blues.seq.r_comp.trans_complete = trans_complete;
+    //blues.seq.r_comp.trans_complete = trans_complete;
     
     if (transitioning){
     
@@ -108,8 +107,8 @@ void ofApp::update(){
     if (!tracked_randomised){//0 is tracked, is randomised 1)
     
         ///*
-        tracking_repl_A_B();
-        if(blues.seq.only_on("beat", blues.t)) ;OSC.update();
+        //tracking_repl_A_B();
+        if(blues.seq.only_on("beat", blues.t)); //OSC.update();
          //*/
     }
     else {
@@ -135,8 +134,8 @@ void ofApp::update(){
         //cout << "ending: " << ending << ", g_r: " << goal_reached << endl;
     }
     
-    //blues.seq.r_comp.parser.transitioning = transitioning;
-    //blues.seq.r_comp.trans_complete = trans_complete;
+    blues.seq.r_comp.parser.transitioning = transitioning;
+    blues.seq.r_comp.trans_complete = trans_complete;
     
     //if (ofApp_is_stopped) blues.seq.stop_all_MIDI();
     
@@ -367,9 +366,9 @@ void ofApp::tracking_repl_A_B(){
     }
 }
 
-
+/*
 void ofApp::keyPressed(int key){
-
+ 
     //transition and changes UI
     //transition
     
@@ -460,8 +459,9 @@ void ofApp::keyPressed(int key){
     }
     if (key == 's' || key == 'S') blues.seq.stop_all_MIDI();
 }
+*/
 
-
+/*
 void ofApp::keyReleased(int key){
 
     if (key == 's' || key == 'S'){
@@ -470,6 +470,7 @@ void ofApp::keyReleased(int key){
         ofSetFrameRate(frame_sp);
     }
 }
+ */
 
 
 void ofApp::pass_log_values(){

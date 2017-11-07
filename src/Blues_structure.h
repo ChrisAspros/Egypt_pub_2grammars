@@ -41,8 +41,11 @@ public:
     void update();
     
     void update_velocities();
+    void update_velocities_once();
     int vel_gr1, vel_gr2;
     int vel_smoothener;
+    void A_B_change();
+    void ordered_change();
     //bool automate_vel = 0;
     //bool fade_to_gr1 = 0;
     

@@ -22,7 +22,7 @@ harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2)
 //optimal_form { I I bVII I I bII bVII I IV IIIo IV I IV IV bVII bVII I I bVII I I bII bVII I bII I bVII I bII I bVII I }
 end_times { 1 5 9 13 17 21 25 29 }
 functions { T D SD }
-terminals { i isus4 im immaj i6 i7 bii biisus2 iim7 ii7 iiim iiim7 iiio iv ivsus4 iv6 iv7 ivm v7 vo bvi bviim }
+terminals { i isus4 im immaj i6 i7 bii biisus2 iim7 ii7 iiim iiim7 iiio iv ivsus4 iv6 iv7 ivm v7 vo bvi bviim i i6 i7 iim7 ii7 iv iv6 v7 }
 
 
 //decision_heads dec_* //apply to decision_bars elem
@@ -76,15 +76,15 @@ for curr_lines...
 rule: SectA -> 1.0 decA(1) decA1(5) decA2(7) //could be decA1(1) decA2(5) || decA(1) decA(5) || dec(1) dec(5) for dec_1 dec_5 etc..
 			:end_rule
 
-rule: decA -> 0.9 T SD D T //:end_rule
-			-> 0.1 D T D T :end_rule
+rule: decA -> 0.5 T SD D T //:end_rule
+			-> 0.5 D T D T :end_rule
 
-rule: decA1 -> 0.9 T SD
-			-> 0.1 SD T :end_rule
+rule: decA1 -> 0.5 T SD
+			-> 0.5 SD T :end_rule
 
-rule: decA2 -> 0.8 T T
-			-> 0.1 SD SD
-			-> 0.1 D D :end_rule
+rule: decA2 -> 0.4 T T
+			-> 0.3 SD SD
+			-> 0.3 D D :end_rule
 
 
 
@@ -106,9 +106,13 @@ rule: decTest1 -> 1.0 T T T T :end_rule
 //rule: decB2 -> 0.9 SD T D T //:end_rule
 			-> 0.1 D D D D :end_rule
 
-rule: decB1 -> 1.0 SD SD T SD :end_rule
+rule: decB1 -> 0.4 SD SD T SD 
+			-> 0.3 SD SD T T
+			-> 0.3 SD D D T :end_rule
 
-rule: decB2 -> 1.0 SD SD SD D :end_rule
+rule: decB2 -> 0.4 SD SD T D 
+			-> 0.3 SD SD T D
+			-> 0.3 SD D T D :end_rule
 
 rule: SD_9 -> 1.0 IV :end_rule //VGAZEI BUG logw mult choices?? petaei ta ":end" kai "rule:" ws non-T - mallon gt to "SD_9" den einai Function ("SD"...)
 rule: SD_10 -> 1.0 bVI :end_rule //de 8a prepe se kairo eirhnhs (i.e. non-Transitioning)
@@ -166,7 +170,7 @@ NEW_GRAMMAR 2 //A train grammar
  //end_times { 1 5 9 13 }
  end_times { 1 5 9 13 17 21 25 29 }
  functions { T D SD }
- terminals { i i6 i7 iim7 ii7 iv iv6 v7 }
+ terminals { i i6 i7 iim7 ii7 iv iv6 v7 isus4 im immaj bii biisus2 iiim iiim7 iiio ivsus4 iv7 ivm vo bvi bviim }
  
  
  rule: S -> 1.0 SectA(1) SectA(9) SectB(17) SectA(25) //SectC(16) SectA(24) //SectB(2) //SectA(8) SectC(8) //
@@ -196,31 +200,8 @@ rule: decSD -> 1.0 SD SD :end_rule
 
 
 rule: decSD_17 -> 1.0 SD SD SD SD :end_rule
-rule: decCad -> 0.9 SD D//-> 1.0 SD D :end_rule
-			 -> 0.1 D D :end_rule
-
-rule: T -> 1.0 I :end_rule
-rule: SD -> 1.0 II :end_rule
-rule: SD_17 -> 1.0 IV :end_rule
-rule: SD_21 -> 1.0 II :end_rule
-rule: D -> 1.0 V :end_rule
-
-//rule: iv|iv6 SD -> 1.0 iv|iv6 IV //ALLIWS SD_18 SD_19 etc..
-				:end_rule
-
-rule: SD_18 -> 1.0 IV :end_rule
-rule: SD_19 -> 1.0 IV :end_rule
-rule: SD_20 -> 1.0 IV :end_rule
-
-
-rule: I -> 0.5 i 
-		-> 0.5 i6
-		:end_rule
-rule: I_16 -> 1.0 i7 :end_rule
-rule: II -> 0.7 ii7
-		 -> 0.3 iim7 :end_rule
-rule: IV -> 0.5 iv6 
-		 -> 0.5 iv :end_rule
+rule: decCad -> 0.1 SD D//-> 1.0 SD D :end_rule
+			 -> 0.9 D D :end_rule
 
 //rule: decA -> 0.9 T D T T //:end_rule
  			-> 0.1 D D D D :end_rule
@@ -244,15 +225,29 @@ rule: IV -> 0.5 iv6
 
 //Function rules (non-T)
 rule: T -> 1.0 I :end_rule
- rule: SD -> 1.0 II :end_rule
- rule: D -> 1.0 V :end_rule
- 
+rule: SD -> 1.0 II :end_rule
+rule: D -> 1.0 V :end_rule
+rule: SD_17 -> 1.0 IV :end_rule
+rule: SD_21 -> 1.0 II :end_rule
+
+//rule: iv|iv6 SD -> 1.0 iv|iv6 IV //ALLIWS SD_18 SD_19 etc..
+				:end_rule
+
+rule: SD_18 -> 1.0 IV :end_rule
+rule: SD_19 -> 1.0 IV :end_rule
+rule: SD_20 -> 1.0 IV :end_rule
  
 
  //Terminal rules
- rule: I_1 -> 1.0 i :end_rule
- rule: I -> 1.0 i6 :end_rule
- rule: II -> 1.0 iim7 :end_rule
- rule: V -> 1.0 v7 :end_rule
+ rule: I -> 0.5 i 
+		-> 0.5 i6
+		:end_rule
+rule: I_1 -> 1.0 i :end_rule
+rule: I_16 -> 1.0 i7 :end_rule
+rule: II -> 0.7 ii7
+		 -> 0.3 iim7 :end_rule
+rule: IV -> 0.5 iv6 
+		 -> 0.5 iv :end_rule
+rule: V -> 1.0 v7 :end_rule
 
  //21 chunks & 6

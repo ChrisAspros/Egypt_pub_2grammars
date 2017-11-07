@@ -154,6 +154,7 @@ public:
     
     rule the_rule;
     bool transitioning;
+    bool building_next_form;
     bool comb_setup;
     bool till_function;
     bool rewriting_curr = 0;

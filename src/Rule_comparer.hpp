@@ -116,7 +116,8 @@ public:
     int length_to_goal;//number of bars until goal
     
     void update_combination(vector<int>& seq_t);
-    void place_next_sect();
+    void build_next_form();
+    void build_next_sects();
     
     void initiate_aux_cycle();
     

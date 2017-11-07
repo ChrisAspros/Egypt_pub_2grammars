@@ -562,12 +562,12 @@ void G_parser::find_rule(vector<int>& seq_t){
         //stop if function
         if (!is_function(seq_t)) find_rule(seq_t);
     }
-    /*
-    else if (updating_morph){
-    
+    else if (building_next_form){
         
+        //find_rule ONLY once for S_rule - otherwise in beginning of find_rule..
+        //find_rule(seq_t);
+        //building_next_form = false;
     }
-     */
     else {
         //stop if terminal
         if (!is_terminal(seq_t)) find_rule(seq_t);
@@ -710,8 +710,7 @@ void G_parser::rewrite(rule& r, vector<int>& seq_t){
         else {
             
             if (updating_morph) morph_update(production, r, seq_t);
-            else trans_update(production, r, seq_t);
-            
+            else if (!comb_setup) trans_update(production, r, seq_t);
              
             //isolate t (setup_t) for itarations for all right_side without changing aux_t in order to then move to next right_side
             //while den einai functions olo to r_side mhn pas sto epomeno r_side
@@ -962,7 +961,9 @@ void G_parser::start_cycle(vector<int>& seq_t){
 //maybe this should be in another class (e.g. player manager class) but stays here for now..
 void G_parser::initiate_cycle(){
     
-    curr_cycle.empty();
+    curr_cycle.clear();
+    aux_cycle.clear();
+    morph_cycle.clear();
     
     cout << "form length on initiation: " << all_gr[gr_pop].form_length << endl;
     

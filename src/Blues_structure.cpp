@@ -122,47 +122,26 @@ void Blues_structure::update(){
         
         seq.r_comp.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.r_comp.parser.update_cycle();
         
-        //RE-STARTING CYCLE (disrupting from top for new grammar)
-        if (!seq.r_comp.parser.gr_changed){
-            
-            //automate_vel = 1;
-            
-            //check if bar is an end_time
-            vector<int> e_t = seq.r_comp.parser.all_gr[seq.r_comp.parser.gr_pop].end_times;
-            vector<int>::iterator it_e_t = find(e_t.begin(), e_t.end(), t[3]);
-            
-            if (it_e_t!=e_t.end()){
-            
-                seq.r_comp.parser.initiate_cycle();
-                //resetting timer values
-                seq.bar = 0;
-                t[3] = 0;
-                
-                seq.r_comp.parser.gr_pop = !seq.r_comp.parser.gr_pop;
-                
-                seq.r_comp.parser.gr_changed = 1;
-            }
-        }
-        
-        //reset_time
-        
-        if ((t[3]==8) && (t[4]==0)) seq.r_comp.parser.transitioning = 1;
-        
+        //A_B_change();
+        ordered_change();
+    
         if(seq.r_comp.parser.transitioning && !seq.r_comp.rules_combined) seq.r_comp.combine_rules(t);
         //else seq.r_comp.parser.find_rule(t);
         //seq.r_comp.parser.find_rule(t);
         
         if ((t[3] == seq.r_comp.g_p) && seq.r_comp.rules_combined){// && seq.r_comp.parser.transitioning){
-         
-            seq.r_comp.place_next_sect();
-            //seq.t[3] = seq.r_comp.n_s_pos;
+            
+            seq.r_comp.build_next_form();
+
+            //update times
             t[3] = seq.r_comp.n_s_pos;
             seq.bar = seq.r_comp.n_s_pos;
+            seq.cycle = -1;
             
             //end _transitioning();
             seq.r_comp.parser.transitioning = 0;
             seq.r_comp.rules_combined = 0;
-            seq.r_comp.parser.gr_pop = !seq.r_comp.parser.gr_pop;
+            //seq.r_comp.parser.gr_pop = !seq.r_comp.parser.gr_pop;
         }
         
         seq.r_comp.parser.find_rule(t);
@@ -179,7 +158,7 @@ void Blues_structure::update(){
         
         //fade_to_gr1 = seq.r_comp.parser.gr_pop;//fade to the opposite of the currect grammar
         
-    update_velocities();
+    //update_velocities();
     //}
     
     //outside the if only on bar to have smoother vel automation
@@ -209,6 +188,140 @@ void Blues_structure::update(){
     else play_main(chord);
 }
 
+void Blues_structure::A_B_change(){
+
+    //RE-STARTING CYCLE (disrupting from top for new grammar)
+    if (!seq.r_comp.parser.gr_changed){
+        
+        //automate_vel = 1;
+        
+        //check if bar is an end_time
+        vector<int> e_t = seq.r_comp.parser.all_gr[seq.r_comp.parser.gr_pop].end_times;
+        vector<int>::iterator it_e_t = find(e_t.begin(), e_t.end(), t[3]);
+        
+        if (it_e_t!=e_t.end()){
+            
+            seq.r_comp.parser.initiate_cycle();
+            //resetting timer values
+            seq.bar = 0;
+            t[3] = 0;
+            
+            seq.r_comp.parser.gr_pop = !seq.r_comp.parser.gr_pop;
+            
+            seq.r_comp.parser.gr_changed = 1;
+        }
+    }
+    
+    
+}
+
+
+void Blues_structure::ordered_change(){
+
+    if (seq.r_comp.parser.gr_pop == 0){
+        
+        if ((t[3]==2) && (t[4]==1)){
+            
+            seq.r_comp.parser.transitioning = 1;
+            seq.r_comp.rules_combined = 0;
+            //seq.r_comp.parser.gr_changed = 1;
+            //update_velocities_once();
+        }
+    }
+    //*/
+    
+    /*
+     if (seq.r_comp.parser.gr_pop == 1){
+     
+         if ((t[3]==16) && (t[4]==1)){
+         
+             seq.r_comp.parser.transitioning = 1;
+             seq.r_comp.rules_combined = 0;
+         }
+     }
+     */
+    //reset_time
+    
+    if (((t[3]>=8) && (t[3]<=16)) && (t[4]==0)){
+        
+        update_velocities_once();
+    }
+}
+
+
+void Blues_structure::update_velocities_once(){
+    
+    //bool vel_aut_complete;//velocity automation complete
+    //bool fade_to_gr1;
+    /*
+     if (vel_gr1 <= 100 || vel_gr1 >= 0){
+     
+     fade_to_gr1 = !fade_to_gr1;
+     //automate_vel = 0;
+     }
+     //if (vel_gr1 >= 0) fade_to_gr1 = 1;
+     */
+    
+    if (!(vel_smoothener % 7)){//less than 5 means less smooth
+        
+        /*
+        //this version may be useful for transition-based step-by-step automation control
+        //but for 'A' - 'B' version it does abrupt step on end time (especially if 'A/B' near end time..)
+        if (seq.r_comp.parser.gr_changed){//(!seq.r_comp.parser.transitioning){
+            
+            if(seq.r_comp.parser.gr_pop == 0){
+                
+                vel_gr1 = 100;//not transitioning and gr1
+                vel_gr2 = 0;
+            }
+            else {
+                
+                vel_gr1 = 0;//not transitioning and gr2
+                vel_gr2 = 100;
+            }
+        }
+         */
+        if(false){}
+        else {
+            
+            if(seq.r_comp.parser.gr_pop == 0){
+                
+                if (vel_gr1 != 0) vel_gr1--;//fade out till 0
+                if (vel_gr2 != 100) vel_gr2++;//fade in till 100
+            }
+            else {
+                
+                if (vel_gr2 != 0) vel_gr2--;//fade out till 0
+                if (vel_gr1 != 100) vel_gr1++;//fade in till 100
+            }
+        }
+        
+        /*
+         if (!fade_to_gr1){
+         
+         vel_gr1--;//fade out till 0
+         vel_gr2++;//fade in till 100
+         //vel_aut_complete = 0;
+         
+         if (vel_gr1 == 0 || vel_gr2 == 100) automate_vel = 0;
+         }
+         else {
+         
+         vel_gr2--;//fade out till 0
+         vel_gr1++;//fade in till 100
+         //vel_aut_complete = 0;
+         
+         if (vel_gr2 == 0 || (vel_gr1 == 100)) automate_vel = 0;
+         }
+         */
+        
+        vel_smoothener = 0;
+    }
+    
+    vel_smoothener++;
+}
+
+
 
 void Blues_structure::update_velocities(){
 
@@ -227,7 +340,7 @@ void Blues_structure::update_velocities(){
         
         //this version may be useful for transition-based step-by-step automation control
             //but for 'A' - 'B' version it does abrupt step on end time (especially if 'A/B' near end time..)
-        if (seq.r_comp.parser.gr_changed){
+        if (seq.r_comp.parser.gr_changed){//(!seq.r_comp.parser.transitioning){
             
             if(seq.r_comp.parser.gr_pop == 0){
          
