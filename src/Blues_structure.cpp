@@ -125,9 +125,16 @@ void Blues_structure::update(){
         //A_B_change();
         ordered_change();
     
-        if(seq.r_comp.parser.transitioning && !seq.r_comp.rules_combined) seq.r_comp.combine_rules(t);
+        if(seq.r_comp.parser.transitioning && !seq.r_comp.rules_combined){
+        
+            seq.r_comp.parser.comb_setup = 0;
+            seq.r_comp.combine_rules(t);
+        }
         //else seq.r_comp.parser.find_rule(t);
         //seq.r_comp.parser.find_rule(t);
+        
+        //seq.r_comp.parser.transitioning = 1;
+        //seq.r_comp.rules_combined = 0;
         
         if ((t[3] == seq.r_comp.g_p) && seq.r_comp.rules_combined){// && seq.r_comp.parser.transitioning){
             
@@ -142,6 +149,7 @@ void Blues_structure::update(){
             seq.r_comp.parser.transitioning = 0;
             seq.r_comp.rules_combined = 0;
             //seq.r_comp.parser.gr_pop = !seq.r_comp.parser.gr_pop;
+            seq.r_comp.clearance();
         }
         
         seq.r_comp.parser.find_rule(t);
@@ -159,6 +167,10 @@ void Blues_structure::update(){
         //fade_to_gr1 = seq.r_comp.parser.gr_pop;//fade to the opposite of the currect grammar
         
     //update_velocities();
+    if ((((t[3]>=8) && (t[3]<=16)) && (t[4]==0)) || ((((t[3]>=16) && (t[3]<=24)) && (t[4]==1)))){
+        
+        update_velocities_once();
+    }
     //}
     
     //outside the if only on bar to have smoother vel automation
@@ -218,9 +230,9 @@ void Blues_structure::A_B_change(){
 
 void Blues_structure::ordered_change(){
 
-    if (seq.r_comp.parser.gr_pop == 1){
+    if (seq.r_comp.parser.gr_pop == 0){
         
-        if ((t[3]==0) && (t[4]==1)){
+        if ((t[3]==7) && (t[4]==1)){
             
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.rules_combined = 0;
@@ -230,22 +242,16 @@ void Blues_structure::ordered_change(){
     }
     //*/
     
-    /*
-     if (seq.r_comp.parser.gr_pop == 1){
+    if (seq.r_comp.parser.gr_pop == 1){
      
-         if ((t[3]==16) && (t[4]==1)){
+        if ((t[3]==20) && (t[4]==3)){
          
-             seq.r_comp.parser.transitioning = 1;
-             seq.r_comp.rules_combined = 0;
-         }
-     }
-     */
-    //reset_time
-    
-    if (((t[3]>=8) && (t[3]<=16)) && (t[4]==0)){
-        
-        update_velocities_once();
+            seq.r_comp.parser.transitioning = 1;
+            seq.r_comp.rules_combined = 0;
+        }
     }
+    
+    //reset_time
 }
 
 

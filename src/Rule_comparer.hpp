@@ -121,6 +121,8 @@ public:
     
     void initiate_aux_cycle();
     
+    void clearance();
+    
     void project_curr_gr();//projects current (ending) grammar up to goal point
     void project_next_gr();//projects next (upcoming) grammar up to goal point
     

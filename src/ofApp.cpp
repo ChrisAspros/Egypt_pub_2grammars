@@ -21,7 +21,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp1 = 500;//40;
+    frame_sp1 = 250;//40;
     frame_sp2 = 60;
     
     frame_sp = frame_sp1;
@@ -29,7 +29,7 @@ void ofApp::setup(){
     ofSetFrameRate(frame_sp); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
-    blues.seq.r_comp.parser.gr_pop = 1;
+    blues.seq.r_comp.parser.gr_pop = 0;
     blues.seq.r_comp.parser.gr_changed = 1;//true means it doesn't need to change now..
     blues.seq.r_comp.un_dist_found = 0;
     blues.setup();

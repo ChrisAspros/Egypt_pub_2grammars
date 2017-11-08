@@ -14,7 +14,7 @@ void Rule_comparer::combine_rules(vector<int>& seq_t){
     
     //STATIC process
     if (!parser.comb_setup) setup_combination(seq_t);
-
+    
     //UPDATING - running the cycle now.. (pairnei ta hnia..)
     update_combination(seq_t);
     
@@ -72,7 +72,9 @@ void Rule_comparer::setup_combination(vector<int>& seq_t){
 
     //must be managed dynamically
     curr_gr = parser.gr_pop;//= 0;
-    next_gr = !curr_gr;//cuz we only hae 2 grammars for now..
+    if (curr_gr==1) next_gr = 0;
+    else next_gr = 1;
+    //next_gr = !curr_gr;//cuz we only hae 2 grammars for now..
     
     //dist only ONCE??
     //int dist;
@@ -110,7 +112,7 @@ int Rule_comparer::get_distance_to_goal(vector<int>& seq_t){
         if (curr_pos > 19 & curr_pos <= 27) g_p = 0;
         if (curr_pos > 27 || curr_pos <= 3) g_p = 8;
     }
-    else {//if gr_2
+    else {//if gr_2 - for blues form??
         
         if (curr_pos > 3 & curr_pos <= 11) g_p = 0;//includes -1
         if (curr_pos > 11 || curr_pos <= 3) g_p = 8;
@@ -986,7 +988,9 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
     _next_best[2].name = "GR2";
     _next_best[3].name = "GR2";
      */
-     
+    
+    int aux_gr_pop = parser.gr_pop;
+    
     //WEIGHT-CHOOSE FUNCTIONS
     vector<G_parser::elem_ID> _chosen_functions;
     
@@ -1027,6 +1031,8 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
         
         percentage += percentage_unit;
     }
+    
+    parser.gr_pop = aux_gr_pop;
     
     parser.updating_morph = 0;
 
@@ -1086,6 +1092,47 @@ void Rule_comparer::build_next_form(){
 void Rule_comparer::build_next_sects(){
 
     
+}
+
+
+void Rule_comparer::clearance(){
+
+    g_p = -1;
+    
+    un_dist_found = false;
+    //un_dist = -1;
+    //undist_bar = -1;
+    
+    n_s_pos = -1;
+    
+    parser.aux_cycle.clear();
+    parser.morph_cycle.clear();
+    //curr_gr = 0;
+    //next_gr = 0;
+    sect_lengths_curr.clear();
+    sect_lengths_next.clear();
+    aug_sect_rules.clear();
+    //S_rule_curr
+    //S_rule_next
+    curr_func_chunks.clear();
+    next_func_chunks.clear();
+    hist_scores.clear();
+    sorted_hist_scores.clear();
+    best_hist_scores.clear();
+    top_curr_func_line_scores.clear();
+    top_next_func_line_scores.clear();
+    earliest_next_form_scores.clear();
+    final_best_score.clear();
+    curr_func_lines.clear();
+    next_func_lines.clear();
+    un_dist_scores.clear();
+    formed_local_scores.clear();
+    
+    sorted_local_scores.clear();
+    best_local_scores.clear();
+
+    intermediate_functions.clear();
+    history.clear();
 }
 
 
