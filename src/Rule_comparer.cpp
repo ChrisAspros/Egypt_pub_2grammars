@@ -467,6 +467,7 @@ vector<vector<int>> Rule_comparer::get_best_hist_scores(vector<vector<int>> _sco
     
         _best_hist_scores.push_back(_scores[n]);
         n++;
+        if (n > _scores.size()-1) break;
     }
     
     return _best_hist_scores;
@@ -899,6 +900,14 @@ vector<vector<G_parser::elem_ID>> Rule_comparer::construct_lines(vector<vector<G
         }
         
         init_curr_bar = (init_curr_bar + 1) % parser.all_gr[gr_num].form_length;
+    }
+    
+    vector<vector<G_parser::elem_ID>> aux_prelast_lines = prelast_lines;
+    prelast_lines.clear();
+    
+    for (int l=0; ((l < 2) && (l < aux_prelast_lines.size())); l++){
+    
+        prelast_lines.push_back(aux_prelast_lines[l]);
     }
     
     return prelast_lines;

@@ -218,9 +218,9 @@ void Blues_structure::A_B_change(){
 
 void Blues_structure::ordered_change(){
 
-    if (seq.r_comp.parser.gr_pop == 0){
+    if (seq.r_comp.parser.gr_pop == 1){
         
-        if ((t[3]==2) && (t[4]==1)){
+        if ((t[3]==0) && (t[4]==1)){
             
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.rules_combined = 0;
