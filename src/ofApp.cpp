@@ -21,7 +21,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp1 = 250;//40;
+    frame_sp1 = 60;//250;//40;
     frame_sp2 = 60;
     
     frame_sp = frame_sp1;

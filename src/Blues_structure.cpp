@@ -167,7 +167,7 @@ void Blues_structure::update(){
         //fade_to_gr1 = seq.r_comp.parser.gr_pop;//fade to the opposite of the currect grammar
         
     //update_velocities();
-    if ((((t[3]>=8) && (t[3]<=16)) && (t[4]==0)) || ((((t[3]>=16) && (t[3]<=24)) && (t[4]==1)))){
+    if ((((t[3]>=7) && (t[3]<=16)) && (t[4]==0)) || ((((t[3]>=20) && (t[3]<=31)) && (t[4]==0)))){
         
         update_velocities_once();
     }
@@ -232,7 +232,7 @@ void Blues_structure::ordered_change(){
 
     if (seq.r_comp.parser.gr_pop == 0){
         
-        if ((t[3]==7) && (t[4]==1)){
+        if ((t[3]==7) && (t[4]==0)){
             
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.rules_combined = 0;
@@ -244,7 +244,7 @@ void Blues_structure::ordered_change(){
     
     if (seq.r_comp.parser.gr_pop == 1){
      
-        if ((t[3]==20) && (t[4]==3)){
+        if ((t[3]==20) && (t[4]==0)){
          
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.rules_combined = 0;
@@ -268,7 +268,7 @@ void Blues_structure::update_velocities_once(){
      //if (vel_gr1 >= 0) fade_to_gr1 = 1;
      */
     
-    if (!(vel_smoothener % 7)){//less than 5 means less smooth
+    if (!(vel_smoothener % 9)){//less than 5 means less smooth
         
         /*
         //this version may be useful for transition-based step-by-step automation control
@@ -290,7 +290,7 @@ void Blues_structure::update_velocities_once(){
         if(false){}
         else {
             
-            if(seq.r_comp.parser.gr_pop == 0){
+            if(seq.r_comp.parser.gr_pop == 1){
                 
                 if (vel_gr1 != 0) vel_gr1--;//fade out till 0
                 if (vel_gr2 != 100) vel_gr2++;//fade in till 100
