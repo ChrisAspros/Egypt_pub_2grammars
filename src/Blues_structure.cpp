@@ -65,6 +65,9 @@ void Blues_structure::setup(){
     //for (int i=0; i<5; i++) curr_t[i] = 0;
     //better in constructor..??
     
+    //randomised transitions..
+    trans_bars = {7, 21, 14, 12, 25, 13, 11, 10, 8, 20, 14};
+    trans_pop = 0;
 }
 
 
@@ -167,10 +170,13 @@ void Blues_structure::update(){
         //fade_to_gr1 = seq.r_comp.parser.gr_pop;//fade to the opposite of the currect grammar
         
     //update_velocities();
-    if ((((t[3]>=7) && (t[3]<=16)) && (t[4]==0)) || ((((t[3]>=20) && (t[3]<=31)) && (t[4]==0)))){
+    if (((t[3]>=trans_bars[trans_pop]) && (t[3]<=trans_bars[trans_pop]+9)) && (t[4]==3)){
         
-        update_velocities_once();
+        //update_velocities_once();
     }
+    
+    if(!vel_aut_complete) update_velocities_once();
+    
     //}
     
     //outside the if only on bar to have smoother vel automation
@@ -223,8 +229,6 @@ void Blues_structure::A_B_change(){
             seq.r_comp.parser.gr_changed = 1;
         }
     }
-    
-    
 }
 
 
@@ -232,23 +236,32 @@ void Blues_structure::ordered_change(){
 
     if (seq.r_comp.parser.gr_pop == 0){
         
-        if ((t[3]==7) && (t[4]==0)){
+        if ((t[3]==trans_bars[trans_pop]) && (t[4]==0)){
             
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.rules_combined = 0;
             //seq.r_comp.parser.gr_changed = 1;
             //update_velocities_once();
+            
+            trans_pop = (trans_pop + 1) % trans_bars.size();
+            
+            vel_aut_complete = 0;
         }
     }
     //*/
     
     if (seq.r_comp.parser.gr_pop == 1){
      
-        if ((t[3]==20) && (t[4]==0)){
+        if ((t[3]==trans_bars[trans_pop]) && (t[4]==0)){
          
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.rules_combined = 0;
+            
+            trans_pop = (trans_pop + 1) % trans_bars.size();
+            
+            vel_aut_complete = 0;
         }
+        
     }
     
     //reset_time
@@ -268,7 +281,7 @@ void Blues_structure::update_velocities_once(){
      //if (vel_gr1 >= 0) fade_to_gr1 = 1;
      */
     
-    if (!(vel_smoothener % 9)){//less than 5 means less smooth
+    if (!(vel_smoothener % 10)){//less than 5 means less smooth
         
         /*
         //this version may be useful for transition-based step-by-step automation control
@@ -301,6 +314,11 @@ void Blues_structure::update_velocities_once(){
                 if (vel_gr1 != 100) vel_gr1++;//fade in till 100
             }
         }
+        
+        //vel_aut_complete = 0;
+        
+        if (vel_gr1 == 0 || vel_gr2 == 100) vel_aut_complete = 1;
+        else if (vel_gr1 == 100 || vel_gr2 == 0) vel_aut_complete = 1;
         
         /*
          if (!fade_to_gr1){

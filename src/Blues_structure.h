@@ -46,6 +46,7 @@ public:
     int vel_smoothener;
     void A_B_change();
     void ordered_change();
+    bool vel_aut_complete;
     //bool automate_vel = 0;
     //bool fade_to_gr1 = 0;
     
@@ -115,7 +116,9 @@ public:
     map<string, vector<int>> static chord_translation;
     //{rootpitch, type}
     
-      
+    //randomised transitions
+    vector<int> trans_bars;
+    int trans_bar, trans_pop;
 };
 
 #endif /* defined(____Blues_structure__) */
