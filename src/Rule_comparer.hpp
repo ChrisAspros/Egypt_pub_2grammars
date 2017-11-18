@@ -22,7 +22,7 @@ public:
     G_parser parser;
     
     //bool transitioning;
-    bool trans_complete;
+    bool trans_incomplete;
     bool un_dist_found;
     int un_dist, undist_bar;
     

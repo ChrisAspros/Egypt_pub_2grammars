@@ -121,9 +121,11 @@ void Blues_structure::update(){
     //find_rule only on every bar (exclude ticks & )
     if (seq.only_on("bar", t)){
         
+        if (t[3]==0 && t[4]==1){
         
+        }
         
-        seq.r_comp.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.r_comp.parser.update_cycle();
+        if (!seq.r_comp.trans_incomplete) seq.r_comp.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.r_comp.parser.update_cycle();
         
         //A_B_change();
         ordered_change();
@@ -139,8 +141,11 @@ void Blues_structure::update(){
         //seq.r_comp.parser.transitioning = 1;
         //seq.r_comp.rules_combined = 0;
         
+        //JUMP to new form optimal point when g_p is reached..
         if ((t[3] == seq.r_comp.g_p) && seq.r_comp.rules_combined){// && seq.r_comp.parser.transitioning){
+            //"S"
             
+        
             seq.r_comp.build_next_form();
 
             //update times
@@ -150,6 +155,7 @@ void Blues_structure::update(){
             
             //end _transitioning();
             seq.r_comp.parser.transitioning = 0;
+            seq.r_comp.trans_incomplete = 0;
             seq.r_comp.rules_combined = 0;
             //seq.r_comp.parser.gr_pop = !seq.r_comp.parser.gr_pop;
             seq.r_comp.clearance();
@@ -236,9 +242,10 @@ void Blues_structure::ordered_change(){
 
     if (seq.r_comp.parser.gr_pop == 0){
         
-        if ((t[3]==trans_bars[trans_pop]) && (t[4]==0)){
+        if ((t[3]==1) && (t[4]==0)){//((t[3]==trans_bars[trans_pop]) && (t[4]==1)){
             
             seq.r_comp.parser.transitioning = 1;
+            seq.r_comp.trans_incomplete = 1;
             seq.r_comp.rules_combined = 0;
             //seq.r_comp.parser.gr_changed = 1;
             //update_velocities_once();
@@ -246,20 +253,23 @@ void Blues_structure::ordered_change(){
             trans_pop = (trans_pop + 1) % trans_bars.size();
             
             vel_aut_complete = 0;
+            
         }
     }
     //*/
     
     if (seq.r_comp.parser.gr_pop == 1){
      
-        if ((t[3]==trans_bars[trans_pop]) && (t[4]==0)){
-         
+        if ((t[3]==17) && (t[4]==0)){//((t[3]==trans_bars[trans_pop]) && (t[4]==2)){
+         /*
             seq.r_comp.parser.transitioning = 1;
+            seq.r_comp.trans_incomplete = 1;
             seq.r_comp.rules_combined = 0;
             
             trans_pop = (trans_pop + 1) % trans_bars.size();
             
             vel_aut_complete = 0;
+          */
         }
         
     }

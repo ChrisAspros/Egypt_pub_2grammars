@@ -21,7 +21,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp1 = 40;//500;
+    frame_sp1 = 600;//40;
     frame_sp2 = 60;
     
     frame_sp = frame_sp1;
@@ -134,8 +134,8 @@ void ofApp::update(){
         //cout << "ending: " << ending << ", g_r: " << goal_reached << endl;
     }
     
-    blues.seq.r_comp.parser.transitioning = transitioning;
-    blues.seq.r_comp.trans_complete = trans_complete;
+    //blues.seq.r_comp.parser.transitioning = transitioning;
+    //blues.seq.r_comp.trans_complete = trans_complete;
     
     //if (ofApp_is_stopped) blues.seq.stop_all_MIDI();
     
@@ -366,18 +366,40 @@ void ofApp::tracking_repl_A_B(){
     }
 }
 
-/*
+
 void ofApp::keyPressed(int key){
  
     //transition and changes UI
     //transition
     
-    if (key == 's' || key == 'S'){
     
-        frame_sp ++;
-        ofSetFrameRate(frame_sp);
+    /*
+    if ((key == 't') || (key == 'T')) {
+
+        if (blues.seq.r_comp.parser.gr_pop == 0){
+            
+            blues.seq.r_comp.parser.transitioning = 1;
+            blues.seq.r_comp.rules_combined = 0;
+            //seq.r_comp.parser.gr_changed = 1;
+            //update_velocities_once();
+            
+            blues.trans_pop = (blues.trans_pop + 1) % blues.trans_bars.size();
+            
+            blues.vel_aut_complete = 0;
+        }
+        
+        if (blues.seq.r_comp.parser.gr_pop == 1){
+            
+            blues.seq.r_comp.parser.transitioning = 1;
+            blues.seq.r_comp.rules_combined = 0;
+            
+            blues.trans_pop = (blues.trans_pop + 1) % blues.trans_bars.size();
+            
+            blues.vel_aut_complete = 0;
+        }
     }
-    
+     //*/
+    /*
     if ((key == 't' || key == 'T') && !transitioning) {
         
         transitioning = 1;
@@ -393,6 +415,7 @@ void ofApp::keyPressed(int key){
         
         show_p_e_input = 1;//to allow showing
     }
+     */
     //stages (press 2 to 5 - 5 is end of transition..)
     if (key == '2' && (blues.seq.r_comp.parser.transitioning || show_trans)) stage_num = "2"; trans_stage = 2;
     if (key == '3' && (transitioning || show_trans)) stage_num = "3"; trans_stage = 3;
@@ -407,6 +430,11 @@ void ofApp::keyPressed(int key){
         show_trans = 0;
     }
     
+    if (key == 's' || key == 'S'){
+        
+        frame_sp ++;
+        ofSetFrameRate(frame_sp);
+    }
     
     //abrupt grammar change UI
     if (key == 'a' || key == 'A') {
@@ -459,7 +487,7 @@ void ofApp::keyPressed(int key){
     }
     if (key == 's' || key == 'S') blues.seq.stop_all_MIDI();
 }
-*/
+//*/
 
 /*
 void ofApp::keyReleased(int key){

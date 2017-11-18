@@ -14,7 +14,7 @@ void Rule_comparer::combine_rules(vector<int>& seq_t){
     
     //STATIC process
     if (!parser.comb_setup) setup_combination(seq_t);
-    
+    //morph_
     //UPDATING - running the cycle now.. (pairnei ta hnia..)
     update_combination(seq_t);
     
@@ -239,6 +239,7 @@ void Rule_comparer::find_best_rule(vector<int>& seq_t){
     
     //to get scores, isolate the next_func lines portions I need..
     curr_func_lines = construct_lines (curr_func_chunks, curr_gr, un_dist, undist_bar);
+    
     next_func_lines = construct_lines (next_func_chunks, next_gr, parser.all_gr[next_gr].form_length, 0);
     
     compare_t_g();

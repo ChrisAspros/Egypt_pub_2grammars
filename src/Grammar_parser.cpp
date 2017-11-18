@@ -889,6 +889,7 @@ void G_parser::trans_update(vector<elem_ID>& production, rule& r, vector<int>& s
             }
             
             func_chunks.push_back(func_chunk);
+            
             func_chunk.clear();
             //function_count = 0;
         }
