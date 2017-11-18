@@ -992,7 +992,7 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
     
     int aux_gr_pop = parser.gr_pop;
     
-    //WEIGHT-CHOOSE FUNCTIONS
+    //WEIGHT-CHOOSE FUNCTIONS (for undist part of cycle, i.e. for functions that have yet to be generated)
     vector<G_parser::elem_ID> _chosen_functions;
     
     for (int i=0; i < l; i++){
@@ -1013,11 +1013,33 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
     }
     
     
-    //WEIGHT-CHOOSE TERMINALS
-    percentage = percentage_unit;
+    //WEIGHT-CHOOSE TERMINALS - INTERMEDIATE: weigthed rewrite of the INTERMEDIATE FUNCTIONS..
+    percentage = percentage_unit;//restarting percentage count
     
     parser.updating_morph = 1;
     parser.till_function = 0;
+    
+    int _f_l = parser.all_gr[curr_gr].form_length;
+    
+    int curr_bar_morph = ((g_p - dist) + _f_l) % _f_l;
+    while (curr_bar_morph != _curr_best[0].time[1]){
+    
+        float random = (rand()%100);
+        if (random >= percentage) parser.gr_pop = curr_gr;
+        else parser.gr_pop = next_gr;
+        
+        vector<int> _t = {0, 0, 0, curr_bar_morph, 0};
+        //LAST ZERO-WHAT IF WE ARE IN further cycles?? - check also for transitions...!!!!! + aux_t further up..!!
+        //probably not a problem (especially if aux_cycle deleted / reinitiated for the next transition)
+        parser.find_rule(_t);
+        
+        curr_bar_morph = (curr_bar_morph + 1) % _f_l;
+        percentage += percentage_unit;
+    }
+    
+    
+    //WEIGHT-CHOOSE TERMINALS - UNDIST: weighted rewrite of functions of curr_func_lines size.. (also called local here..)
+    percentage = percentage_unit;//restarting percentage count
     
     for (int i=0; i < l; i++){
         

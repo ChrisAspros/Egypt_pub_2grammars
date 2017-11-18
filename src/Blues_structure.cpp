@@ -242,8 +242,8 @@ void Blues_structure::ordered_change(){
 
     if (seq.r_comp.parser.gr_pop == 0){
         
-        if ((t[3]==1) && (t[4]==0)){//((t[3]==trans_bars[trans_pop]) && (t[4]==1)){
-            
+        if ((t[3]==1) && (t[4]==1)){//((t[3]==trans_bars[trans_pop]) && (t[4]==1)){
+            /*
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.trans_incomplete = 1;
             seq.r_comp.rules_combined = 0;
@@ -253,15 +253,15 @@ void Blues_structure::ordered_change(){
             trans_pop = (trans_pop + 1) % trans_bars.size();
             
             vel_aut_complete = 0;
-            
+            */
         }
     }
     //*/
     
     if (seq.r_comp.parser.gr_pop == 1){
      
-        if ((t[3]==17) && (t[4]==0)){//((t[3]==trans_bars[trans_pop]) && (t[4]==2)){
-         /*
+        if ((t[3]==1) && (t[4]==1)){//((t[3]==trans_bars[trans_pop]) && (t[4]==2)){
+         
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.trans_incomplete = 1;
             seq.r_comp.rules_combined = 0;
@@ -269,7 +269,7 @@ void Blues_structure::ordered_change(){
             trans_pop = (trans_pop + 1) % trans_bars.size();
             
             vel_aut_complete = 0;
-          */
+          
         }
         
     }
