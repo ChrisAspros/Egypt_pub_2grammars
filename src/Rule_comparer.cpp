@@ -547,6 +547,8 @@ vector<vector<int>> Rule_comparer::merge_sort_scores(vector<vector<int>> _unsort
 
 vector<vector<int>> Rule_comparer::insertion_sort_scores(vector<vector<int>> _unsorted_scores){
     
+    //http://www.geeksforgeeks.org/insertion-sort/
+    
     int key, j;
     
     for (int i=1; i < _unsorted_scores.size(); i++){
@@ -568,6 +570,104 @@ vector<vector<int>> Rule_comparer::insertion_sort_scores(vector<vector<int>> _un
     vector<vector<int>> _sorted_scores = _unsorted_scores;
     return _sorted_scores;
 }
+
+
+vector<vector<int>> Rule_comparer::TimSort_scores(vector<vector<int>> _unsorted_scores){
+
+    //http://www.geeksforgeeks.org/timsort/
+    
+    int RUN = 1000;
+    int n = _unsorted_scores.size();
+    
+    for (int i = 0; i < n; i+=RUN) _unsorted_scores = insertion_sort_scores(_unsorted_scores);
+    
+    // start merging from size RUN (or 32). It will merge
+    // to form size 64, then 128, 256 and so on ....
+    for (int size = RUN; size < n; size = 2*size)
+    {
+        // pick starting point of left sub array. We
+        // are going to merge arr[left..left+size-1]
+        // and arr[left+size, left+2*size-1]
+        // After every merge, we increase left by 2*size
+        for (int left = 0; left < n; left += 2*size)
+        {
+            // find ending point of left sub array
+            // mid+1 is starting point of right sub array
+            
+            //int mid = left + size - 1;
+            //int right = min((left + 2*size - 1), (n-1));
+            
+            // merge sub array arr[left.....mid] &
+            // arr[mid+1....right]
+            _unsorted_scores = TimMerge_scores(_unsorted_scores);
+        }
+    }
+    
+    vector<vector<int>> _sorted_scores = _unsorted_scores;
+    return _sorted_scores;
+}
+
+
+vector<vector<int>> Rule_comparer::TimMerge_scores(vector<vector<int>> _unsorted_scores){//NON-ITERATIVE
+    
+    vector<vector<int>> _sorted_scores = _unsorted_scores;
+    
+    if (_unsorted_scores.size() > 1){
+        
+        //_unsorted_scores = merge_sort_scores(_unsorted_scores);
+        
+        //SPLIT VECTOR
+        vector<vector<int>> half_1, half_2;
+        int split = _unsorted_scores.size() / 2;
+        
+        for (int i=0; i < _unsorted_scores.size(); i++){
+            
+            if (i<split) half_1.push_back(_unsorted_scores[i]);
+            else half_2.push_back(_unsorted_scores[i]);
+        }
+        
+        //ITERATE SPLIT SORT MERGE..
+        //half_1 = merge_sort_scores(half_1);
+        //half_2 = merge_sort_scores(half_2);
+        
+        //MERGE 2 VECTORS
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        //Compare the two - one-by-one
+        while ((a < half_1.size()) && (b < half_2.size())){
+            
+            if (half_1[a][0] > half_2[b][0]){
+                
+                _sorted_scores[c] = half_1[a];
+                a++;
+                c++;
+            }
+            else {//else if (half_1[a][0] < half_2[b][0]){
+                
+                _sorted_scores[c] = half_2[b];
+                b++;
+                c++;
+            }
+        }
+        //Push back the remaining
+        while (a < half_1.size()){
+            
+            _sorted_scores[c] = half_1[a];
+            a++;
+            c++;
+        }
+        while (b < half_2.size()){
+            
+            _sorted_scores[c] = half_2[b];
+            b++;
+            c++;
+        }
+    }
+    
+    return _sorted_scores;
+}
+
 
 
 vector<vector<int>> Rule_comparer::get_best_hist_scores(vector<vector<int>> _scores){
@@ -661,7 +761,8 @@ vector<vector<int>> Rule_comparer::get_best_local_scores(){
     
     //sorted_local_scores = bubble_sort_scores(formed_local_scores);
     //sorted_local_scores = merge_sort_scores(formed_local_scores);
-    sorted_local_scores = insertion_sort_scores(formed_local_scores);
+    //sorted_local_scores = insertion_sort_scores(formed_local_scores);
+    sorted_local_scores = TimSort_scores(formed_local_scores);
     
     //get percentage of sorted scores for best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%..
@@ -762,7 +863,8 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     
     //sorted_hist_scores = bubble_sort_scores(hist_scores);
     //sorted_hist_scores = merge_sort_scores(hist_scores);
-    sorted_hist_scores = insertion_sort_scores(hist_scores);
+    //sorted_hist_scores = insertion_sort_scores(hist_scores);
+    sorted_hist_scores = TimSort_scores(hist_scores);
     
     best_hist_scores = get_best_hist_scores(sorted_hist_scores);//keep all of no1 scores..
     top_curr_func_line_scores = get_top_curr_func_line_scores(best_hist_scores);//keep scores of the most likely (i.e. smallest pop number) of curr_func_lines, i.e. 'j'..
