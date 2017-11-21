@@ -98,21 +98,15 @@ rule: SectB -> 1.0 decB1(1) decB2(5)
 			//-> 0.9 SD SD SD SD SD SD SD SD
 			:end_rule
 
-rule: decTest1 -> 1.0 T T T T :end_rule
+//rule: decTest1 -> 1.0 T T T T :end_rule
 				//-> 0.1 SD SD SD SD :end_rule
 
-//rule: decB1 -> 1.0 SD T SD D :end_rule
+rule: decB1 -> 1.0 SD T SD D :end_rule
 
-//rule: decB2 -> 0.9 SD T D T //:end_rule
+rule: decB2 -> 0.9 SD T D T //:end_rule
 			-> 0.1 D D D D :end_rule
 
-rule: decB1 -> 0.4 SD SD T SD 
-			-> 0.3 SD SD T T
-			-> 0.3 SD D D T :end_rule
-
-rule: decB2 -> 0.4 SD SD T D 
-			-> 0.3 SD SD T D
-			-> 0.3 SD D T D :end_rule
+//calcu
 
 rule: SD_9 -> 1.0 IV :end_rule //VGAZEI BUG logw mult choices?? petaei ta ":end" kai "rule:" ws non-T - mallon gt to "SD_9" den einai Function ("SD"...)
 rule: SD_10 -> 1.0 bVI :end_rule //de 8a prepe se kairo eirhnhs (i.e. non-Transitioning)

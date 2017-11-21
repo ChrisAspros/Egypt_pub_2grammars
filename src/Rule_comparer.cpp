@@ -239,13 +239,26 @@ void Rule_comparer::find_best_rule(vector<int>& seq_t){
     
     //to get scores, isolate the next_func lines portions I need..
     curr_func_lines = construct_lines (curr_func_chunks, curr_gr, un_dist, undist_bar);
-    
     next_func_lines = construct_lines (next_func_chunks, next_gr, parser.all_gr[next_gr].form_length, 0);
     
+    vector<vector<G_parser::elem_ID>> next_lines_aux;
+    /*
+    for (int i=0; i<500; i++) next_lines_aux.push_back(next_func_lines[i]);
+    next_func_lines.clear();
+    next_func_lines = next_lines_aux;
+     */
+    
     compare_t_g();
+    
+    /*
+    qsort()
+    qsort_b(void *__base, <#size_t __nel#>, <#size_t __width#>, <#^int(const void *, const void *)__compar#>)
+    qsort_r(<#void *__base#>, <#size_t __nel#>, <#size_t __width#>, <#void *#>, <#int (* _Nonnull __compar)(void *, const void *, const void *)#>)
+    qsort
+     */
     compare_include_history(form_pc);
     //compare_include_future(form_pc);
-    
+    //cout << "return";
     //mix_in_rt();
     //implement_recovery();//end of version_A!! - version b with constraint / diminishing of the musical space (style/chord et.c) at the note level.. - set theory.. (instead of constraint at the function level..)
     
@@ -437,14 +450,24 @@ vector<vector<int>> Rule_comparer::form_scores(){
 }
 
 
-vector<vector<int>> Rule_comparer::sort_scores(vector<vector<int>> _unsorted_scores){
+vector<vector<int>> Rule_comparer::bubble_sort_scores(vector<vector<int>> _unsorted_scores){
 
     vector<vector<int>> _sorted_scores = _unsorted_scores;
     
     //SORT _sorted_scores
     for (int n=0; n < _sorted_scores.size() - 1; n++){
         
+        if ((n%5)==0){
+        
+            cout << endl << "workload n" << endl;
+        }
+        
         for (int a=0; a < _sorted_scores.size() - 1; a++){
+            
+            if ((a%10000)==0){
+                
+                cout << endl << "workload a" << endl;
+            }
             
             if (_sorted_scores[a][0] < _sorted_scores[a+1][0]){
                 
@@ -453,8 +476,96 @@ vector<vector<int>> Rule_comparer::sort_scores(vector<vector<int>> _unsorted_sco
                 _sorted_scores[a+1] = aux_score;
             }
         }
+        
     }
     
+    return _sorted_scores;
+}
+
+
+vector<vector<int>> Rule_comparer::merge_sort_scores(vector<vector<int>> _unsorted_scores){
+
+    //http://interactivepython.org/runestone/static/pythonds/SortSearch/TheMergeSort.html
+    vector<vector<int>> _sorted_scores = _unsorted_scores;
+    
+    if (_unsorted_scores.size() > 1){
+    
+        //_unsorted_scores = merge_sort_scores(_unsorted_scores);
+        
+        //SPLIT VECTOR
+        vector<vector<int>> half_1, half_2;
+        int split = _unsorted_scores.size() / 2;
+        
+        for (int i=0; i < _unsorted_scores.size(); i++){
+        
+            if (i<split) half_1.push_back(_unsorted_scores[i]);
+            else half_2.push_back(_unsorted_scores[i]);
+        }
+        
+        //ITERATE SPLIT SORT MERGE..
+        half_1 = merge_sort_scores(half_1);
+        half_2 = merge_sort_scores(half_2);
+        
+        //MERGE 2 VECTORS
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        //Compare the two - one-by-one
+        while ((a < half_1.size()) && (b < half_2.size())){
+        
+            if (half_1[a][0] > half_2[b][0]){
+            
+                _sorted_scores[c] = half_1[a];
+                a++;
+                c++;
+            }
+            else {//else if (half_1[a][0] < half_2[b][0]){
+            
+                _sorted_scores[c] = half_2[b];
+                b++;
+                c++;
+            }
+        }
+        //Push back the remaining
+        while (a < half_1.size()){
+        
+            _sorted_scores[c] = half_1[a];
+            a++;
+            c++;
+        }
+        while (b < half_2.size()){
+            
+            _sorted_scores[c] = half_2[b];
+            b++;
+            c++;
+        }
+    }
+    
+    return _sorted_scores;
+}
+
+
+vector<vector<int>> Rule_comparer::insertion_sort_scores(vector<vector<int>> _unsorted_scores){
+    
+    int key, j;
+    
+    for (int i=1; i < _unsorted_scores.size(); i++){
+    
+        key = _unsorted_scores[i][0];
+        j = i-1;
+        
+        /* Move elements of arr[0..i-1], that are
+         greater than key, to one position ahead
+         of their current position */
+        while (j >= 0 && _unsorted_scores[j][0] < key)
+        {
+            _unsorted_scores[j+1][0] = _unsorted_scores[j][0];
+            j = j-1;
+        }
+        _unsorted_scores[j+1][0] = key;
+    }
+    
+    vector<vector<int>> _sorted_scores = _unsorted_scores;
     return _sorted_scores;
 }
 
@@ -548,7 +659,9 @@ vector<vector<int>> Rule_comparer::get_best_local_scores(){
 
     vector<vector<int>> _best_scores;
     
-    sorted_local_scores = sort_scores(formed_local_scores);
+    //sorted_local_scores = bubble_sort_scores(formed_local_scores);
+    //sorted_local_scores = merge_sort_scores(formed_local_scores);
+    sorted_local_scores = insertion_sort_scores(formed_local_scores);
     
     //get percentage of sorted scores for best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%..
@@ -647,7 +760,10 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
         //keep new scores of combos..
     }
     
-    sorted_hist_scores = sort_scores(hist_scores);
+    //sorted_hist_scores = bubble_sort_scores(hist_scores);
+    //sorted_hist_scores = merge_sort_scores(hist_scores);
+    sorted_hist_scores = insertion_sort_scores(hist_scores);
+    
     best_hist_scores = get_best_hist_scores(sorted_hist_scores);//keep all of no1 scores..
     top_curr_func_line_scores = get_top_curr_func_line_scores(best_hist_scores);//keep scores of the most likely (i.e. smallest pop number) of curr_func_lines, i.e. 'j'..
     top_next_func_line_scores = get_sort_n_best_scores(top_curr_func_line_scores);//best of 'l'
@@ -890,6 +1006,7 @@ vector<vector<G_parser::elem_ID>> Rule_comparer::construct_lines(vector<vector<G
                     for (int k=0; k < func_chunks[j].size(); k++){
                         
                         last_lines[last_lines.size()-1].push_back(func_chunks[j][k]);
+                        
                     }
                 }
             }
@@ -903,8 +1020,11 @@ vector<vector<G_parser::elem_ID>> Rule_comparer::construct_lines(vector<vector<G
         }
         
         init_curr_bar = (init_curr_bar + 1) % parser.all_gr[gr_num].form_length;
+        
     }
     
+    //manual restriction for less func_lines (to shorten the search space...)
+    /*
     vector<vector<G_parser::elem_ID>> aux_prelast_lines = prelast_lines;
     prelast_lines.clear();
     
@@ -912,10 +1032,10 @@ vector<vector<G_parser::elem_ID>> Rule_comparer::construct_lines(vector<vector<G
     
         prelast_lines.push_back(aux_prelast_lines[l]);
     }
+     //*/
     
     return prelast_lines;
 }
-
 
 
 void Rule_comparer::update_combination(vector<int>& seq_t){

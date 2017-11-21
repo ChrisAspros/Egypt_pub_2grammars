@@ -89,7 +89,9 @@ public:
     vector<vector<vector<int>>> un_dist_scores;
     vector<vector<int>> formed_local_scores;
     vector<vector<vector<int>>> get_un_dist_scores();
-    vector<vector<int>> sort_scores(vector<vector<int>> _unsorted_scores);
+    vector<vector<int>> bubble_sort_scores(vector<vector<int>> _unsorted_scores);
+    vector<vector<int>> merge_sort_scores(vector<vector<int>> _unsorted_scores);
+    vector<vector<int>> insertion_sort_scores(vector<vector<int>> _unsorted_scores);
     vector<vector<int>> sorted_local_scores;
     vector<vector<int>> get_best_hist_scores(vector<vector<int>> _scores);
     vector<vector<int>> get_top_curr_func_line_scores(vector<vector<int>> _scores);
