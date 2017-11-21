@@ -86,6 +86,7 @@ public:
     vector<vector<G_parser::elem_ID>> curr_func_lines;
     //vector<G_parser::elem_ID> curr_func_lines;
     vector<vector<G_parser::elem_ID>> next_func_lines;
+    void filter_func_lines_pop(vector<vector<G_parser::elem_ID>>& func_lines, int max_pop);
     vector<vector<vector<int>>> un_dist_scores;
     vector<vector<int>> formed_local_scores;
     vector<vector<vector<int>>> get_un_dist_scores();
@@ -101,9 +102,10 @@ public:
     vector<vector<int>> get_earliest_next_form_scores(vector<vector<int>> _scores);
     vector<vector<int>> best_local_scores;
     vector<vector<int>> form_scores();
-    vector<vector<int>> get_best_local_scores();
+    vector<vector<int>> get_best_local_scores_percentage();
     int score_pc = 20;//percentage of best scores
     int b_s_pop;
+    vector<vector<int>> get_best_local_scores_singleBest();
     
     vector<G_parser::elem_ID> intermediate_functions;
     vector<G_parser::elem_ID> history;

@@ -241,12 +241,8 @@ void Rule_comparer::find_best_rule(vector<int>& seq_t){
     curr_func_lines = construct_lines (curr_func_chunks, curr_gr, un_dist, undist_bar);
     next_func_lines = construct_lines (next_func_chunks, next_gr, parser.all_gr[next_gr].form_length, 0);
     
-    vector<vector<G_parser::elem_ID>> next_lines_aux;
-    /*
-    for (int i=0; i<500; i++) next_lines_aux.push_back(next_func_lines[i]);
-    next_func_lines.clear();
-    next_func_lines = next_lines_aux;
-     */
+    filter_func_lines_pop(curr_func_lines, 400);
+    filter_func_lines_pop(next_func_lines, 400);
     
     compare_t_g();
     
@@ -384,7 +380,8 @@ void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
     
     //get percentage of best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%.
-    best_local_scores = get_best_local_scores();//score, i, j, l
+    best_local_scores = get_best_local_scores_percentage();//score, i, j, l
+    //best_local_scores = get_best_local_scores_singleBest();//score, i, j, l
 }
 
 
@@ -755,7 +752,7 @@ vector<vector<int>> Rule_comparer::get_earliest_next_form_scores(vector<vector<i
 }
 
 
-vector<vector<int>> Rule_comparer::get_best_local_scores(){
+vector<vector<int>> Rule_comparer::get_best_local_scores_percentage(){
 
     vector<vector<int>> _best_scores;
     
@@ -1137,6 +1134,19 @@ vector<vector<G_parser::elem_ID>> Rule_comparer::construct_lines(vector<vector<G
      //*/
     
     return prelast_lines;
+}
+
+
+void Rule_comparer::filter_func_lines_pop(vector<vector<G_parser::elem_ID>>& func_lines, int max_pop){
+
+    if (func_lines.size() > max_pop){
+    
+        vector<vector<G_parser::elem_ID>> _lines_aux;
+        
+        for (int i=0; i<400; i++) _lines_aux.push_back(func_lines[i]);
+        func_lines.clear();
+        func_lines = _lines_aux;
+    }
 }
 
 
