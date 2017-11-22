@@ -66,7 +66,9 @@ void Blues_structure::setup(){
     //better in constructor..??
     
     //randomised transitions..
-    trans_bars = {7, 21, 14, 12, 25, 13, 11, 10, 8, 20, 14};
+    //trans_bars = {7, 21, 14, 12, 25, 13, 11, 10, 8, 20, 14};
+    //FORTESTING
+    trans_bars = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 ,8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28, 29, 29, 30, 30, 31, 31};
     trans_pop = 0;
 }
 
@@ -244,7 +246,7 @@ void Blues_structure::ordered_change(){
     if (seq.r_comp.parser.gr_pop == 0){
         
         if ((t[3]==trans_bars[trans_pop]) && (t[4]==1)){
-            /*
+            
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.trans_incomplete = 1;
             seq.r_comp.rules_combined = 0;
@@ -254,14 +256,14 @@ void Blues_structure::ordered_change(){
             trans_pop = (trans_pop + 1) % trans_bars.size();
             
             vel_aut_complete = 0;
-             */
+             //*/
         }
     }
     //*/
     
     if (seq.r_comp.parser.gr_pop == 1){
     
-        if ((t[3]==7) && (t[4]==0)){//trans_bars[trans_pop]
+        if ((t[3]==trans_bars[trans_pop]) && (t[4]==0)){//trans_bars[trans_pop]
             
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.trans_incomplete = 1;
