@@ -252,7 +252,9 @@ void Rule_comparer::find_best_rule(vector<int>& seq_t){
     qsort_r(<#void *__base#>, <#size_t __nel#>, <#size_t __width#>, <#void *#>, <#int (* _Nonnull __compar)(void *, const void *, const void *)#>)
     qsort
      */
+    
     compare_include_history(form_pc);
+    
     //compare_include_future(form_pc);
     //cout << "return";
     //mix_in_rt();
@@ -868,7 +870,7 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     top_next_func_line_scores = get_sort_n_best_scores(top_curr_func_line_scores);//best of 'l'
     
     //earliest_next_form_scores = get_sort_n_best_scores(top_next_func_line_scores);
-    earliest_next_form_scores = get_earliest_next_form_scores(top_next_func_line_scores);
+    earliest_next_form_scores = (top_next_func_line_scores);
     
     final_best_score = earliest_next_form_scores[0];//in case (even though unlikely) theres is more than one, keep the 1st (enough refinement till here anyway..)
     

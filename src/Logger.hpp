@@ -20,6 +20,11 @@ public:
     void setup();
     void update();
     
+    string log_path;
+    
+    int ID;
+    void generate_ID();
+    
     void gather_all_elements();
   
     

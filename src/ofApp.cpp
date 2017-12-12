@@ -6,6 +6,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    logger.setup();
+    
     ofSetVerticalSync(false);//unlocks the refresh rate from my monitor sync//https://forum.openframeworks.cc/t/is-the-glfw-limit-the-framerate-at-60hz/17632
 
     //this is from the merged branch
@@ -502,34 +504,10 @@ void ofApp::keyReleased(int key){
 
 
 void ofApp::pass_log_values(){
-
-    //in a paper write what we want for this and the next study run
-        //now bad transitions (unintelligent), next getter, intelligent
-        //now repetitive (within a style?)
-        //next 
-    //che to buy these books - tell Dawn to buy..
-    
-    //in a questionnaire..!!
-        //think evaluation write-up, what answers do we need for the questionnaire to be able to tell us..
-    //this has 2 styles.. and transitions
-        //how abrupt is it, and why??
-        //on a scale 1 to 10 is this abrupt..
-        //control orchestration
-            //we watn the grammar to move from one to the other..
-            //similarity of orchestrations..
-        //melodic..
-    //all of them find it repetitive but they don't see it as a bad thing
-    //
-    //to what extent is repetition part of a style!!!!
-    //styles that are closely to each other...!!!
-        //different but not so different.. so that we don't get as much abruptnes..
-    //
-    
-    //check what a nice python log is..
     
     /*
     //clock (in logger)
-        //how long does transition/recover take etc..
+        //overall: how long does transition/recover take etc..
         //descritise time in some way..
             //assume
      
