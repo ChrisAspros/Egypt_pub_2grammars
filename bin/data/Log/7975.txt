@@ -1,0 +1,8 @@
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, FINAL CYCLE
+[symbols : times]
+[i : 0][i6 : 1][iim7 : 2][iim7 : 3][iim7 : 4][v7 : 5][isus4 : 6][isus4 : 7][ivsus4 : 8][isus4 : 9][biisus2 : 10][bviim : 11][ivsus4 : 12][isus4 : 13][bviim : 14][isus4 : 15][isus4 : 16][isus4 : 17][bviim : 18][isus4 : 19][biisus2 : 20][isus4 : 21][isus4 : 22][isus4 : 23][bviim : 24][isus4 : 25][bviim : 26][isus4 : 27][bviim : 28][isus4 : 29][bviim : 30][isus4 : 31][isus4 : 0][biisus2 : 1][bviim : 2]
+
+
+==============
+LOG END
+==============

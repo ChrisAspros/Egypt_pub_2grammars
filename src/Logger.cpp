@@ -14,18 +14,18 @@ void Logger::setup(){
     log_path = "/Users/christodoulosaspromallis/Documents/UCL/PhD_Y_3/OF/of_v0.9.8_osx_release/apps/myApps/ICMC_test/Egypt_pub_2grammars/bin/data/Log/";
     
     generate_ID();
-    
-    //log_text_test.txt
-    
     log_path += (ofToString(ID) + ".txt");
     
-    //creat new file (with ID name..)
-    ofFile File(ofToDataPath(log_path));
-    File.create();
+    //create new file (with ID name..)
+    //ofFile File(ofToDataPath(log_path));
+    //File.open(ofToDataPath(log_path),ofFile::WriteOnly);
+    File.open(log_path,ofFile::WriteOnly);
+    //File.create();
+    //File.open(log_path);//File.open();
+    //ofFile File(log_path,ofFile::Append);
+    //File << "writing?";//writes nothing
     
-    //logtime and date in it..
-    
-    ofLogToFile(log_path);
+    //ofLogToFile(log_path);//writes date - time
 }
 
 
@@ -40,6 +40,8 @@ void Logger::update(){
 }
 
 void Logger::gather_all_elements(){
+    
+    int gr_pops = 3;
     
 }
 
@@ -75,6 +77,67 @@ void Logger::generate_ID(){
     
     //if existent, iterate generate_ID()
 }
+
+
+void Logger::tick(){}
+
+void Logger::beat(){}
+
+void Logger::bar(){
+
+    //ofFile File(log_path,ofFile::Append);
+    //File << "writing?";//writes nothing
+    global_bt ++;
+    
+    store_final_cycle();
+    
+    
+    string log_str = ofToString(global_bt);
+    
+    //ofLog() << global_bt;//log_str;
+    File << global_bt << ", ";
+}
+
+
+void Logger::store_final_cycle(){
+
+    //final_cycle_names.push_back("isussy");//(curr_term_name);
+    //final_cycle_times.push_back(global_bt);//k(curr_term_time);
+    
+}
+
+
+void Logger::log_final_cycle(){
+
+    //ofLog() << "FINAL CYCLE" << endl;
+    //ofLog() << "symbols: ";
+    //ofFile File(log_path,ofFile::Append);
+    File << endl << endl << "FINAL CYCLE" << endl;
+    File << "[symbols : times]" << endl;
+    int size = final_cycle_names.size();
+    //for(int i=0; i < size;  i++) ofLog() << final_cycle_names[i] << " ";
+    //for(int i=0; i < size;  i++) ofLog() << final_cycle_times[i] << " ";
+    for(int i=0; i < size;  i++) File << "[" << final_cycle_names[i] << " : " << final_cycle_times[i] << "]";
+    File << endl;
+    //for(int i=0; i < size;  i++) File << final_cycle_times[i] << " ";
+}
+
+
+void Logger::print_final_log(){
+
+    log_final_cycle();
+
+    File << endl << endl << "==============" << endl << "LOG END" << endl << "==============";
+    File.close();//dont' allow remainders to be logged after 'L'..
+}
+
+
+void Logger::trans(){
+    
+    
+}
+
+
 
 //pass_log_values (ofApp.)
 /*

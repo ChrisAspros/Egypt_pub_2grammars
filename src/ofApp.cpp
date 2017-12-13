@@ -6,7 +6,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    logger.setup();
+    blues.seq.r_comp.parser.logger.setup();
     
     ofSetVerticalSync(false);//unlocks the refresh rate from my monitor sync//https://forum.openframeworks.cc/t/is-the-glfw-limit-the-framerate-at-60hz/17632
 
@@ -119,13 +119,16 @@ void ofApp::update(){
     }
     
     
+    //logger.tick();
     
     
     //updating OSC on every beat only (no more needed for now..)
     if(blues.seq.only_on("beat", blues.t)){
         
         //OSC.update();
-        logger.update();
+        //logger.update();
+        //logger.beat();
+        //cout << "BEAT!!!!!!" << endl;
         blues.ending = OSC._ending;
         blues.goal_reached = OSC._goal_reached;
         
@@ -140,6 +143,10 @@ void ofApp::update(){
     //blues.seq.r_comp.trans_complete = trans_complete;
     
     //if (ofApp_is_stopped) blues.seq.stop_all_MIDI();
+    
+    
+    pass_log_values();
+    
     
     /*
      # - For compensation - #
@@ -265,7 +272,7 @@ void ofApp::draw(){
     ofDrawRectangle(4, 200, 567, 540);
     
     
-    //DRAW CYCLE STATES
+    //DRAW CYCLE STATES + LOG CYCLE (final) STATES
     string chord_str;
     
     for (int i=0; i<blues.seq.r_comp.parser.all_gr[blues.seq.r_comp.parser.gr_pop].form_length; i++){
@@ -295,6 +302,8 @@ void ofApp::draw(){
         
         for (int j=0; j<i/4; j++) chord_str = "\n\n" + chord_str;
         openSans.drawString(chord_str, ((i%4)+1)*135-95, 240);
+        
+        
     }
     
     
@@ -488,6 +497,8 @@ void ofApp::keyPressed(int key){
         show_p_e_input = 1;
     }
     if (key == 's' || key == 'S') blues.seq.stop_all_MIDI();
+    
+    if (key == 'l' || key == 'L') pass_log_end();
 }
 //*/
 
@@ -503,7 +514,32 @@ void ofApp::keyReleased(int key){
  */
 
 
-void ofApp::pass_log_values(){
+void ofApp::pass_log_end(){
+
+    blues.seq.r_comp.parser.logger.print_final_log();
+}
+    
+    
+void ofApp::pass_log_values(){//on ofApp.update rate
+    
+    if(blues.seq.only_on("bar", blues.t)){
+        /*
+        int curr_s = blues.seq.r_comp.parser.curr_cycle.size();
+        logger.curr_term_name = blues.seq.r_comp.parser.curr_cycle[curr_s-1].name;
+        logger.curr_term_time = blues.seq.r_comp.parser.curr_cycle[curr_s-1].time[1];
+        
+        logger.bar();
+         */
+    }
+    
+    if(blues.seq.only_on("beat", blues.t)){
+        
+        //logger.beat();
+    }
+    
+    //logger.tick();
+    
+    //logger.trans();
     
     /*
     //clock (in logger)

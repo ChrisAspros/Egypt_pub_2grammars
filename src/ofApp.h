@@ -8,7 +8,7 @@
 #include "Blues_structure.h"//??
 //#include "Sequencer.h"
 #include "Osc_receive.hpp"
-#include "Logger.hpp"
+//#include "Logger.hpp"
 #include "Grammar_parser.h"
 
 class ofApp : public ofBaseApp{
@@ -24,6 +24,7 @@ public:
     void tracking_repl_A_B();
     
     void pass_log_values();
+    void pass_log_end();
     
     int frame_sp, frame_sp1, frame_sp2;
     
@@ -57,7 +58,7 @@ private:
     //Sequencer seq;
     Blues_structure blues;
     Osc_receive OSC;
-    Logger logger;
+    //Logger logger;
     //Sequencer seq;
     //G_parser par;
     

@@ -110,6 +110,7 @@ void Blues_structure::update(){
     
     if (seq.only_on("beat", t)){
      
+        //cout << "BEAT!!!!!!" << endl;
         //cout << "beat: " << t[2] << endl;
         //if (fin_t.size()!=0) cout << "fin_t: " << fin_t[3] << " " << fin_t[4] << endl;
     }
@@ -172,6 +173,11 @@ void Blues_structure::update(){
         //else seq.r_comp.combine_rules(t);
         string terminal = seq.r_comp.parser.return_terminal(t);
         chord = terminal_to_midi(terminal);
+        
+        //logging
+        seq.r_comp.parser.logger.bar();
+        seq.r_comp.parser.logger.final_cycle_names.push_back(terminal);
+        seq.r_comp.parser.logger.final_cycle_times.push_back(t[3]);
     }
     
     //if (automate_vel) {

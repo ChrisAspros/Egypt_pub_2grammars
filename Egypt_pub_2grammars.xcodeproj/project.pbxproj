@@ -335,8 +335,6 @@
 			children = (
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
-				90E52C201F73C36E0017116B /* Logger.cpp */,
-				90E52C211F73C36E0017116B /* Logger.hpp */,
 				901641661EFAD4A000EA885A /* Blues_structure.cpp */,
 				901641671EFAD4A000EA885A /* Blues_structure.h */,
 				9016416C1EFAD4A000EA885A /* Sequencer.cpp */,
@@ -345,6 +343,8 @@
 				903B2B9C1F4C794F00E70370 /* Rule_comparer.hpp */,
 				901641681EFAD4A000EA885A /* Grammar_parser.cpp */,
 				901641691EFAD4A000EA885A /* Grammar_parser.h */,
+				90E52C201F73C36E0017116B /* Logger.cpp */,
+				90E52C211F73C36E0017116B /* Logger.hpp */,
 				9016416A1EFAD4A000EA885A /* Osc_receive.cpp */,
 				9016416B1EFAD4A000EA885A /* Osc_receive.hpp */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,

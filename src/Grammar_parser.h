@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "ofxMidiOut.h"
 //#include "ofxMidi.h" //??
+#include "Logger.hpp"
 
 
 
@@ -174,7 +175,8 @@ public:
     
     bool gr_changed;
     bool reset_t;
-    
+  
+    Logger logger;
 };
 
 #endif /* defined(____Grammar_parser__) */
