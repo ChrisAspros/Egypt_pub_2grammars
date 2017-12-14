@@ -12,8 +12,16 @@
 
 void Rule_comparer::combine_rules(vector<int>& seq_t){
     
+    //logging
+    parser.logger.rt_log.append("\n\n===TRANSITION BEGINS=== [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    
     //STATIC process
     if (!parser.comb_setup) setup_combination(seq_t);
+    
+    //logging
+    parser.logger.rt_log.append("\n\n===COMBINATION SETUP=== [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    
+    
     //morph_
     //UPDATING - running the cycle now.. (pairnei ta hnia..)
     update_combination(seq_t);
@@ -22,6 +30,11 @@ void Rule_comparer::combine_rules(vector<int>& seq_t){
     parser.transitioning = 0;
     //parser.gr_pop = next_gr;//already in build_next_form()
     //place_next_sect();
+    
+    //logging
+    parser.logger.rt_log.append("\n\n===COMBINATION UPDATED / MORPH BEGINS=== [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    //logging
+    //seq.r_comp.parser.logger.rt_log.append("\n\n===TRANSITION BEGINS===\n");
     
     //too early..
     /*
@@ -80,6 +93,8 @@ void Rule_comparer::setup_combination(vector<int>& seq_t){
     //int dist;
     dist = get_distance_to_goal(seq_t);
     //cout << "DIST_TO_GOAL: " << dist << endl;
+    //logging
+    
     
     find_best_rule(seq_t);
     

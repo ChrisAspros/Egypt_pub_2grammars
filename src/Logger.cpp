@@ -88,6 +88,8 @@ void Logger::bar(){
     //ofFile File(log_path,ofFile::Append);
     //File << "writing?";//writes nothing
     global_bt ++;
+    string gbt = ofToString(global_bt);
+    rt_log.append("\n[global_bt : " + gbt + "] [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));//+ timestamp);
     
     store_final_cycle();
     
@@ -95,7 +97,7 @@ void Logger::bar(){
     string log_str = ofToString(global_bt);
     
     //ofLog() << global_bt;//log_str;
-    File << global_bt << ", ";
+    //File << global_bt << ", ";
 }
 
 
@@ -104,6 +106,14 @@ void Logger::store_final_cycle(){
     //final_cycle_names.push_back("isussy");//(curr_term_name);
     //final_cycle_times.push_back(global_bt);//k(curr_term_time);
     
+}
+
+
+void Logger:: log_rt_log(){
+
+    File << endl << "============" << "REAL TIME LOG (start):"  << "============" << endl;
+    File << rt_log;
+    File << endl << "============" << "REAL TIME LOG (end):"  << "============" << endl << endl;
 }
 
 
@@ -123,10 +133,12 @@ void Logger::log_final_cycle(){
 }
 
 
-void Logger::print_final_log(){
+void Logger::log_finals(){
 
+    log_rt_log();
     log_final_cycle();
 
+    //FINALISE / CLOSE log file..
     File << endl << endl << "==============" << endl << "LOG END" << endl << "==============";
     File.close();//dont' allow remainders to be logged after 'L'..
 }

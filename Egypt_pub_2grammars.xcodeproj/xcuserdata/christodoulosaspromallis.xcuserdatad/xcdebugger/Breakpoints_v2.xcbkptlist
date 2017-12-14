@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "531805688.737162"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "891"
-            endingLineNumber = "891"
+            startingLineNumber = "904"
+            endingLineNumber = "904"
             landmarkName = "Rule_comparer::rewrite_funcs()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1027"
-            endingLineNumber = "1027"
+            startingLineNumber = "1040"
+            endingLineNumber = "1040"
             landmarkName = "Rule_comparer::rewrite_next_all()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "534893884.177432"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
+            startingLineNumber = "549"
+            endingLineNumber = "549"
             landmarkName = "Blues_structure::play_drums_normal()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "531805688.737162"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "Rule_comparer::get_un_dist_scores()"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "780"
-            endingLineNumber = "780"
+            startingLineNumber = "793"
+            endingLineNumber = "793"
             landmarkName = "Rule_comparer::get_best_local_scores_percentage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "776"
-            endingLineNumber = "776"
+            startingLineNumber = "789"
+            endingLineNumber = "789"
             landmarkName = "Rule_comparer::get_best_local_scores_percentage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "914"
-            endingLineNumber = "914"
+            startingLineNumber = "927"
+            endingLineNumber = "927"
             landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "926"
-            endingLineNumber = "926"
+            startingLineNumber = "939"
+            endingLineNumber = "939"
             landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "942"
-            endingLineNumber = "942"
+            startingLineNumber = "955"
+            endingLineNumber = "955"
             landmarkName = "Rule_comparer::rewrite_curr_gr_t_g()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "796"
-            endingLineNumber = "796"
+            startingLineNumber = "809"
+            endingLineNumber = "809"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "851"
-            endingLineNumber = "851"
+            startingLineNumber = "864"
+            endingLineNumber = "864"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "803"
-            endingLineNumber = "803"
+            startingLineNumber = "816"
+            endingLineNumber = "816"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "813"
-            endingLineNumber = "813"
+            startingLineNumber = "826"
+            endingLineNumber = "826"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "847"
-            endingLineNumber = "847"
+            startingLineNumber = "860"
+            endingLineNumber = "860"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "877"
-            endingLineNumber = "877"
+            startingLineNumber = "890"
+            endingLineNumber = "890"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "725"
-            endingLineNumber = "725"
+            startingLineNumber = "738"
+            endingLineNumber = "738"
             landmarkName = "Rule_comparer::get_sort_n_best_scores(vector&lt;vector&lt;int&gt;&gt; _scores)"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "534798772.586809"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "531780116.411316"
+            timestampString = "534895828.089088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "711"
-            endingLineNumber = "711"
+            startingLineNumber = "716"
+            endingLineNumber = "716"
             landmarkName = "G_parser::rewrite(rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "531780116.411316"
+            timestampString = "534900641.079381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "841"
-            endingLineNumber = "841"
+            startingLineNumber = "852"
+            endingLineNumber = "852"
             landmarkName = "G_parser::trans_update(vector&lt;elem_ID&gt;&amp; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "531780116.411316"
+            timestampString = "534895828.089088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "669"
-            endingLineNumber = "669"
+            startingLineNumber = "674"
+            endingLineNumber = "674"
             landmarkName = "G_parser::rewrite(rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "531805688.737162"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "531805688.737162"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "531781388.591022"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "Rule_comparer::combine_rules(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "531805688.737162"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "844"
-            endingLineNumber = "844"
+            startingLineNumber = "857"
+            endingLineNumber = "857"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "876"
-            endingLineNumber = "876"
+            startingLineNumber = "889"
+            endingLineNumber = "889"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1189"
-            endingLineNumber = "1189"
+            startingLineNumber = "1202"
+            endingLineNumber = "1202"
             landmarkName = "Rule_comparer::update_combination(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1297"
-            endingLineNumber = "1297"
+            startingLineNumber = "1310"
+            endingLineNumber = "1310"
             landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "531690915.426383"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "Rule_comparer::combine_rules(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "531869500.489708"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "Rule_comparer::combine_rules(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "531780116.411316"
+            timestampString = "534900641.079381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "826"
-            endingLineNumber = "826"
+            startingLineNumber = "837"
+            endingLineNumber = "837"
             landmarkName = "G_parser::morph_update(vector&lt;elem_ID&gt; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "531780116.411316"
+            timestampString = "534900641.079381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "830"
-            endingLineNumber = "830"
+            startingLineNumber = "841"
+            endingLineNumber = "841"
             landmarkName = "G_parser::morph_update(vector&lt;elem_ID&gt; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1255"
-            endingLineNumber = "1255"
+            startingLineNumber = "1268"
+            endingLineNumber = "1268"
             landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1288"
-            endingLineNumber = "1288"
+            startingLineNumber = "1301"
+            endingLineNumber = "1301"
             landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
             landmarkType = "7">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1279"
-            endingLineNumber = "1279"
+            startingLineNumber = "1292"
+            endingLineNumber = "1292"
             landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
             landmarkType = "7">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1231"
-            endingLineNumber = "1231"
+            startingLineNumber = "1244"
+            endingLineNumber = "1244"
             landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
             landmarkType = "7">
          </BreakpointContent>
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1245"
-            endingLineNumber = "1245"
+            startingLineNumber = "1258"
+            endingLineNumber = "1258"
             landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1312"
-            endingLineNumber = "1312"
+            startingLineNumber = "1325"
+            endingLineNumber = "1325"
             landmarkName = "Rule_comparer::build_next_form()"
             landmarkType = "7">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1343"
-            endingLineNumber = "1343"
+            startingLineNumber = "1356"
+            endingLineNumber = "1356"
             landmarkName = "Rule_comparer::build_next_form()"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "534798772.586809"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "534893884.177432"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -826,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "534893884.177432"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "533131136.247244"
+            timestampString = "534902799.794676"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -858,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "533131136.247244"
+            timestampString = "534902799.794676"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -874,11 +874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1316"
-            endingLineNumber = "1316"
+            startingLineNumber = "1329"
+            endingLineNumber = "1329"
             landmarkName = "Rule_comparer::build_next_form()"
             landmarkType = "7">
          </BreakpointContent>
@@ -890,11 +890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "531780116.411316"
+            timestampString = "534895828.089088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "567"
-            endingLineNumber = "567"
+            startingLineNumber = "572"
+            endingLineNumber = "572"
             landmarkName = "G_parser::find_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -906,11 +906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "531780116.411316"
+            timestampString = "534895828.089088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "570"
-            endingLineNumber = "570"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
             landmarkName = "G_parser::find_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -922,7 +922,167 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1332"
+            endingLineNumber = "1332"
+            landmarkName = "Rule_comparer::build_next_form()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Blues_structure.cpp"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "Blues_structure::update()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "Rule_comparer::setup_combination(vector&lt;int&gt;&amp; seq_t)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Blues_structure.cpp"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "Blues_structure::ordered_change()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Blues_structure.cpp"
+            timestampString = "534902799.794676"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "Blues_structure::update()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "Rule_comparer::combine_rules(vector&lt;int&gt;&amp; seq_t)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1172"
+            endingLineNumber = "1172"
+            landmarkName = "Rule_comparer::update_combination(vector&lt;int&gt;&amp; seq_t)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1194"
+            endingLineNumber = "1194"
+            landmarkName = "Rule_comparer::update_combination(vector&lt;int&gt;&amp; seq_t)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1261"
+            endingLineNumber = "1261"
+            landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1304"
+            endingLineNumber = "1304"
+            landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1319"
@@ -937,172 +1097,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/Blues_structure.cpp"
-            timestampString = "534798772.586809"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "Blues_structure::update()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "531805688.737162"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "Rule_comparer::setup_combination(vector&lt;int&gt;&amp; seq_t)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Blues_structure.cpp"
-            timestampString = "534893884.177432"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
-            landmarkName = "Blues_structure::ordered_change()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Blues_structure.cpp"
-            timestampString = "534798772.586809"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "Blues_structure::update()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "531805189.919508"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "Rule_comparer::combine_rules(vector&lt;int&gt;&amp; seq_t)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1159"
-            endingLineNumber = "1159"
-            landmarkName = "Rule_comparer::update_combination(vector&lt;int&gt;&amp; seq_t)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1181"
-            endingLineNumber = "1181"
-            landmarkName = "Rule_comparer::update_combination(vector&lt;int&gt;&amp; seq_t)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1248"
-            endingLineNumber = "1248"
-            landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1291"
-            endingLineNumber = "1291"
-            landmarkName = "Rule_comparer::weight_choose_morph(vector&lt;G_parser::elem_ID&gt; _curr_best, vector&lt;G_parser::elem_ID&gt; _next_best)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1306"
-            endingLineNumber = "1306"
-            landmarkName = "Rule_comparer::build_next_form()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "531868723.500484"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1114,11 +1114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "532996848.331997"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1130,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "534798772.586809"
+            timestampString = "534902799.794676"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1146,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1164"
-            endingLineNumber = "1164"
+            startingLineNumber = "1177"
+            endingLineNumber = "1177"
             landmarkName = "Rule_comparer::update_combination(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1162,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "532996848.331997"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1178,11 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "532731898.372054"
+            timestampString = "534900641.079381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "885"
-            endingLineNumber = "885"
+            startingLineNumber = "896"
+            endingLineNumber = "896"
             landmarkName = "G_parser::trans_update(vector&lt;elem_ID&gt;&amp; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1194,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "532732308.960785"
+            timestampString = "534900641.079381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "892"
-            endingLineNumber = "892"
+            startingLineNumber = "903"
+            endingLineNumber = "903"
             landmarkName = "G_parser::trans_update(vector&lt;elem_ID&gt;&amp; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1210,11 +1210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "532789039.219726"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "Rule_comparer::setup_combination(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1226,11 +1226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "532789050.940179"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "Rule_comparer::setup_combination(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1242,11 +1242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "534893884.177432"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "Blues_structure::ordered_change()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1258,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "532789107.142005"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1274,11 +1274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "453"
-            endingLineNumber = "453"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "Rule_comparer::bubble_sort_scores(vector&lt;vector&lt;int&gt;&gt; _unsorted_scores)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1290,11 +1290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
             landmarkName = "Rule_comparer::bubble_sort_scores(vector&lt;vector&lt;int&gt;&gt; _unsorted_scores)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1306,7 +1306,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
+            landmarkName = "Rule_comparer::bubble_sort_scores(vector&lt;vector&lt;int&gt;&gt; _unsorted_scores)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Rule_comparer.cpp"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "473"
@@ -1322,11 +1338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
             landmarkName = "Rule_comparer::bubble_sort_scores(vector&lt;vector&lt;int&gt;&gt; _unsorted_scores)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1338,27 +1354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "467"
-            endingLineNumber = "467"
-            landmarkName = "Rule_comparer::bubble_sort_scores(vector&lt;vector&lt;int&gt;&gt; _unsorted_scores)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "486"
-            endingLineNumber = "486"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
             landmarkName = "Rule_comparer::merge_sort_scores(vector&lt;vector&lt;int&gt;&gt; _unsorted_scores)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1370,11 +1370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
             landmarkName = "Rule_comparer::merge_sort_scores(vector&lt;vector&lt;int&gt;&gt; _unsorted_scores)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1386,11 +1386,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "532996848.331997"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1402,11 +1402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "Rule_comparer::find_best_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1418,11 +1418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "865"
-            endingLineNumber = "865"
+            startingLineNumber = "878"
+            endingLineNumber = "878"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1434,11 +1434,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "867"
-            endingLineNumber = "867"
+            startingLineNumber = "880"
+            endingLineNumber = "880"
             landmarkName = "Rule_comparer::compare_include_history(int form_pc)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1450,11 +1450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "762"
-            endingLineNumber = "762"
+            startingLineNumber = "775"
+            endingLineNumber = "775"
             landmarkName = "Rule_comparer::get_best_local_scores_percentage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1466,11 +1466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "765"
-            endingLineNumber = "765"
+            startingLineNumber = "778"
+            endingLineNumber = "778"
             landmarkName = "Rule_comparer::get_best_local_scores_percentage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1482,11 +1482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Rule_comparer.cpp"
-            timestampString = "534790516.206349"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "582"
-            endingLineNumber = "582"
+            startingLineNumber = "595"
+            endingLineNumber = "595"
             landmarkName = "Rule_comparer::TimSort_scores(vector&lt;vector&lt;int&gt;&gt; _unsorted_scores)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1494,15 +1494,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Blues_structure.cpp"
-            timestampString = "534798772.586809"
+            timestampString = "534903738.745948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1594,11 +1594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Logger.cpp"
-            timestampString = "534889478.626369"
+            timestampString = "534897538.040563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "Logger::store_final_cycle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1626,11 +1626,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Logger.cpp"
-            timestampString = "534889478.626369"
+            timestampString = "534897538.040563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "Logger::log_final_cycle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1642,12 +1642,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Logger.cpp"
-            timestampString = "534890115.570114"
+            timestampString = "534897538.040563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "Logger::log_final_cycle()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Blues_structure.cpp"
+            timestampString = "534903738.745948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "Blues_structure::update()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

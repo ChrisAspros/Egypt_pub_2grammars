@@ -547,6 +547,11 @@ void G_parser::find_rule(vector<int>& seq_t){
                     for (int j=0; j<the_rule.left_str.size(); j++) cout << the_rule.left_str[j] << ", ";
                     cout << endl;
                     
+                    //logging
+                    //logger.File << "the_rule: ";
+                    logger.rt_log.append("the_rule: ");
+                    for (int j=0; j<the_rule.left_str.size(); j++) logger.rt_log.append(the_rule.left_str[j] + ", \n");
+                    
                     rewrite(r, seq_t);
                     cout << "case 5" << endl;//general and not optional
                     
@@ -819,6 +824,12 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
     cout << "new cycle (update_cycle()): ";
     for (int i=0; i<all_gr[gr_pop].form_length; i++) cout << curr_cycle[i].name << " ";
     cout << endl << "=======" << endl;
+    
+    //logging
+    logger.rt_log.append("new cycle (update_cycle()): ");
+    for (int i=0; i<all_gr[gr_pop].form_length; i++) logger.rt_log.append(curr_cycle[i].name + " ");
+    logger.rt_log.append("\n=======\n");
+    
 }
 
 
@@ -1148,7 +1159,10 @@ void G_parser::stop_sequencer(){
 
 bool G_parser::is_terminal(vector<int>& seq_t){
     
+    //debug
     cout << "is_terminal?: " << curr_cycle[seq_t[3]].name << endl << endl;
+    //logging
+    logger.rt_log.append("is_terminal?: " + curr_cycle[seq_t[3]].name + "\n\n");
     
     bool is_t = false;
     vector<string>::iterator it = find(all_gr[gr_pop].terminals.begin(), all_gr[gr_pop].terminals.end(), curr_cycle[seq_t[3]].name);

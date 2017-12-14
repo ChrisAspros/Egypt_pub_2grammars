@@ -31,15 +31,20 @@ public:
     void MIDI_spit();
     void tracker();//incl. position data / episode state..
     
+    void log_rt_log();
+    string rt_log;//real time log
+    string midi_log;
+    
     //final_cycle
     vector<string> final_cycle_names;
     vector<int> final_cycle_times;
     void store_final_cycle();
     void log_final_cycle();
     
-    void print_final_log();
+    void log_finals();
     
-    int global_bt = 0;
+    int global_bt = 0;//global beat, offset by 1 (computer VS musical nyumbering)
+        //counts throughout trajectory, irrespective of cycles starting / endings
     
     
     int ID;

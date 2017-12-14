@@ -516,7 +516,7 @@ void ofApp::keyReleased(int key){
 
 void ofApp::pass_log_end(){
 
-    blues.seq.r_comp.parser.logger.print_final_log();
+    blues.seq.r_comp.parser.logger.log_finals();
 }
     
     
