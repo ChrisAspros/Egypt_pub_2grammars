@@ -133,11 +133,20 @@ void Logger::log_final_cycle(){
 }
 
 
+void Logger::log_transition_data(){
+
+    File << endl << "============" << "Transition data (start):"  << "============" << endl;
+    File << transition_data_log;
+    File << endl << "============" << "Transition data (end):"  << "============" << endl << endl;
+}
+
+
 void Logger::log_finals(){
 
     log_rt_log();
     log_final_cycle();
-
+    log_transition_data();
+    
     //FINALISE / CLOSE log file..
     File << endl << endl << "==============" << endl << "LOG END" << endl << "==============";
     File.close();//dont' allow remainders to be logged after 'L'..

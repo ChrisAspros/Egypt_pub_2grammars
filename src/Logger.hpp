@@ -33,6 +33,7 @@ public:
     
     void log_rt_log();
     string rt_log;//real time log
+    string transition_data_log;//curr_/next_func_lines
     string midi_log;
     
     //final_cycle
@@ -40,6 +41,7 @@ public:
     vector<int> final_cycle_times;
     void store_final_cycle();
     void log_final_cycle();
+    void log_transition_data();
     
     void log_finals();
     

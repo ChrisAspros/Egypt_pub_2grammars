@@ -94,12 +94,12 @@ void Rule_comparer::setup_combination(vector<int>& seq_t){
     dist = get_distance_to_goal(seq_t);
     //cout << "DIST_TO_GOAL: " << dist << endl;
     //logging
-    
+    parser.logger.rt_log.append("DIST_TO_GOAL: " + ofToString(dist) + ", Goal Point: " + ofToString(g_p) + "\n");
+    parser.logger.rt_log.append("curr_gr: " + ofToString(curr_gr) + ", next_gr: " + ofToString(next_gr) + "\n");
     
     find_best_rule(seq_t);
     
     parser.comb_setup = 1;
-    
     
     //run possible FUNC productions till goal (GR_1)
     //run possible FUNC tail productions of (GR_2)
@@ -151,10 +151,30 @@ void Rule_comparer::find_best_rule(vector<int>& seq_t){
     S_rule_curr = get_S_rule(curr_gr);
     S_rule_next = get_S_rule(next_gr);
     
-    
     //find sect lengths
-    sect_lengths_curr = get_sect_lengths(S_rule_curr, curr_gr);
+   sect_lengths_curr = get_sect_lengths(S_rule_curr, curr_gr);
     sect_lengths_next = get_sect_lengths(S_rule_next, next_gr);
+    
+    //logging
+    parser.logger.rt_log.append("S_rule_curr: \n");
+    for (int i=0; i < S_rule_curr.right_side[0].right_str.size(); i++){
+        
+        parser.logger.rt_log.append(S_rule_curr.right_side[0].right_str[i]);
+        parser.logger.rt_log.append(", time: " + ofToString(S_rule_curr.prod_times[i]) + "\n");
+    }
+    parser.logger.rt_log.append("S_rule_next: \n");
+    for (int i=0; i < S_rule_next.right_side[0].right_str.size(); i++){
+        
+        parser.logger.rt_log.append(S_rule_next.right_side[0].right_str[i]);
+        parser.logger.rt_log.append(", time: " + ofToString(S_rule_next.prod_times[i]) + "\n");
+    }
+    parser.logger.rt_log.append("sect_lengths_curr: ");
+    for (int i=0; i < sect_lengths_curr.size(); i++) parser.logger.rt_log.append(ofToString(sect_lengths_curr) + ", ");
+    parser.logger.rt_log.append("\nsect_lengths_next: ");
+    for (int i=0; i < sect_lengths_next.size(); i++) parser.logger.rt_log.append(ofToString(sect_lengths_next) + ", ");
+    parser.logger.rt_log.append("\n");
+    
+    
     
     /*
     //check Sect lengths
@@ -256,8 +276,52 @@ void Rule_comparer::find_best_rule(vector<int>& seq_t){
     curr_func_lines = construct_lines (curr_func_chunks, curr_gr, un_dist, undist_bar);
     next_func_lines = construct_lines (next_func_chunks, next_gr, parser.all_gr[next_gr].form_length, 0);
     
-    filter_func_lines_pop(curr_func_lines, 400);
-    filter_func_lines_pop(next_func_lines, 400);
+    //logging
+    parser.logger.transition_data_log.append("\n\n\ncurr_func_lines, [name:time]\n");
+    for (int i=0; i < curr_func_lines.size(); i++){
+        
+        parser.logger.transition_data_log.append("number:" + ofToString(i) + " ");
+        
+        for (int j=0; j < curr_func_lines[i].size(); j++) parser.logger.transition_data_log.append("[" + curr_func_lines[i][j].name + ":" + ofToString(curr_func_lines[i][j].time[1]) + "], ");
+        
+        parser.logger.transition_data_log.append("\n");
+    }
+    parser.logger.transition_data_log.append("next_func_lines, [name:time]\n");
+    for (int i=0; i < next_func_lines.size(); i++){
+        
+        parser.logger.transition_data_log.append("number:" + ofToString(i) + " ");
+        
+        for (int j=0; j < next_func_lines[i].size(); j++) parser.logger.transition_data_log.append("[" + next_func_lines[i][j].name + ":" + ofToString(next_func_lines[i][j].time[1]) + "], ");
+        
+        parser.logger.transition_data_log.append("\n");
+    }
+    
+    int _l_filt = 400;
+    
+    filter_func_lines_pop(curr_func_lines, _l_filt);
+    filter_func_lines_pop(next_func_lines, _l_filt);
+    
+    
+    //logging
+    parser.logger.transition_data_log.append("curr_func_lines (FILTERED at " + ofToString(_l_filt) + ", [name:time]\n");
+    for (int i=0; i < curr_func_lines.size(); i++){
+        
+        parser.logger.transition_data_log.append("number:" + ofToString(i) + " ");
+        
+        for (int j=0; j < curr_func_lines[i].size(); j++) parser.logger.transition_data_log.append("[" + curr_func_lines[i][j].name + ":" + ofToString(curr_func_lines[i][j].time[1]) + "], ");
+        
+        parser.logger.transition_data_log.append("\n");
+    }
+    parser.logger.transition_data_log.append("next_func_lines (FILTERED at " + ofToString(_l_filt) + ", [name:time]\n");
+    for (int i=0; i < next_func_lines.size(); i++){
+        
+        parser.logger.transition_data_log.append("number:" + ofToString(i) + " ");
+        
+        for (int j=0; j < next_func_lines[i].size(); j++) parser.logger.transition_data_log.append("[" + next_func_lines[i][j].name + ":" + ofToString(next_func_lines[i][j].time[1]) + "], ");
+        
+        parser.logger.transition_data_log.append("\n");
+    }
+    
     
     compare_t_g();
     
@@ -395,10 +459,24 @@ void Rule_comparer::compare_t_g(){//compares unrewritten functions till goal
     un_dist_scores = get_un_dist_scores();
     formed_local_scores = form_scores();
     
+    //logging
+    parser.logger.transition_data_log.append("\nformed_local_scores:\n");
+    for (int i=0; i < formed_local_scores.size(); i++){
+        
+        parser.logger.transition_data_log.append("number: " + ofToString(i) + ":, score: " + ofToString(formed_local_scores[i][0]) + ", i: " + ofToString(formed_local_scores[i][1]) + ", j: " + ofToString(formed_local_scores[i][2]) + ", l: " + ofToString(formed_local_scores[i][3]) + "\n");
+    }
+    
     //get percentage of best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%.
     best_local_scores = get_best_local_scores_percentage();//score, i, j, l
     //best_local_scores = get_best_local_scores_singleBest();//score, i, j, l
+    
+    //logging
+    parser.logger.transition_data_log.append("\nbest_local_scores:\n");
+    for (int i=0; i < best_local_scores.size(); i++){
+        
+        parser.logger.transition_data_log.append("number: " + ofToString(i) + ":, score: " + ofToString(best_local_scores[i][0]) + ", i: " + ofToString(best_local_scores[i][1]) + ", j: " + ofToString(best_local_scores[i][2]) + ", l: " + ofToString(best_local_scores[i][3]) + "\n");
+    }
 }
 
 
@@ -466,6 +544,9 @@ vector<vector<int>> Rule_comparer::form_scores(){
 
 vector<vector<int>> Rule_comparer::bubble_sort_scores(vector<vector<int>> _unsorted_scores){
 
+    //logging
+    parser.logger.transition_data_log.append("BubbleSort used\n");
+    
     vector<vector<int>> _sorted_scores = _unsorted_scores;
     
     //SORT _sorted_scores
@@ -499,6 +580,9 @@ vector<vector<int>> Rule_comparer::bubble_sort_scores(vector<vector<int>> _unsor
 
 vector<vector<int>> Rule_comparer::merge_sort_scores(vector<vector<int>> _unsorted_scores){
 
+    //logging
+    parser.logger.transition_data_log.append("MergeSort used\n");
+    
     //http://interactivepython.org/runestone/static/pythonds/SortSearch/TheMergeSort.html
     vector<vector<int>> _sorted_scores = _unsorted_scores;
     
@@ -561,6 +645,9 @@ vector<vector<int>> Rule_comparer::merge_sort_scores(vector<vector<int>> _unsort
 
 vector<vector<int>> Rule_comparer::insertion_sort_scores(vector<vector<int>> _unsorted_scores){
     
+    //logging
+    parser.logger.transition_data_log.append("InsertionSort used\n");
+    
     //http://www.geeksforgeeks.org/insertion-sort/
     
     int key, j;
@@ -588,6 +675,9 @@ vector<vector<int>> Rule_comparer::insertion_sort_scores(vector<vector<int>> _un
 
 vector<vector<int>> Rule_comparer::TimSort_scores(vector<vector<int>> _unsorted_scores){
 
+    //logging
+    parser.logger.transition_data_log.append("TimSort used\n");
+    
     //http://www.geeksforgeeks.org/timsort/
     
     int RUN = 1000;
@@ -773,15 +863,30 @@ vector<vector<int>> Rule_comparer::get_best_local_scores_percentage(){
 
     vector<vector<int>> _best_scores;
     
+    //logging
+    parser.logger.transition_data_log.append("Sort local timestamp (start): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    
+    //ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    
     //sorted_local_scores = bubble_sort_scores(formed_local_scores);
     //sorted_local_scores = merge_sort_scores(formed_local_scores);
     //sorted_local_scores = insertion_sort_scores(formed_local_scores);
     sorted_local_scores = TimSort_scores(formed_local_scores);
     
+    //logging
+    parser.logger.transition_data_log.append("Sort local timestamp (end): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    
     //get percentage of sorted scores for best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%..
     //int b_s_pop = int(_sorted_scores.size() * (score_pc / 100));//best_scores population
+    
+    
     b_s_pop = int(float(sorted_local_scores.size()) * (float(score_pc) / 100.0));//best_scores population
+    
+    //logging
+    parser.logger.transition_data_log.append("score_pc (percentage): " + ofToString(score_pc) + "b_s_pop (percentage): " + ofToString(b_s_pop));
+
+
     if (b_s_pop == 0) b_s_pop = 2;
     
     for (int n=0; n < b_s_pop; n++){
@@ -801,6 +906,11 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     //vector<G_parser::elem_ID> history;
     history = parser.function_cycle;
     
+    //logging
+    parser.logger.transition_data_log.append("History function_cycle: [function_name : time] \n");
+    for (int i=0; i < history.size(); i++) parser.logger.transition_data_log.append("[" + history[i].name + " : " + ofToString(history[i].time[1]) + "]");
+    parser.logger.transition_data_log.append("\n");
+    
     parser.function_cycle.clear();//to avoid memory leak..
     
     //captures between history and first curr_un_dist
@@ -810,6 +920,12 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     }
     
     intermediate_functions.clear();
+    
+    //logging
+   parser.logger.transition_data_log.append("History function_cycle (INCL.intermediate): [function_name : time] \n");
+    for (int i=0; i < history.size(); i++) parser.logger.transition_data_log.append("[" + history[i].name + " : " + ofToString(history[i].time[1]) + "]");
+    parser.logger.transition_data_log.append("\n");
+    
     
     //calculate new scores including history
     //whole section before g_p
@@ -836,6 +952,9 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     int next_f_l = parser.all_gr[next_gr].form_length;
     int add_hist_length = ((undist_bar - prev_sect_start) + curr_f_l ) % curr_f_l;
     //int aux_time = prev_sect_start;
+    
+    //logging
+    parser.logger.transition_data_log.append("hist_length added: " + ofToString(add_hist_length) + "\ns");
     
     //make new scores
     for (int n=0; n < best_local_scores.size(); n++){
@@ -875,20 +994,39 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
         //keep new scores of combos..
     }
     
+    //logging
+    parser.logger.transition_data_log.append("Sort hist timestamp (start): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    
     //sorted_hist_scores = bubble_sort_scores(hist_scores);
     //sorted_hist_scores = merge_sort_scores(hist_scores);
     //sorted_hist_scores = insertion_sort_scores(hist_scores);
     sorted_hist_scores = TimSort_scores(hist_scores);
+    
+    parser.logger.transition_data_log.append("Sort hist timestamp (end): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
     
     best_hist_scores = get_best_hist_scores(sorted_hist_scores);//keep all of no1 scores..
     top_curr_func_line_scores = get_top_curr_func_line_scores(best_hist_scores);//keep scores of the most likely (i.e. smallest pop number) of curr_func_lines, i.e. 'j'..
     top_next_func_line_scores = get_sort_n_best_scores(top_curr_func_line_scores);//best of 'l'
     
     //earliest_next_form_scores = get_sort_n_best_scores(top_next_func_line_scores);
-    earliest_next_form_scores = (top_next_func_line_scores);
+    //earliest_next_form_scores = (top_next_func_line_scores);
+    earliest_next_form_scores = get_sort_n_best_scores(top_next_func_line_scores);
     
     final_best_score = earliest_next_form_scores[0];//in case (even though unlikely) theres is more than one, keep the 1st (enough refinement till here anyway..)
     
+    //logging
+    parser.logger.transition_data_log.append("\nbest_hist_scores:\n");
+    for (int i=0; i < best_hist_scores.size(); i++) parser.logger.transition_data_log.append("number: " + ofToString(i) + ":, score: " + ofToString(best_hist_scores[i][0]) + ", i: " + ofToString(best_hist_scores[i][1]) + ", j: " + ofToString(best_hist_scores[i][2]) + ", l: " + ofToString(best_hist_scores[i][3]) + "\n");
+    parser.logger.transition_data_log.append("\ntop_curr_func_line_scores:\n");
+    for (int i=0; i < top_curr_func_line_scores.size(); i++) parser.logger.transition_data_log.append("number: " + ofToString(i) + ":, score: " + ofToString(top_curr_func_line_scores[i][0]) + ", i: " + ofToString(top_curr_func_line_scores[i][1]) + ", j: " + ofToString(top_curr_func_line_scores[i][2]) + ", l: " + ofToString(top_curr_func_line_scores[i][3]) + "\n");
+    parser.logger.transition_data_log.append("\ntop_next_func_line_scores:\n");
+    for (int i=0; i < top_next_func_line_scores.size(); i++) parser.logger.transition_data_log.append("number: " + ofToString(i) + ":, score: " + ofToString(top_next_func_line_scores[i][0]) + ", i: " + ofToString(top_next_func_line_scores[i][1]) + ", j: " + ofToString(top_next_func_line_scores[i][2]) + ", l: " + ofToString(top_next_func_line_scores[i][3]) + "\n");
+    parser.logger.transition_data_log.append("\nearliest_next_form_scores:\n");
+    for (int i=0; i < earliest_next_form_scores.size(); i++) parser.logger.transition_data_log.append("number: " + ofToString(i) + ":, score: " + ofToString(earliest_next_form_scores[i][0]) + ", i: " + ofToString(earliest_next_form_scores[i][1]) + ", j: " + ofToString(earliest_next_form_scores[i][2]) + ", l: " + ofToString(earliest_next_form_scores[i][3]) + "\n");
+    parser.logger.transition_data_log.append("\nFINAL_BEST_SCORE: \nscore: " + ofToString(final_best_score[0]) + ", i: " + ofToString(final_best_score[1]) + ", j: " + ofToString(final_best_score[2]) + ", l: " + ofToString(final_best_score[3]) + "\n");
+    
+    
+    parser.logger.transition_data_log.append("Sort hist timestamp (end): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
     /*
     //The classicness (high probability in the style) of curr_/next_line are far more important than the position in the form, i.e. recognisabiity) the most classic of the style (the most probable lines..)
         this way I know how much I am in/out of style (of curr/next gr) for in favour of compatibility.. (include in LOG)
@@ -1223,6 +1361,13 @@ void Rule_comparer::update_combination(vector<int>& seq_t){
 
 void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, vector<G_parser::elem_ID> _next_best){
 
+    //logging
+    parser.logger.transition_data_log.append("\ncurr_best (line): [name : time]\n");
+    for (int i=0; i < _curr_best.size(); i++) parser.logger.transition_data_log.append("[" + _curr_best[i].name + " : " + ofToString(_curr_best[i].time[1]) + "], ");
+    parser.logger.transition_data_log.append("\nnext_best (line): [name : time]\n");
+    for (int i=0; i < _next_best.size(); i++) parser.logger.transition_data_log.append("[" + _next_best[i].name + " : " + ofToString(_next_best[i].time[1]) + "], ");
+    
+    
     int l = _curr_best.size();
     float percentage_unit = 100.0 / (l + 1);
     float percentage = percentage_unit;
@@ -1241,15 +1386,26 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
     
     int aux_gr_pop = parser.gr_pop;
     
+    //logging
+    parser.logger.transition_data_log.append("WEIGHT-CHOOSE FUNCTIONS (for undist): [name : time]\n");
+    
     //WEIGHT-CHOOSE FUNCTIONS (for undist part of cycle, i.e. for functions that have yet to be generated)
     vector<G_parser::elem_ID> _chosen_functions;
     
     for (int i=0; i < l; i++){
         
         float random = (rand()%100);
-        if (random >= percentage) _chosen_functions.push_back(_curr_best[i]);
-        else _chosen_functions.push_back(_next_best[i]);//might break if transition on first 4 bars.. (_next_best is empty..)
-
+        if (random >= percentage){
+            _chosen_functions.push_back(_curr_best[i]);
+            //logging
+            parser.logger.transition_data_log.append("(from curr_gr) [" + _curr_best[i].name + " : " + ofToString(_curr_best[i].time[1]) + "], \n");
+        }
+        else{
+            
+            _chosen_functions.push_back(_next_best[i]);//might break if transition on first 4 bars.. (_next_best is empty..)
+            //logging
+            parser.logger.transition_data_log.append("(from next_gr) [" + _next_best[i].name + " : " + ofToString(_next_best[i].time[1]) + "], \n");
+        }
         //restore elem_ID times to match parser.morph_cycle times
         //_chosen_functions[i].time[1] = i;
         _chosen_functions[i].time[1] = _curr_best[i].time[1];
@@ -1262,11 +1418,18 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
     }
     
     
+    //logging
+    parser.logger.transition_data_log.append("WEIGHT-CHOOSE TERMINALS (intermediate): [_t] (of find_rule(_t))\n");
+    
     //WEIGHT-CHOOSE TERMINALS - INTERMEDIATE: weigthed rewrite of the INTERMEDIATE FUNCTIONS..
     percentage = percentage_unit;//restarting percentage count
     
     parser.updating_morph = 1;
     parser.till_function = 0;
+    
+    //logging
+    parser.logger.transition_data_log.append("Morph update: [symbol : time]\n");
+    
     
     int _f_l = parser.all_gr[curr_gr].form_length;
     
@@ -1274,18 +1437,31 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
     while (curr_bar_morph != _curr_best[0].time[1]){
     
         float random = (rand()%100);
-        if (random >= percentage) parser.gr_pop = curr_gr;
-        else parser.gr_pop = next_gr;
+        if (random >= percentage) {
+         
+            parser.gr_pop = curr_gr;
+            //logging
+            parser.logger.transition_data_log.append("(from curr_gr) [" + ofToString(curr_bar_morph) + "], \n");
+        }
+        else {
+         
+            parser.gr_pop = next_gr;
+            //logging
+            parser.logger.transition_data_log.append("(from next_gr) [" + ofToString(curr_bar_morph) + "], \n");
+        }
         
         vector<int> _t = {0, 0, 0, curr_bar_morph, 0};
         //LAST ZERO-WHAT IF WE ARE IN further cycles?? - check also for transitions...!!!!! + aux_t further up..!!
         //probably not a problem (especially if aux_cycle deleted / reinitiated for the next transition)
+        
         parser.find_rule(_t);
         
         curr_bar_morph = (curr_bar_morph + 1) % _f_l;
         percentage += percentage_unit;
     }
     
+    //logging
+    parser.logger.transition_data_log.append("WEIGHT-CHOOSE TERMINALS (undist): [_t] (of find_rule(_t))\n");
     
     //WEIGHT-CHOOSE TERMINALS - UNDIST: weighted rewrite of functions of curr_func_lines size.. (also called local here..)
     percentage = percentage_unit;//restarting percentage count
@@ -1293,8 +1469,18 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
     for (int i=0; i < l; i++){
         
         float random = (rand()%100);
-        if (random >= percentage) parser.gr_pop = curr_gr;
-        else parser.gr_pop = next_gr;
+        if (random >= percentage) {
+            
+            parser.gr_pop = curr_gr;
+            //logging
+            parser.logger.transition_data_log.append("(from curr_gr) [" + ofToString(curr_bar_morph) + "], \n");
+        }
+        else {
+        
+            parser.gr_pop = next_gr;
+            //logging
+            parser.logger.transition_data_log.append("(from next_gr) [" + ofToString(curr_bar_morph) + "], \n");
+        }
         
         vector<int> _t = {0, 0, 0, _curr_best[i].time[1], 0};
         //LAST ZERO-WHAT IF WE ARE IN further cycles?? - check also for transitions...!!!!! + aux_t further up..!!
@@ -1308,6 +1494,11 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
     
     parser.updating_morph = 0;
 
+    
+    //logging
+    parser.logger.transition_data_log.append("\n:Morph update end");
+    
+    
     //give to morph_cycle (gets only the last in its first position..?)
     
     cout << endl << "BP1:" << endl;

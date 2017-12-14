@@ -836,6 +836,8 @@ void G_parser::update_cycle(vector<elem_ID>& production, rule& r, vector<int>& s
 void G_parser::morph_update(vector<elem_ID> production, rule& r, vector<int>& seq_t){
 
     cout << endl << "Morph_update" << endl;
+    //logging
+    //logger.transition_data_log.append("Morph update: [symbol : time]\n");
     
     for(int i=0; i<production.size(); i++){
         
@@ -843,7 +845,12 @@ void G_parser::morph_update(vector<elem_ID> production, rule& r, vector<int>& se
         aux_cycle[production[i].time[1]] = production[i];
         curr_cycle[production[i].time[1]] = production[i];
         //aux_cycle[seq_t[3]] = production[i];
+        
+        //logging
+        logger.transition_data_log.append("[" + production[i].name + " : " + ofToString(production[i].time[1]) + "], ");
     }
+    //logging
+    //logger.transition_data_log.append("\n");
 }
 
 

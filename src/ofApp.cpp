@@ -110,7 +110,7 @@ void ofApp::update(){
     
         ///*
         //tracking_repl_A_B();
-        if(blues.seq.only_on("beat", blues.t)); //OSC.update();
+        if(blues.seq.only_on("beat", blues.t)) OSC.update();
          //*/
     }
     else {
