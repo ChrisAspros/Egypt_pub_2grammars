@@ -267,6 +267,7 @@ void Blues_structure::ordered_change(){
             trans_pop = (trans_pop + 1) % trans_bars.size();
             
             vel_aut_complete = 0;
+            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade START to gr2 - [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
              //*/
         }
     }
@@ -283,7 +284,7 @@ void Blues_structure::ordered_change(){
             trans_pop = (trans_pop + 1) % trans_bars.size();
             
             vel_aut_complete = 0;
-            
+            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade START to gr1 - [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
         }
         
     }
@@ -341,8 +342,16 @@ void Blues_structure::update_velocities_once(){
         
         //vel_aut_complete = 0;
         
-        if (vel_gr1 == 0 || vel_gr2 == 100) vel_aut_complete = 1;
-        else if (vel_gr1 == 100 || vel_gr2 == 0) vel_aut_complete = 1;
+        if (vel_gr1 == 0 || vel_gr2 == 100){
+            
+            vel_aut_complete = 1;
+            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade END - [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+        }
+        else if (vel_gr1 == 100 || vel_gr2 == 0){
+            
+            vel_aut_complete = 1;
+            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade END - [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+        }
         
         /*
          if (!fade_to_gr1){

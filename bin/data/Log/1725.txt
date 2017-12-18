@@ -25,7 +25,9 @@ new cycle (update_cycle()): i T decSD  decCad  decT  SectA        SectB        S
 is_terminal?: i
 
 
-[global_bt : 1] [timestamp : [2017-12-18 00:06:09.015] 
+[global_bt : 1] [timestamp : [2017-12-18 00:54:30.220] 
+
+velocity crossfade END - [timestamp : [2017-12-18 00:54:30.220] 
 the_rule: T, 
 new cycle (update_cycle()): i I decSD  decCad  decT  SectA        SectB        SectA        
 =======
@@ -37,7 +39,7 @@ new cycle (update_cycle()): i i6 decSD  decCad  decT  SectA        SectB        
 is_terminal?: i6
 
 
-[global_bt : 2] [timestamp : [2017-12-18 00:06:09.821] 
+[global_bt : 2] [timestamp : [2017-12-18 00:54:31.441] 
 the_rule: decSD, 
 new cycle (update_cycle()): i i6 SD SD decCad  decT  SectA        SectB        SectA        
 =======
@@ -54,7 +56,7 @@ new cycle (update_cycle()): i i6 iim7 SD decCad  decT  SectA        SectB       
 is_terminal?: iim7
 
 
-[global_bt : 3] [timestamp : [2017-12-18 00:06:10.233] 
+[global_bt : 3] [timestamp : [2017-12-18 00:54:31.923] 
 the_rule: SD, 
 new cycle (update_cycle()): i i6 iim7 II decCad  decT  SectA        SectB        SectA        
 =======
@@ -66,7 +68,7 @@ new cycle (update_cycle()): i i6 iim7 iim7 decCad  decT  SectA        SectB     
 is_terminal?: iim7
 
 
-[global_bt : 4] [timestamp : [2017-12-18 00:06:10.645] 
+[global_bt : 4] [timestamp : [2017-12-18 00:54:32.632] 
 the_rule: decCad, 
 new cycle (update_cycle()): i i6 iim7 iim7 D D decT  SectA        SectB        SectA        
 =======
@@ -83,7 +85,7 @@ new cycle (update_cycle()): i i6 iim7 iim7 v7 D decT  SectA        SectB        
 is_terminal?: v7
 
 
-[global_bt : 5] [timestamp : [2017-12-18 00:06:11.327] 
+[global_bt : 5] [timestamp : [2017-12-18 00:54:33.248] 
 the_rule: D, 
 new cycle (update_cycle()): i i6 iim7 iim7 v7 V decT  SectA        SectB        SectA        
 =======
@@ -95,10 +97,12 @@ new cycle (update_cycle()): i i6 iim7 iim7 v7 v7 decT  SectA        SectB       
 is_terminal?: v7
 
 
-[global_bt : 6] [timestamp : [2017-12-18 00:06:11.675] 
+[global_bt : 6] [timestamp : [2017-12-18 00:54:33.611] 
+
+velocity crossfade to gr1 - [timestamp : [2017-12-18 00:54:34.128] 
 
 
-===TRANSITION BEGINS=== [timestamp : [2017-12-18 00:06:12.064] 
+===TRANSITION BEGINS=== [timestamp : [2017-12-18 00:54:34.128] 
 DIST_TO_GOAL: 10, Goal Point: 16
 curr_gr: 1, next_gr: 0
 S_rule_curr: 
@@ -138,7 +142,7 @@ the_rule: decC,
 the_rule: decC, 
 
 
-===COMBINATION SETUP=== [timestamp : [2017-12-18 00:06:12.633] 
+===COMBINATION SETUP=== [timestamp : [2017-12-18 00:54:34.516] 
 the_rule: T, 
 is_terminal?: I
 
@@ -149,13 +153,7 @@ the_rule: T,
 is_terminal?: I
 
 the_rule: I, 
-is_terminal?: isus4
-
-the_rule: T, 
-is_terminal?: I
-
-the_rule: I, 
-is_terminal?: isus4
+is_terminal?: i6
 
 the_rule: T, 
 is_terminal?: I
@@ -163,23 +161,29 @@ is_terminal?: I
 the_rule: I, 
 is_terminal?: i6
 
-the_rule: D, 
-is_terminal?: V
+the_rule: T, 
+is_terminal?: I
 
-the_rule: V, 
-is_terminal?: v7
+the_rule: I, 
+is_terminal?: i6
+
+the_rule: SD, 
+is_terminal?: bII
+
+the_rule: bII, 
+is_terminal?: biisus2
+
+the_rule: SD, 
+is_terminal?: II
+
+the_rule: II, 
+is_terminal?: iim7
 
 the_rule: T, 
 is_terminal?: I
 
 the_rule: I, 
-is_terminal?: isus4
-
-the_rule: T, 
-is_terminal?: I
-
-the_rule: I, 
-is_terminal?: isus4
+is_terminal?: i6
 
 is_terminal?: bVI
 
@@ -200,11 +204,11 @@ is_terminal?: isus4
 
 
 
-===COMBINATION UPDATED / MORPH BEGINS=== [timestamp : [2017-12-18 00:06:12.639] 
+===COMBINATION UPDATED / MORPH BEGINS=== [timestamp : [2017-12-18 00:54:34.531] 
 is_terminal?: i6
 
 
-[global_bt : 7] [timestamp : [2017-12-18 00:06:12.639] 
+[global_bt : 7] [timestamp : [2017-12-18 00:54:34.532] 
 
 ============REAL TIME LOG (end):============
 
@@ -8436,13 +8440,13 @@ number: 3196:, score: 1, i: 3, j: 1, l: 396
 number: 3197:, score: 1, i: 3, j: 1, l: 397
 number: 3198:, score: 1, i: 3, j: 1, l: 398
 number: 3199:, score: 1, i: 3, j: 1, l: 399
-Sort local timestamp (start): [2017-12-18 00:06:12.578] 
+Sort local timestamp (start): [2017-12-18 00:54:34.482] 
 TimSort used
 InsertionSort used
 InsertionSort used
 InsertionSort used
 InsertionSort used
-Sort local timestamp (end): [2017-12-18 00:06:12.617] 
+Sort local timestamp (end): [2017-12-18 00:54:34.509] 
 score_pc (percentage): 20b_s_pop (percentage): 640
 best_local_scores:
 number: 0:, score: 6, i: 0, j: 0, l: 0
@@ -9090,10 +9094,10 @@ History function_cycle: [function_name : time]
 History function_cycle (INCL.intermediate): [function_name : time] 
 [T : 0][T : 1][SD : 2][SD : 3][D : 4][D : 5]
 hist_length added: 6
-sSort hist timestamp (start): [2017-12-18 00:06:12.621] 
+sSort hist timestamp (start): [2017-12-18 00:54:34.512] 
 TimSort used
 InsertionSort used
-Sort hist timestamp (end): [2017-12-18 00:06:12.622] 
+Sort hist timestamp (end): [2017-12-18 00:54:34.512] 
 
 best_hist_scores:
 number: 0:, score: 8, i: 0, j: 0, l: 0
@@ -9651,18 +9655,18 @@ number: 0:, score: 8, i: 0, j: 0, l: 0
 
 FINAL_BEST_SCORE: 
 score: 8, i: 0, j: 0, l: 0
-Sort hist timestamp (end): [2017-12-18 00:06:12.633] 
+Sort hist timestamp (end): [2017-12-18 00:54:34.516] 
 
 curr_best (line): [name : time]
 [T : 6], [T : 7], [T : 8], [T : 9], [SD : 10], [SD : 11], [SD : 12], [D : 13], [T : 14], [T : 15], 
 next_best (line): [name : time]
 [D : 30], [T : 31], [T : 0], [SD : 1], [D : 2], [T : 3], [T : 4], [SD : 5], [T : 6], [T : 7], WEIGHT-CHOOSE FUNCTIONS (for undist): [name : time]
 (from curr_gr) [T : 6], 
-(from next_gr) [T : 31], 
-(from next_gr) [T : 0], 
+(from curr_gr) [T : 7], 
+(from curr_gr) [T : 8], 
 (from curr_gr) [T : 9], 
-(from next_gr) [D : 2], 
-(from next_gr) [T : 3], 
+(from curr_gr) [SD : 10], 
+(from curr_gr) [SD : 11], 
 (from next_gr) [T : 4], 
 (from next_gr) [SD : 5], 
 (from next_gr) [T : 6], 
@@ -9671,13 +9675,13 @@ WEIGHT-CHOOSE TERMINALS (intermediate): [_t] (of find_rule(_t))
 Morph update: [symbol : time]
 WEIGHT-CHOOSE TERMINALS (undist): [_t] (of find_rule(_t))
 (from curr_gr) [6], 
-[I : 6], [i : 6], [i6 : 6], (from next_gr) [6], 
-[I : 7], [isus4 : 7], (from next_gr) [6], 
-[I : 8], [isus4 : 8], (from curr_gr) [6], 
-[I : 9], [i : 9], [i6 : 9], (from curr_gr) [6], 
-[V : 10], [v7 : 10], (from next_gr) [6], 
-[I : 11], [isus4 : 11], (from next_gr) [6], 
-[I : 12], [isus4 : 12], (from next_gr) [6], 
+[I : 6], [i : 6], [i6 : 6], (from curr_gr) [6], 
+[I : 7], [i : 7], [i6 : 7], (from curr_gr) [6], 
+[I : 8], [i : 8], [i6 : 8], (from curr_gr) [6], 
+[I : 9], [i : 9], [i6 : 9], (from next_gr) [6], 
+[bII : 10], [biisus2 : 10], (from curr_gr) [6], 
+[II : 11], [ii7 : 11], [iim7 : 11], (from curr_gr) [6], 
+[I : 12], [i : 12], [i6 : 12], (from next_gr) [6], 
 [bVI : 13], [bvi : 13], (from next_gr) [6], 
 [I : 14], [isus4 : 14], (from next_gr) [6], 
 [I : 15], [isus4 : 15], 
@@ -9726,11 +9730,9 @@ timed_rules pop size: 6
 general_rules pop size: 20
 ======== NOT-T FAMILIES ========
 Sect number (i.e. Sects / form_length): 4
-Average bars / sect: 8
-Average bars / dec: nan
-Average bars / dec: nan
-Average bars / dec: nan
-Average bars / dec: nan
+-Average bars / sect: 8
+SectA(1) dec number: 3 || SectA(1) dec number: 2 || SectA(1) dec number: 4 || SectB(9) dec number: 3 || SectB(9) dec number: 2 || SectB(9) dec number: 4 || SectA(17) dec number: 3 || SectA(17) dec number: 2 || SectA(17) dec number: 4 || SectC(25) dec number: 3 || SectC(25) dec number: 2 || SectC(25) dec number: 4 || 
+-Average bars / dec: 2.66667
 
 boring / repetitive??
 
@@ -9743,11 +9745,9 @@ timed_rules pop size: 7
 general_rules pop size: 13
 ======== NOT-T FAMILIES ========
 Sect number (i.e. Sects / form_length): 4
-Average bars / sect: 8
-Average bars / dec: nan
-Average bars / dec: nan
-Average bars / dec: nan
-Average bars / dec: nan
+-Average bars / sect: 8
+SectA(1) dec number: 4 || SectA(1) dec number: 3 || SectA(9) dec number: 4 || SectA(9) dec number: 3 || SectB(17) dec number: 4 || SectB(17) dec number: 3 || SectA(25) dec number: 4 || SectA(25) dec number: 3 || 
+-Average bars / dec: 2.28571
 
 boring / repetitive??
 

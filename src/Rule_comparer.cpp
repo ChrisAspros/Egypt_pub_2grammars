@@ -1367,7 +1367,6 @@ void Rule_comparer::weight_choose_morph(vector<G_parser::elem_ID> _curr_best, ve
     parser.logger.transition_data_log.append("\nnext_best (line): [name : time]\n");
     for (int i=0; i < _next_best.size(); i++) parser.logger.transition_data_log.append("[" + _next_best[i].name + " : " + ofToString(_next_best[i].time[1]) + "], ");
     
-    
     int l = _curr_best.size();
     float percentage_unit = 100.0 / (l + 1);
     float percentage = percentage_unit;
