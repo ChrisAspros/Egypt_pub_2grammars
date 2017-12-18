@@ -23,7 +23,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp1 = 600;//40;
+    frame_sp1 = 40;//600;
     frame_sp2 = 60;
     
     frame_sp = frame_sp1;
@@ -31,7 +31,7 @@ void ofApp::setup(){
     ofSetFrameRate(frame_sp); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
-    blues.seq.r_comp.parser.gr_pop = 1;
+    blues.seq.r_comp.parser.gr_pop = 0;
     blues.seq.r_comp.parser.gr_changed = 1;//true means it doesn't need to change now..
     blues.seq.r_comp.un_dist_found = 0;
     blues.setup();
@@ -127,7 +127,7 @@ void ofApp::update(){
             }
             blues.seq.r_comp.parser.logger.Petrie_tracking_log.append(" ]\n");
             blues.seq.r_comp.parser.logger.Petrie_tracking_log.append("Room 1: " + ofToString(OSC.room1) + ", Room 2: " + ofToString(OSC.room2) + "\n");
-            blues.seq.r_comp.parser.logger.Petrie_tracking_log.append("[timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+            blues.seq.r_comp.parser.logger.Petrie_tracking_log.append("[timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
         }
          //*/
     }
@@ -194,6 +194,9 @@ void ofApp::update_speed(){
             frame_sp ++;
             ofSetFrameRate(frame_sp);
             if (frame_sp == frame_sp2) speedup = 0;
+            
+            //logging
+            blues.seq.r_comp.parser.logger.speed_log.append("\nSpeeding up frame_sp: " + ofToString(frame_sp) + ", timestamp:" + ofGetTimestampString("[%M:%S.%i]\n"));
         }
         
         if (slowdown){
@@ -201,6 +204,9 @@ void ofApp::update_speed(){
             frame_sp --;
             ofSetFrameRate(frame_sp);
             if (frame_sp == frame_sp1) slowdown = 0;
+            
+            //logging
+            blues.seq.r_comp.parser.logger.speed_log.append("\nSlowing down frame_sp: " + ofToString(frame_sp) + ", timestamp:" + ofGetTimestampString("[%M:%S.%i]\n"));
         }
         
         speeding_smoothener = 0;

@@ -13,13 +13,13 @@
 void Rule_comparer::combine_rules(vector<int>& seq_t){
     
     //logging
-    parser.logger.rt_log.append("\n\n===TRANSITION BEGINS=== [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    parser.logger.rt_log.append("\n\n===TRANSITION BEGINS=== [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
     
     //STATIC process
     if (!parser.comb_setup) setup_combination(seq_t);
     
     //logging
-    parser.logger.rt_log.append("\n\n===COMBINATION SETUP=== [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    parser.logger.rt_log.append("\n\n===COMBINATION SETUP=== [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
     
     
     //morph_
@@ -32,7 +32,7 @@ void Rule_comparer::combine_rules(vector<int>& seq_t){
     //place_next_sect();
     
     //logging
-    parser.logger.rt_log.append("\n\n===COMBINATION UPDATED / MORPH BEGINS=== [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    parser.logger.rt_log.append("\n\n===COMBINATION UPDATED / MORPH BEGINS=== [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
     //logging
     //seq.r_comp.parser.logger.rt_log.append("\n\n===TRANSITION BEGINS===\n");
     
@@ -864,9 +864,9 @@ vector<vector<int>> Rule_comparer::get_best_local_scores_percentage(){
     vector<vector<int>> _best_scores;
     
     //logging
-    parser.logger.transition_data_log.append("Sort local timestamp (start): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    parser.logger.transition_data_log.append("Sort local timestamp (start): " + ofGetTimestampString("[%M:%S.%i] \n"));
     
-    //ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    //ofGetTimestampString("[%M:%S.%i] \n"));
     
     //sorted_local_scores = bubble_sort_scores(formed_local_scores);
     //sorted_local_scores = merge_sort_scores(formed_local_scores);
@@ -874,7 +874,7 @@ vector<vector<int>> Rule_comparer::get_best_local_scores_percentage(){
     sorted_local_scores = TimSort_scores(formed_local_scores);
     
     //logging
-    parser.logger.transition_data_log.append("Sort local timestamp (end): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    parser.logger.transition_data_log.append("Sort local timestamp (end): " + ofGetTimestampString("[%M:%S.%i] \n"));
     
     //get percentage of sorted scores for best scores (depending how local vs form-aware we want the transition to be..)
     //1 for 10%, 2 for 20%,... 5 for 50%..
@@ -995,14 +995,14 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     }
     
     //logging
-    parser.logger.transition_data_log.append("Sort hist timestamp (start): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    parser.logger.transition_data_log.append("Sort hist timestamp (start): " + ofGetTimestampString("[%M:%S.%i] \n"));
     
     //sorted_hist_scores = bubble_sort_scores(hist_scores);
     //sorted_hist_scores = merge_sort_scores(hist_scores);
     //sorted_hist_scores = insertion_sort_scores(hist_scores);
     sorted_hist_scores = TimSort_scores(hist_scores);
     
-    parser.logger.transition_data_log.append("Sort hist timestamp (end): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    parser.logger.transition_data_log.append("Sort hist timestamp (end): " + ofGetTimestampString("[%M:%S.%i] \n"));
     
     best_hist_scores = get_best_hist_scores(sorted_hist_scores);//keep all of no1 scores..
     top_curr_func_line_scores = get_top_curr_func_line_scores(best_hist_scores);//keep scores of the most likely (i.e. smallest pop number) of curr_func_lines, i.e. 'j'..
@@ -1026,7 +1026,7 @@ void Rule_comparer::compare_include_history(int form_pc){//history with N best (
     parser.logger.transition_data_log.append("\nFINAL_BEST_SCORE: \nscore: " + ofToString(final_best_score[0]) + ", i: " + ofToString(final_best_score[1]) + ", j: " + ofToString(final_best_score[2]) + ", l: " + ofToString(final_best_score[3]) + "\n");
     
     
-    parser.logger.transition_data_log.append("Sort hist timestamp (end): " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+    parser.logger.transition_data_log.append("Sort hist timestamp (end): " + ofGetTimestampString("[%M:%S.%i] \n"));
     /*
     //The classicness (high probability in the style) of curr_/next_line are far more important than the position in the form, i.e. recognisabiity) the most classic of the style (the most probable lines..)
         this way I know how much I am in/out of style (of curr/next gr) for in favour of compatibility.. (include in LOG)

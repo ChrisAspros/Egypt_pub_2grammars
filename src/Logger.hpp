@@ -37,6 +37,7 @@ public:
     string grammars_log;
     string Petrie_tracking_log;
     string midi_log;
+    string speed_log;
     
     //final_cycle
     vector<string> final_cycle_names;
@@ -46,6 +47,7 @@ public:
     void log_transition_data();
     void log_grammars();
     void log_Petrie_tracking();
+    void log_speed();
     
     void log_finals();
     

@@ -89,7 +89,7 @@ void Logger::bar(){
     //File << "writing?";//writes nothing
     global_bt ++;
     string gbt = ofToString(global_bt);
-    rt_log.append("\n[global_bt : " + gbt + "] [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));//+ timestamp);
+    rt_log.append("\n[global_bt : " + gbt + "] [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));//+ timestamp);
     
     store_final_cycle();
     
@@ -157,6 +157,14 @@ void Logger::log_Petrie_tracking(){
 }
 
 
+void Logger::log_speed(){
+    
+    File << endl << "============" << "Speed log (start):"  << "============\n" << endl;
+    File << speed_log;
+    File << endl << "============" << ":Speed log (end)"  << "============" << endl << endl;
+}
+
+
 void Logger::log_finals(){
 
     log_rt();
@@ -164,6 +172,7 @@ void Logger::log_finals(){
     log_transition_data();
     log_grammars();
     log_Petrie_tracking();
+    log_speed();
     
     //FINALISE / CLOSE log file..
     File << endl << endl << "==============" << endl << "LOG END" << endl << "==============";

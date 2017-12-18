@@ -133,7 +133,8 @@ void Blues_structure::update(){
         if (!seq.r_comp.trans_incomplete) seq.r_comp.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.r_comp.parser.update_cycle();
         
         //A_B_change();
-        ordered_change();
+        //ordered_change();
+        beacon_change();
     
         if(seq.r_comp.parser.transitioning && !seq.r_comp.rules_combined){
         
@@ -232,6 +233,8 @@ void Blues_structure::A_B_change(){
     if (!seq.r_comp.parser.gr_changed){
         
         //automate_vel = 1;
+        vel_aut_complete = 0;
+        seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade START (unintelligent) to gr2 - [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
         
         //check if bar is an end_time
         vector<int> e_t = seq.r_comp.parser.all_gr[seq.r_comp.parser.gr_pop].end_times;
@@ -252,6 +255,25 @@ void Blues_structure::A_B_change(){
 }
 
 
+void Blues_structure::beacon_change(){
+
+    if (false){//(t[3]==trans_bars[trans_pop]) && (t[4]==1)){
+        
+        seq.r_comp.parser.transitioning = 1;
+        seq.r_comp.trans_incomplete = 1;
+        seq.r_comp.rules_combined = 0;
+        //seq.r_comp.parser.gr_changed = 1;
+        //update_velocities_once();
+        
+        trans_pop = (trans_pop + 1) % trans_bars.size();
+        
+        vel_aut_complete = 0;
+        seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade START (intelligent - beacon) to gr2 - [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
+        //*/
+    }
+}
+
+
 void Blues_structure::ordered_change(){
 
     if (seq.r_comp.parser.gr_pop == 0){
@@ -267,7 +289,7 @@ void Blues_structure::ordered_change(){
             trans_pop = (trans_pop + 1) % trans_bars.size();
             
             vel_aut_complete = 0;
-            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade START to gr2 - [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade START (intelligent) to gr2 - [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
              //*/
         }
     }
@@ -284,7 +306,7 @@ void Blues_structure::ordered_change(){
             trans_pop = (trans_pop + 1) % trans_bars.size();
             
             vel_aut_complete = 0;
-            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade START to gr1 - [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade START (intelligent) to gr1 - [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
         }
         
     }
@@ -345,12 +367,12 @@ void Blues_structure::update_velocities_once(){
         if (vel_gr1 == 0 || vel_gr2 == 100){
             
             vel_aut_complete = 1;
-            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade END - [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade END - [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
         }
         else if (vel_gr1 == 100 || vel_gr2 == 0){
             
             vel_aut_complete = 1;
-            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade END - [timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+            seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade END - [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
         }
         
         /*
