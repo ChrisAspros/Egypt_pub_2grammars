@@ -149,12 +149,21 @@ void Logger::log_grammars(){
 }
 
 
+void Logger::log_Petrie_tracking(){
+
+    File << endl << "============" << "Petrie tracking log (start):"  << "============\n" << endl;
+    File << Petrie_tracking_log;
+    File << endl << "============" << ":Petrie tracking log (end)"  << "============" << endl << endl;
+}
+
+
 void Logger::log_finals(){
 
     log_rt();
     log_final_cycle();
     log_transition_data();
     log_grammars();
+    log_Petrie_tracking();
     
     //FINALISE / CLOSE log file..
     File << endl << endl << "==============" << endl << "LOG END" << endl << "==============";
@@ -166,7 +175,6 @@ void Logger::trans(){
     
     
 }
-
 
 
 //pass_log_values (ofApp.)

@@ -111,6 +111,24 @@ void ofApp::update(){
         ///*
         //tracking_repl_A_B();
         if(blues.seq.only_on("beat", blues.t)) OSC.update();
+        
+        if(blues.seq.only_on("bar", blues.t)){
+            //logging
+            blues.seq.r_comp.parser.logger.Petrie_tracking_log.append("Previous beacons read: [ ");
+            for (int i=0; i < OSC.previous_read.size(); i++){
+            
+                blues.seq.r_comp.parser.logger.Petrie_tracking_log.append(OSC.previous_read[i] + ", ");
+            }
+            blues.seq.r_comp.parser.logger.Petrie_tracking_log.append(" ]\n");
+            blues.seq.r_comp.parser.logger.Petrie_tracking_log.append("Next beacons read: [ ");
+            for (int i=0; i < OSC.previous_read.size(); i++){
+                
+                blues.seq.r_comp.parser.logger.Petrie_tracking_log.append(OSC.previous_read[i] + ", ");
+            }
+            blues.seq.r_comp.parser.logger.Petrie_tracking_log.append(" ]\n");
+            blues.seq.r_comp.parser.logger.Petrie_tracking_log.append("Room 1: " + ofToString(OSC.room1) + ", Room 2: " + ofToString(OSC.room2) + "\n");
+            blues.seq.r_comp.parser.logger.Petrie_tracking_log.append("[timestamp : " + ofGetTimestampString("[%Y-%m-%d %H:%M:%S.%i] \n"));
+        }
          //*/
     }
     else {
