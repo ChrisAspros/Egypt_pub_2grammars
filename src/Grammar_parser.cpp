@@ -36,6 +36,9 @@ G_parser::G_parser() : grammars(grammars_path, std::ifstream::in){
         get_new_grammar(nc);
     }
     
+    //logging (all grammars..)
+    for (int i=0; i < all_gr.size(); i++) log_curr_gr_elements(all_gr[i]);
+    
     //cout << "GRAMMAR_POP: " << gr_pop << endl;
     
     //gr_pop = 0;//restricitng to read only gr 1
@@ -60,6 +63,7 @@ G_parser::G_parser() : grammars(grammars_path, std::ifstream::in){
 
 
 void G_parser::get_new_grammar(string& nc){
+    
     if (nc=="NEW_GRAMMAR"){
         
         rule_pop = 0;//restart rule count for next grammar
@@ -77,9 +81,21 @@ void G_parser::get_new_grammar(string& nc){
         
         //the rest taken will be in the next grammar
         // next gr intialised so rest materials (e.g. form_length) are stored with grammar 2..
+        
+        //logging
+        logger.grammars_log.append("\n======== NEW GRAMMAR: " + ofToString(gr_pop) + " ========\n");
+        
+        //get_grammar_elements();
     }
     
     get_grammar_elements();
+    
+    /*
+    if (all_gr.size() != 0){
+     
+        log_curr_gr_elements(all_gr[all_gr.size()-1]);
+    }
+     */
 }
 
 
@@ -93,6 +109,8 @@ void G_parser::get_grammar_elements(){
     //cout << z << "_4: " << nc << endl;
     get_end_times(nc);
     
+    get_decs(nc);
+    
     get_functions(nc);
     
     get_terminals(nc);
@@ -100,6 +118,8 @@ void G_parser::get_grammar_elements(){
     //cout << z << "_5: " << nc << endl;
     store_rules(nc);
     //cout << z << "_6: " << nc << endl;
+    
+    //log_curr_gr_elements(all_gr[all_gr.size()-1]);
 }
 
 
@@ -109,6 +129,9 @@ void G_parser::get_time_signature(string& nc){
         t_sign = atoi(nc.c_str());
         //cout << "t_sign is: " << nc << endl;
         all_gr[gr_pop].t_sign = t_sign;
+        
+        //logging
+        logger.grammars_log.append("time signature: " + ofToString(t_sign) + "\n");
     }
 }
 
@@ -119,6 +142,9 @@ void G_parser::get_form_length(string& nc){
         form_length = atoi(nc.c_str());
         //cout << "form_length is: " << form_length << endl;
         all_gr[gr_pop].form_length = form_length;
+        
+        //logging
+        logger.grammars_log.append("form length: " + ofToString(form_length) + "\n");
     }
 }
 
@@ -129,6 +155,9 @@ void G_parser::get_harm_rh(string& nc){
         harm_rh = atoi(nc.c_str());
         //cout << "harm_rh is: " << harm_rh << endl;
         all_gr[gr_pop].harm_rh = harm_rh;
+        
+        //logging
+        logger.grammars_log.append("harm rhythm: " + ofToString(harm_rh) + "\n");
     }
 }
 
@@ -151,6 +180,37 @@ void G_parser::get_end_times(string& nc){
             }
         }
         all_gr[gr_pop].end_times = end_times;
+        
+        //logging
+        logger.grammars_log.append("end times: ");
+        for (int i=0; i < end_times.size(); i++) logger.grammars_log.append(ofToString(end_times[i]) + ", ");
+        logger.grammars_log.append("\n");
+    }
+}
+
+
+void G_parser::get_decs(string& nc){
+    vector<string> _decs;
+    
+    if (nc=="decs"){
+        
+        nc = get_nc();
+        if (nc=="{"){
+            
+            nc = get_nc();
+            while(nc!="}"){
+                
+                _decs.push_back(nc);
+                nc = get_nc();
+            }
+        }
+        all_gr[gr_pop].decs = _decs;
+        
+        //logging
+        logger.grammars_log.append("decs: ");
+        for (int i=0; i < _decs.size(); i++) logger.grammars_log.append(_decs[i] + ", ");
+        logger.grammars_log.append("\ndecs population size: " + ofToString(_decs.size()) + "\n");
+        logger.grammars_log.append("\n");
     }
 }
 
@@ -171,6 +231,12 @@ void G_parser::get_functions(string& nc){
             }
         }
         all_gr[gr_pop].functions = functions;
+        
+        //logging
+        logger.grammars_log.append("functions: ");
+        for (int i=0; i < functions.size(); i++) logger.grammars_log.append(functions[i] + ", ");
+        logger.grammars_log.append("\nfunctions population size: " + ofToString(functions.size()) + "\n");
+        logger.grammars_log.append("\n");
     }
 }
 
@@ -191,6 +257,12 @@ void G_parser::get_terminals(string& nc){
             }
         }
         all_gr[gr_pop].terminals = terminals;
+        
+        //logging
+        logger.grammars_log.append("terminals: ");
+        for (int i=0; i < terminals.size(); i++) logger.grammars_log.append(terminals[i] + ", ");
+        logger.grammars_log.append("\nterminals population size: " + ofToString(terminals.size()) + "\n");
+        logger.grammars_log.append("(for note-set comparison of chords, i.e. support for style difference?\n");
     }
 }
 
@@ -427,6 +499,111 @@ string G_parser::exclude_times(string& s_t_r){//excludes '(8)' or '_*'
     }
     
     return new_str;
+}
+
+
+void G_parser::log_curr_gr_elements(gr gram){
+
+    //logging grammar Header
+    logger.grammars_log.append("\n\n||||||||| Grammar * (rules overview) |||||||||\n");
+    //logging
+    //Sects
+    logger.grammars_log.append("S rule: sects: [symbol : prod_time]\n");
+    for (int i=0; i < gram.general_rules[0].right_side[0].right_str.size(); i++){
+    
+        logger.grammars_log.append("[" + gram.general_rules[0].right_side[0].right_str[i] + " : " + ofToString(gram.general_rules[0].prod_times[i]) + "]");
+    }
+    logger.grammars_log.append("]\n");
+    
+    //num of rules
+    logger.grammars_log.append("======== RULE FAMILIES ========\n");
+    logger.grammars_log.append("timed_rules pop size: " + ofToString(gram.timed_rules.size()) + "\n");
+    logger.grammars_log.append("general_rules pop size: " + ofToString(gram.general_rules.size()) + "\n");
+    
+    
+    //average length of rules etc..
+    logger.grammars_log.append("======== NOT-T FAMILIES ========\n");
+    
+    //sect num + len
+    logger.grammars_log.append("Sect number (i.e. Sects / form_length): " + ofToString(gram.general_rules[0].right_side[0].right_str.size()) + "\n");
+    float avg_sect_len = (float)gram.form_length / (float)gram.general_rules[0].right_side[0].right_str.size();
+    logger.grammars_log.append("-Average bars / sect: " + ofToString(avg_sect_len) + "\n");
+    
+    //dec num per sect
+    //get num sect
+    vector<int> dec_nums;
+    
+    for (int i=0; i < gram.general_rules[0].right_side[0].right_str.size(); i++){
+        
+        string _str = gram.general_rules[0].right_side[0].right_str[i];
+        
+        for (int j=0; j < gram.general_rules.size(); j++){
+    
+            for (int k=0; k < gram.general_rules[j].left_str.size(); k++){
+            
+                if (('S'==gram.general_rules[j].left_str[k][0]) && ('e'==gram.general_rules[j].left_str[k][1]) && ('c'==gram.general_rules[j].left_str[k][2]) && ('t'==gram.general_rules[j].left_str[k][3])){//(_str == gram.general_rules[j].left_str[k]){
+                
+                    dec_nums.push_back(gram.general_rules[j].right_side[0].right_str.size());
+                    logger.grammars_log.append(_str + " dec number: " + ofToString(gram.general_rules[j].right_side[0].right_str.size()) + " || ");
+                    //avg_decs.push_back(float());
+                }
+            }
+        }
+    }
+    
+    //get avg bars / dec
+    int _sum = 0;
+    for (int j=0; j < dec_nums.size(); j++) _sum += dec_nums[j];
+    
+    float avg_dec_nums;
+    avg_dec_nums = (float)_sum / (float)dec_nums.size();
+    
+    float avg_dec_len;
+    avg_dec_len = (float)avg_sect_len / (float)avg_dec_nums;
+    
+    logger.grammars_log.append("\n-Average bars / dec: " + ofToString(avg_dec_len) + "\n");
+    
+    
+    /*
+    level_name = "dec";
+    rule_count = find_rule_pop(level_name);
+    level_name = "dec";
+    rule_count = find_rule_pop(level_name);
+    level_name = "dec";
+    rule_count = find_rule_pop(level_name);
+     */
+    
+
+        //avrg length
+            //pop / form length
+    //function
+        //number
+    //pre_t
+        //number
+    
+    
+    logger.grammars_log.append("\nboring / repetitive??\n");
+}
+
+
+int G_parser::find_rule_pop(string& _name){
+    /*
+    for (int i=0; i < gram.general_rules.size(); i++){
+        
+        for (int j=0; j < gram.general_rules[i].left_str.size(); j++){
+            
+            if (gram.general_rules[i].left_str[j]=="dec") rule_count++;
+        }
+    }
+    
+    for (int i=0; i < gram.timed_rules.size(); i++){
+        
+        for (int j=0; j < gram.timed_rules[i].left_str.size(); j++){
+            
+            if (gram.timed_rules[i].left_str[j]=="dec") rule_count++;
+        }
+    }
+     */
 }
 
 

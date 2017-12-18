@@ -21,6 +21,7 @@ harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2)
 //cadence_bars { 3 7 11 15 19 23 27 31 } //no need for 11 as it is the form's' end, but just to make it more 'cadency' (see cad_11)
 //optimal_form { I I bVII I I bII bVII I IV IIIo IV I IV IV bVII bVII I I bVII I I bII bVII I bII I bVII I bII I bVII I }
 end_times { 1 5 9 13 17 21 25 29 }
+decs { decA decA1 decA2 decB1 decB2 decC }
 functions { T D SD }
 terminals { i isus4 im immaj i6 i7 bii biisus2 iim7 ii7 iiim iiim7 iiio iv ivsus4 iv6 iv7 ivm v7 vo bvi bviim i i6 i7 iim7 ii7 iv iv6 v7 }
 
@@ -163,6 +164,7 @@ NEW_GRAMMAR 2 //A train grammar
  harmonic_rhythm 1 //each non-t production applies to 1 bar (e.g. I1 : 1, I2 : 2), i.e. seq_t[3]==1, seq_t[3]==2 etc.
  //end_times { 1 5 9 13 }
  end_times { 1 5 9 13 17 21 25 29 }
+ decs { decT decSD decCad }
  functions { T D SD }
  terminals { i i6 i7 iim7 ii7 iv iv6 v7 isus4 im immaj bii biisus2 iiim iiim7 iiio ivsus4 iv7 ivm vo bvi bviim }
  

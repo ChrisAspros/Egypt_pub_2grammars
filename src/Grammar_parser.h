@@ -37,6 +37,7 @@ public:
     void get_form_length(string& nc);
     void get_harm_rh(string& nc);
     void get_end_times(string& nc);
+    void get_decs(string& nc);
     void get_functions(string& nc);
     void get_terminals(string& nc);
     //void get_basic_vectors(string& nc);
@@ -80,6 +81,7 @@ public:
         int form_length;
         int harm_rh;
         vector<int> end_times;
+        vector<string> decs;
         vector<string> functions;
         vector<string> terminals;
         
@@ -88,6 +90,9 @@ public:
         //map<vector<int>, rule> timed_rules;
         vector<rule> general_rules;
     };
+    
+    void log_curr_gr_elements(gr g1);
+    int find_rule_pop(string& _name);//e.g. how many dec rules ther are
     
     vector<gr> all_gr;
     void empty_gr_aux_elements();

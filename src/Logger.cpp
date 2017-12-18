@@ -109,7 +109,7 @@ void Logger::store_final_cycle(){
 }
 
 
-void Logger:: log_rt_log(){
+void Logger:: log_rt(){
 
     File << endl << "============" << "REAL TIME LOG (start):"  << "============" << endl;
     File << rt_log;
@@ -137,15 +137,24 @@ void Logger::log_transition_data(){
 
     File << endl << "============" << "Transition data (start):"  << "============" << endl;
     File << transition_data_log;
-    File << endl << "============" << "Transition data (end):"  << "============" << endl << endl;
+    File << endl << "============" << ":Transition data (end)"  << "============" << endl << endl;
+}
+
+
+void Logger::log_grammars(){
+
+    File << endl << "============" << "Grammars log (start):"  << "============" << endl;
+    File << grammars_log;
+    File << endl << "============" << ":Grammars log (end)"  << "============" << endl << endl;
 }
 
 
 void Logger::log_finals(){
 
-    log_rt_log();
+    log_rt();
     log_final_cycle();
     log_transition_data();
+    log_grammars();
     
     //FINALISE / CLOSE log file..
     File << endl << endl << "==============" << endl << "LOG END" << endl << "==============";

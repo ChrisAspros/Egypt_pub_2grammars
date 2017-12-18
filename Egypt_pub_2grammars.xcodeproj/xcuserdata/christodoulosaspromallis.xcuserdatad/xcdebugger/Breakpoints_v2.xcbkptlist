@@ -330,11 +330,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "534895828.089088"
+            timestampString = "535248731.266278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "716"
-            endingLineNumber = "716"
+            startingLineNumber = "761"
+            endingLineNumber = "761">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535248731.266278"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "904"
+            endingLineNumber = "904"
             landmarkName = "G_parser::rewrite(rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,28 +360,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "534980761.144662"
+            timestampString = "535248731.266278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "859"
-            endingLineNumber = "859"
-            landmarkName = "G_parser::trans_update(vector&lt;elem_ID&gt;&amp; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/Grammar_parser.cpp"
-            timestampString = "534895828.089088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "674"
-            endingLineNumber = "674"
-            landmarkName = "G_parser::rewrite(rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
+            startingLineNumber = "719"
+            endingLineNumber = "719"
+            landmarkName = "G_parser::find_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -602,12 +600,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "534900641.079381"
+            timestampString = "535248731.266278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "837"
-            endingLineNumber = "837"
-            landmarkName = "G_parser::morph_update(vector&lt;elem_ID&gt; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
+            startingLineNumber = "882"
+            endingLineNumber = "882"
+            landmarkName = "G_parser::rewrite(rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -618,12 +616,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "534980761.144662"
+            timestampString = "535248731.266278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "843"
-            endingLineNumber = "843"
-            landmarkName = "G_parser::morph_update(vector&lt;elem_ID&gt; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
+            startingLineNumber = "888"
+            endingLineNumber = "888"
+            landmarkName = "G_parser::rewrite(rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -874,11 +872,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "534895828.089088"
+            timestampString = "535248731.266278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "572"
-            endingLineNumber = "572"
+            startingLineNumber = "617"
+            endingLineNumber = "617"
             landmarkName = "G_parser::find_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -890,11 +888,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "534895828.089088"
+            timestampString = "535248731.266278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
+            startingLineNumber = "620"
+            endingLineNumber = "620"
             landmarkName = "G_parser::find_rule(vector&lt;int&gt;&amp; seq_t)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1162,12 +1160,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "534980761.144662"
+            timestampString = "535248731.266278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "903"
-            endingLineNumber = "903"
-            landmarkName = "G_parser::trans_update(vector&lt;elem_ID&gt;&amp; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
+            startingLineNumber = "948"
+            endingLineNumber = "948"
+            landmarkName = "G_parser::rewrite_choices(rule&amp; r)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1178,12 +1176,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Grammar_parser.cpp"
-            timestampString = "534980761.144662"
+            timestampString = "535248731.266278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "910"
-            endingLineNumber = "910"
-            landmarkName = "G_parser::trans_update(vector&lt;elem_ID&gt;&amp; production, rule&amp; r, vector&lt;int&gt;&amp; seq_t)"
+            startingLineNumber = "955"
+            endingLineNumber = "955"
+            landmarkName = "G_parser::rewrite_choices(rule&amp; r)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1696,6 +1694,198 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "ofApp::update()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535248038.847575"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "511"
+            endingLineNumber = "511"
+            landmarkName = "G_parser::log_curr_gr_elements(gr gram)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535246951.088761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "G_parser::get_new_grammar(string&amp; nc)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535246951.088761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "G_parser::get_grammar_elements()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535246951.088761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "G_parser::get_new_grammar(string&amp; nc)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535246951.088761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "G_parser::get_new_grammar(string&amp; nc)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535246951.088761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "G_parser::get_new_grammar(string&amp; nc)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535248608.980532"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "562"
+            endingLineNumber = "562"
+            landmarkName = "G_parser::log_curr_gr_elements(gr gram)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535248623.921594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "564"
+            endingLineNumber = "564"
+            landmarkName = "G_parser::log_curr_gr_elements(gr gram)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535248624.483354"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "563"
+            endingLineNumber = "563"
+            landmarkName = "G_parser::log_curr_gr_elements(gr gram)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535248701.893741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "553"
+            endingLineNumber = "553"
+            landmarkName = "G_parser::log_curr_gr_elements(gr gram)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535248706.163497"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "545"
+            endingLineNumber = "545"
+            landmarkName = "G_parser::log_curr_gr_elements(gr gram)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/Grammar_parser.cpp"
+            timestampString = "535248740.540165"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
+            landmarkName = "G_parser::log_curr_gr_elements(gr gram)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

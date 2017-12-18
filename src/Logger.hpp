@@ -31,9 +31,10 @@ public:
     void MIDI_spit();
     void tracker();//incl. position data / episode state..
     
-    void log_rt_log();
+    void log_rt();
     string rt_log;//real time log
     string transition_data_log;//curr_/next_func_lines
+    string grammars_log;
     string midi_log;
     
     //final_cycle
@@ -42,6 +43,7 @@ public:
     void store_final_cycle();
     void log_final_cycle();
     void log_transition_data();
+    void log_grammars();
     
     void log_finals();
     
