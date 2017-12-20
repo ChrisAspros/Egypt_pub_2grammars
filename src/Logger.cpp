@@ -15,7 +15,7 @@ void Logger::setup(){
     
     generate_ID();
     //ID += ":Petrie_Intel_sIdeal_tracked";//add system version
-    log_path += (ofToString(ID) + ":Petrie_Intel(Ideal)_tracked.txt");
+    log_path += (ofToString(ID) + ":Petrie_unintel_non-speeding.txt");
     
     //create new file (with ID name..)
     //ofFile File(ofToDataPath(log_path));

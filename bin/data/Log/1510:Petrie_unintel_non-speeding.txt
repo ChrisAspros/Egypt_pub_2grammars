@@ -1,0 +1,507 @@
+—> 4 B - 12 trans (unint) - 4 A
+
+============REAL TIME LOG (start):============
+the_rule: S, 
+new cycle (update_cycle()): SectA        SectA        SectB        SectA        
+=======
+is_terminal?: SectA
+
+the_rule: SectA, 
+new cycle (update_cycle()): decT  decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: decT
+
+the_rule: decT, 
+new cycle (update_cycle()): T T decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): I T decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: I
+
+new cycle (update_cycle()): i T decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: i
+
+
+[global_bt : 1] [timestamp : [48:55.112] 
+
+velocity crossfade END - [timestamp : [48:55.113] 
+the_rule: T, 
+new cycle (update_cycle()): i I decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): i i decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: i
+
+
+[global_bt : 2] [timestamp : [48:57.343] 
+the_rule: decSD, 
+new cycle (update_cycle()): i i SD SD decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: SD
+
+the_rule: SD, 
+new cycle (update_cycle()): i i II SD decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: II
+
+the_rule: II, 
+new cycle (update_cycle()): i i ii7 SD decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: ii7
+
+
+[global_bt : 3] [timestamp : [48:59.476] 
+the_rule: SD, 
+new cycle (update_cycle()): i i ii7 II decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: II
+
+the_rule: II, 
+new cycle (update_cycle()): i i ii7 iim7 decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: iim7
+
+
+[global_bt : 4] [timestamp : [49:01.604] 
+
+velocity crossfade START (unintelligent) to gr2 - [timestamp : [49:03.735] 
+the_rule: S, 
+new cycle (update_cycle()): SectA        SectB        SectA        SectC        
+=======
+is_terminal?: SectA
+
+the_rule: SectA, 
+new cycle (update_cycle()): decA    decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: decA
+
+the_rule: decA, 
+new cycle (update_cycle()): T T D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): I T D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 T D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 5] [timestamp : [49:03.737] 
+the_rule: T, 
+new cycle (update_cycle()): isus4 I D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 isus4 D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 6] [timestamp : [49:05.871] 
+the_rule: D, 
+new cycle (update_cycle()): isus4 isus4 bVII T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: bVII
+
+the_rule: bVII, 
+new cycle (update_cycle()): isus4 isus4 bviim T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: bviim
+
+
+[global_bt : 7] [timestamp : [49:08.005] 
+the_rule: T, 
+new cycle (update_cycle()): isus4 isus4 bviim I decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 8] [timestamp : [49:10.139] 
+the_rule: decA1, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 SD T decA2  SectB        SectA        SectC        
+=======
+is_terminal?: SD
+
+the_rule: SD, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 bII T decA2  SectB        SectA        SectC        
+=======
+is_terminal?: bII
+
+the_rule: bII, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 T decA2  SectB        SectA        SectC        
+=======
+is_terminal?: biisus2
+
+
+[global_bt : 9] [timestamp : [49:12.275] 
+the_rule: T, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 I decA2  SectB        SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 decA2  SectB        SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 10] [timestamp : [49:14.408] 
+the_rule: decA2, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 D D SectB        SectA        SectC        
+=======
+is_terminal?: D
+
+the_rule: D, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bVII D SectB        SectA        SectC        
+=======
+is_terminal?: bVII
+
+the_rule: bVII, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim D SectB        SectA        SectC        
+=======
+is_terminal?: bviim
+
+
+[global_bt : 11] [timestamp : [49:16.544] 
+the_rule: D, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bVII SectB        SectA        SectC        
+=======
+is_terminal?: bVII
+
+the_rule: bVII, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim SectB        SectA        SectC        
+=======
+is_terminal?: bviim
+
+
+[global_bt : 12] [timestamp : [49:18.679] 
+the_rule: SectB, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim decB1    decB2    SectA        SectC        
+=======
+is_terminal?: decB1
+
+the_rule: decB1, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim SD T SD D decB2    SectA        SectC        
+=======
+is_terminal?: SD
+
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim IV T SD D decB2    SectA        SectC        
+=======
+is_terminal?: IV
+
+the_rule: IV, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 T SD D decB2    SectA        SectC        
+=======
+is_terminal?: ivsus4
+
+
+[global_bt : 13] [timestamp : [49:20.805] 
+the_rule: T, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 I SD D decB2    SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 SD D decB2    SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 14] [timestamp : [49:22.942] 
+the_rule: SD, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 bII D decB2    SectA        SectC        
+=======
+is_terminal?: bII
+
+the_rule: bII, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 D decB2    SectA        SectC        
+=======
+is_terminal?: biisus2
+
+
+[global_bt : 15] [timestamp : [49:25.079] 
+
+velocity crossfade END - [timestamp : [49:25.940] 
+the_rule: D, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bVII decB2    SectA        SectC        
+=======
+is_terminal?: bVII
+
+the_rule: bVII, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim decB2    SectA        SectC        
+=======
+is_terminal?: bviim
+
+
+[global_bt : 16] [timestamp : [49:27.208] 
+the_rule: decB2, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim SD T D T SectA        SectC        
+=======
+is_terminal?: SD
+
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim IV T D T SectA        SectC        
+=======
+is_terminal?: IV
+
+the_rule: IV, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 T D T SectA        SectC        
+=======
+is_terminal?: ivsus4
+
+
+[global_bt : 17] [timestamp : [49:29.338] 
+the_rule: T, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 I D T SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 isus4 D T SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 18] [timestamp : [49:31.470] 
+the_rule: D, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 isus4 bVII T SectA        SectC        
+=======
+is_terminal?: bVII
+
+the_rule: bVII, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 isus4 bviim T SectA        SectC        
+=======
+is_terminal?: bviim
+
+
+[global_bt : 19] [timestamp : [49:33.605] 
+the_rule: T, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 isus4 bviim I SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 isus4 bviim isus4 SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 20] [timestamp : [49:35.738] 
+the_rule: SectA, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 isus4 bviim isus4 decA    decA1  decA2  SectC        
+=======
+is_terminal?: decA
+
+the_rule: decA, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 isus4 bviim isus4 T SD D T decA1  decA2  SectC        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 isus4 bviim isus4 I SD D T decA1  decA2  SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 isus4 bviim isus4 biisus2 isus4 bviim bviim ivsus4 isus4 biisus2 bviim ivsus4 isus4 bviim isus4 isus4 SD D T decA1  decA2  SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 21] [timestamp : [49:37.872] 
+
+============REAL TIME LOG (end):============
+
+
+
+FINAL CYCLE
+[symbols : times]
+[i : 0][i : 1][ii7 : 2][iim7 : 3][isus4 : 0][isus4 : 1][bviim : 2][isus4 : 3][biisus2 : 4][isus4 : 5][bviim : 6][bviim : 7][ivsus4 : 8][isus4 : 9][biisus2 : 10][bviim : 11][ivsus4 : 12][isus4 : 13][bviim : 14][isus4 : 15][isus4 : 16]
+
+============Transition data (start):============
+
+============:Transition data (end)============
+
+
+============Grammars log (start):============
+
+======== NEW GRAMMAR: 0 ========
+time signature: 4
+form length: 32
+harm rhythm: 1
+end times: 0, 4, 8, 12, 16, 20, 24, 28, 
+decs: decA, decA1, decA2, decB1, decB2, decC, 
+decs population size: 6
+
+functions: T, D, SD, 
+functions population size: 3
+
+terminals: i, isus4, im, immaj, i6, i7, bii, biisus2, iim7, ii7, iiim, iiim7, iiio, iv, ivsus4, iv6, iv7, ivm, v7, vo, bvi, bviim, i, i6, i7, iim7, ii7, iv, iv6, v7, 
+terminals population size: 30
+(for note-set comparison of chords, i.e. support for style difference?
+
+======== NEW GRAMMAR: 1 ========
+time signature: 4
+form length: 32
+harm rhythm: 1
+end times: 0, 4, 8, 12, 16, 20, 24, 28, 
+decs: decT, decSD, decCad, 
+decs population size: 3
+
+functions: T, D, SD, 
+functions population size: 3
+
+terminals: i, i6, i7, iim7, ii7, iv, iv6, v7, isus4, im, immaj, bii, biisus2, iiim, iiim7, iiio, ivsus4, iv7, ivm, vo, bvi, bviim, 
+terminals population size: 22
+(for note-set comparison of chords, i.e. support for style difference?
+
+
+||||||||| Grammar * (rules overview) |||||||||
+S rule: sects: [symbol : prod_time]
+[SectA(1) : 0][SectB(9) : 8][SectA(17) : 16][SectC(25) : 24]]
+======== RULE FAMILIES ========
+timed_rules pop size: 6
+general_rules pop size: 20
+======== NOT-T FAMILIES ========
+Sect number (i.e. Sects / form_length): 4
+-Average bars / sect: 8
+SectA(1) dec number: 3 || SectA(1) dec number: 2 || SectA(1) dec number: 4 || SectB(9) dec number: 3 || SectB(9) dec number: 2 || SectB(9) dec number: 4 || SectA(17) dec number: 3 || SectA(17) dec number: 2 || SectA(17) dec number: 4 || SectC(25) dec number: 3 || SectC(25) dec number: 2 || SectC(25) dec number: 4 || 
+-Average bars / dec: 2.66667
+
+boring / repetitive??
+
+
+||||||||| Grammar * (rules overview) |||||||||
+S rule: sects: [symbol : prod_time]
+[SectA(1) : 0][SectA(9) : 8][SectB(17) : 16][SectA(25) : 24]]
+======== RULE FAMILIES ========
+timed_rules pop size: 7
+general_rules pop size: 13
+======== NOT-T FAMILIES ========
+Sect number (i.e. Sects / form_length): 4
+-Average bars / sect: 8
+SectA(1) dec number: 4 || SectA(1) dec number: 3 || SectA(9) dec number: 4 || SectA(9) dec number: 3 || SectB(17) dec number: 4 || SectB(17) dec number: 3 || SectA(25) dec number: 4 || SectA(25) dec number: 3 || 
+-Average bars / dec: 2.28571
+
+boring / repetitive??
+
+============:Grammars log (end)============
+
+
+============Petrie tracking log (start):============
+
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [48:55.114] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [48:57.343] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [48:59.476] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:01.604] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:03.737] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:05.871] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:08.005] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:10.139] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:12.275] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:14.408] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:16.544] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:18.679] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:20.805] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:22.942] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:25.079] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:27.208] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:29.338] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:31.471] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:33.605] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:35.738] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [49:37.873] 
+
+============:Petrie tracking log (end)============
+
+
+============Speed log (start):============
+
+
+============:Speed log (end)============
+
+
+
+==============
+LOG END
+==============

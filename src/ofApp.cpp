@@ -69,7 +69,7 @@ void ofApp::setup(){
 void ofApp::update(){
     
     //if (!speed_done) update_speed();
-    update_speed();
+    //update_speed();
     
     //sleep(10); //debug plays only 1 note with this in..(??)
     //ofSleepMillis();//??
@@ -318,6 +318,7 @@ void ofApp::draw(){
         
         
         //Draw intel transitiooning stage
+        /*
         if (blues.seq.r_comp.trans_incomplete){
             
             ofSetColor(0, 255, 0);
@@ -328,12 +329,13 @@ void ofApp::draw(){
             ofSetColor(0, 255, 0);
             openSans.drawString("NOT TRANSITIONING", 175, 110);
         }
+         */
         
         //Draw abrupt transitions
         if (show_gr1) {
             
             ofSetColor(0, 255, 0);
-            //openSans.drawString("GR_1", 215, 110);
+            openSans.drawString("GR_1", 215, 110);
         }
         if (show_gr2) {
             

@@ -132,8 +132,8 @@ void Blues_structure::update(){
         
         if (!seq.r_comp.trans_incomplete) seq.r_comp.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.r_comp.parser.update_cycle();
         
-        //A_B_change();
-        ordered_change();
+        A_B_change();
+        //ordered_change();
         //beacon_change();
     
         if(seq.r_comp.parser.transitioning && !seq.r_comp.rules_combined){
