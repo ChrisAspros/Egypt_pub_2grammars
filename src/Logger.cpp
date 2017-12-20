@@ -14,7 +14,8 @@ void Logger::setup(){
     log_path = "/Users/christodoulosaspromallis/Documents/UCL/PhD_Y_3/OF/of_v0.9.8_osx_release/apps/myApps/ICMC_test/Egypt_pub_2grammars/bin/data/Log/";
     
     generate_ID();
-    log_path += (ofToString(ID) + ".txt");
+    //ID += ":Petrie_Intel_sIdeal_tracked";//add system version
+    log_path += (ofToString(ID) + ":Petrie_Intel(Ideal)_tracked.txt");
     
     //create new file (with ID name..)
     //ofFile File(ofToDataPath(log_path));

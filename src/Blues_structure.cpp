@@ -133,8 +133,8 @@ void Blues_structure::update(){
         if (!seq.r_comp.trans_incomplete) seq.r_comp.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.r_comp.parser.update_cycle();
         
         //A_B_change();
-        //ordered_change();
-        beacon_change();
+        ordered_change();
+        //beacon_change();
     
         if(seq.r_comp.parser.transitioning && !seq.r_comp.rules_combined){
         
@@ -257,7 +257,10 @@ void Blues_structure::A_B_change(){
 
 void Blues_structure::beacon_change(){
 
-    if (false){//(t[3]==trans_bars[trans_pop]) && (t[4]==1)){
+    if (do_transition){//(t[3]==trans_bars[trans_pop]) && (t[4]==1)){
+        
+        //logging
+        seq.r_comp.parser.logger.rt_log.append("\ndo_transition: - [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
         
         seq.r_comp.parser.transitioning = 1;
         seq.r_comp.trans_incomplete = 1;
@@ -265,9 +268,10 @@ void Blues_structure::beacon_change(){
         //seq.r_comp.parser.gr_changed = 1;
         //update_velocities_once();
         
-        trans_pop = (trans_pop + 1) % trans_bars.size();
+        //trans_pop = (trans_pop + 1) % trans_bars.size();
         
         vel_aut_complete = 0;
+        //logging
         seq.r_comp.parser.logger.rt_log.append("\nvelocity crossfade START (intelligent - beacon) to gr2 - [timestamp : " + ofGetTimestampString("[%M:%S.%i] \n"));
         //*/
     }
@@ -278,7 +282,7 @@ void Blues_structure::ordered_change(){
 
     if (seq.r_comp.parser.gr_pop == 0){
         
-        if ((t[3]==trans_bars[trans_pop]) && (t[4]==1)){
+        if ((t[3]==4) && (t[4]==0)){//(t[3]==trans_bars[trans_pop]) && (t[4]==1)){
             
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.trans_incomplete = 1;
@@ -297,7 +301,7 @@ void Blues_structure::ordered_change(){
     
     if (seq.r_comp.parser.gr_pop == 1){
     
-        if ((t[3]==trans_bars[trans_pop]) && (t[4]==0)){//trans_bars[trans_pop]
+        if ((t[3]==4) && (t[4]==0)){//(t[3]==trans_bars[trans_pop]) && (t[4]==0)){//trans_bars[trans_pop]
             
             seq.r_comp.parser.transitioning = 1;
             seq.r_comp.trans_incomplete = 1;

@@ -20,6 +20,8 @@ public:
     void keyPressed(int key);
     //void keyReleased(int key);
     
+    void setup_beacons();
+    
     void update_speed();
     void tracking_repl_A_B();
     

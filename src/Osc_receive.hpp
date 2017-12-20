@@ -39,7 +39,7 @@ public:
     string beacon;
     
     vector<string> b_r1, b_r2;//beacons room 1 and 2
-    bool room1, room2, transitioning;
+    bool room1, room2, do_transition;
 };
 
 #endif /* Osc_receive_hpp */

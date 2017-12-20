@@ -1,0 +1,1575 @@
+—> 4 bars A - 12 bars trans - 4 bars B
+
+============REAL TIME LOG (start):============
+the_rule: S, 
+new cycle (update_cycle()): SectA        SectB        SectA        SectC        
+=======
+is_terminal?: SectA
+
+the_rule: SectA, 
+new cycle (update_cycle()): decA    decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: decA
+
+the_rule: decA, 
+new cycle (update_cycle()): T SD D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): I SD D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 SD D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 1] [timestamp : [24:25.691] 
+
+velocity crossfade END - [timestamp : [24:25.691] 
+the_rule: SD, 
+new cycle (update_cycle()): isus4 bII D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: bII
+
+the_rule: bII, 
+new cycle (update_cycle()): isus4 biisus2 D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: biisus2
+
+
+[global_bt : 2] [timestamp : [24:28.196] 
+the_rule: D, 
+new cycle (update_cycle()): isus4 biisus2 bVII T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: bVII
+
+the_rule: bVII, 
+new cycle (update_cycle()): isus4 biisus2 bviim T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: bviim
+
+
+[global_bt : 3] [timestamp : [24:30.366] 
+the_rule: T, 
+new cycle (update_cycle()): isus4 biisus2 bviim I decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 biisus2 bviim isus4 decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 4] [timestamp : [24:32.526] 
+
+velocity crossfade START (intelligent) to gr2 - [timestamp : [24:34.659] 
+
+
+===TRANSITION BEGINS=== [timestamp : [24:34.659] 
+DIST_TO_GOAL: 12, Goal Point: 16
+curr_gr: 0, next_gr: 1
+S_rule_curr: 
+SectA(1), time: 0
+SectB(9), time: 8
+SectA(17), time: 16
+SectC(25), time: 24
+S_rule_next: 
+SectA(1), time: 0
+SectA(9), time: 8
+SectB(17), time: 16
+SectA(25), time: 24
+sect_lengths_curr: {8, 8, 8, 8}, {8, 8, 8, 8}, {8, 8, 8, 8}, {8, 8, 8, 8}, 
+sect_lengths_next: {8, 8, 8, 8}, {8, 8, 8, 8}, {8, 8, 8, 8}, {8, 8, 8, 8}, 
+the_rule: decA1, 
+the_rule: decA2, 
+the_rule: SectB, 
+the_rule: decB1, 
+the_rule: decB2, 
+the_rule: S, 
+the_rule: SectA, 
+the_rule: decT, 
+the_rule: decSD, 
+the_rule: decCad, 
+the_rule: decT, 
+the_rule: SectA, 
+the_rule: decT, 
+the_rule: decSD, 
+the_rule: decCad, 
+the_rule: decT, 
+the_rule: SectB, 
+the_rule: decSD, 
+the_rule: decCad, 
+the_rule: SectA, 
+the_rule: decT, 
+the_rule: decSD, 
+the_rule: decCad, 
+the_rule: decT, 
+
+
+===COMBINATION SETUP=== [timestamp : [24:34.693] 
+the_rule: T, 
+is_terminal?: I
+
+the_rule: I, 
+is_terminal?: isus4
+
+the_rule: SD, 
+is_terminal?: II
+
+the_rule: II, 
+is_terminal?: iim7
+
+the_rule: T, 
+is_terminal?: I
+
+the_rule: I, 
+is_terminal?: i6
+
+the_rule: T, 
+is_terminal?: I
+
+the_rule: I, 
+is_terminal?: isus4
+
+the_rule: T, 
+is_terminal?: I
+
+the_rule: I, 
+is_terminal?: isus4
+
+the_rule: T, 
+is_terminal?: I
+
+the_rule: I, 
+is_terminal?: isus4
+
+the_rule: SD, 
+is_terminal?: bII
+
+the_rule: bII, 
+is_terminal?: biisus2
+
+the_rule: SD, 
+is_terminal?: II
+
+the_rule: II, 
+is_terminal?: iim7
+
+is_terminal?: IV
+
+the_rule: IV, 
+is_terminal?: ivsus4
+
+the_rule: T, 
+is_terminal?: I
+
+the_rule: I, 
+is_terminal?: i6
+
+the_rule: T, 
+is_terminal?: I
+
+the_rule: I, 
+is_terminal?: i6
+
+the_rule: T, 
+is_terminal?: I
+
+is_terminal?: i7
+
+
+
+===COMBINATION UPDATED / MORPH BEGINS=== [timestamp : [24:34.701] 
+is_terminal?: isus4
+
+
+[global_bt : 5] [timestamp : [24:34.701] 
+is_terminal?: iim7
+
+
+[global_bt : 6] [timestamp : [24:36.874] 
+is_terminal?: i6
+
+
+[global_bt : 7] [timestamp : [24:39.007] 
+is_terminal?: isus4
+
+
+[global_bt : 8] [timestamp : [24:41.138] 
+is_terminal?: isus4
+
+
+[global_bt : 9] [timestamp : [24:43.272] 
+is_terminal?: isus4
+
+
+[global_bt : 10] [timestamp : [24:45.405] 
+is_terminal?: biisus2
+
+
+[global_bt : 11] [timestamp : [24:47.538] 
+is_terminal?: iim7
+
+
+[global_bt : 12] [timestamp : [24:49.672] 
+is_terminal?: ivsus4
+
+
+[global_bt : 13] [timestamp : [24:51.805] 
+is_terminal?: i6
+
+
+[global_bt : 14] [timestamp : [24:53.939] 
+is_terminal?: i6
+
+
+[global_bt : 15] [timestamp : [24:56.071] 
+
+velocity crossfade END - [timestamp : [24:56.938] 
+is_terminal?: i7
+
+
+[global_bt : 16] [timestamp : [24:58.207] 
+MORPH ENDED, Goal Point Reached
+the_rule: S, 
+new cycle (update_cycle()): SectA        SectA        SectB        SectA        
+=======
+the_rule: SectA, 
+new cycle (update_cycle()): SectA        decT  decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: decT
+
+the_rule: decT, 
+new cycle (update_cycle()): SectA        T T decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): SectA        I T decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): SectA        i6 T decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: i6
+
+
+[global_bt : 17] [timestamp : [25:00.340] 
+the_rule: T, 
+new cycle (update_cycle()): SectA        i6 I decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): SectA        i6 i decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: i
+
+
+[global_bt : 18] [timestamp : [25:02.476] 
+the_rule: decSD, 
+new cycle (update_cycle()): SectA        i6 i SD SD decCad  decT  SectB        SectA        
+=======
+is_terminal?: SD
+
+the_rule: SD, 
+new cycle (update_cycle()): SectA        i6 i II SD decCad  decT  SectB        SectA        
+=======
+is_terminal?: II
+
+the_rule: II, 
+new cycle (update_cycle()): SectA        i6 i ii7 SD decCad  decT  SectB        SectA        
+=======
+is_terminal?: ii7
+
+
+[global_bt : 19] [timestamp : [25:04.606] 
+the_rule: SD, 
+new cycle (update_cycle()): SectA        i6 i ii7 II decCad  decT  SectB        SectA        
+=======
+is_terminal?: II
+
+the_rule: II, 
+new cycle (update_cycle()): SectA        i6 i ii7 ii7 decCad  decT  SectB        SectA        
+=======
+is_terminal?: ii7
+
+
+[global_bt : 20] [timestamp : [25:06.739] 
+
+============REAL TIME LOG (end):============
+
+
+
+FINAL CYCLE
+[symbols : times]
+[isus4 : 0][biisus2 : 1][bviim : 2][isus4 : 3][isus4 : 4][iim7 : 5][i6 : 6][isus4 : 7][isus4 : 8][isus4 : 9][biisus2 : 10][iim7 : 11][ivsus4 : 12][i6 : 13][i6 : 14][i7 : 15][i6 : 8][i : 9][ii7 : 10][ii7 : 11]
+
+============Transition data (start):============
+
+
+
+curr_func_lines, [name:time]
+number:0 [T:4], [SD:5], [T:6], [T:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:1 [SD:4], [T:5], [T:6], [T:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:2 [T:4], [SD:5], [SD:6], [SD:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:3 [SD:4], [T:5], [SD:6], [SD:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:4 [T:4], [SD:5], [D:6], [D:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:5 [SD:4], [T:5], [D:6], [D:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:6 [T:4], [SD:5], [T:6], [T:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:7 [SD:4], [T:5], [T:6], [T:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:8 [T:4], [SD:5], [SD:6], [SD:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:9 [SD:4], [T:5], [SD:6], [SD:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:10 [T:4], [SD:5], [D:6], [D:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:11 [SD:4], [T:5], [D:6], [D:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+next_func_lines, [name:time]
+number:0 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:1 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:2 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:3 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:4 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:5 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:6 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:7 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:8 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:9 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:10 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:11 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:12 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:13 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:14 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:15 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+curr_func_lines (FILTERED at 400, [name:time]
+number:0 [T:4], [SD:5], [T:6], [T:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:1 [SD:4], [T:5], [T:6], [T:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:2 [T:4], [SD:5], [SD:6], [SD:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:3 [SD:4], [T:5], [SD:6], [SD:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:4 [T:4], [SD:5], [D:6], [D:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:5 [SD:4], [T:5], [D:6], [D:7], [SD:8], [T:9], [SD:10], [D:11], [SD:12], [T:13], [D:14], [T:15], 
+number:6 [T:4], [SD:5], [T:6], [T:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:7 [SD:4], [T:5], [T:6], [T:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:8 [T:4], [SD:5], [SD:6], [SD:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:9 [SD:4], [T:5], [SD:6], [SD:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:10 [T:4], [SD:5], [D:6], [D:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+number:11 [SD:4], [T:5], [D:6], [D:7], [SD:8], [T:9], [SD:10], [D:11], [D:12], [D:13], [D:14], [D:15], 
+next_func_lines (FILTERED at 400, [name:time]
+number:0 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:1 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:2 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:3 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:4 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:5 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:6 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:7 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [SD:28], [D:29], [T:30], [T:31], 
+number:8 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:9 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:10 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:11 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [SD:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:12 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:13 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [SD:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:14 [T:0], [T:1], [SD:2], [SD:3], [SD:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+number:15 [T:0], [T:1], [SD:2], [SD:3], [D:4], [D:5], [T:6], [T:7], [T:8], [T:9], [SD:10], [SD:11], [D:12], [D:13], [T:14], [T:15], [SD:16], [SD:17], [SD:18], [SD:19], [SD:20], [SD:21], [D:22], [D:23], [T:24], [T:25], [SD:26], [SD:27], [D:28], [D:29], [T:30], [T:31], 
+
+formed_local_scores:
+number: 0:, score: 6, i: 0, j: 0, l: 0
+number: 1:, score: 6, i: 0, j: 0, l: 1
+number: 2:, score: 5, i: 0, j: 0, l: 2
+number: 3:, score: 5, i: 0, j: 0, l: 3
+number: 4:, score: 6, i: 0, j: 0, l: 4
+number: 5:, score: 6, i: 0, j: 0, l: 5
+number: 6:, score: 5, i: 0, j: 0, l: 6
+number: 7:, score: 5, i: 0, j: 0, l: 7
+number: 8:, score: 6, i: 0, j: 0, l: 8
+number: 9:, score: 6, i: 0, j: 0, l: 9
+number: 10:, score: 5, i: 0, j: 0, l: 10
+number: 11:, score: 5, i: 0, j: 0, l: 11
+number: 12:, score: 6, i: 0, j: 0, l: 12
+number: 13:, score: 6, i: 0, j: 0, l: 13
+number: 14:, score: 5, i: 0, j: 0, l: 14
+number: 15:, score: 5, i: 0, j: 0, l: 15
+number: 16:, score: 7, i: 0, j: 1, l: 0
+number: 17:, score: 6, i: 0, j: 1, l: 1
+number: 18:, score: 6, i: 0, j: 1, l: 2
+number: 19:, score: 5, i: 0, j: 1, l: 3
+number: 20:, score: 7, i: 0, j: 1, l: 4
+number: 21:, score: 6, i: 0, j: 1, l: 5
+number: 22:, score: 6, i: 0, j: 1, l: 6
+number: 23:, score: 5, i: 0, j: 1, l: 7
+number: 24:, score: 7, i: 0, j: 1, l: 8
+number: 25:, score: 6, i: 0, j: 1, l: 9
+number: 26:, score: 6, i: 0, j: 1, l: 10
+number: 27:, score: 5, i: 0, j: 1, l: 11
+number: 28:, score: 7, i: 0, j: 1, l: 12
+number: 29:, score: 6, i: 0, j: 1, l: 13
+number: 30:, score: 6, i: 0, j: 1, l: 14
+number: 31:, score: 5, i: 0, j: 1, l: 15
+number: 32:, score: 4, i: 0, j: 2, l: 0
+number: 33:, score: 4, i: 0, j: 2, l: 1
+number: 34:, score: 3, i: 0, j: 2, l: 2
+number: 35:, score: 3, i: 0, j: 2, l: 3
+number: 36:, score: 4, i: 0, j: 2, l: 4
+number: 37:, score: 4, i: 0, j: 2, l: 5
+number: 38:, score: 3, i: 0, j: 2, l: 6
+number: 39:, score: 3, i: 0, j: 2, l: 7
+number: 40:, score: 4, i: 0, j: 2, l: 8
+number: 41:, score: 4, i: 0, j: 2, l: 9
+number: 42:, score: 3, i: 0, j: 2, l: 10
+number: 43:, score: 3, i: 0, j: 2, l: 11
+number: 44:, score: 4, i: 0, j: 2, l: 12
+number: 45:, score: 4, i: 0, j: 2, l: 13
+number: 46:, score: 3, i: 0, j: 2, l: 14
+number: 47:, score: 3, i: 0, j: 2, l: 15
+number: 48:, score: 5, i: 0, j: 3, l: 0
+number: 49:, score: 4, i: 0, j: 3, l: 1
+number: 50:, score: 4, i: 0, j: 3, l: 2
+number: 51:, score: 3, i: 0, j: 3, l: 3
+number: 52:, score: 5, i: 0, j: 3, l: 4
+number: 53:, score: 4, i: 0, j: 3, l: 5
+number: 54:, score: 4, i: 0, j: 3, l: 6
+number: 55:, score: 3, i: 0, j: 3, l: 7
+number: 56:, score: 5, i: 0, j: 3, l: 8
+number: 57:, score: 4, i: 0, j: 3, l: 9
+number: 58:, score: 4, i: 0, j: 3, l: 10
+number: 59:, score: 3, i: 0, j: 3, l: 11
+number: 60:, score: 5, i: 0, j: 3, l: 12
+number: 61:, score: 4, i: 0, j: 3, l: 13
+number: 62:, score: 4, i: 0, j: 3, l: 14
+number: 63:, score: 3, i: 0, j: 3, l: 15
+number: 64:, score: 4, i: 0, j: 4, l: 0
+number: 65:, score: 4, i: 0, j: 4, l: 1
+number: 66:, score: 3, i: 0, j: 4, l: 2
+number: 67:, score: 3, i: 0, j: 4, l: 3
+number: 68:, score: 4, i: 0, j: 4, l: 4
+number: 69:, score: 4, i: 0, j: 4, l: 5
+number: 70:, score: 3, i: 0, j: 4, l: 6
+number: 71:, score: 3, i: 0, j: 4, l: 7
+number: 72:, score: 4, i: 0, j: 4, l: 8
+number: 73:, score: 4, i: 0, j: 4, l: 9
+number: 74:, score: 3, i: 0, j: 4, l: 10
+number: 75:, score: 3, i: 0, j: 4, l: 11
+number: 76:, score: 4, i: 0, j: 4, l: 12
+number: 77:, score: 4, i: 0, j: 4, l: 13
+number: 78:, score: 3, i: 0, j: 4, l: 14
+number: 79:, score: 3, i: 0, j: 4, l: 15
+number: 80:, score: 5, i: 0, j: 5, l: 0
+number: 81:, score: 4, i: 0, j: 5, l: 1
+number: 82:, score: 4, i: 0, j: 5, l: 2
+number: 83:, score: 3, i: 0, j: 5, l: 3
+number: 84:, score: 5, i: 0, j: 5, l: 4
+number: 85:, score: 4, i: 0, j: 5, l: 5
+number: 86:, score: 4, i: 0, j: 5, l: 6
+number: 87:, score: 3, i: 0, j: 5, l: 7
+number: 88:, score: 5, i: 0, j: 5, l: 8
+number: 89:, score: 4, i: 0, j: 5, l: 9
+number: 90:, score: 4, i: 0, j: 5, l: 10
+number: 91:, score: 3, i: 0, j: 5, l: 11
+number: 92:, score: 5, i: 0, j: 5, l: 12
+number: 93:, score: 4, i: 0, j: 5, l: 13
+number: 94:, score: 4, i: 0, j: 5, l: 14
+number: 95:, score: 3, i: 0, j: 5, l: 15
+number: 96:, score: 5, i: 0, j: 6, l: 0
+number: 97:, score: 5, i: 0, j: 6, l: 1
+number: 98:, score: 6, i: 0, j: 6, l: 2
+number: 99:, score: 6, i: 0, j: 6, l: 3
+number: 100:, score: 5, i: 0, j: 6, l: 4
+number: 101:, score: 5, i: 0, j: 6, l: 5
+number: 102:, score: 6, i: 0, j: 6, l: 6
+number: 103:, score: 6, i: 0, j: 6, l: 7
+number: 104:, score: 5, i: 0, j: 6, l: 8
+number: 105:, score: 5, i: 0, j: 6, l: 9
+number: 106:, score: 6, i: 0, j: 6, l: 10
+number: 107:, score: 6, i: 0, j: 6, l: 11
+number: 108:, score: 5, i: 0, j: 6, l: 12
+number: 109:, score: 5, i: 0, j: 6, l: 13
+number: 110:, score: 6, i: 0, j: 6, l: 14
+number: 111:, score: 6, i: 0, j: 6, l: 15
+number: 112:, score: 6, i: 0, j: 7, l: 0
+number: 113:, score: 5, i: 0, j: 7, l: 1
+number: 114:, score: 7, i: 0, j: 7, l: 2
+number: 115:, score: 6, i: 0, j: 7, l: 3
+number: 116:, score: 6, i: 0, j: 7, l: 4
+number: 117:, score: 5, i: 0, j: 7, l: 5
+number: 118:, score: 7, i: 0, j: 7, l: 6
+number: 119:, score: 6, i: 0, j: 7, l: 7
+number: 120:, score: 6, i: 0, j: 7, l: 8
+number: 121:, score: 5, i: 0, j: 7, l: 9
+number: 122:, score: 7, i: 0, j: 7, l: 10
+number: 123:, score: 6, i: 0, j: 7, l: 11
+number: 124:, score: 6, i: 0, j: 7, l: 12
+number: 125:, score: 5, i: 0, j: 7, l: 13
+number: 126:, score: 7, i: 0, j: 7, l: 14
+number: 127:, score: 6, i: 0, j: 7, l: 15
+number: 128:, score: 3, i: 0, j: 8, l: 0
+number: 129:, score: 3, i: 0, j: 8, l: 1
+number: 130:, score: 4, i: 0, j: 8, l: 2
+number: 131:, score: 4, i: 0, j: 8, l: 3
+number: 132:, score: 3, i: 0, j: 8, l: 4
+number: 133:, score: 3, i: 0, j: 8, l: 5
+number: 134:, score: 4, i: 0, j: 8, l: 6
+number: 135:, score: 4, i: 0, j: 8, l: 7
+number: 136:, score: 3, i: 0, j: 8, l: 8
+number: 137:, score: 3, i: 0, j: 8, l: 9
+number: 138:, score: 4, i: 0, j: 8, l: 10
+number: 139:, score: 4, i: 0, j: 8, l: 11
+number: 140:, score: 3, i: 0, j: 8, l: 12
+number: 141:, score: 3, i: 0, j: 8, l: 13
+number: 142:, score: 4, i: 0, j: 8, l: 14
+number: 143:, score: 4, i: 0, j: 8, l: 15
+number: 144:, score: 4, i: 0, j: 9, l: 0
+number: 145:, score: 3, i: 0, j: 9, l: 1
+number: 146:, score: 5, i: 0, j: 9, l: 2
+number: 147:, score: 4, i: 0, j: 9, l: 3
+number: 148:, score: 4, i: 0, j: 9, l: 4
+number: 149:, score: 3, i: 0, j: 9, l: 5
+number: 150:, score: 5, i: 0, j: 9, l: 6
+number: 151:, score: 4, i: 0, j: 9, l: 7
+number: 152:, score: 4, i: 0, j: 9, l: 8
+number: 153:, score: 3, i: 0, j: 9, l: 9
+number: 154:, score: 5, i: 0, j: 9, l: 10
+number: 155:, score: 4, i: 0, j: 9, l: 11
+number: 156:, score: 4, i: 0, j: 9, l: 12
+number: 157:, score: 3, i: 0, j: 9, l: 13
+number: 158:, score: 5, i: 0, j: 9, l: 14
+number: 159:, score: 4, i: 0, j: 9, l: 15
+number: 160:, score: 3, i: 0, j: 10, l: 0
+number: 161:, score: 3, i: 0, j: 10, l: 1
+number: 162:, score: 4, i: 0, j: 10, l: 2
+number: 163:, score: 4, i: 0, j: 10, l: 3
+number: 164:, score: 3, i: 0, j: 10, l: 4
+number: 165:, score: 3, i: 0, j: 10, l: 5
+number: 166:, score: 4, i: 0, j: 10, l: 6
+number: 167:, score: 4, i: 0, j: 10, l: 7
+number: 168:, score: 3, i: 0, j: 10, l: 8
+number: 169:, score: 3, i: 0, j: 10, l: 9
+number: 170:, score: 4, i: 0, j: 10, l: 10
+number: 171:, score: 4, i: 0, j: 10, l: 11
+number: 172:, score: 3, i: 0, j: 10, l: 12
+number: 173:, score: 3, i: 0, j: 10, l: 13
+number: 174:, score: 4, i: 0, j: 10, l: 14
+number: 175:, score: 4, i: 0, j: 10, l: 15
+number: 176:, score: 4, i: 0, j: 11, l: 0
+number: 177:, score: 3, i: 0, j: 11, l: 1
+number: 178:, score: 5, i: 0, j: 11, l: 2
+number: 179:, score: 4, i: 0, j: 11, l: 3
+number: 180:, score: 4, i: 0, j: 11, l: 4
+number: 181:, score: 3, i: 0, j: 11, l: 5
+number: 182:, score: 5, i: 0, j: 11, l: 6
+number: 183:, score: 4, i: 0, j: 11, l: 7
+number: 184:, score: 4, i: 0, j: 11, l: 8
+number: 185:, score: 3, i: 0, j: 11, l: 9
+number: 186:, score: 5, i: 0, j: 11, l: 10
+number: 187:, score: 4, i: 0, j: 11, l: 11
+number: 188:, score: 4, i: 0, j: 11, l: 12
+number: 189:, score: 3, i: 0, j: 11, l: 13
+number: 190:, score: 5, i: 0, j: 11, l: 14
+number: 191:, score: 4, i: 0, j: 11, l: 15
+number: 192:, score: 6, i: 1, j: 0, l: 0
+number: 193:, score: 6, i: 1, j: 0, l: 1
+number: 194:, score: 5, i: 1, j: 0, l: 2
+number: 195:, score: 5, i: 1, j: 0, l: 3
+number: 196:, score: 6, i: 1, j: 0, l: 4
+number: 197:, score: 6, i: 1, j: 0, l: 5
+number: 198:, score: 5, i: 1, j: 0, l: 6
+number: 199:, score: 5, i: 1, j: 0, l: 7
+number: 200:, score: 6, i: 1, j: 0, l: 8
+number: 201:, score: 6, i: 1, j: 0, l: 9
+number: 202:, score: 5, i: 1, j: 0, l: 10
+number: 203:, score: 5, i: 1, j: 0, l: 11
+number: 204:, score: 6, i: 1, j: 0, l: 12
+number: 205:, score: 6, i: 1, j: 0, l: 13
+number: 206:, score: 5, i: 1, j: 0, l: 14
+number: 207:, score: 5, i: 1, j: 0, l: 15
+number: 208:, score: 7, i: 1, j: 1, l: 0
+number: 209:, score: 6, i: 1, j: 1, l: 1
+number: 210:, score: 6, i: 1, j: 1, l: 2
+number: 211:, score: 5, i: 1, j: 1, l: 3
+number: 212:, score: 7, i: 1, j: 1, l: 4
+number: 213:, score: 6, i: 1, j: 1, l: 5
+number: 214:, score: 6, i: 1, j: 1, l: 6
+number: 215:, score: 5, i: 1, j: 1, l: 7
+number: 216:, score: 7, i: 1, j: 1, l: 8
+number: 217:, score: 6, i: 1, j: 1, l: 9
+number: 218:, score: 6, i: 1, j: 1, l: 10
+number: 219:, score: 5, i: 1, j: 1, l: 11
+number: 220:, score: 7, i: 1, j: 1, l: 12
+number: 221:, score: 6, i: 1, j: 1, l: 13
+number: 222:, score: 6, i: 1, j: 1, l: 14
+number: 223:, score: 5, i: 1, j: 1, l: 15
+number: 224:, score: 4, i: 1, j: 2, l: 0
+number: 225:, score: 4, i: 1, j: 2, l: 1
+number: 226:, score: 3, i: 1, j: 2, l: 2
+number: 227:, score: 3, i: 1, j: 2, l: 3
+number: 228:, score: 4, i: 1, j: 2, l: 4
+number: 229:, score: 4, i: 1, j: 2, l: 5
+number: 230:, score: 3, i: 1, j: 2, l: 6
+number: 231:, score: 3, i: 1, j: 2, l: 7
+number: 232:, score: 4, i: 1, j: 2, l: 8
+number: 233:, score: 4, i: 1, j: 2, l: 9
+number: 234:, score: 3, i: 1, j: 2, l: 10
+number: 235:, score: 3, i: 1, j: 2, l: 11
+number: 236:, score: 4, i: 1, j: 2, l: 12
+number: 237:, score: 4, i: 1, j: 2, l: 13
+number: 238:, score: 3, i: 1, j: 2, l: 14
+number: 239:, score: 3, i: 1, j: 2, l: 15
+number: 240:, score: 5, i: 1, j: 3, l: 0
+number: 241:, score: 4, i: 1, j: 3, l: 1
+number: 242:, score: 4, i: 1, j: 3, l: 2
+number: 243:, score: 3, i: 1, j: 3, l: 3
+number: 244:, score: 5, i: 1, j: 3, l: 4
+number: 245:, score: 4, i: 1, j: 3, l: 5
+number: 246:, score: 4, i: 1, j: 3, l: 6
+number: 247:, score: 3, i: 1, j: 3, l: 7
+number: 248:, score: 5, i: 1, j: 3, l: 8
+number: 249:, score: 4, i: 1, j: 3, l: 9
+number: 250:, score: 4, i: 1, j: 3, l: 10
+number: 251:, score: 3, i: 1, j: 3, l: 11
+number: 252:, score: 5, i: 1, j: 3, l: 12
+number: 253:, score: 4, i: 1, j: 3, l: 13
+number: 254:, score: 4, i: 1, j: 3, l: 14
+number: 255:, score: 3, i: 1, j: 3, l: 15
+number: 256:, score: 4, i: 1, j: 4, l: 0
+number: 257:, score: 4, i: 1, j: 4, l: 1
+number: 258:, score: 3, i: 1, j: 4, l: 2
+number: 259:, score: 3, i: 1, j: 4, l: 3
+number: 260:, score: 4, i: 1, j: 4, l: 4
+number: 261:, score: 4, i: 1, j: 4, l: 5
+number: 262:, score: 3, i: 1, j: 4, l: 6
+number: 263:, score: 3, i: 1, j: 4, l: 7
+number: 264:, score: 4, i: 1, j: 4, l: 8
+number: 265:, score: 4, i: 1, j: 4, l: 9
+number: 266:, score: 3, i: 1, j: 4, l: 10
+number: 267:, score: 3, i: 1, j: 4, l: 11
+number: 268:, score: 4, i: 1, j: 4, l: 12
+number: 269:, score: 4, i: 1, j: 4, l: 13
+number: 270:, score: 3, i: 1, j: 4, l: 14
+number: 271:, score: 3, i: 1, j: 4, l: 15
+number: 272:, score: 5, i: 1, j: 5, l: 0
+number: 273:, score: 4, i: 1, j: 5, l: 1
+number: 274:, score: 4, i: 1, j: 5, l: 2
+number: 275:, score: 3, i: 1, j: 5, l: 3
+number: 276:, score: 5, i: 1, j: 5, l: 4
+number: 277:, score: 4, i: 1, j: 5, l: 5
+number: 278:, score: 4, i: 1, j: 5, l: 6
+number: 279:, score: 3, i: 1, j: 5, l: 7
+number: 280:, score: 5, i: 1, j: 5, l: 8
+number: 281:, score: 4, i: 1, j: 5, l: 9
+number: 282:, score: 4, i: 1, j: 5, l: 10
+number: 283:, score: 3, i: 1, j: 5, l: 11
+number: 284:, score: 5, i: 1, j: 5, l: 12
+number: 285:, score: 4, i: 1, j: 5, l: 13
+number: 286:, score: 4, i: 1, j: 5, l: 14
+number: 287:, score: 3, i: 1, j: 5, l: 15
+number: 288:, score: 5, i: 1, j: 6, l: 0
+number: 289:, score: 5, i: 1, j: 6, l: 1
+number: 290:, score: 6, i: 1, j: 6, l: 2
+number: 291:, score: 6, i: 1, j: 6, l: 3
+number: 292:, score: 5, i: 1, j: 6, l: 4
+number: 293:, score: 5, i: 1, j: 6, l: 5
+number: 294:, score: 6, i: 1, j: 6, l: 6
+number: 295:, score: 6, i: 1, j: 6, l: 7
+number: 296:, score: 5, i: 1, j: 6, l: 8
+number: 297:, score: 5, i: 1, j: 6, l: 9
+number: 298:, score: 6, i: 1, j: 6, l: 10
+number: 299:, score: 6, i: 1, j: 6, l: 11
+number: 300:, score: 5, i: 1, j: 6, l: 12
+number: 301:, score: 5, i: 1, j: 6, l: 13
+number: 302:, score: 6, i: 1, j: 6, l: 14
+number: 303:, score: 6, i: 1, j: 6, l: 15
+number: 304:, score: 6, i: 1, j: 7, l: 0
+number: 305:, score: 5, i: 1, j: 7, l: 1
+number: 306:, score: 7, i: 1, j: 7, l: 2
+number: 307:, score: 6, i: 1, j: 7, l: 3
+number: 308:, score: 6, i: 1, j: 7, l: 4
+number: 309:, score: 5, i: 1, j: 7, l: 5
+number: 310:, score: 7, i: 1, j: 7, l: 6
+number: 311:, score: 6, i: 1, j: 7, l: 7
+number: 312:, score: 6, i: 1, j: 7, l: 8
+number: 313:, score: 5, i: 1, j: 7, l: 9
+number: 314:, score: 7, i: 1, j: 7, l: 10
+number: 315:, score: 6, i: 1, j: 7, l: 11
+number: 316:, score: 6, i: 1, j: 7, l: 12
+number: 317:, score: 5, i: 1, j: 7, l: 13
+number: 318:, score: 7, i: 1, j: 7, l: 14
+number: 319:, score: 6, i: 1, j: 7, l: 15
+number: 320:, score: 3, i: 1, j: 8, l: 0
+number: 321:, score: 3, i: 1, j: 8, l: 1
+number: 322:, score: 4, i: 1, j: 8, l: 2
+number: 323:, score: 4, i: 1, j: 8, l: 3
+number: 324:, score: 3, i: 1, j: 8, l: 4
+number: 325:, score: 3, i: 1, j: 8, l: 5
+number: 326:, score: 4, i: 1, j: 8, l: 6
+number: 327:, score: 4, i: 1, j: 8, l: 7
+number: 328:, score: 3, i: 1, j: 8, l: 8
+number: 329:, score: 3, i: 1, j: 8, l: 9
+number: 330:, score: 4, i: 1, j: 8, l: 10
+number: 331:, score: 4, i: 1, j: 8, l: 11
+number: 332:, score: 3, i: 1, j: 8, l: 12
+number: 333:, score: 3, i: 1, j: 8, l: 13
+number: 334:, score: 4, i: 1, j: 8, l: 14
+number: 335:, score: 4, i: 1, j: 8, l: 15
+number: 336:, score: 4, i: 1, j: 9, l: 0
+number: 337:, score: 3, i: 1, j: 9, l: 1
+number: 338:, score: 5, i: 1, j: 9, l: 2
+number: 339:, score: 4, i: 1, j: 9, l: 3
+number: 340:, score: 4, i: 1, j: 9, l: 4
+number: 341:, score: 3, i: 1, j: 9, l: 5
+number: 342:, score: 5, i: 1, j: 9, l: 6
+number: 343:, score: 4, i: 1, j: 9, l: 7
+number: 344:, score: 4, i: 1, j: 9, l: 8
+number: 345:, score: 3, i: 1, j: 9, l: 9
+number: 346:, score: 5, i: 1, j: 9, l: 10
+number: 347:, score: 4, i: 1, j: 9, l: 11
+number: 348:, score: 4, i: 1, j: 9, l: 12
+number: 349:, score: 3, i: 1, j: 9, l: 13
+number: 350:, score: 5, i: 1, j: 9, l: 14
+number: 351:, score: 4, i: 1, j: 9, l: 15
+number: 352:, score: 3, i: 1, j: 10, l: 0
+number: 353:, score: 3, i: 1, j: 10, l: 1
+number: 354:, score: 4, i: 1, j: 10, l: 2
+number: 355:, score: 4, i: 1, j: 10, l: 3
+number: 356:, score: 3, i: 1, j: 10, l: 4
+number: 357:, score: 3, i: 1, j: 10, l: 5
+number: 358:, score: 4, i: 1, j: 10, l: 6
+number: 359:, score: 4, i: 1, j: 10, l: 7
+number: 360:, score: 3, i: 1, j: 10, l: 8
+number: 361:, score: 3, i: 1, j: 10, l: 9
+number: 362:, score: 4, i: 1, j: 10, l: 10
+number: 363:, score: 4, i: 1, j: 10, l: 11
+number: 364:, score: 3, i: 1, j: 10, l: 12
+number: 365:, score: 3, i: 1, j: 10, l: 13
+number: 366:, score: 4, i: 1, j: 10, l: 14
+number: 367:, score: 4, i: 1, j: 10, l: 15
+number: 368:, score: 4, i: 1, j: 11, l: 0
+number: 369:, score: 3, i: 1, j: 11, l: 1
+number: 370:, score: 5, i: 1, j: 11, l: 2
+number: 371:, score: 4, i: 1, j: 11, l: 3
+number: 372:, score: 4, i: 1, j: 11, l: 4
+number: 373:, score: 3, i: 1, j: 11, l: 5
+number: 374:, score: 5, i: 1, j: 11, l: 6
+number: 375:, score: 4, i: 1, j: 11, l: 7
+number: 376:, score: 4, i: 1, j: 11, l: 8
+number: 377:, score: 3, i: 1, j: 11, l: 9
+number: 378:, score: 5, i: 1, j: 11, l: 10
+number: 379:, score: 4, i: 1, j: 11, l: 11
+number: 380:, score: 4, i: 1, j: 11, l: 12
+number: 381:, score: 3, i: 1, j: 11, l: 13
+number: 382:, score: 5, i: 1, j: 11, l: 14
+number: 383:, score: 4, i: 1, j: 11, l: 15
+number: 384:, score: 5, i: 2, j: 0, l: 0
+number: 385:, score: 5, i: 2, j: 0, l: 1
+number: 386:, score: 5, i: 2, j: 0, l: 2
+number: 387:, score: 5, i: 2, j: 0, l: 3
+number: 388:, score: 6, i: 2, j: 0, l: 4
+number: 389:, score: 6, i: 2, j: 0, l: 5
+number: 390:, score: 6, i: 2, j: 0, l: 6
+number: 391:, score: 6, i: 2, j: 0, l: 7
+number: 392:, score: 5, i: 2, j: 0, l: 8
+number: 393:, score: 5, i: 2, j: 0, l: 9
+number: 394:, score: 5, i: 2, j: 0, l: 10
+number: 395:, score: 5, i: 2, j: 0, l: 11
+number: 396:, score: 6, i: 2, j: 0, l: 12
+number: 397:, score: 6, i: 2, j: 0, l: 13
+number: 398:, score: 6, i: 2, j: 0, l: 14
+number: 399:, score: 6, i: 2, j: 0, l: 15
+number: 400:, score: 6, i: 2, j: 1, l: 0
+number: 401:, score: 6, i: 2, j: 1, l: 1
+number: 402:, score: 5, i: 2, j: 1, l: 2
+number: 403:, score: 5, i: 2, j: 1, l: 3
+number: 404:, score: 7, i: 2, j: 1, l: 4
+number: 405:, score: 7, i: 2, j: 1, l: 5
+number: 406:, score: 6, i: 2, j: 1, l: 6
+number: 407:, score: 6, i: 2, j: 1, l: 7
+number: 408:, score: 6, i: 2, j: 1, l: 8
+number: 409:, score: 6, i: 2, j: 1, l: 9
+number: 410:, score: 5, i: 2, j: 1, l: 10
+number: 411:, score: 5, i: 2, j: 1, l: 11
+number: 412:, score: 7, i: 2, j: 1, l: 12
+number: 413:, score: 7, i: 2, j: 1, l: 13
+number: 414:, score: 6, i: 2, j: 1, l: 14
+number: 415:, score: 6, i: 2, j: 1, l: 15
+number: 416:, score: 3, i: 2, j: 2, l: 0
+number: 417:, score: 3, i: 2, j: 2, l: 1
+number: 418:, score: 3, i: 2, j: 2, l: 2
+number: 419:, score: 3, i: 2, j: 2, l: 3
+number: 420:, score: 4, i: 2, j: 2, l: 4
+number: 421:, score: 4, i: 2, j: 2, l: 5
+number: 422:, score: 4, i: 2, j: 2, l: 6
+number: 423:, score: 4, i: 2, j: 2, l: 7
+number: 424:, score: 3, i: 2, j: 2, l: 8
+number: 425:, score: 3, i: 2, j: 2, l: 9
+number: 426:, score: 3, i: 2, j: 2, l: 10
+number: 427:, score: 3, i: 2, j: 2, l: 11
+number: 428:, score: 4, i: 2, j: 2, l: 12
+number: 429:, score: 4, i: 2, j: 2, l: 13
+number: 430:, score: 4, i: 2, j: 2, l: 14
+number: 431:, score: 4, i: 2, j: 2, l: 15
+number: 432:, score: 4, i: 2, j: 3, l: 0
+number: 433:, score: 4, i: 2, j: 3, l: 1
+number: 434:, score: 3, i: 2, j: 3, l: 2
+number: 435:, score: 3, i: 2, j: 3, l: 3
+number: 436:, score: 5, i: 2, j: 3, l: 4
+number: 437:, score: 5, i: 2, j: 3, l: 5
+number: 438:, score: 4, i: 2, j: 3, l: 6
+number: 439:, score: 4, i: 2, j: 3, l: 7
+number: 440:, score: 4, i: 2, j: 3, l: 8
+number: 441:, score: 4, i: 2, j: 3, l: 9
+number: 442:, score: 3, i: 2, j: 3, l: 10
+number: 443:, score: 3, i: 2, j: 3, l: 11
+number: 444:, score: 5, i: 2, j: 3, l: 12
+number: 445:, score: 5, i: 2, j: 3, l: 13
+number: 446:, score: 4, i: 2, j: 3, l: 14
+number: 447:, score: 4, i: 2, j: 3, l: 15
+number: 448:, score: 3, i: 2, j: 4, l: 0
+number: 449:, score: 3, i: 2, j: 4, l: 1
+number: 450:, score: 3, i: 2, j: 4, l: 2
+number: 451:, score: 3, i: 2, j: 4, l: 3
+number: 452:, score: 4, i: 2, j: 4, l: 4
+number: 453:, score: 4, i: 2, j: 4, l: 5
+number: 454:, score: 4, i: 2, j: 4, l: 6
+number: 455:, score: 4, i: 2, j: 4, l: 7
+number: 456:, score: 3, i: 2, j: 4, l: 8
+number: 457:, score: 3, i: 2, j: 4, l: 9
+number: 458:, score: 3, i: 2, j: 4, l: 10
+number: 459:, score: 3, i: 2, j: 4, l: 11
+number: 460:, score: 4, i: 2, j: 4, l: 12
+number: 461:, score: 4, i: 2, j: 4, l: 13
+number: 462:, score: 4, i: 2, j: 4, l: 14
+number: 463:, score: 4, i: 2, j: 4, l: 15
+number: 464:, score: 4, i: 2, j: 5, l: 0
+number: 465:, score: 4, i: 2, j: 5, l: 1
+number: 466:, score: 3, i: 2, j: 5, l: 2
+number: 467:, score: 3, i: 2, j: 5, l: 3
+number: 468:, score: 5, i: 2, j: 5, l: 4
+number: 469:, score: 5, i: 2, j: 5, l: 5
+number: 470:, score: 4, i: 2, j: 5, l: 6
+number: 471:, score: 4, i: 2, j: 5, l: 7
+number: 472:, score: 4, i: 2, j: 5, l: 8
+number: 473:, score: 4, i: 2, j: 5, l: 9
+number: 474:, score: 3, i: 2, j: 5, l: 10
+number: 475:, score: 3, i: 2, j: 5, l: 11
+number: 476:, score: 5, i: 2, j: 5, l: 12
+number: 477:, score: 5, i: 2, j: 5, l: 13
+number: 478:, score: 4, i: 2, j: 5, l: 14
+number: 479:, score: 4, i: 2, j: 5, l: 15
+number: 480:, score: 5, i: 2, j: 6, l: 0
+number: 481:, score: 5, i: 2, j: 6, l: 1
+number: 482:, score: 5, i: 2, j: 6, l: 2
+number: 483:, score: 5, i: 2, j: 6, l: 3
+number: 484:, score: 6, i: 2, j: 6, l: 4
+number: 485:, score: 6, i: 2, j: 6, l: 5
+number: 486:, score: 6, i: 2, j: 6, l: 6
+number: 487:, score: 6, i: 2, j: 6, l: 7
+number: 488:, score: 5, i: 2, j: 6, l: 8
+number: 489:, score: 5, i: 2, j: 6, l: 9
+number: 490:, score: 5, i: 2, j: 6, l: 10
+number: 491:, score: 5, i: 2, j: 6, l: 11
+number: 492:, score: 6, i: 2, j: 6, l: 12
+number: 493:, score: 6, i: 2, j: 6, l: 13
+number: 494:, score: 6, i: 2, j: 6, l: 14
+number: 495:, score: 6, i: 2, j: 6, l: 15
+number: 496:, score: 6, i: 2, j: 7, l: 0
+number: 497:, score: 6, i: 2, j: 7, l: 1
+number: 498:, score: 5, i: 2, j: 7, l: 2
+number: 499:, score: 5, i: 2, j: 7, l: 3
+number: 500:, score: 7, i: 2, j: 7, l: 4
+number: 501:, score: 7, i: 2, j: 7, l: 5
+number: 502:, score: 6, i: 2, j: 7, l: 6
+number: 503:, score: 6, i: 2, j: 7, l: 7
+number: 504:, score: 6, i: 2, j: 7, l: 8
+number: 505:, score: 6, i: 2, j: 7, l: 9
+number: 506:, score: 5, i: 2, j: 7, l: 10
+number: 507:, score: 5, i: 2, j: 7, l: 11
+number: 508:, score: 7, i: 2, j: 7, l: 12
+number: 509:, score: 7, i: 2, j: 7, l: 13
+number: 510:, score: 6, i: 2, j: 7, l: 14
+number: 511:, score: 6, i: 2, j: 7, l: 15
+number: 512:, score: 3, i: 2, j: 8, l: 0
+number: 513:, score: 3, i: 2, j: 8, l: 1
+number: 514:, score: 3, i: 2, j: 8, l: 2
+number: 515:, score: 3, i: 2, j: 8, l: 3
+number: 516:, score: 4, i: 2, j: 8, l: 4
+number: 517:, score: 4, i: 2, j: 8, l: 5
+number: 518:, score: 4, i: 2, j: 8, l: 6
+number: 519:, score: 4, i: 2, j: 8, l: 7
+number: 520:, score: 3, i: 2, j: 8, l: 8
+number: 521:, score: 3, i: 2, j: 8, l: 9
+number: 522:, score: 3, i: 2, j: 8, l: 10
+number: 523:, score: 3, i: 2, j: 8, l: 11
+number: 524:, score: 4, i: 2, j: 8, l: 12
+number: 525:, score: 4, i: 2, j: 8, l: 13
+number: 526:, score: 4, i: 2, j: 8, l: 14
+number: 527:, score: 4, i: 2, j: 8, l: 15
+number: 528:, score: 4, i: 2, j: 9, l: 0
+number: 529:, score: 4, i: 2, j: 9, l: 1
+number: 530:, score: 3, i: 2, j: 9, l: 2
+number: 531:, score: 3, i: 2, j: 9, l: 3
+number: 532:, score: 5, i: 2, j: 9, l: 4
+number: 533:, score: 5, i: 2, j: 9, l: 5
+number: 534:, score: 4, i: 2, j: 9, l: 6
+number: 535:, score: 4, i: 2, j: 9, l: 7
+number: 536:, score: 4, i: 2, j: 9, l: 8
+number: 537:, score: 4, i: 2, j: 9, l: 9
+number: 538:, score: 3, i: 2, j: 9, l: 10
+number: 539:, score: 3, i: 2, j: 9, l: 11
+number: 540:, score: 5, i: 2, j: 9, l: 12
+number: 541:, score: 5, i: 2, j: 9, l: 13
+number: 542:, score: 4, i: 2, j: 9, l: 14
+number: 543:, score: 4, i: 2, j: 9, l: 15
+number: 544:, score: 3, i: 2, j: 10, l: 0
+number: 545:, score: 3, i: 2, j: 10, l: 1
+number: 546:, score: 3, i: 2, j: 10, l: 2
+number: 547:, score: 3, i: 2, j: 10, l: 3
+number: 548:, score: 4, i: 2, j: 10, l: 4
+number: 549:, score: 4, i: 2, j: 10, l: 5
+number: 550:, score: 4, i: 2, j: 10, l: 6
+number: 551:, score: 4, i: 2, j: 10, l: 7
+number: 552:, score: 3, i: 2, j: 10, l: 8
+number: 553:, score: 3, i: 2, j: 10, l: 9
+number: 554:, score: 3, i: 2, j: 10, l: 10
+number: 555:, score: 3, i: 2, j: 10, l: 11
+number: 556:, score: 4, i: 2, j: 10, l: 12
+number: 557:, score: 4, i: 2, j: 10, l: 13
+number: 558:, score: 4, i: 2, j: 10, l: 14
+number: 559:, score: 4, i: 2, j: 10, l: 15
+number: 560:, score: 4, i: 2, j: 11, l: 0
+number: 561:, score: 4, i: 2, j: 11, l: 1
+number: 562:, score: 3, i: 2, j: 11, l: 2
+number: 563:, score: 3, i: 2, j: 11, l: 3
+number: 564:, score: 5, i: 2, j: 11, l: 4
+number: 565:, score: 5, i: 2, j: 11, l: 5
+number: 566:, score: 4, i: 2, j: 11, l: 6
+number: 567:, score: 4, i: 2, j: 11, l: 7
+number: 568:, score: 4, i: 2, j: 11, l: 8
+number: 569:, score: 4, i: 2, j: 11, l: 9
+number: 570:, score: 3, i: 2, j: 11, l: 10
+number: 571:, score: 3, i: 2, j: 11, l: 11
+number: 572:, score: 5, i: 2, j: 11, l: 12
+number: 573:, score: 5, i: 2, j: 11, l: 13
+number: 574:, score: 4, i: 2, j: 11, l: 14
+number: 575:, score: 4, i: 2, j: 11, l: 15
+number: 576:, score: 5, i: 3, j: 0, l: 0
+number: 577:, score: 5, i: 3, j: 0, l: 1
+number: 578:, score: 5, i: 3, j: 0, l: 2
+number: 579:, score: 5, i: 3, j: 0, l: 3
+number: 580:, score: 6, i: 3, j: 0, l: 4
+number: 581:, score: 6, i: 3, j: 0, l: 5
+number: 582:, score: 6, i: 3, j: 0, l: 6
+number: 583:, score: 6, i: 3, j: 0, l: 7
+number: 584:, score: 5, i: 3, j: 0, l: 8
+number: 585:, score: 5, i: 3, j: 0, l: 9
+number: 586:, score: 5, i: 3, j: 0, l: 10
+number: 587:, score: 5, i: 3, j: 0, l: 11
+number: 588:, score: 6, i: 3, j: 0, l: 12
+number: 589:, score: 6, i: 3, j: 0, l: 13
+number: 590:, score: 6, i: 3, j: 0, l: 14
+number: 591:, score: 6, i: 3, j: 0, l: 15
+number: 592:, score: 6, i: 3, j: 1, l: 0
+number: 593:, score: 6, i: 3, j: 1, l: 1
+number: 594:, score: 5, i: 3, j: 1, l: 2
+number: 595:, score: 5, i: 3, j: 1, l: 3
+number: 596:, score: 7, i: 3, j: 1, l: 4
+number: 597:, score: 7, i: 3, j: 1, l: 5
+number: 598:, score: 6, i: 3, j: 1, l: 6
+number: 599:, score: 6, i: 3, j: 1, l: 7
+number: 600:, score: 6, i: 3, j: 1, l: 8
+number: 601:, score: 6, i: 3, j: 1, l: 9
+number: 602:, score: 5, i: 3, j: 1, l: 10
+number: 603:, score: 5, i: 3, j: 1, l: 11
+number: 604:, score: 7, i: 3, j: 1, l: 12
+number: 605:, score: 7, i: 3, j: 1, l: 13
+number: 606:, score: 6, i: 3, j: 1, l: 14
+number: 607:, score: 6, i: 3, j: 1, l: 15
+number: 608:, score: 3, i: 3, j: 2, l: 0
+number: 609:, score: 3, i: 3, j: 2, l: 1
+number: 610:, score: 3, i: 3, j: 2, l: 2
+number: 611:, score: 3, i: 3, j: 2, l: 3
+number: 612:, score: 4, i: 3, j: 2, l: 4
+number: 613:, score: 4, i: 3, j: 2, l: 5
+number: 614:, score: 4, i: 3, j: 2, l: 6
+number: 615:, score: 4, i: 3, j: 2, l: 7
+number: 616:, score: 3, i: 3, j: 2, l: 8
+number: 617:, score: 3, i: 3, j: 2, l: 9
+number: 618:, score: 3, i: 3, j: 2, l: 10
+number: 619:, score: 3, i: 3, j: 2, l: 11
+number: 620:, score: 4, i: 3, j: 2, l: 12
+number: 621:, score: 4, i: 3, j: 2, l: 13
+number: 622:, score: 4, i: 3, j: 2, l: 14
+number: 623:, score: 4, i: 3, j: 2, l: 15
+number: 624:, score: 4, i: 3, j: 3, l: 0
+number: 625:, score: 4, i: 3, j: 3, l: 1
+number: 626:, score: 3, i: 3, j: 3, l: 2
+number: 627:, score: 3, i: 3, j: 3, l: 3
+number: 628:, score: 5, i: 3, j: 3, l: 4
+number: 629:, score: 5, i: 3, j: 3, l: 5
+number: 630:, score: 4, i: 3, j: 3, l: 6
+number: 631:, score: 4, i: 3, j: 3, l: 7
+number: 632:, score: 4, i: 3, j: 3, l: 8
+number: 633:, score: 4, i: 3, j: 3, l: 9
+number: 634:, score: 3, i: 3, j: 3, l: 10
+number: 635:, score: 3, i: 3, j: 3, l: 11
+number: 636:, score: 5, i: 3, j: 3, l: 12
+number: 637:, score: 5, i: 3, j: 3, l: 13
+number: 638:, score: 4, i: 3, j: 3, l: 14
+number: 639:, score: 4, i: 3, j: 3, l: 15
+number: 640:, score: 3, i: 3, j: 4, l: 0
+number: 641:, score: 3, i: 3, j: 4, l: 1
+number: 642:, score: 3, i: 3, j: 4, l: 2
+number: 643:, score: 3, i: 3, j: 4, l: 3
+number: 644:, score: 4, i: 3, j: 4, l: 4
+number: 645:, score: 4, i: 3, j: 4, l: 5
+number: 646:, score: 4, i: 3, j: 4, l: 6
+number: 647:, score: 4, i: 3, j: 4, l: 7
+number: 648:, score: 3, i: 3, j: 4, l: 8
+number: 649:, score: 3, i: 3, j: 4, l: 9
+number: 650:, score: 3, i: 3, j: 4, l: 10
+number: 651:, score: 3, i: 3, j: 4, l: 11
+number: 652:, score: 4, i: 3, j: 4, l: 12
+number: 653:, score: 4, i: 3, j: 4, l: 13
+number: 654:, score: 4, i: 3, j: 4, l: 14
+number: 655:, score: 4, i: 3, j: 4, l: 15
+number: 656:, score: 4, i: 3, j: 5, l: 0
+number: 657:, score: 4, i: 3, j: 5, l: 1
+number: 658:, score: 3, i: 3, j: 5, l: 2
+number: 659:, score: 3, i: 3, j: 5, l: 3
+number: 660:, score: 5, i: 3, j: 5, l: 4
+number: 661:, score: 5, i: 3, j: 5, l: 5
+number: 662:, score: 4, i: 3, j: 5, l: 6
+number: 663:, score: 4, i: 3, j: 5, l: 7
+number: 664:, score: 4, i: 3, j: 5, l: 8
+number: 665:, score: 4, i: 3, j: 5, l: 9
+number: 666:, score: 3, i: 3, j: 5, l: 10
+number: 667:, score: 3, i: 3, j: 5, l: 11
+number: 668:, score: 5, i: 3, j: 5, l: 12
+number: 669:, score: 5, i: 3, j: 5, l: 13
+number: 670:, score: 4, i: 3, j: 5, l: 14
+number: 671:, score: 4, i: 3, j: 5, l: 15
+number: 672:, score: 5, i: 3, j: 6, l: 0
+number: 673:, score: 5, i: 3, j: 6, l: 1
+number: 674:, score: 5, i: 3, j: 6, l: 2
+number: 675:, score: 5, i: 3, j: 6, l: 3
+number: 676:, score: 6, i: 3, j: 6, l: 4
+number: 677:, score: 6, i: 3, j: 6, l: 5
+number: 678:, score: 6, i: 3, j: 6, l: 6
+number: 679:, score: 6, i: 3, j: 6, l: 7
+number: 680:, score: 5, i: 3, j: 6, l: 8
+number: 681:, score: 5, i: 3, j: 6, l: 9
+number: 682:, score: 5, i: 3, j: 6, l: 10
+number: 683:, score: 5, i: 3, j: 6, l: 11
+number: 684:, score: 6, i: 3, j: 6, l: 12
+number: 685:, score: 6, i: 3, j: 6, l: 13
+number: 686:, score: 6, i: 3, j: 6, l: 14
+number: 687:, score: 6, i: 3, j: 6, l: 15
+number: 688:, score: 6, i: 3, j: 7, l: 0
+number: 689:, score: 6, i: 3, j: 7, l: 1
+number: 690:, score: 5, i: 3, j: 7, l: 2
+number: 691:, score: 5, i: 3, j: 7, l: 3
+number: 692:, score: 7, i: 3, j: 7, l: 4
+number: 693:, score: 7, i: 3, j: 7, l: 5
+number: 694:, score: 6, i: 3, j: 7, l: 6
+number: 695:, score: 6, i: 3, j: 7, l: 7
+number: 696:, score: 6, i: 3, j: 7, l: 8
+number: 697:, score: 6, i: 3, j: 7, l: 9
+number: 698:, score: 5, i: 3, j: 7, l: 10
+number: 699:, score: 5, i: 3, j: 7, l: 11
+number: 700:, score: 7, i: 3, j: 7, l: 12
+number: 701:, score: 7, i: 3, j: 7, l: 13
+number: 702:, score: 6, i: 3, j: 7, l: 14
+number: 703:, score: 6, i: 3, j: 7, l: 15
+number: 704:, score: 3, i: 3, j: 8, l: 0
+number: 705:, score: 3, i: 3, j: 8, l: 1
+number: 706:, score: 3, i: 3, j: 8, l: 2
+number: 707:, score: 3, i: 3, j: 8, l: 3
+number: 708:, score: 4, i: 3, j: 8, l: 4
+number: 709:, score: 4, i: 3, j: 8, l: 5
+number: 710:, score: 4, i: 3, j: 8, l: 6
+number: 711:, score: 4, i: 3, j: 8, l: 7
+number: 712:, score: 3, i: 3, j: 8, l: 8
+number: 713:, score: 3, i: 3, j: 8, l: 9
+number: 714:, score: 3, i: 3, j: 8, l: 10
+number: 715:, score: 3, i: 3, j: 8, l: 11
+number: 716:, score: 4, i: 3, j: 8, l: 12
+number: 717:, score: 4, i: 3, j: 8, l: 13
+number: 718:, score: 4, i: 3, j: 8, l: 14
+number: 719:, score: 4, i: 3, j: 8, l: 15
+number: 720:, score: 4, i: 3, j: 9, l: 0
+number: 721:, score: 4, i: 3, j: 9, l: 1
+number: 722:, score: 3, i: 3, j: 9, l: 2
+number: 723:, score: 3, i: 3, j: 9, l: 3
+number: 724:, score: 5, i: 3, j: 9, l: 4
+number: 725:, score: 5, i: 3, j: 9, l: 5
+number: 726:, score: 4, i: 3, j: 9, l: 6
+number: 727:, score: 4, i: 3, j: 9, l: 7
+number: 728:, score: 4, i: 3, j: 9, l: 8
+number: 729:, score: 4, i: 3, j: 9, l: 9
+number: 730:, score: 3, i: 3, j: 9, l: 10
+number: 731:, score: 3, i: 3, j: 9, l: 11
+number: 732:, score: 5, i: 3, j: 9, l: 12
+number: 733:, score: 5, i: 3, j: 9, l: 13
+number: 734:, score: 4, i: 3, j: 9, l: 14
+number: 735:, score: 4, i: 3, j: 9, l: 15
+number: 736:, score: 3, i: 3, j: 10, l: 0
+number: 737:, score: 3, i: 3, j: 10, l: 1
+number: 738:, score: 3, i: 3, j: 10, l: 2
+number: 739:, score: 3, i: 3, j: 10, l: 3
+number: 740:, score: 4, i: 3, j: 10, l: 4
+number: 741:, score: 4, i: 3, j: 10, l: 5
+number: 742:, score: 4, i: 3, j: 10, l: 6
+number: 743:, score: 4, i: 3, j: 10, l: 7
+number: 744:, score: 3, i: 3, j: 10, l: 8
+number: 745:, score: 3, i: 3, j: 10, l: 9
+number: 746:, score: 3, i: 3, j: 10, l: 10
+number: 747:, score: 3, i: 3, j: 10, l: 11
+number: 748:, score: 4, i: 3, j: 10, l: 12
+number: 749:, score: 4, i: 3, j: 10, l: 13
+number: 750:, score: 4, i: 3, j: 10, l: 14
+number: 751:, score: 4, i: 3, j: 10, l: 15
+number: 752:, score: 4, i: 3, j: 11, l: 0
+number: 753:, score: 4, i: 3, j: 11, l: 1
+number: 754:, score: 3, i: 3, j: 11, l: 2
+number: 755:, score: 3, i: 3, j: 11, l: 3
+number: 756:, score: 5, i: 3, j: 11, l: 4
+number: 757:, score: 5, i: 3, j: 11, l: 5
+number: 758:, score: 4, i: 3, j: 11, l: 6
+number: 759:, score: 4, i: 3, j: 11, l: 7
+number: 760:, score: 4, i: 3, j: 11, l: 8
+number: 761:, score: 4, i: 3, j: 11, l: 9
+number: 762:, score: 3, i: 3, j: 11, l: 10
+number: 763:, score: 3, i: 3, j: 11, l: 11
+number: 764:, score: 5, i: 3, j: 11, l: 12
+number: 765:, score: 5, i: 3, j: 11, l: 13
+number: 766:, score: 4, i: 3, j: 11, l: 14
+number: 767:, score: 4, i: 3, j: 11, l: 15
+Sort local timestamp (start): [24:34.685] 
+TimSort used
+InsertionSort used
+Sort local timestamp (end): [24:34.690] 
+score_pc (percentage): 20b_s_pop (percentage): 153
+best_local_scores:
+number: 0:, score: 7, i: 0, j: 0, l: 0
+number: 1:, score: 7, i: 0, j: 0, l: 1
+number: 2:, score: 7, i: 0, j: 0, l: 2
+number: 3:, score: 7, i: 0, j: 0, l: 3
+number: 4:, score: 7, i: 0, j: 0, l: 4
+number: 5:, score: 7, i: 0, j: 0, l: 5
+number: 6:, score: 7, i: 0, j: 0, l: 6
+number: 7:, score: 7, i: 0, j: 0, l: 7
+number: 8:, score: 7, i: 0, j: 0, l: 8
+number: 9:, score: 7, i: 0, j: 0, l: 9
+number: 10:, score: 7, i: 0, j: 0, l: 10
+number: 11:, score: 7, i: 0, j: 0, l: 11
+number: 12:, score: 7, i: 0, j: 0, l: 12
+number: 13:, score: 7, i: 0, j: 0, l: 13
+number: 14:, score: 7, i: 0, j: 0, l: 14
+number: 15:, score: 7, i: 0, j: 0, l: 15
+number: 16:, score: 7, i: 0, j: 1, l: 0
+number: 17:, score: 7, i: 0, j: 1, l: 1
+number: 18:, score: 7, i: 0, j: 1, l: 2
+number: 19:, score: 7, i: 0, j: 1, l: 3
+number: 20:, score: 7, i: 0, j: 1, l: 4
+number: 21:, score: 7, i: 0, j: 1, l: 5
+number: 22:, score: 7, i: 0, j: 1, l: 6
+number: 23:, score: 7, i: 0, j: 1, l: 7
+number: 24:, score: 7, i: 0, j: 1, l: 8
+number: 25:, score: 7, i: 0, j: 1, l: 9
+number: 26:, score: 7, i: 0, j: 1, l: 10
+number: 27:, score: 7, i: 0, j: 1, l: 11
+number: 28:, score: 7, i: 0, j: 1, l: 12
+number: 29:, score: 7, i: 0, j: 1, l: 13
+number: 30:, score: 7, i: 0, j: 1, l: 14
+number: 31:, score: 7, i: 0, j: 1, l: 15
+number: 32:, score: 6, i: 0, j: 2, l: 0
+number: 33:, score: 6, i: 0, j: 2, l: 1
+number: 34:, score: 6, i: 0, j: 2, l: 2
+number: 35:, score: 6, i: 0, j: 2, l: 3
+number: 36:, score: 6, i: 0, j: 2, l: 4
+number: 37:, score: 6, i: 0, j: 2, l: 5
+number: 38:, score: 6, i: 0, j: 2, l: 6
+number: 39:, score: 6, i: 0, j: 2, l: 7
+number: 40:, score: 6, i: 0, j: 2, l: 8
+number: 41:, score: 6, i: 0, j: 2, l: 9
+number: 42:, score: 6, i: 0, j: 2, l: 10
+number: 43:, score: 6, i: 0, j: 2, l: 11
+number: 44:, score: 6, i: 0, j: 2, l: 12
+number: 45:, score: 6, i: 0, j: 2, l: 13
+number: 46:, score: 6, i: 0, j: 2, l: 14
+number: 47:, score: 6, i: 0, j: 2, l: 15
+number: 48:, score: 6, i: 0, j: 3, l: 0
+number: 49:, score: 6, i: 0, j: 3, l: 1
+number: 50:, score: 6, i: 0, j: 3, l: 2
+number: 51:, score: 6, i: 0, j: 3, l: 3
+number: 52:, score: 6, i: 0, j: 3, l: 4
+number: 53:, score: 6, i: 0, j: 3, l: 5
+number: 54:, score: 6, i: 0, j: 3, l: 6
+number: 55:, score: 6, i: 0, j: 3, l: 7
+number: 56:, score: 6, i: 0, j: 3, l: 8
+number: 57:, score: 6, i: 0, j: 3, l: 9
+number: 58:, score: 6, i: 0, j: 3, l: 10
+number: 59:, score: 6, i: 0, j: 3, l: 11
+number: 60:, score: 6, i: 0, j: 3, l: 12
+number: 61:, score: 6, i: 0, j: 3, l: 13
+number: 62:, score: 6, i: 0, j: 3, l: 14
+number: 63:, score: 6, i: 0, j: 3, l: 15
+number: 64:, score: 6, i: 0, j: 4, l: 0
+number: 65:, score: 6, i: 0, j: 4, l: 1
+number: 66:, score: 6, i: 0, j: 4, l: 2
+number: 67:, score: 6, i: 0, j: 4, l: 3
+number: 68:, score: 6, i: 0, j: 4, l: 4
+number: 69:, score: 6, i: 0, j: 4, l: 5
+number: 70:, score: 6, i: 0, j: 4, l: 6
+number: 71:, score: 6, i: 0, j: 4, l: 7
+number: 72:, score: 6, i: 0, j: 4, l: 8
+number: 73:, score: 6, i: 0, j: 4, l: 9
+number: 74:, score: 6, i: 0, j: 4, l: 10
+number: 75:, score: 6, i: 0, j: 4, l: 11
+number: 76:, score: 6, i: 0, j: 4, l: 12
+number: 77:, score: 6, i: 0, j: 4, l: 13
+number: 78:, score: 6, i: 0, j: 4, l: 14
+number: 79:, score: 6, i: 0, j: 4, l: 15
+number: 80:, score: 6, i: 0, j: 5, l: 0
+number: 81:, score: 6, i: 0, j: 5, l: 1
+number: 82:, score: 6, i: 0, j: 5, l: 2
+number: 83:, score: 6, i: 0, j: 5, l: 3
+number: 84:, score: 6, i: 0, j: 5, l: 4
+number: 85:, score: 6, i: 0, j: 5, l: 5
+number: 86:, score: 6, i: 0, j: 5, l: 6
+number: 87:, score: 6, i: 0, j: 5, l: 7
+number: 88:, score: 6, i: 0, j: 5, l: 8
+number: 89:, score: 6, i: 0, j: 5, l: 9
+number: 90:, score: 6, i: 0, j: 5, l: 10
+number: 91:, score: 6, i: 0, j: 5, l: 11
+number: 92:, score: 6, i: 0, j: 5, l: 12
+number: 93:, score: 6, i: 0, j: 5, l: 13
+number: 94:, score: 6, i: 0, j: 5, l: 14
+number: 95:, score: 6, i: 0, j: 5, l: 15
+number: 96:, score: 6, i: 0, j: 6, l: 0
+number: 97:, score: 6, i: 0, j: 6, l: 1
+number: 98:, score: 6, i: 0, j: 6, l: 2
+number: 99:, score: 6, i: 0, j: 6, l: 3
+number: 100:, score: 6, i: 0, j: 6, l: 4
+number: 101:, score: 6, i: 0, j: 6, l: 5
+number: 102:, score: 6, i: 0, j: 6, l: 6
+number: 103:, score: 6, i: 0, j: 6, l: 7
+number: 104:, score: 6, i: 0, j: 6, l: 8
+number: 105:, score: 6, i: 0, j: 6, l: 9
+number: 106:, score: 6, i: 0, j: 6, l: 10
+number: 107:, score: 6, i: 0, j: 6, l: 11
+number: 108:, score: 6, i: 0, j: 6, l: 12
+number: 109:, score: 6, i: 0, j: 6, l: 13
+number: 110:, score: 6, i: 0, j: 6, l: 14
+number: 111:, score: 6, i: 0, j: 6, l: 15
+number: 112:, score: 6, i: 0, j: 7, l: 0
+number: 113:, score: 6, i: 0, j: 7, l: 1
+number: 114:, score: 6, i: 0, j: 7, l: 2
+number: 115:, score: 6, i: 0, j: 7, l: 3
+number: 116:, score: 6, i: 0, j: 7, l: 4
+number: 117:, score: 6, i: 0, j: 7, l: 5
+number: 118:, score: 6, i: 0, j: 7, l: 6
+number: 119:, score: 6, i: 0, j: 7, l: 7
+number: 120:, score: 6, i: 0, j: 7, l: 8
+number: 121:, score: 6, i: 0, j: 7, l: 9
+number: 122:, score: 6, i: 0, j: 7, l: 10
+number: 123:, score: 6, i: 0, j: 7, l: 11
+number: 124:, score: 6, i: 0, j: 7, l: 12
+number: 125:, score: 6, i: 0, j: 7, l: 13
+number: 126:, score: 6, i: 0, j: 7, l: 14
+number: 127:, score: 6, i: 0, j: 7, l: 15
+number: 128:, score: 6, i: 0, j: 8, l: 0
+number: 129:, score: 6, i: 0, j: 8, l: 1
+number: 130:, score: 6, i: 0, j: 8, l: 2
+number: 131:, score: 6, i: 0, j: 8, l: 3
+number: 132:, score: 6, i: 0, j: 8, l: 4
+number: 133:, score: 6, i: 0, j: 8, l: 5
+number: 134:, score: 6, i: 0, j: 8, l: 6
+number: 135:, score: 6, i: 0, j: 8, l: 7
+number: 136:, score: 6, i: 0, j: 8, l: 8
+number: 137:, score: 6, i: 0, j: 8, l: 9
+number: 138:, score: 6, i: 0, j: 8, l: 10
+number: 139:, score: 6, i: 0, j: 8, l: 11
+number: 140:, score: 6, i: 0, j: 8, l: 12
+number: 141:, score: 6, i: 0, j: 8, l: 13
+number: 142:, score: 6, i: 0, j: 8, l: 14
+number: 143:, score: 6, i: 0, j: 8, l: 15
+number: 144:, score: 6, i: 0, j: 9, l: 0
+number: 145:, score: 6, i: 0, j: 9, l: 1
+number: 146:, score: 6, i: 0, j: 9, l: 2
+number: 147:, score: 6, i: 0, j: 9, l: 3
+number: 148:, score: 6, i: 0, j: 9, l: 4
+number: 149:, score: 6, i: 0, j: 9, l: 5
+number: 150:, score: 6, i: 0, j: 9, l: 6
+number: 151:, score: 6, i: 0, j: 9, l: 7
+number: 152:, score: 6, i: 0, j: 9, l: 8
+History function_cycle: [function_name : time] 
+[T : 0][SD : 1][D : 2][T : 3]
+History function_cycle (INCL.intermediate): [function_name : time] 
+[T : 0][SD : 1][D : 2][T : 3]
+hist_length added: 4
+sSort hist timestamp (start): [24:34.692] 
+TimSort used
+InsertionSort used
+Sort hist timestamp (end): [24:34.693] 
+
+best_hist_scores:
+number: 0:, score: 8, i: 0, j: 0, l: 0
+number: 1:, score: 8, i: 0, j: 0, l: 1
+number: 2:, score: 8, i: 0, j: 0, l: 2
+number: 3:, score: 8, i: 0, j: 0, l: 3
+number: 4:, score: 8, i: 0, j: 0, l: 4
+number: 5:, score: 8, i: 0, j: 0, l: 5
+number: 6:, score: 8, i: 0, j: 0, l: 6
+number: 7:, score: 8, i: 0, j: 0, l: 7
+number: 8:, score: 8, i: 0, j: 0, l: 8
+number: 9:, score: 8, i: 0, j: 0, l: 9
+number: 10:, score: 8, i: 0, j: 0, l: 10
+number: 11:, score: 8, i: 0, j: 0, l: 11
+number: 12:, score: 8, i: 0, j: 0, l: 12
+number: 13:, score: 8, i: 0, j: 0, l: 13
+number: 14:, score: 8, i: 0, j: 0, l: 14
+number: 15:, score: 8, i: 0, j: 0, l: 15
+number: 16:, score: 8, i: 0, j: 1, l: 0
+number: 17:, score: 8, i: 0, j: 1, l: 1
+number: 18:, score: 8, i: 0, j: 1, l: 2
+number: 19:, score: 8, i: 0, j: 1, l: 3
+number: 20:, score: 8, i: 0, j: 1, l: 4
+number: 21:, score: 8, i: 0, j: 1, l: 5
+number: 22:, score: 8, i: 0, j: 1, l: 6
+number: 23:, score: 8, i: 0, j: 1, l: 7
+number: 24:, score: 8, i: 0, j: 1, l: 8
+number: 25:, score: 8, i: 0, j: 1, l: 9
+number: 26:, score: 8, i: 0, j: 1, l: 10
+number: 27:, score: 8, i: 0, j: 1, l: 11
+number: 28:, score: 8, i: 0, j: 1, l: 12
+number: 29:, score: 8, i: 0, j: 1, l: 13
+number: 30:, score: 8, i: 0, j: 1, l: 14
+number: 31:, score: 8, i: 0, j: 1, l: 15
+
+top_curr_func_line_scores:
+number: 0:, score: 8, i: 0, j: 0, l: 0
+number: 1:, score: 8, i: 0, j: 0, l: 1
+number: 2:, score: 8, i: 0, j: 0, l: 2
+number: 3:, score: 8, i: 0, j: 0, l: 3
+number: 4:, score: 8, i: 0, j: 0, l: 4
+number: 5:, score: 8, i: 0, j: 0, l: 5
+number: 6:, score: 8, i: 0, j: 0, l: 6
+number: 7:, score: 8, i: 0, j: 0, l: 7
+number: 8:, score: 8, i: 0, j: 0, l: 8
+number: 9:, score: 8, i: 0, j: 0, l: 9
+number: 10:, score: 8, i: 0, j: 0, l: 10
+number: 11:, score: 8, i: 0, j: 0, l: 11
+number: 12:, score: 8, i: 0, j: 0, l: 12
+number: 13:, score: 8, i: 0, j: 0, l: 13
+number: 14:, score: 8, i: 0, j: 0, l: 14
+number: 15:, score: 8, i: 0, j: 0, l: 15
+
+top_next_func_line_scores:
+number: 0:, score: 8, i: 0, j: 0, l: 0
+
+earliest_next_form_scores:
+number: 0:, score: 8, i: 0, j: 0, l: 0
+
+FINAL_BEST_SCORE: 
+score: 8, i: 0, j: 0, l: 0
+Sort hist timestamp (end): [24:34.693] 
+
+curr_best (line): [name : time]
+[T : 4], [SD : 5], [T : 6], [T : 7], [SD : 8], [T : 9], [SD : 10], [D : 11], [SD : 12], [T : 13], [D : 14], [T : 15], 
+next_best (line): [name : time]
+[SD : 28], [D : 29], [T : 30], [T : 31], [T : 0], [T : 1], [SD : 2], [SD : 3], [SD : 4], [D : 5], [T : 6], [T : 7], WEIGHT-CHOOSE FUNCTIONS (for undist): [name : time]
+(from curr_gr) [T : 4], 
+(from curr_gr) [SD : 5], 
+(from curr_gr) [T : 6], 
+(from curr_gr) [T : 7], 
+(from next_gr) [T : 0], 
+(from curr_gr) [T : 9], 
+(from curr_gr) [SD : 10], 
+(from next_gr) [SD : 3], 
+(from curr_gr) [SD : 12], 
+(from curr_gr) [T : 13], 
+(from next_gr) [T : 6], 
+(from next_gr) [T : 7], 
+WEIGHT-CHOOSE TERMINALS (intermediate): [_t] (of find_rule(_t))
+Morph update: [symbol : time]
+WEIGHT-CHOOSE TERMINALS (undist): [_t] (of find_rule(_t))
+(from curr_gr) [4], 
+[I : 4], [isus4 : 4], (from next_gr) [4], 
+[II : 5], [ii7 : 5], [iim7 : 5], (from next_gr) [4], 
+[I : 6], [i : 6], [i6 : 6], (from curr_gr) [4], 
+[I : 7], [isus4 : 7], (from curr_gr) [4], 
+[I : 8], [isus4 : 8], (from curr_gr) [4], 
+[I : 9], [isus4 : 9], (from curr_gr) [4], 
+[bII : 10], [biisus2 : 10], (from next_gr) [4], 
+[II : 11], [ii7 : 11], [iim7 : 11], (from curr_gr) [4], 
+[IV : 12], [ivsus4 : 12], (from next_gr) [4], 
+[I : 13], [i : 13], [i6 : 13], (from next_gr) [4], 
+[I : 14], [i : 14], [i6 : 14], (from next_gr) [4], 
+[I : 15], [i7 : 15], 
+:Morph update end
+============:Transition data (end)============
+
+
+============Grammars log (start):============
+
+======== NEW GRAMMAR: 0 ========
+time signature: 4
+form length: 32
+harm rhythm: 1
+end times: 0, 4, 8, 12, 16, 20, 24, 28, 
+decs: decA, decA1, decA2, decB1, decB2, decC, 
+decs population size: 6
+
+functions: T, D, SD, 
+functions population size: 3
+
+terminals: i, isus4, im, immaj, i6, i7, bii, biisus2, iim7, ii7, iiim, iiim7, iiio, iv, ivsus4, iv6, iv7, ivm, v7, vo, bvi, bviim, i, i6, i7, iim7, ii7, iv, iv6, v7, 
+terminals population size: 30
+(for note-set comparison of chords, i.e. support for style difference?
+
+======== NEW GRAMMAR: 1 ========
+time signature: 4
+form length: 32
+harm rhythm: 1
+end times: 0, 4, 8, 12, 16, 20, 24, 28, 
+decs: decT, decSD, decCad, 
+decs population size: 3
+
+functions: T, D, SD, 
+functions population size: 3
+
+terminals: i, i6, i7, iim7, ii7, iv, iv6, v7, isus4, im, immaj, bii, biisus2, iiim, iiim7, iiio, ivsus4, iv7, ivm, vo, bvi, bviim, 
+terminals population size: 22
+(for note-set comparison of chords, i.e. support for style difference?
+
+
+||||||||| Grammar * (rules overview) |||||||||
+S rule: sects: [symbol : prod_time]
+[SectA(1) : 0][SectB(9) : 8][SectA(17) : 16][SectC(25) : 24]]
+======== RULE FAMILIES ========
+timed_rules pop size: 6
+general_rules pop size: 20
+======== NOT-T FAMILIES ========
+Sect number (i.e. Sects / form_length): 4
+-Average bars / sect: 8
+SectA(1) dec number: 3 || SectA(1) dec number: 2 || SectA(1) dec number: 4 || SectB(9) dec number: 3 || SectB(9) dec number: 2 || SectB(9) dec number: 4 || SectA(17) dec number: 3 || SectA(17) dec number: 2 || SectA(17) dec number: 4 || SectC(25) dec number: 3 || SectC(25) dec number: 2 || SectC(25) dec number: 4 || 
+-Average bars / dec: 2.66667
+
+boring / repetitive??
+
+
+||||||||| Grammar * (rules overview) |||||||||
+S rule: sects: [symbol : prod_time]
+[SectA(1) : 0][SectA(9) : 8][SectB(17) : 16][SectA(25) : 24]]
+======== RULE FAMILIES ========
+timed_rules pop size: 7
+general_rules pop size: 13
+======== NOT-T FAMILIES ========
+Sect number (i.e. Sects / form_length): 4
+-Average bars / sect: 8
+SectA(1) dec number: 4 || SectA(1) dec number: 3 || SectA(9) dec number: 4 || SectA(9) dec number: 3 || SectB(17) dec number: 4 || SectB(17) dec number: 3 || SectA(25) dec number: 4 || SectA(25) dec number: 3 || 
+-Average bars / dec: 2.28571
+
+boring / repetitive??
+
+============:Grammars log (end)============
+
+
+============Petrie tracking log (start):============
+
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:25.691] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:28.197] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:30.366] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:32.527] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:34.702] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:36.874] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:39.009] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:41.138] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:43.273] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:45.406] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:47.538] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:49.672] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:51.805] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:53.939] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:56.072] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [24:58.207] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [25:00.340] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [25:02.476] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [25:04.606] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [25:06.739] 
+
+============:Petrie tracking log (end)============
+
+
+============Speed log (start):============
+
+
+============:Speed log (end)============
+
+
+
+==============
+LOG END
+==============

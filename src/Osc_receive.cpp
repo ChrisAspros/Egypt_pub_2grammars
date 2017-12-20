@@ -23,7 +23,7 @@ void Osc_receive::update(){
     if (beacon_list.size() > 0) previous_read = beacon_list;
     beacon_list.clear();
     
-    get_beacons();
+    //get_beacons();
     new_read = beacon_list;
     
     update_transition_state();
@@ -114,13 +114,13 @@ void Osc_receive::update_transition_state(){
         if (((new_read[0] == "4.0" || new_read[0] == "1.0") && room1) || ((new_read[0] == "1.0" || new_read[0] == "2.0" || new_read[0] == "5.0") && room2)){
         
             cout << endl << endl << endl << "DOES TRANSITION" << endl;
-            //transitioning = 1;
+            do_transition = 1;
         }
         //else if (previous_read[0] == "4.0" && room1) transitioning = 1;
         else {
         
             cout << endl << endl << endl << "DON'T DO TRANSITION" << endl;
-            //transitioning = 0;
+            do_transition = 0;
         }
     }
 }

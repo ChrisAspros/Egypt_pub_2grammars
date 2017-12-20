@@ -47,7 +47,7 @@ public:
     void A_B_change();
     void ordered_change();
     bool vel_aut_complete;
-    bool blues_room1, blues_room2;
+    bool blues_room1, blues_room2, do_transition;
     void beacon_change();
     //bool automate_vel = 0;
     //bool fade_to_gr1 = 0;

@@ -23,7 +23,7 @@ void ofApp::setup(){
     //sleep(5);
     //ofSleepMillis(1000);//seems to make it a bit more stable?
     
-    frame_sp1 = 40;//600;
+    frame_sp1 = 45;//600;
     frame_sp2 = 60;
     
     frame_sp = frame_sp1;
@@ -31,7 +31,7 @@ void ofApp::setup(){
     ofSetFrameRate(frame_sp); // for egypt 40?// for blues was 60 // 1 frame : 1 tick
 
     //gr_pop must preceed blues.setup() in order to feed initiate_cycle() in blues.setup
-    blues.seq.r_comp.parser.gr_pop = 0;
+    blues.seq.r_comp.parser.gr_pop = 1;
     blues.seq.r_comp.parser.gr_changed = 1;//true means it doesn't need to change now..
     blues.seq.r_comp.un_dist_found = 0;
     blues.setup();
@@ -110,7 +110,12 @@ void ofApp::update(){
     
         ///*
         //tracking_repl_A_B();
-        if(blues.seq.only_on("beat", blues.t)) OSC.update();
+        if(blues.seq.only_on("beat", blues.t)){
+        
+            //setup_beacons();
+            OSC.update();
+            blues.do_transition = OSC.do_transition;
+        }
         
         if(blues.seq.only_on("bar", blues.t)){
             //logging
@@ -184,6 +189,63 @@ void ofApp::update(){
      */
 }
 
+
+void ofApp::setup_beacons(){//instead of OSC.get_beacons()
+    //room1: "2.0" & "5.0"
+    //room2: "1.0" & "4.0"
+    //bar & cycle, i.e. [3] & [4]
+    
+    //?? OSC.beacon_list.clear();
+    
+    //cycle 1, bar 4
+    //cycle 3, bar 28
+    
+    //to room 2
+    if (((blues.t[3]==4) || (blues.t[3]==5) || (blues.t[3]==6)) && (blues.t[4]==1)){
+    
+        OSC.beacon_list.push_back("4.0");
+    }
+    if (((blues.t[3]==7) || (blues.t[3]==8) || (blues.t[3]==9)) && (blues.t[4]==1)){
+        
+        OSC.beacon_list.push_back("4.0");
+        OSC.beacon_list.push_back("1.0");
+    }
+    if (((blues.t[3]==10) || (blues.t[3]==11) || (blues.t[3]==12)) && (blues.t[4]==1)){
+        
+        OSC.beacon_list.push_back("1.0");
+    }
+    if (((blues.t[3]==19) || (blues.t[3]==21)) && (blues.t[4]==1)){
+        
+        OSC.beacon_list.push_back("1.0");
+    }
+    if (((blues.t[3]==22) || (blues.t[3]==23) || (blues.t[3]==24) || (blues.t[3]==25)) && (blues.t[4]==1)){
+        
+        OSC.beacon_list.push_back("1.0");
+        OSC.beacon_list.push_back("4.0");
+    }
+    if (((blues.t[3]==26) || (blues.t[3]==27)) && (blues.t[4]==1)){
+        
+        OSC.beacon_list.push_back("1.0");
+    }
+    
+    
+    //back to room 1
+    if (((blues.t[3]==28) || (blues.t[3]==29)) && (blues.t[4]==1)){
+        
+        OSC.beacon_list.push_back("2.0");
+    }
+    if (((blues.t[3]==30) || (blues.t[3]==31) || (blues.t[3]==1)) && (blues.t[4]==3)){
+        
+        OSC.beacon_list.push_back("2.0");
+        OSC.beacon_list.push_back("5.0");
+    }
+    if (((blues.t[3]==0) || (blues.t[3]==1) || (blues.t[3]==2)) && (blues.t[4]==2)){
+        
+        OSC.beacon_list.push_back("5.0");
+    }
+}
+
+
 void ofApp::update_speed(){
 
     //control smoothness of speeding up / slowing down
@@ -234,7 +296,7 @@ void ofApp::draw(){
     
     //PREDICTION ENGINE STATE FRAME
     ofSetColor(255);
-    openSans.drawString("PREDICTION ENGINE STATE:", ofGetWidth()/2 - 157, 30);
+    openSans.drawString("TRANSITION STATE:", ofGetWidth()/2 - 157, 30);//"PREDICTION ENGINE STATE:"
     ofSetColor(110);
     ofSetLineWidth(2.5);
     ofNoFill();
@@ -254,11 +316,24 @@ void ofApp::draw(){
             openSans.drawString(aux_str, 200, 150);
         }
         
+        
+        //Draw intel transitiooning stage
+        if (blues.seq.r_comp.trans_incomplete){
+            
+            ofSetColor(0, 255, 0);
+            openSans.drawString("TRANSITIONING", 215, 110);
+        }
+        if (!blues.seq.r_comp.trans_incomplete){
+            
+            ofSetColor(0, 255, 0);
+            openSans.drawString("NOT TRANSITIONING", 175, 110);
+        }
+        
         //Draw abrupt transitions
         if (show_gr1) {
             
             ofSetColor(0, 255, 0);
-            openSans.drawString("GR_1", 215, 110);
+            //openSans.drawString("GR_1", 215, 110);
         }
         if (show_gr2) {
             
@@ -336,12 +411,12 @@ void ofApp::draw(){
     string barline;
     
     for (int i=0; i<4; i++){
-        
+        /*
         //barline = "|";
         if (i==0 || i==2) barline = "A";
         else if (i==1) barline = "B";
         else if (i==3) barline = "C";
-        
+         */
         //for (int j=0; j<i/5; j++) barline = "\n\n" + barline;
         openSans.drawString (barline, 10, 240+i*138);//, ((i%5)+1)*135-130, 240);
     }
