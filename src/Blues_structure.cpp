@@ -47,7 +47,7 @@ void Blues_structure::setup(){
     if (seq.r_comp.parser.gr_pop==0){
     
         vel_gr1 = 100;
-        vel_gr2 = 0;
+        vel_gr2 = 100;
     }
     else {
         
@@ -132,8 +132,8 @@ void Blues_structure::update(){
         
         if (!seq.r_comp.trans_incomplete) seq.r_comp.parser.start_cycle(t);//places "S" at start of cycle (if not ending etc..) OR if grammar just changed //HERE or in seq.r_comp.parser.update_cycle();
         
-        A_B_change();
-        //ordered_change();
+        //A_B_change();
+        ordered_change();
         //beacon_change();
     
         if(seq.r_comp.parser.transitioning && !seq.r_comp.rules_combined){
@@ -195,7 +195,7 @@ void Blues_structure::update(){
         //update_velocities_once();
     }
     
-    if(!vel_aut_complete) update_velocities_once();
+    if(!vel_aut_complete) ;//update_velocities_once();
     
     //}
     
@@ -426,8 +426,8 @@ void Blues_structure::update_velocities(){
             
             if(seq.r_comp.parser.gr_pop == 0){
          
-                vel_gr1 = 100;//not transitioning and gr1
-                vel_gr2 = 0;
+                //vel_gr1 = 100;//not transitioning and gr1
+                vel_gr2 = 100;
             }
             else {
             

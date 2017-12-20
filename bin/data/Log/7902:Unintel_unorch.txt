@@ -1,0 +1,512 @@
+—> 4 A - 12 trans (unint.) - 4 B
+
+============REAL TIME LOG (start):============
+the_rule: S, 
+new cycle (update_cycle()): SectA        SectB        SectA        SectC        
+=======
+is_terminal?: SectA
+
+the_rule: SectA, 
+new cycle (update_cycle()): decA    decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: decA
+
+the_rule: decA, 
+new cycle (update_cycle()): T SD D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): I SD D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 SD D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 1] [timestamp : [40:30.391] 
+the_rule: SD, 
+new cycle (update_cycle()): isus4 bII D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: bII
+
+the_rule: bII, 
+new cycle (update_cycle()): isus4 biisus2 D T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: biisus2
+
+
+[global_bt : 2] [timestamp : [40:32.661] 
+the_rule: D, 
+new cycle (update_cycle()): isus4 biisus2 bVII T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: bVII
+
+the_rule: bVII, 
+new cycle (update_cycle()): isus4 biisus2 bviim T decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: bviim
+
+
+[global_bt : 3] [timestamp : [40:34.795] 
+the_rule: T, 
+new cycle (update_cycle()): isus4 biisus2 bviim I decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): isus4 biisus2 bviim isus4 decA1  decA2  SectB        SectA        SectC        
+=======
+is_terminal?: isus4
+
+
+[global_bt : 4] [timestamp : [40:36.929] 
+
+velocity crossfade START (unintelligent) to gr2 - [timestamp : [40:39.061] 
+the_rule: S, 
+new cycle (update_cycle()): SectA        SectA        SectB        SectA        
+=======
+is_terminal?: SectA
+
+the_rule: SectA, 
+new cycle (update_cycle()): decT  decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: decT
+
+the_rule: decT, 
+new cycle (update_cycle()): T T decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): I T decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: I
+
+new cycle (update_cycle()): i T decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: i
+
+
+[global_bt : 5] [timestamp : [40:39.062] 
+the_rule: T, 
+new cycle (update_cycle()): i I decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): i i6 decSD  decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: i6
+
+
+[global_bt : 6] [timestamp : [40:41.195] 
+the_rule: decSD, 
+new cycle (update_cycle()): i i6 SD SD decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: SD
+
+the_rule: SD, 
+new cycle (update_cycle()): i i6 II SD decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: II
+
+the_rule: II, 
+new cycle (update_cycle()): i i6 iim7 SD decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: iim7
+
+
+[global_bt : 7] [timestamp : [40:43.329] 
+the_rule: SD, 
+new cycle (update_cycle()): i i6 iim7 II decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: II
+
+the_rule: II, 
+new cycle (update_cycle()): i i6 iim7 ii7 decCad  decT  SectA        SectB        SectA        
+=======
+is_terminal?: ii7
+
+
+[global_bt : 8] [timestamp : [40:45.462] 
+the_rule: decCad, 
+new cycle (update_cycle()): i i6 iim7 ii7 D D decT  SectA        SectB        SectA        
+=======
+is_terminal?: D
+
+the_rule: D, 
+new cycle (update_cycle()): i i6 iim7 ii7 V D decT  SectA        SectB        SectA        
+=======
+is_terminal?: V
+
+the_rule: V, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 D decT  SectA        SectB        SectA        
+=======
+is_terminal?: v7
+
+
+[global_bt : 9] [timestamp : [40:47.596] 
+the_rule: D, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 V decT  SectA        SectB        SectA        
+=======
+is_terminal?: V
+
+the_rule: V, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 decT  SectA        SectB        SectA        
+=======
+is_terminal?: v7
+
+
+[global_bt : 10] [timestamp : [40:49.729] 
+the_rule: decT, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 T T SectA        SectB        SectA        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 I T SectA        SectB        SectA        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i T SectA        SectB        SectA        
+=======
+is_terminal?: i
+
+
+[global_bt : 11] [timestamp : [40:51.862] 
+the_rule: T, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i I SectA        SectB        SectA        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 SectA        SectB        SectA        
+=======
+is_terminal?: i6
+
+
+[global_bt : 12] [timestamp : [40:53.996] 
+the_rule: SectA, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 decT  decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: decT
+
+the_rule: decT, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 T T decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 I T decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 T decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: i6
+
+
+[global_bt : 13] [timestamp : [40:56.129] 
+the_rule: T, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 I decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 decSD  decCad  decT  SectB        SectA        
+=======
+is_terminal?: i6
+
+
+[global_bt : 14] [timestamp : [40:58.262] 
+the_rule: decSD, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 SD SD decCad  decT  SectB        SectA        
+=======
+is_terminal?: SD
+
+the_rule: SD, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 II SD decCad  decT  SectB        SectA        
+=======
+is_terminal?: II
+
+the_rule: II, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 SD decCad  decT  SectB        SectA        
+=======
+is_terminal?: ii7
+
+
+[global_bt : 15] [timestamp : [41:00.396] 
+the_rule: SD, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 II decCad  decT  SectB        SectA        
+=======
+is_terminal?: II
+
+the_rule: II, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 decCad  decT  SectB        SectA        
+=======
+is_terminal?: ii7
+
+
+[global_bt : 16] [timestamp : [41:02.532] 
+the_rule: decCad, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 D D decT  SectB        SectA        
+=======
+is_terminal?: D
+
+the_rule: D, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 V D decT  SectB        SectA        
+=======
+is_terminal?: V
+
+the_rule: V, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 D decT  SectB        SectA        
+=======
+is_terminal?: v7
+
+
+[global_bt : 17] [timestamp : [41:04.663] 
+the_rule: D, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 V decT  SectB        SectA        
+=======
+is_terminal?: V
+
+the_rule: V, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 decT  SectB        SectA        
+=======
+is_terminal?: v7
+
+
+[global_bt : 18] [timestamp : [41:06.796] 
+the_rule: decT, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 T T SectB        SectA        
+=======
+is_terminal?: T
+
+the_rule: T, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 I T SectB        SectA        
+=======
+is_terminal?: I
+
+the_rule: I, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 i6 T SectB        SectA        
+=======
+is_terminal?: i6
+
+
+[global_bt : 19] [timestamp : [41:08.930] 
+the_rule: T, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 i6 I SectB        SectA        
+=======
+is_terminal?: I
+
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 i6 i7 SectB        SectA        
+=======
+is_terminal?: i7
+
+
+[global_bt : 20] [timestamp : [41:11.062] 
+the_rule: SectB, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 i6 i7 decSD    decSD  decCad  SectA        
+=======
+is_terminal?: decSD
+
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 i6 i7 SD SD SD SD decSD  decCad  SectA        
+=======
+is_terminal?: SD
+
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 i6 i7 IV SD SD SD decSD  decCad  SectA        
+=======
+is_terminal?: IV
+
+the_rule: IV, 
+new cycle (update_cycle()): i i6 iim7 ii7 v7 v7 i i6 i6 i6 ii7 ii7 v7 v7 i6 i7 iv6 SD SD SD decSD  decCad  SectA        
+=======
+is_terminal?: iv6
+
+
+[global_bt : 21] [timestamp : [41:13.196] 
+
+============REAL TIME LOG (end):============
+
+
+
+FINAL CYCLE
+[symbols : times]
+[isus4 : 0][biisus2 : 1][bviim : 2][isus4 : 3][i : 0][i6 : 1][iim7 : 2][ii7 : 3][v7 : 4][v7 : 5][i : 6][i6 : 7][i6 : 8][i6 : 9][ii7 : 10][ii7 : 11][v7 : 12][v7 : 13][i6 : 14][i7 : 15][iv6 : 16]
+
+============Transition data (start):============
+
+============:Transition data (end)============
+
+
+============Grammars log (start):============
+
+======== NEW GRAMMAR: 0 ========
+time signature: 4
+form length: 32
+harm rhythm: 1
+end times: 0, 4, 8, 12, 16, 20, 24, 28, 
+decs: decA, decA1, decA2, decB1, decB2, decC, 
+decs population size: 6
+
+functions: T, D, SD, 
+functions population size: 3
+
+terminals: i, isus4, im, immaj, i6, i7, bii, biisus2, iim7, ii7, iiim, iiim7, iiio, iv, ivsus4, iv6, iv7, ivm, v7, vo, bvi, bviim, i, i6, i7, iim7, ii7, iv, iv6, v7, 
+terminals population size: 30
+(for note-set comparison of chords, i.e. support for style difference?
+
+======== NEW GRAMMAR: 1 ========
+time signature: 4
+form length: 32
+harm rhythm: 1
+end times: 0, 4, 8, 12, 16, 20, 24, 28, 
+decs: decT, decSD, decCad, 
+decs population size: 3
+
+functions: T, D, SD, 
+functions population size: 3
+
+terminals: i, i6, i7, iim7, ii7, iv, iv6, v7, isus4, im, immaj, bii, biisus2, iiim, iiim7, iiio, ivsus4, iv7, ivm, vo, bvi, bviim, 
+terminals population size: 22
+(for note-set comparison of chords, i.e. support for style difference?
+
+
+||||||||| Grammar * (rules overview) |||||||||
+S rule: sects: [symbol : prod_time]
+[SectA(1) : 0][SectB(9) : 8][SectA(17) : 16][SectC(25) : 24]]
+======== RULE FAMILIES ========
+timed_rules pop size: 6
+general_rules pop size: 20
+======== NOT-T FAMILIES ========
+Sect number (i.e. Sects / form_length): 4
+-Average bars / sect: 8
+SectA(1) dec number: 3 || SectA(1) dec number: 2 || SectA(1) dec number: 4 || SectB(9) dec number: 3 || SectB(9) dec number: 2 || SectB(9) dec number: 4 || SectA(17) dec number: 3 || SectA(17) dec number: 2 || SectA(17) dec number: 4 || SectC(25) dec number: 3 || SectC(25) dec number: 2 || SectC(25) dec number: 4 || 
+-Average bars / dec: 2.66667
+
+boring / repetitive??
+
+
+||||||||| Grammar * (rules overview) |||||||||
+S rule: sects: [symbol : prod_time]
+[SectA(1) : 0][SectA(9) : 8][SectB(17) : 16][SectA(25) : 24]]
+======== RULE FAMILIES ========
+timed_rules pop size: 7
+general_rules pop size: 13
+======== NOT-T FAMILIES ========
+Sect number (i.e. Sects / form_length): 4
+-Average bars / sect: 8
+SectA(1) dec number: 4 || SectA(1) dec number: 3 || SectA(9) dec number: 4 || SectA(9) dec number: 3 || SectB(17) dec number: 4 || SectB(17) dec number: 3 || SectA(25) dec number: 4 || SectA(25) dec number: 3 || 
+-Average bars / dec: 2.28571
+
+boring / repetitive??
+
+============:Grammars log (end)============
+
+
+============Petrie tracking log (start):============
+
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:30.391] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:32.661] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:34.796] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:36.929] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:39.062] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:41.195] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:43.329] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:45.462] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:47.596] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:49.729] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:51.862] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:53.996] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:56.129] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [40:58.262] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [41:00.397] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [41:02.532] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [41:04.663] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [41:06.796] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [41:08.930] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [41:11.063] 
+Previous beacons read: [  ]
+Next beacons read: [  ]
+Room 1: 1, Room 2: 0
+[timestamp : [41:13.197] 
+
+============:Petrie tracking log (end)============
+
+
+============Speed log (start):============
+
+
+============:Speed log (end)============
+
+
+
+==============
+LOG END
+==============
